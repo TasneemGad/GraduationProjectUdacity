@@ -1,0 +1,66 @@
+<mat-tab-group id="two" dynamicHeight>
+    <mat-tab label="Sign UP">
+
+        <form #form id="form" [formGroup]="RegisterForm">
+            {{ RegisterForm.value | json }}
+            <h2 style="font-size: 40px;">Create your account</h2>
+            <h5 style="font-size: 20px; text-align: center;">
+                Build skills for today, tomorrow, and beyond.
+                Education to future-proof your career.
+            </h5>
+
+            <br>
+
+
+            <a href="https://accounts.google.com/signin/" mat-stroked-button style="margin: 3px;"><img
+                    src="/assets/h.jpg" style="width:30px; height: 30px; margin: 4px;"> Sign Up With Google </a>
+            <a href="https://www.facebook.com/" mat-stroked-button><img src="/assets/h1.png"
+                    style="width:30px; height: 30px; margin: 4px ; "> Sign Up With FaceBook </a>
+
+            <br>
+            <br>
+            <hr />
+            <div class="example-container">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="Name" required> 
+                    <!-- <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+                    <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error>
+
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your Confirm password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword">
+                    <!-- <mat-error *ngIf="ConfirmPassword.invalid  && ConfirmPassword.touched">{{getErrorMessage2()}}</mat-error> -->
+
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <button type="submit" mat-raised-button id="btn">Sign UP</button>
+        </form>
+        <h4 style="color: rgb(151, 133, 133); margin: 20px;text-transform: none; text-align: center;">By clicking Sign
+            Up, you agree to our<a href="https://www.google.com/" style="color: #017a9b; text-decoration: none;"> Terms
+                of Use</a> and our <a href="https://www.facebook.com/" style="color: #017a9b; text-decoration: none;">
+                Privacy Policy.</a></h4>
+
+    </mat-tab>
+    <mat-tab label="Sign IN">
+    </mat-tab>
+
+</mat-tab-group>
