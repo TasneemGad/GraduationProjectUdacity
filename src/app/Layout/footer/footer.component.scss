@@ -1,0 +1,57 @@
+
+.child
+{
+    background-color: rgb(236, 234, 234);
+    width: auto; 
+}
+
+
+#content
+{
+   margin-left: 100px;
+   
+
+}
+#btn
+{
+    text-decoration: none; 
+    margin-left: 60px;
+    font-size: 15px;
+    font-family: 200;
+    color: rgb(110, 110, 110);
+}
+
+#font
+{
+    font-weight: 500; 
+    font-size: 15px;
+     color: rgb(148, 148, 148);
+      margin-left: 60px;
+      letter-spacing: 4px;
+      display:block;
+}
+#all
+{
+    
+    width: auto;
+    height: auto;
+    display:inline-flex;
+    // margin: 40px;
+    margin-top: 40px;
+
+}
+
+.imgs
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   position: relative;
+   top: -50px;
+   left: 50%;
+   transform: translateX(-50%);
+
+   
+
+}
+

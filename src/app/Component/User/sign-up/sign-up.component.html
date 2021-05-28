@@ -2,10 +2,10 @@
     <mat-tab label="Sign UP">
 
         <form #form id="form" [formGroup]="RegisterForm">
-            {{ RegisterForm.value | json }}
-            <h2 style="font-size: 40px;">Create your account</h2>
-            <h5 style="font-size: 20px; text-align: center;">
-                Build skills for today, tomorrow, and beyond.
+            <!-- {{ RegisterForm.value | json }} -->
+            <h2 style="font-size: 30px;  text-align: center;">Create your account</h2>
+            <h5 style="font-size: 15px; text-align: center;">
+                Build skills for today, tomorrow, and beyond.<br>
                 Education to future-proof your career.
             </h5>
 
@@ -43,7 +43,7 @@
             <div class="example-container">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your Confirm password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword">
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword"  >
                     <!-- <mat-error *ngIf="ConfirmPassword.invalid  && ConfirmPassword.touched">{{getErrorMessage2()}}</mat-error> -->
 
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
