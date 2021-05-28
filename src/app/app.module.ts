@@ -9,13 +9,17 @@ import { HeaderComponent } from './Layout/header/header.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
 import { SigINComponent } from './Component/User/sig-in/sig-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
+import { FooterComponent } from './Layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SignUpComponent,
-    SigINComponent
+    SigINComponent,
+    HomePageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
