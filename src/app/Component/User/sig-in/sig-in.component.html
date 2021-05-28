@@ -29,11 +29,13 @@
                     <div>
                         <mat-form-field class="example-full-width">
                             <input type="text" matInput placeholder="Email Adderss">
+                            <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field class="example-full-width">
                             <input matInput placeholder="Password">
+                            <!-- <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error> -->
                         </mat-form-field>
                     </div>
                     <div>
