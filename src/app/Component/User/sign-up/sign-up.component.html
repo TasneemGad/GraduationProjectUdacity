@@ -1,17 +1,15 @@
-<mat-tab-group id="two" dynamicHeight>
-    <mat-tab label="Sign UP">
-
         <form #form id="form" [formGroup]="RegisterForm">
             <!-- {{ RegisterForm.value | json }} -->
+<<<<<<< HEAD
             <h2 style="font-size: 30px;  text-align: center;">Create your account</h2>
+=======
+            <h2 style="font-size: 30px; margin-top: 15px;">Create your account</h2>
+>>>>>>> a3447450d7ae6047b37b774de37b91c9404e2282
             <h5 style="font-size: 15px; text-align: center;">
                 Build skills for today, tomorrow, and beyond.<br>
                 Education to future-proof your career.
             </h5>
-
             <br>
-
-
             <a href="https://accounts.google.com/signin/" mat-stroked-button style="margin: 3px;"><img
                     src="/assets/h.jpg" style="width:30px; height: 30px; margin: 4px;"> Sign Up With Google </a>
             <a href="https://www.facebook.com/" mat-stroked-button><img src="/assets/h1.png"
@@ -25,7 +23,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your email</mat-label>
                     <input matInput placeholder="pat@example.com" formControlName="Name" required> 
-                    <!-- <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error> -->
+                    <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
             </div>
             <div class="example-container">
@@ -58,9 +56,3 @@
             Up, you agree to our<a href="https://www.google.com/" style="color: #017a9b; text-decoration: none;"> Terms
                 of Use</a> and our <a href="https://www.facebook.com/" style="color: #017a9b; text-decoration: none;">
                 Privacy Policy.</a></h4>
-
-    </mat-tab>
-    <mat-tab label="Sign IN">
-    </mat-tab>
-
-</mat-tab-group>

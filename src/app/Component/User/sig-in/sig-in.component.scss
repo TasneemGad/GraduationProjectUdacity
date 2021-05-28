@@ -1,0 +1,56 @@
+.nav{
+  justify-content: center;
+  background-color: white; 
+  font-size: x-large;   
+  border: 1px solid white;
+  padding: 40px;
+  box-shadow: 5px 10px rgb(248, 245, 245) ;
+}
+
+.example-card {
+    max-width: 600px;
+    max-height: 1000px;
+    margin-top: -30px;
+    border: 2px solid rgb(243, 238, 238);
+  }
+  
+  .center-content {
+    margin-top: 100px;
+    text-align: -webkit-center;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+.styleText{
+    color: #017a9b;
+  }
+
+  .titleSignIn{
+    font-size: 30px;
+    margin: 20px;
+  }
+
+  .line{
+      width: 150px;
+  }
+
+.lineWhitOr{
+    display: flex;
+}
+
+.btnSocial{
+    margin: 7px;
+}
+
+.btnSignIn{
+  margin: 20px; 
+  background-color: #017a9b;
+}
