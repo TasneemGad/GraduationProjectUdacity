@@ -1,6 +1,36 @@
-<mat-toolbar>
+<mat-toolbar style="background-color: white; padding: 50px 10px 50px 10px ;">
     <img mat-card-md-image routerLink="/Home" src="assets/udacity.svg" style="width: 30px; height: 30px; margin: 30px; margin-left: 100px;">
     <h1>U D A C I T Y</h1>
-    <button mat-raised-button  routerLink="SignUP" style=" background-color: #063846; color: white; margin: 200px; display: flex;">Get Start</button>
+
+    
+    <button mat-button [matMenuTriggerFor]="menu">Programs</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">Careers</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">ForEnterprise</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">For Government</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+<p style="padding-top: 8px;">|</p>
+<button mat-button  routerLink="SignIn">Sign In</button>
+
+    <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; float: right; right: 100; letter-spacing: 1px;">GET START</button>
 </mat-toolbar>
 
+<!-- margin: 200px; display: flex; -->

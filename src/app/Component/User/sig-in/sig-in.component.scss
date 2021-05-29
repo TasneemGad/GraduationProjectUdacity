@@ -28,6 +28,9 @@
 .example-full-width {
     width: 100%;
   }
+  input{
+    padding: 8px;
+}
   
 .styleText{
     color: #017a9b;
@@ -44,6 +47,7 @@
 
 .lineWhitOr{
     display: flex;
+    line-height: 0;
 }
 
 .btnSocial{

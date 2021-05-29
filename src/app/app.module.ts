@@ -8,9 +8,10 @@ import { MaterialModule } from './MaterialDesign/material/material.module';
 import { HeaderComponent } from './Layout/header/header.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
 import { SigINComponent } from './Component/User/sig-in/sig-in.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { FooterComponent } from './Layout/footer/footer.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
