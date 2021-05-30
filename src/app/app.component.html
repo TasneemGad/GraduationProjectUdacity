@@ -1,9 +1,15 @@
 
-<div *ngIf="flag then Sho">
+<div *ngIf="flag then header">
 </div>
-
-<ng-template #Sho> 
+<ng-template #header> 
     <app-header></app-header>
 </ng-template> 
 
 <router-outlet></router-outlet>
+
+
+<div *ngIf="flag then footer">
+</div>
+<ng-template #footer> 
+    <app-footer></app-footer>
+</ng-template> 

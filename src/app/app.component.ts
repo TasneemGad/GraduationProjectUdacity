@@ -10,24 +10,22 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit{
   title = 'udacityproject';
-  currentUrl : any
-  public currentUrl2 : any
+  public currentUrl : any
   flag = true
 
   constructor(private activatedRouter:ActivatedRoute, private router:Router){
   }
   
    ngOnInit(){
-    // this.hh = this.activatedRouter.snapshot
-    this.f();
+    this.getUrl();
   }
-  f(){
-  this.currentUrl = this.router.events.subscribe(
+  getUrl(){
+   this.router.events.subscribe(
     (event: NavigationEvent) => {
       if(event instanceof NavigationStart) {
-        this.currentUrl2 = event.url
-        console.log("f", this.currentUrl2 );
-        if(this.currentUrl2 === "/SignUP") 
+        this.currentUrl = event.url
+        console.log("f", this.currentUrl );
+        if(this.currentUrl === "/SignUP") 
         {
           this.flag = false
         }
@@ -36,7 +34,6 @@ export class AppComponent implements OnInit{
         }
       }
     });
-console.log("url",this.currentUrl2);
   }
 
 }

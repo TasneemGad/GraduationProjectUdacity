@@ -6,19 +6,19 @@
 <div class="center-content" >
     <mat-card class="example-card" > 
         <mat-tab-group style="padding: 30px;" >
-            <mat-tab label="SIGN UP"> <app-sign-up></app-sign-up> </mat-tab>
+            <mat-tab label="SIGN UP" > <app-sign-up></app-sign-up> </mat-tab>
 
-            <mat-tab label="SIGN IN"   >
+            <mat-tab label="SIGN IN"> <br><br>
                 <form class="example-form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()" #Login >
                     <div class="titleSignIn">
                         <mat-label>Sign in to your account</mat-label>
-                    </div>
-                    <mat-label>Build skills for today, tomorrow,and beyond.<br>
+                    </div><br>
+                    <mat-label style="line-height: 30px; font-size: 16px; font-weight: 400;">Build skills for today, tomorrow,and beyond.<br>
                         Education to future-proof your career.</mat-label><br><br>
                         <button mat-raised-button class="btnSocial">  <img src="../assets/google.png" style="width: 30px; height: 30px;" alt="error">
                           Sign in with Google</button>
                         <button mat-raised-button class="btnSocial"><img src="../assets/facebook.png"style="width: 30px; height: 30px;" alt="error">
-                            Sign in with Facebook</button><br><br>
+                            Sign in with Facebook</button><br><br><br>
                     <div class="lineWhitOr">
                         <hr class="line">
                         <div>
@@ -32,7 +32,7 @@
                             <input type="text" matInput placeholder="Email Adderss" formControlName="UserName" required>
                             <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>
-                    </div><br>
+                    </div>
                     <div>
                         <mat-form-field class="example-full-width">
                             <input matInput placeholder="Password" formControlName="PasswordHash">
@@ -46,14 +46,14 @@
                     <button type="submit" class="btnSignIn" mat-raised-button color="primary" >SIGN IN</button><br>
                     <div class="styleText">
                         <mat-label>Forgot your password?</mat-label>
-                    </div><br>
+                    </div><br><br>
                     <div class="lineWhitOr">
                         <hr class="line">
                         <div>
                             <mat-label>or</mat-label>
                         </div>
                         <hr class="line">
-                    </div><br>
+                    </div><br><br>
                     <div class="styleText">
                         <mat-label>Sign in with your organization</mat-label>
                     </div>

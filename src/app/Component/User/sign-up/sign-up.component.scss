@@ -2,8 +2,9 @@
 #btn{
     background-color: #017a9b;
      color: white;
-     margin-left: 70px;
-
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 5px 18px 5px 18px;
 }
 #two
 {
@@ -20,8 +21,15 @@
 }
 
 .example-full-width {
-    width: 100%;
+    width: 90%;
   }
 input{
     padding: 8px;
+}
+.lineWhitOr{
+    display: flex;
+    line-height: 0;
+}
+.line{
+    width: 200px;
 }
