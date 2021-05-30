@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   constructor() { }
+  data=["x","d","d","d","d","cvkjnkjd","d","d","s"]
 
   ngOnInit(): void {
   }

@@ -9,8 +9,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 
 import {MatMenuModule} from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
-
 
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
@@ -21,7 +19,7 @@ const materials:any =[
   MatTabsModule,
   MatInputModule,
   MatButtonModule,
-  MatMenuModule
+  MatMenuModule,
 ];
 @NgModule({
   declarations: [],

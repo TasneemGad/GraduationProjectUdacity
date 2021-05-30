@@ -2,37 +2,49 @@
     <img mat-card-md-image routerLink="/Home" src="assets/udacity.svg" style="width: 30px; height: 30px; margin: 30px; margin-left: 100px;">
     <h1>U D A C I T Y</h1>
 
+
+    <button mat-button [matMenuTriggerFor]="rootMenu" style="margin-left: 210px; margin-right: -15px; font-size: 15px; color: #525c65;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
+      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
+
+    <mat-menu #rootMenu="matMenu">
+      <!-- for all -->
+      <!-- <span *ngFor="let x of data"> -->
+         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu">asd</button>
+      <!-- </span> -->
+    </mat-menu>
     
-    <button mat-button [matMenuTriggerFor]="menu" style="margin-left: 210px; margin-right: -15px; font-size: 15px; color: rgb(133, 131, 131);">Programs </button>
-    <img mat-card-md-image routerLink="/Home" src="assets/deletedrop.PNG" style="width: 25px; height: 25px;" >
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
+    <mat-menu #subMenu="matMenu">
+      <!-- for all -->
+      <button mat-menu-item class="menu">Fishes</button>
     </mat-menu>
+    
+    <button mat-button  [matMenuTriggerFor]="menu" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: #525c65; ">Careers  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
+      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
+      <mat-menu #menu="matMenu"  >
+        <button mat-menu-item class="menu" >CAREER PREP</button>
+        <button mat-menu-item class="menu" >STUDENT SUCCESS</button>
+        <button mat-menu-item class="menu" >BECOME A MENTOR</button>
+        <button mat-menu-item class="menu" >BECOME AN INSTRUCTOR</button>
+      </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menu" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: rgb(133, 131, 131);">Careers</button>
-    <img mat-card-md-image routerLink="/Home" src="assets/deletedrop.PNG" style="width: 25px; height: 25px;" >
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menuForEnterprise" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: #525c65; ">For Enterprise  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
+      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
+      <mat-menu #menuForEnterprise="matMenu">
+        <button mat-menu-item class="menu">OVERVIEW</button>
+        <button mat-menu-item class="menu">OUR APPROACH</button>
+        <button mat-menu-item class="menu">SOLUTION</button>
+        <button mat-menu-item class="menu">RESOURCES</button>
+        <button mat-menu-item class="menu">CORPORATE SOCIAL <br> RESPONSIBILITY</button>
+        <button mat-menu-item class="menu">ABOUT US</button>
+      </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menu" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: rgb(133, 131, 131);">For Enterprise</button>
-    <img mat-card-md-image routerLink="/Home" src="assets/deletedrop.PNG" style="width: 25px; height: 25px;" >
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
+    <button mat-button style="margin-left: 20px; margin-right: -10px; font-size: 15px; color: #525c65;">For Government</button>
 
-    <button mat-button [matMenuTriggerFor]="menu" style="margin-left: 20px; margin-right: -10px; font-size: 15px; color: rgb(133, 131, 131);">For Government</button>
+    <p style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
+    <button mat-button  routerLink="SignIn" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
 
-
-<p style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
-<button mat-button  routerLink="SignIn" style="margin: 0px 10px 0px 10px; font-size: 15px; color: rgb(133, 131, 131);">Sign In</button>
-
-    <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button>
-    <!-- <button mat-raised-button  routerLink="SignUP" style=" background-color: #063846; color: white; margin: 200px; display: flex;">Get Start</button> -->
-
+    <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button> 
 </mat-toolbar>
-
-<!-- margin: 200px; display: flex; -->
