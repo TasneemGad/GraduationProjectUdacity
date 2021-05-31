@@ -4,9 +4,11 @@
   font-size: x-large;   
   border: 1px solid white;
   padding: 40px;
-  box-shadow: 5px 10px rgb(248, 245, 245) ;
+  box-shadow: 0 4px 8px 0 rgba(161, 159, 159, 0.2), 0 6px 20px 0 rgba(173, 173, 173, 0.19);
 }
-
+.udacity:hover{
+   cursor: pointer;
+}
 .example-card {
     max-width: 600px;
     max-height: 1000px;

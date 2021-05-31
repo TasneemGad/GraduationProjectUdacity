@@ -13,6 +13,7 @@ import { ILogin } from 'src/app/SharedModels/Interfaces/ILogin';
 export class SigINComponent implements OnInit {
   LoginForm:FormGroup
   isSuccessed=false
+  hide = true;  
 
 
   constructor(private fb: FormBuilder,private router: Router,private signInService:RegistrationService) { }
@@ -39,6 +40,14 @@ export class SigINComponent implements OnInit {
       return 'You must enter a value';
     }
     return this.LoginForm.get('UserName')?.hasError('UserName') ? 'Not a valid Name' : '';
+  }
+  getErrorMessage2() {
+    if (this.LoginForm.get('Password')?.hasError('required')) {
+
+      return 'You must enter a value';
+    }
+
+    return this.LoginForm.get('Password')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
   }
 
   ngOnInit(): void {

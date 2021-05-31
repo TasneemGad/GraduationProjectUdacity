@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 
 import {MatMenuModule} from '@angular/material/menu';
 
+
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
   MatIconModule,MatCardModule,MatFormFieldModule ,
@@ -20,10 +21,15 @@ const materials:any =[
   MatInputModule,
   MatButtonModule,
   MatMenuModule,
+  // MatCarouselModule
 ];
 @NgModule({
   declarations: [],
-  imports: [materials],
+    imports: 
+    [
+      materials,
+    ],
   exports: [materials],
+
 })
 export class MaterialModule { }

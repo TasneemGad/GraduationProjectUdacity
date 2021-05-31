@@ -1,6 +1,6 @@
 <mat-toolbar class="nav">
-    <img mat-card-md-image routerLink="/Home" src="assets/udacity.svg" style="width: 30px; height: 30px;  ">
-    <p mat-title style="margin: 30px;" >U D A C I T Y</p>
+        <img mat-card-md-image routerLink="/Home" class="udacity" src="assets/udacity.svg" style="width: 30px; height: 30px;  ">
+        <p mat-title style="margin: 30px;" routerLink="/Home" class="udacity">U D A C I T Y</p>
 </mat-toolbar>
 
 <div class="center-content" >
@@ -29,16 +29,21 @@
                     
                     <div>
                         <mat-form-field class="example-full-width">
-                            <input type="text" matInput placeholder="Email Adderss" formControlName="UserName" required>
+                            <input type="text" matInput placeholder="Your Name" formControlName="UserName" required>
                             <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>
                     </div>
-                    <div>
+
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Password" formControlName="PasswordHash">
-                            <!-- <mat-error *ngIf="Name.invalid  && Name.touched">{{getErrorMessage()}}</mat-error> -->
-                        </mat-form-field>
-                    </div><br>
+                            <input class="example-full-width" placeholder="Password" matInput [type]="hide ? 'password' : 'text'" formControlName="PasswordHash" required>
+                            <mat-error *ngIf="PasswordHash.invalid  && PasswordHash.touched">{{getErrorMessage()}}</mat-error>
+        
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field><br><br>
+
                     <div>
                         <mat-label>By clicking Sign In, you agree to our <span class="styleText"> Terms of Use </span> and our <span class="styleText"> Privacy Policy.</span>
                         </mat-label>

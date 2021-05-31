@@ -22,25 +22,55 @@
     </div>
 </div> 
 
-<div class="partCourses">Explore our schools to find your perfect program
-<br><br><br>
-<!-- for all -->
-<!-- <span *ngFor="let x of data"> -->
-    <!-- <a mat-button href="https://www.google.com/" target="">{{x}}</a> -->
-<!-- </span> -->
-
+<div class="partCourses">Explore our schools to find your perfect program<br><br><br>
+    <span *ngFor="let category of Categoies">
+            <div style="display: inline-flex;">
+                <div>
+                    <a mat-button (click)="getClikedCategoryID(category.id)"  >{{category.catName}}</a>            
+                        <span *ngIf="category.id === currentCategoryId;"> 
+                                <p class="head"  ></p>
+                    </span>
+                </div>
+            </div>
+    </span>
 </div>
 
+
+
+<!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+              [animation]="'slide'">
+  <mdb-carousel-item *ngFor="let item of slides; let i = index">
+    <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+      <mdb-card class="my-1">
+        <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>{{card.title}}</h4>
+          </mdb-card-title>
+          <p>{{card.description}}</p>
+          <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel> -->
+
 <div class="courses">
-<section style="margin-right: 12px;">
-    <mat-card class="course">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
-        <mat-card-content>
-          <p class="titleCourse"> The Shiba Inu is the smallest </p><br>
-            <p class="courseTime">ESTIMATED TIME</p>
-            <p >5 months at 5-10 hrs/weekE</p>
-        </mat-card-content>
-      </mat-card>
+<section style="margin-right: 12px; display: flex;" >
+    <span *ngFor="let course of Courses" >
+        <span *ngIf="course.categoryId === currentCategoryId;"> 
+            <!-- <mat-carousel-slide> -->
+                <mat-card class="course">
+                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
+                    <mat-card-content>
+                    <p class="titleCourse"> {{course.name}} </p><br>
+                        <p class="courseTime">ESTIMATED TIME</p>
+                        <p >{{course.duration}}</p>
+                    </mat-card-content>
+                </mat-card>
+            <!-- </mat-carousel-slide> -->
+        </span>
+    </span>
 </section>
 </div>
 

@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     SigINComponent,
     HomePageComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCarouselModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,25 +1,28 @@
-<mat-toolbar style="background-color: white; padding: 50px 10px 50px 10px ;">
-    <img mat-card-md-image routerLink="/Home" src="assets/udacity.svg" style="width: 30px; height: 30px; margin: 30px; margin-left: 100px;">
-    <h1>U D A C I T Y</h1>
+<mat-toolbar>
+    <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg" >
+    <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
 
 
-    <button mat-button [matMenuTriggerFor]="rootMenu" style="margin-left: 210px; margin-right: -15px; font-size: 15px; color: #525c65;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+    <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 210px;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
       strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
 
     <mat-menu #rootMenu="matMenu">
-      <!-- for all -->
-      <!-- <span *ngFor="let x of data"> -->
-         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu">asd</button>
-      <!-- </span> -->
+      <span *ngFor="let category of Categoies" >
+         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" >{{category.catName}}</button>
+      </span>
     </mat-menu>
     
     <mat-menu #subMenu="matMenu">
-      <!-- for all -->
-      <button mat-menu-item class="menu">Fishes</button>
+        <span *ngFor="let course of Courses" >
+          <span *ngIf="course.categoryId === currentCategoryId;"> 
+            <button mat-menu-item class="menu">{{course.name}}</button>
+          </span>
+        </span>
     </mat-menu>
-    
-    <button mat-button  [matMenuTriggerFor]="menu" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: #525c65; ">Careers  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+
+
+    <button mat-button  [matMenuTriggerFor]="menu" class="menuData">Careers  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
       strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
       <mat-menu #menu="matMenu"  >
@@ -29,7 +32,7 @@
         <button mat-menu-item class="menu" >BECOME AN INSTRUCTOR</button>
       </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="menuForEnterprise" style="margin-left: 20px; margin-right: -15px; font-size: 15px; color: #525c65; ">For Enterprise  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+    <button mat-button [matMenuTriggerFor]="menuForEnterprise"  class="menuData">For Enterprise  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
       strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
       <mat-menu #menuForEnterprise="matMenu">
@@ -41,8 +44,8 @@
         <button mat-menu-item class="menu">ABOUT US</button>
       </mat-menu>
 
-    <button mat-button style="margin-left: 20px; margin-right: -10px; font-size: 15px; color: #525c65;">For Government</button>
-
+    <button mat-button class="menuData">For Government</button>
+    
     <p style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
     <button mat-button  routerLink="SignIn" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
 
