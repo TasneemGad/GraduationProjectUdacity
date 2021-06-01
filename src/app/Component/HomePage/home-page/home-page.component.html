@@ -26,9 +26,9 @@
     <span *ngFor="let category of Categoies">
             <div style="display: inline-flex;">
                 <div>
-                    <a mat-button (click)="getClikedCategoryID(category.id)"  >{{category.catName}}</a>            
+                    <a mat-button (click)="getClikedCategoryID(category.id,category.catName.length)"  >{{category.catName}}</a>            
                         <span *ngIf="category.id === currentCategoryId;"> 
-                                <p class="head"  ></p>
+                                <p class="specifyCategory"> </p>
                     </span>
                 </div>
             </div>
@@ -55,11 +55,19 @@
   </mdb-carousel-item>
 </mdb-carousel> -->
 
+  
+<!-- <mat-carousel
+  timings="250ms ease-in" [autoplay]="true"  color="accent" maxWidth="100%"
+  [loop]="true" [hideArrows]="false" [hideIndicators]="false"
+  [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
+  <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index"
+    [image]="slide.image"  overlayColor="#00000040" [hideOverlay]="false">  </mat-carousel-slide>
+</mat-carousel> -->
+
 <div class="courses">
 <section style="margin-right: 12px; display: flex;" >
     <span *ngFor="let course of Courses" >
         <span *ngIf="course.categoryId === currentCategoryId;"> 
-            <!-- <mat-carousel-slide> -->
                 <mat-card class="course">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
                     <mat-card-content>
@@ -68,11 +76,10 @@
                         <p >{{course.duration}}</p>
                     </mat-card-content>
                 </mat-card>
-            <!-- </mat-carousel-slide> -->
         </span>
     </span>
 </section>
-</div>
+</div> 
 
   <div class="partObjectiveWebSite">Don't waste your valuable time or money</div>
   <br>

@@ -1,8 +1,10 @@
-mat-toolbar{
-    background-color: white;
+mat-toolbar
+{
+    background-color: #ffff;
     padding: 50px 10px 50px 10px;
     // position: fixed;
-//   box-shadow: 0 4px 8px 0 rgba(161, 159, 159, 0.2), 0 6px 20px 0 rgba(173, 173, 173, 0.19);
+    // z-index: 6000;
+    // box-shadow: 0 1px 20px 0 rgb(46 61 73 / 20%);
 }
 .menu{
     height: 50px;

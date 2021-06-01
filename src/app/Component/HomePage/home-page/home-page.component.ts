@@ -3,7 +3,8 @@ import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interfaces/ICategory';
 import { ICourse } from 'src/app/SharedModels/Interfaces/ICourse';
- 
+import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -14,6 +15,8 @@ Categoies:ICategory[]
 Error:string
 currentCategoryId = 1
 Courses:ICourse[] 
+widthCategory:any
+
 // flag = true
 
 // slides: any = [[]];
@@ -63,9 +66,19 @@ Courses:ICourse[]
     )
   }
 
-  getClikedCategoryID(idCurrent:number){
+  getClikedCategoryID(idCurrent:number,witdhcat:any){
     this.currentCategoryId = idCurrent;
+    // this.widthCategory = witdhcat
+    // console.log("width",witdhcat)
   }
+  
+  slides = [
+      {'image': 'https://material.angular.io/assets/img/examples/shiba2.jpg'}, 
+      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'},
+      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, 
+      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, 
+      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}
+    ];
 
  
 }

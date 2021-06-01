@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 @NgModule({
@@ -32,7 +31,6 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MatCarouselModule.forRoot(),
 
   ],
   providers: [],
