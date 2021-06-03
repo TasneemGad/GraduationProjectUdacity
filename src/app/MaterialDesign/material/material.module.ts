@@ -8,7 +8,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 
-
+import {MatMenuModule} from '@angular/material/menu';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
@@ -18,7 +19,10 @@ const materials:any =[
   MatCardModule,
   MatTabsModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatMenuModule,
+  MatCarouselModule.forRoot(),
+
 ];
 @NgModule({
   declarations: [],

@@ -11,6 +11,7 @@ import { SigINComponent } from './Component/User/sig-in/sig-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './Layout/footer/footer.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

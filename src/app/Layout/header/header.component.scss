@@ -1,0 +1,33 @@
+mat-toolbar
+{
+    background-color: #ffff;
+    padding: 50px 10px 50px 10px;
+    // position: fixed;
+    // z-index: 6000;
+    // box-shadow: 0 1px 20px 0 rgb(46 61 73 / 20%);
+}
+.menu{
+    height: 50px;
+    line-height: 20px;
+    width: 500px;
+    background-color: #dcefff;
+}
+.menu:hover{
+    background-color: #dcefff;
+    color: rgb(99, 99, 245);
+}
+.udacity:hover{
+    cursor: pointer;
+ }
+ .imgUdacity{
+    width: 30px;
+    height: 30px;
+    margin: 30px;
+    margin-left: 100px;
+ }
+ .menuData{
+    margin-left: 20px;
+    margin-right: -15px;
+    font-size: 15px;
+    color: #525c65; 
+ }
