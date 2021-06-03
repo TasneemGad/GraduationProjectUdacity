@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/Services/category.service';
-import { CoursesService } from 'src/app/Services/courses.service';
-import { ICategory } from 'src/app/SharedModels/Interfaces/ICategory';
-import { ICourse } from 'src/app/SharedModels/Interfaces/ICourse';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +6,7 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+<<<<<<< HEAD
 Categoies:ICategory[] 
 Error:string
 currentCategoryId = 1
@@ -85,4 +81,12 @@ d(){
   }
 }
  
+=======
+  onchang:any 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> 4caa98feb0519c4534cd16a77941a19e9af7197d
 }
