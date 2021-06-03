@@ -14,26 +14,17 @@ export class HomePageComponent implements OnInit {
 Categoies:ICategory[] 
 Error:string
 currentCategoryId = 1
-Courses:ICourse[] 
+Courses:ICourse[] = []
 widthCategory:any
-
-// flag = true
-
-// slides: any = [[]];
-// chunk(arr:any, chunkSize:any) {
-//   let R = [];
-//   for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-//     R.push(arr.slice(i, i + chunkSize));
-//   }
-//   return R;
-// }
-
+fourCourses:ICourse[]
+four= ["d","d","d","d "]
 
   constructor(private catService:CategoryService,private courseServise:CoursesService) { }
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
-    // this.slides = this.chunk(this.Courses, 4);
+    this.getFourCourses();
+    this.d();
   }
 
   getCatigoreis()
@@ -68,17 +59,30 @@ widthCategory:any
 
   getClikedCategoryID(idCurrent:number,witdhcat:any){
     this.currentCategoryId = idCurrent;
+    this.getFourCourses()
     // this.widthCategory = witdhcat
     // console.log("width",witdhcat)
   }
-  
-  slides = [
-      {'image': 'https://material.angular.io/assets/img/examples/shiba2.jpg'}, 
-      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'},
-      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, 
-      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}, 
-      {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}
-    ];
 
+ getFourCourses(){
+   for(let course of this.Courses)
+   {
+     if(course.id === this.currentCategoryId)
+     {
+       console.log("entereeeee")
+        for(let i=0 ; i<2 ; i++)
+        {
+          this.fourCourses.push(this.Courses[i])
+        }
+     }
+   }
+ }
+
+d(){
+  for(let i of this.Courses)
+  {
+    console.log("i",i.name)
+  }
+}
  
 }
