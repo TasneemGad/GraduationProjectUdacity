@@ -80,5 +80,7 @@ widthCategory:any
       {'image': 'https://gsr.dev/material2-carousel/assets/demo.png'}
     ];
 
- 
+  //   <li class="nav-item">
+  //   <a href class="nav-link" (click)="logout()">LogOut</a>
+  // </li>
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { ILogin } from 'src/app/SharedModels/Interfaces/ILogin';
 
@@ -14,25 +16,55 @@ export class SigINComponent implements OnInit {
   LoginForm:FormGroup
   isSuccessed=false
   hide = true;  
+  loading = false;
+  returnUrl: string;
+  error = '';
+  
+  constructor(private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
+    private router: Router,) { }
+    ngOnInit(): void {
+       if (this.authenticationService.isLoggedIn()) { 
+         this.router.navigate(['/SignIn']);
+        }
+      this.LoginForm = this.fb.group({
+        UserName: ['', [Validators.required, Validators.maxLength(15)]],
+        Email: ['', [Validators.required, Validators.minLength(6)]],
+        PasswordHash: ['', [Validators.required, Validators.minLength(6)]]
+      })
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-
-  constructor(private fb: FormBuilder,private router: Router,private signInService:RegistrationService) { }
-
+    }
  onSubmit() {
     console.log("log")
     const user = this.LoginForm.value;
     this.signInUser(user);
     this.router.navigate(['/Home']);
   }
-
+  get formFields() { return this.LoginForm.controls; }
   signInUser(user: ILogin) {
-    this.signInService.SignIn(user).subscribe( data => {
+    this.signInService.SignIn(user).subscribe( _data => {
       console.log("success")
       this.isSuccessed = true;
 
-      },err=>{
+      },_err=>{
         console.log("error")
       })
+
+      this.loading = true;
+      this.authenticationService.login(this.formFields.UserName.value, this.formFields.PasswordHash.value)
+          .pipe(first())
+          .subscribe(
+              AData => {
+                  this.router.navigate([this.returnUrl]);
+              },
+              error => {
+                  this.error = error;
+                  this.loading = false;
+              });
+
+           console.log(this.authenticationService.getRole());
+           console.log(this.authenticationService.getUserId());
+
   }
 
   getErrorMessage() {
@@ -50,13 +82,7 @@ export class SigINComponent implements OnInit {
     return this.LoginForm.get('Password')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
   }
 
-  ngOnInit(): void {
-    this.LoginForm = this.fb.group({
-      UserName: ['', [Validators.required, Validators.maxLength(15)]],
-      Email: ['', [Validators.required, Validators.minLength(6)]],
-      PasswordHash: ['', [Validators.required, Validators.minLength(6)]]
-    })
-  }
+  
   get UserName() {
     return this.LoginForm.get('UserName');
   }

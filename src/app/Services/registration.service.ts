@@ -11,6 +11,7 @@ export class RegistrationService {
 
   UrlRegister ="https://localhost:44326/Register"
   UrlLogin ="https://localhost:44326/Login"
+  apiUrl="https://localhost:44326"
   constructor(private _http : HttpClient) { }
 
   SignUp(newUser: ILogin): Observable<ILogin> {
@@ -26,13 +27,19 @@ export class RegistrationService {
   }))
   }
 
-  // login(username: string, PasswordHash: string) {
-  //   return this._http.post<any>(this.UrlLogin, { username, PasswordHash })
-  //       .pipe(map(res => {
-  //           this.setSession(res);
-  //       }));
+  getUserById(id: string): Observable<ILogin> {
+    let url = `${this.apiUrl}/api/account/${id}`;
+    return this._http.get<ILogin>(url).pipe(catchError((err) => {
+      return throwError(err.message || "Internal Server error contact site adminstarator");
+    }));
+  }
 
-//}
+  getCurrentUser(): Observable<ILogin> {
+    let url = `${this.apiUrl}/api/account/current`;
+    return this._http.get<ILogin>(url).pipe(catchError((err) => {
+      return throwError(err.message || "Internal Server error contact site adminstarator");
+    }));
+  }
 
 
 
