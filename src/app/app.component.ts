@@ -1,5 +1,5 @@
-import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'udacityproject';
   public currentUrl : any
   flag = true
@@ -34,6 +34,4 @@ export class AppComponent implements OnInit{
         }
       }
     });
-  }
-
-}
+  }}

@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
-import { ILogin } from 'src/app/SharedModels/Interfaces/ILogin';
-
+import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 
 @Component({
   selector: 'app-sig-in',

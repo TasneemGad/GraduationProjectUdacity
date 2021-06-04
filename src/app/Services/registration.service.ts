@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { ILogin } from '../SharedModels/Interfaces/ILogin';
+import { ILogin } from '../SharedModels/Interface/ILogin';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -15,9 +15,9 @@ export class RegistrationService {
   constructor(private _http : HttpClient) { }
 
   SignUp(newUser: ILogin): Observable<ILogin> {
-    return this._http.post<ILogin>(this.UrlRegister, newUser).pipe(catchError((err)=>{
-    return throwError(err.message || "Invaled Registration")
-  }))
+    return this._http.post<ILogin>(this.UrlRegister,newUser).pipe(catchError((err)=>{
+      return throwError(err.message || "Invaled Registration")
+    }))
   }
 
   SignIn(User: ILogin): Observable<ILogin> {
@@ -40,7 +40,5 @@ export class RegistrationService {
       return throwError(err.message || "Internal Server error contact site adminstarator");
     }));
   }
-
-
 
 }

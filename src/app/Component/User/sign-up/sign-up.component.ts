@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { RegistrationService } from 'src/app/Services/registration.service';
-import { ILogin } from 'src/app/SharedModels/Interfaces/ILogin';
+import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 
 @Component({
   selector: 'app-sign-up',

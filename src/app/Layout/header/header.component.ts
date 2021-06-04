@@ -2,8 +2,8 @@ import { HttpHandler } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
-import { ICategory } from 'src/app/SharedModels/Interfaces/ICategory';
-import { ICourse } from 'src/app/SharedModels/Interfaces/ICourse';
+import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
+import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 
 @Component({
   selector: 'app-header',
@@ -58,4 +58,3 @@ export class HeaderComponent implements OnInit {
       this.currentCategoryId = idCurrent;
     }    
 }
-

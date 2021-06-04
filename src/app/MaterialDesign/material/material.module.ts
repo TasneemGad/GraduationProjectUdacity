@@ -26,11 +26,7 @@ const materials:any =[
 ];
 @NgModule({
   declarations: [],
-    imports: 
-    [
-      materials,
-    ],
+  imports: [materials],
   exports: [materials],
-
 })
 export class MaterialModule { }

@@ -1,49 +1,50 @@
-        <form #registrationform="ngForm" id="form" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
-             <!-- {{ RegisterForm.value | json }} --> <br><br>
-            <h2 style="font-size: 40px; font-weight: 100; color: rgb(51, 51, 51); text-align: center;margin-top: 15px;">Create your account</h2> <br>
-            <h5 style="font-size: 16px; font-weight: 400; text-align: center; line-height: 29px;">
-                Build skills for today, tomorrow, and beyond.<br>
-                Education to future-proof your career.
-            </h5>
-            <br>
-            <a href="https://accounts.google.com/signin/" mat-stroked-button style="margin-left: 15px; margin-right: 10px;"><img
-                    src="/assets/h.jpg" style="width:30px; height: 30px; margin: 4px;"> Sign Up With Google </a>
-            <a href="https://www.facebook.com/" mat-stroked-button style="margin-left: 40px; "><img src="/assets/h1.png"
-                    style="width:30px; height: 30px; margin: 4px ; "> Sign Up With FaceBook </a>
+<form #registrationform="ngForm" id="form" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
+    <!-- {{ RegisterForm.value | json }} --> <br><br>
+   <h2 style="font-size: 40px; font-weight: 100; color: rgb(51, 51, 51); text-align: center;margin-top: 15px;">Create your account</h2> <br>
+   <h5 style="font-size: 16px; font-weight: 400; text-align: center; line-height: 29px;">
+       Build skills for today, tomorrow, and beyond.<br>
+       Education to future-proof your career.
+   </h5>
+   <br>
+   <a href="https://accounts.google.com/signin/" mat-stroked-button style="margin-left: 15px; margin-right: 10px;"><img
+           src="/assets/h.jpg" style="width:30px; height: 30px; margin: 4px;"> Sign Up With Google </a>
+   <a href="https://www.facebook.com/" mat-stroked-button style="margin-left: 40px; "><img src="/assets/h1.png"
+           style="width:30px; height: 30px; margin: 4px ; "> Sign Up With FaceBook </a>
 
-            <br>
-            <br><br>
-            <div class="lineWhitOr">
-                <hr class="line">
-                <div>
-                    <mat-label>or</mat-label>
-                </div>
-                <hr class="line">
-            </div><br>
-            <div class="example-container ">
+   <br>
+   <br><br>
+   <div class="lineWhitOr">
+       <hr class="line">
+       <div>
+           <mat-label>or</mat-label>
+       </div>
+       <hr class="line">
+   </div><br>
+   <div class="example-container ">
 
-                <mat-form-field class="example-full-width"  >
-                    <mat-label>Enter your Name</mat-label>
-                    <div >
-                        <input matInput placeholder="Your Name" formControlName="UserName" required> 
-                    </div>  
-                    <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="example-container">
+       <mat-form-field class="example-full-width"  >
+           <mat-label>Enter your Name</mat-label>
+           <div >
+               <input matInput placeholder="Your Name" formControlName="UserName" required> 
+           </div>  
+           <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error>
+       </mat-form-field>
+   </div>
+   <div class="example-container">
 
-                <mat-form-field class="example-full-width">
-                    <mat-label>Enter your email</mat-label>
-                    <input  matInput placeholder="pat@example.com" formControlName="Email" required> 
-                    <mat-error *ngIf="Email.invalid  && Email.touched">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="example-container" >
-                <mat-form-field class="example-full-width">
-                    <mat-label>Enter your password</mat-label>
-                    <input class="example-full-width" matInput [type]="hide ? 'password' : 'text'" formControlName="PasswordHash">
-                    <mat-error *ngIf="PasswordHash.invalid  && PasswordHash.touched">{{getErrorMessage()}}</mat-error>
+       <mat-form-field class="example-full-width">
+           <mat-label>Enter your email</mat-label>
+           <input  matInput placeholder="pat@example.com" formControlName="Email" required> 
+           <mat-error *ngIf="Email.invalid  && Email.touched">{{getErrorMessage()}}</mat-error>
+       </mat-form-field>
+   </div>
+   <div class="example-container" >
+       <mat-form-field class="example-full-width">
+           <mat-label>Enter your password</mat-label>
+           <input class="example-full-width" matInput [type]="hide ? 'password' : 'text'" formControlName="PasswordHash">
+           <mat-error *ngIf="PasswordHash.invalid  && PasswordHash.touched">{{getErrorMessage()}}</mat-error>
 
+<<<<<<< HEAD
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -62,4 +63,19 @@
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
 
         </form>
+=======
+           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+               [attr.aria-pressed]="hide">
+               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </button>
+       </mat-form-field>
+   </div>
+   
+<h4 style="color: rgb(151, 133, 133); margin: 20px;text-transform: none; text-align: center;">By clicking Sign
+   Up, you agree to our<a href="https://www.google.com/" style="color: #017a9b; text-decoration: none;"> Terms
+       of Use</a> and our <a href="https://www.facebook.com/" style="color: #017a9b; text-decoration: none;">
+       Privacy Policy.</a></h4>
+>>>>>>> fb95fbc57786f0733d633348019aa466a7fe44f6
 
+   <button type="submit" mat-raised-button id="btn">SIGN UP</button>
+</form>

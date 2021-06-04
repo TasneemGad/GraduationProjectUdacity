@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ICategory } from '../SharedModels/Interfaces/ICategory';
+import { ICategory } from '../SharedModels/Interface/ICategory';
 
 @Injectable({
   providedIn: 'root'
