@@ -3,6 +3,8 @@ import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
+import { OwlOptions } from 'ngx-owl-carousel-o'
+
 
 @Component({
   selector: 'app-home-page',
@@ -59,7 +61,21 @@ four= ["d","d","d","d "]
   }
 
   getClikedCategoryID(idCurrent:number,witdhcat:any){
+
+    
     this.currentCategoryId = idCurrent;
+      this.courseServise.getCoursesByCatID(idCurrent).subscribe(
+        data=>
+        {
+          console.log("course Category",data)
+          console.log("dddddddd"+idCurrent)
+          this.CoursesByID = data;
+        },
+        Wrong=>
+        {
+          this.Error = Wrong
+        }      
+      )    
     this.getFourCourses()
   }
   getCoursesByCurrentCat()

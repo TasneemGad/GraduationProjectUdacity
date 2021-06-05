@@ -14,10 +14,10 @@
     </mat-menu>
     
     <mat-menu #subMenu="matMenu">
-        <span *ngFor="let course of Courses" >
-          <span *ngIf="course.categoryId === currentCategoryId;"> 
+        <span *ngFor="let course of CoursesByID" >
+          <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
             <button mat-menu-item class="menu">{{course.name}}</button>
-          </span>
+          <!-- </span> -->
         </span>
     </mat-menu>
 

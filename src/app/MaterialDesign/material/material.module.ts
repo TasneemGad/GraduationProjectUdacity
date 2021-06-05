@@ -19,7 +19,7 @@ const materials:any =[
   MatTabsModule,
   MatInputModule,
   MatButtonModule,
-  MatMenuModule,
+  MatMenuModule,  
 
 ];
 @NgModule({
