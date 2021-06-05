@@ -66,8 +66,9 @@
 
 <div class="courses">
 <section style="margin-right: 12px; display: flex;" >
-    <span *ngFor="let course of Courses" >
-        <span *ngIf="course.categoryId === currentCategoryId;"> 
+    <!-- <span *ngFor="let course of Courses" >
+        <span *ngIf="course.categoryId === currentCategoryId;">  -->
+            <span *ngFor="let course of CoursesByID" >
                 <mat-card class="course">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
                     <mat-card-content>
@@ -76,8 +77,9 @@
                         <p >{{course.duration}}</p>
                     </mat-card-content>
                 </mat-card>
-        </span>
-    </span>
+            </span>
+        <!-- </span>
+    </span> -->
 </section>
 </div> 
 

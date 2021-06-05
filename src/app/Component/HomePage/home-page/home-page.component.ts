@@ -14,6 +14,7 @@ Categoies:ICategory[]
 Error:string
 currentCategoryId = 1
 Courses:ICourse[] = []
+CoursesByID:ICourse[]=[]
 widthCategory:any
 fourCourses:ICourse[]
 four= ["d","d","d","d "]
@@ -22,6 +23,7 @@ four= ["d","d","d","d "]
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
+    this.getCoursesByCurrentCat();
     this.getFourCourses();
     this.d();
   }
@@ -59,15 +61,21 @@ four= ["d","d","d","d "]
   getClikedCategoryID(idCurrent:number,witdhcat:any){
     this.currentCategoryId = idCurrent;
     this.getFourCourses()
-    // this.widthCategory = witdhcat
-    // console.log("width",witdhcat)
   }
-
-<<<<<<< HEAD
-  //   <li class="nav-item">
-  //   <a href class="nav-link" (click)="logout()">LogOut</a>
-  // </li>
-=======
+  getCoursesByCurrentCat()
+  {      
+    this.courseServise.getCoursesByCatID(this.currentCategoryId).subscribe(
+      data=>
+      {
+        console.log("course Category",data)
+        this.CoursesByID = data;
+      },
+      Wrong=>
+      {
+        this.Error = Wrong
+      }      
+    )
+  }
  getFourCourses(){
    for(let course of this.Courses)
    {
@@ -89,5 +97,4 @@ d(){
   }
 }
  
->>>>>>> fb95fbc57786f0733d633348019aa466a7fe44f6
 }

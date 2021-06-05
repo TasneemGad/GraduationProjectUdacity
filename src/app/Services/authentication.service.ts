@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ILogin } from '../SharedModels/Interfaces/ILogin';
+import { ILogin } from '../SharedModels/Interface/ILogin';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
