@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICourse } from '../SharedModels/Interfaces/ICourse';
-import { IEnrollCourse } from '../SharedModels/Interfaces/IEnrollCourse';
+import { IEnrollCourse } from '../SharedModels/Interface/IEnrollCourse';
 import {AuthenticationService } from '../Services/authentication.service';
+import { ICourse } from '../SharedModels/Interface/ICourses';
 
 
 const API_URL = 'https://localhost:44326//api/EnrollCourse'
