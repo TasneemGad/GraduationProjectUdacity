@@ -1,5 +1,6 @@
 import { HttpHandler } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   Error:string
   currentCategoryId:number
 
-  constructor(private catService:CategoryService,private courseServise:CoursesService) { }
+  constructor(private catService:CategoryService,private courseServise:CoursesService,private router:Router) { }
     ngOnInit(): void {
       this.getCatigoreis();
       this.getCourses();
@@ -57,4 +58,8 @@ export class HeaderComponent implements OnInit {
       console.log("hoverID",idCurrent)
       this.currentCategoryId = idCurrent;
     }    
+
+    getCurrentCategory(currentCategory:string){
+      this.router.navigate(["/school-of",currentCategory]);
+    }
 }

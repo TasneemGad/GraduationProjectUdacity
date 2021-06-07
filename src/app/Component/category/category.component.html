@@ -1,0 +1,165 @@
+<div class="introCategory">
+    <div style="float: left;">
+        <div *ngFor = "let category of Categoies" >
+            <div *ngIf="currentCategoryName == category.catName">
+                <p  style=" color: rgb(19, 119, 158); padding-top: 70px; margin-left: 90px;">THE  SCHOOL  OF</p>
+                <div style="display: flex; ">
+                        <img src="../../assets/categoryFlag.jpg" style="margin: -30px 50px 0px 0px;"  width="60px" height="60px" alt="error" class="dataCat" >
+                    <div style="margin-left: -20px;" >
+                        <mat-label style="font-size: xx-large;" >{{category.catName}}</mat-label> <br><br><br>
+                        <mat-label>{{category.catDescription}}</mat-label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="float: right; width: 53%; margin-right: -345px;">
+        <div *ngFor = "let category of Categoies" >
+            <div *ngIf="currentCategoryName == category.catName">
+                    <img src="{{category.catImage}}"  width="630px" height="450px"> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ----------------------------------------------- -->
+
+<section style="padding: 60px 90px 30px 90px;">
+    <mat-label style="font-size: xx-large; opacity: .7;">Programs Starting Soon</mat-label><br><br><br>
+    <div *ngFor="let course of currentCourses">
+        <mat-card class="courses">
+            <mat-label style="padding: 40px 0px 0px 30px; font-size: large;">9 june</mat-label>
+            <div class="coursName">
+                <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px">
+                <mat-label style="font-size: x-large; padding-left: 10px;">{{course.name}}</mat-label><br><br>
+               <div style="width: 780px; margin-right: 30px;">
+                <mat-label > <mat-label style="opacity: .8; "> CONCEPTS COVERED: </mat-label> {{course.preRequest}}</mat-label>
+            </div>
+            </div>
+            <button mat-raised-button color="primary" class="btnCourse" (click)=goToCours(course.id)>LEARN MORE</button>
+        </mat-card>
+    </div>
+</section><br><br><br>
+
+<!-- ---------------------------------------- -->
+<section>
+    <mat-label style="font-size: xx-large; font-weight: 100px; opacity: .8; margin-left:90px;">Your path to the right job</mat-label>
+    <section style="padding: 90px; display: flex;" >
+        <section>
+            <div *ngFor="let sub of subCategory" style="margin: 20px;">
+                <div *ngIf="sub.categoryID == currentCategoryID">
+                    <mat-label style=" color: gray; font-weight: bold; font-size: large; " (click)="getCoursesBySubCategory(sub.id)">{{sub.subCategoryTitle}}</mat-label>
+                </div>  
+            </div>
+            <button mat-raised-button color="primary" style="background-color: #017a9b; width: 250px; height: 45px; letter-spacing: 1px;">GET START</button>
+        </section>
+        <section style="padding-top: 50px; margin-left: 50px;">
+            <mat-label style=" font-size: xx-large; font-weight: 100px;">{{currentSubName}}</mat-label>
+            <mat-label style=" font-size: xx-large; font-weight: 100px;">{{currentSubDescription}}</mat-label>
+            <br><br>
+            <mat-label style="letter-spacing: 1px;">RECOMMENDED PROGRAMS</mat-label><br><br>
+            <div *ngFor="let c of coursesBySubCategory,index as i;">
+                <mat-card class="spasificCourse">
+                    <mat-label style="color: #2a77aa;">STEP {{i+1}}</mat-label> <br><br>
+                    <mat-label style="font-size: x-large; padding-left: 10px; color: #2a77aa;">{{c.name}}</mat-label><br><br>
+                    <p style="width: 400px;"> <span>CONCEPTS COVERED:</span> {{c.preRequest}}</p>
+                </mat-card>
+            </div>
+        </section>
+        <section class="story">
+            <mat-label>ALUMNI SUCCESS</mat-label><br><br>
+            <img src="../../assets/1.PNG" alt="error" width="110px" height="150px" ><br><br>
+            <!-- <img src="{{studentStories.image}}" alt="error" width="150px" height="200px" > -->
+            <!-- <mat-label>{{Name}}</mat-label> -->
+    <!-- Question         -->
+            <!-- <mat-label>{{studentStories.story}}</mat-label><br><br> -->
+            <!-- <mat-label> Graduate of the {{studentStories.specialzation}}</mat-label> -->
+            <div >
+                <div *ngFor="let std of stories">
+                    <div *ngIf="std.specialzation === currentSubName">
+                        <p >{{std.story}}</p><br><br> 
+                        <mat-label> Graduate of the {{std.specialzation}}</mat-label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<!-- --------------------------------------------------- -->
+
+<section style=" background-color: #eff8ff; padding: 70px 0px 70px 0px;">
+    <h1 style="text-align: center; font-size: xx-large; opacity: .8;">All Our Programs Include</h1>
+    <div class="programParts">
+        <div class="parts">
+            <img src="../../assets/ProgramsInclude1.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
+            <span class="icons">
+                <img src="../../assets/programIcon1.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+            </span>
+            <div>
+                <h3 class="title">Real-world projects from industry experts</h3>
+                <div class="line"></div>
+                <p>With real world projects and immersive content built in partnership with top tier companies,
+                    you’ll master the tech skills companies want.</p>
+            </div>
+        </div>
+        <div class="parts">
+            <img src="../../assets/ProgramsInclude2.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
+            <span class="icons">
+                <img src="../../assets/programIcon2.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+            </span>
+            <div>
+                <h3 class="title">Technical mentor support</h3>
+                <div class="line"></div>
+                <p>Our knowledgeable mentors guide your learning and are focused on answering your questions,
+                    motivating you and keeping you on track.</p>
+            </div>
+        </div>
+        </div>
+    <div class="programParts">
+        <div class="parts">
+            <img src="../../assets/ProgramsInclude3.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
+            <span class="icons">
+                <img src="../../assets/programIcon3.JPG" alt="error" width="25px" height="25px" style="padding: 13px 0px 0px 13px" >
+            </span>
+            <div>
+                <h3 class="title">Career services</h3>
+                <div class="line"></div>
+                <p>You’ll have access to resume support,
+                     Github portfolio review and LinkedIn profile optimization to help you advance your career and land a high-paying role..</p>
+            </div>
+        </div>
+        <div class="parts">
+            <img src="../../assets/ProgramsInclude4.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
+            <span class="icons">
+                <img src="../../assets/programIcon4.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+            </span>
+            <div>
+                <h3 class="title">Flexible learning program</h3>
+                <div class="line"></div>
+                <p>Get a custom learning plan tailored to fit your busy life.
+                     Learn at your own pace and reach your personal goals on the schedule that works best for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ---------------------------------------------------------- -->
+
+<section class="freePart">
+    <div class="lineFreePart"></div>
+    <mat-label class="freePartTitel">Free Courses</mat-label>
+    <div class="coursesFree">
+        <div *ngFor="let crs of freeCourses" >
+            <mat-label class="corsesFreeName">{{crs.name}}</mat-label>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------------------------------- -->
+
+<section class="startLearn">
+    <h1 style="font-size: 40px; color: white;">Don't miss out on AI!</h1><br>
+    <button class="btnStartLearn">START LEARNING NOW</button>
+</section>

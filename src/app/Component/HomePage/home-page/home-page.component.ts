@@ -16,14 +16,12 @@ currentCategoryId = 1
 Courses:ICourse[] = []
 widthCategory:any
 fourCourses:ICourse[]
-four= ["d","d","d","d "]
 
   constructor(private catService:CategoryService,private courseServise:CoursesService) { }
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
     this.getFourCourses();
-    this.d();
   }
 
   getCatigoreis()
@@ -77,11 +75,5 @@ four= ["d","d","d","d "]
    }
  }
 
-d(){
-  for(let i of this.Courses)
-  {
-    console.log("i",i.name)
-  }
-}
  
 }

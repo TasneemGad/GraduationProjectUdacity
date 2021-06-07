@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestCategoryComponent } from './Component/test-category/test-category.component';
+import { CategoryComponent } from './Component/category/category.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     SigINComponent,
     HomePageComponent,
-    FooterComponent
+    FooterComponent,
+    TestCategoryComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

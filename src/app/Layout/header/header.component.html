@@ -9,7 +9,7 @@
 
     <mat-menu #rootMenu="matMenu">
       <span *ngFor="let category of Categoies" >
-         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" >{{category.catName}}</button>
+         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" (click)="getCurrentCategory(category.catName)" >{{category.catName}}</button>
       </span>
     </mat-menu>
     
