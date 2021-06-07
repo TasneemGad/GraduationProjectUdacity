@@ -1,233 +1,309 @@
-<div style="height: 500px; width: 1348px;">   
-    <div style="margin: 70px; width: 765px; float: left;">
-            <mat-label class="title">The latest digital skills,<br>
-                within reach.</mat-label><br><br><br>
-            <mat-label class="txt" >Discover the fastest, most effective way to gain job-ready <br>
-                expertise for the careers of the future.</mat-label><br><br><br><br>
-                <mat-card class="forWhom" style="border-top-color: #60D69A;">
-                    <button mat-raised-button class="btnWhom">FOR INDIVIDUALS</button><br><br>
-                    <mat-label>Transform your career.</mat-label>
-                </mat-card>
-                <mat-card class="forWhom" style="border-top-color: #6236FF;">
-                    <button mat-raised-button class="btnWhom">FOR ITERPRISE</button><br><br>
-                    <mat-label>Transform your business.</mat-label>
-                </mat-card>
-                <mat-card class="forWhom" style="border-top-color: #F7B500;">
-                    <button mat-raised-button class="btnWhom">FOR GOVERNMENT</button><br><br>
-                    <mat-label>Transform your workforce.</mat-label>
-                </mat-card>
-        </div>
-    <div style="float: right;">
-        <img src="../assets/picture1.PNG" >
-    </div>
-</div> 
-
-<div class="partCourses">Explore our schools to find your perfect program<br><br><br>
-    <span *ngFor="let category of Categoies">
-            <div style="display: inline-flex;">
-                <div>
-                    <a mat-button (click)="getClikedCategoryID(category.id,category.catName.length)"  >{{category.catName}}</a>            
-                        <span *ngIf="category.id === currentCategoryId;"> 
-                                <p class="specifyCategory"> </p>
-                    </span>
-                </div>
-            </div>
-    </span>
+<div style="height: 500px; width: 1348px">
+  <div style="margin: 70px; width: 765px; float: left">
+    <mat-label class="title"
+      >The latest digital skills,<br />
+      within reach.</mat-label
+    ><br /><br /><br />
+    <mat-label class="txt"
+      >Discover the fastest, most effective way to gain job-ready <br />
+      expertise for the careers of the future.</mat-label
+    ><br /><br /><br /><br />
+    <mat-card class="forWhom" style="border-top-color: #60d69a">
+      <button mat-raised-button class="btnWhom">FOR INDIVIDUALS</button
+      ><br /><br />
+      <mat-label>Transform your career.</mat-label>
+    </mat-card>
+    <mat-card class="forWhom" style="border-top-color: #6236ff">
+      <button mat-raised-button class="btnWhom">FOR ITERPRISE</button
+      ><br /><br />
+      <mat-label>Transform your business.</mat-label>
+    </mat-card>
+    <mat-card class="forWhom" style="border-top-color: #f7b500">
+      <button mat-raised-button class="btnWhom">FOR GOVERNMENT</button
+      ><br /><br />
+      <mat-label>Transform your workforce.</mat-label>
+    </mat-card>
+  </div>
+  <div style="float: right">
+    <img src="../assets/picture1.PNG" />
+  </div>
 </div>
 
-
-
-<!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-              [animation]="'slide'">
-  <mdb-carousel-item *ngFor="let item of slides; let i = index">
-    <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
-      <mdb-card class="my-1">
-        <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
-        <mdb-card-body>
-          <mdb-card-title>
-            <h4>{{card.title}}</h4>
-          </mdb-card-title>
-          <p>{{card.description}}</p>
-          <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
-        </mdb-card-body>
-      </mdb-card>
-    </div>
-  </mdb-carousel-item>
-</mdb-carousel> -->
-
-  
-<!-- <mat-carousel
-  timings="250ms ease-in" [autoplay]="true"  color="accent" maxWidth="100%"
-  [loop]="true" [hideArrows]="false" [hideIndicators]="false"
-  [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
-  <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index"
-    [image]="slide.image"  overlayColor="#00000040" [hideOverlay]="false">  </mat-carousel-slide>
-</mat-carousel> -->
-
-<div class="courses">
-<section style="margin-right: 12px; display: flex;" >
-    <span *ngFor="let course of Courses" >
-        <span *ngIf="course.categoryId === currentCategoryId;"> 
-                <mat-card class="course">
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
-                    <mat-card-content>
-                    <p class="titleCourse"> {{course.name}} </p><br>
-                        <p class="courseTime">ESTIMATED TIME</p>
-                        <p >{{course.duration}}</p>
-                    </mat-card-content>
-                </mat-card>
+<div class="partCourses">
+  Explore our schools to find your perfect program<br /><br /><br />
+  <span *ngFor="let category of Categoies">
+    <div style="display: inline-flex">
+      <div>
+        <a
+          mat-button
+          (click)="getClikedCategoryID(category.id, category.catName.length)"
+          >{{ category.catName }}</a
+        >
+        <span *ngIf="category.id === currentCategoryId">
+          <p class="specifyCategory"></p>
         </span>
-    </span>
-</section>
-</div> 
+      </div>
+    </div>
+  </span>
+</div>
 
-  <div class="partObjectiveWebSite">Don't waste your valuable time or money</div>
-  <br>
-  <h2 style="text-align: center; color: rgb(80, 76, 76);">Only Udacity has all the critical factors to deliver real results</h2>
+<div class="courses" style="margin-left: 200px;">
+  <section>
+    <div style="width: 1130px">
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let course of Courses">
+            <ng-template carouselSlide id="course.id">
+                
+              <mat-card class="course">
+                <img
+                  mat-card-image
+                  src="{{course.crsLogo}}"
+                  style="width: 270px; height: 180px"
+                  alt="error"
+                />
 
-<div style="margin-left: 70px; margin-top: 20px; display: flex;">
-    <mat-card class="dataOfObjective" style="border-top-color: #02b3e4;">
-      <img src="../assets/1.PNG" alt="error" style="margin-bottom: 25px;"><br>
-      <mat-label class="titleData">Get real employable skills</mat-label> <br><br>
-      <mat-label style="line-height: 22px; ">Our quality curriculum is designed with top-tier industry partners, not academics, so you learn the high-impact skills that top companies want.</mat-label>
+                <mat-card-content>
+                  <p class="titleCourse">{{ course.name }}</p>
+                  <br />
+
+                  <p class="courseTime">ESTIMATED TIME</p>
+
+                  <p>{{ course.duration }}</p>
+                </mat-card-content>
+              </mat-card>
+
+              <!-- <img src="{{course.partLogo}}" title="{{i.description}}" style="width: 50px;margin-left: 90px;" > -->
+            </ng-template>
+          </ng-container>
+      </owl-carousel-o>
+    </div>
+  </section>
+</div>
+
+<div class="partObjectiveWebSite">Don't waste your valuable time or money</div>
+<br />
+<h2 style="text-align: center; color: rgb(80, 76, 76)">
+  Only Udacity has all the critical factors to deliver real results
+</h2>
+
+<div style="margin-left: 70px; margin-top: 20px; display: flex">
+  <mat-card class="dataOfObjective" style="border-top-color: #02b3e4">
+    <img src="../assets/1.PNG" alt="error" style="margin-bottom: 25px" /><br />
+    <mat-label class="titleData">Get real employable skills</mat-label>
+    <br /><br />
+    <mat-label style="line-height: 22px"
+      >Our quality curriculum is designed with top-tier industry partners, not
+      academics, so you learn the high-impact skills that top companies
+      want.</mat-label
+    >
   </mat-card>
-  <mat-card class="dataOfObjective" style="border-top-color: #F7B500;">
-    <img src="../assets/2.PNG" alt="error" style="margin-bottom: 25px;"><br>
-    <mat-label class="titleData">Project-based, active learning</mat-label> <br><br>
-    <mat-label style="line-height: 22px; ">Learn by doing with real-world projects and other hands-on exercises that lead to real skills mastery.</mat-label>
-</mat-card>
-<mat-card class="dataOfObjective" style="border-top-color: #60D69A;">
-  <img src="../assets/3.PNG" alt="error" style="margin-bottom: 25px;"><br>
-  <mat-label class="titleData">Learn on your schedule</mat-label> <br><br>
-  <mat-label style="line-height: 22px; ">Self-paced learning - whenever and wherever you want. Graduate while learning part-time for 10 hrs/week.</mat-label>
-</mat-card>
-<mat-card class="dataOfObjective" style="border-top-color: #6236FF;">
-  <img src="../assets/4.PNG" alt="error" style="margin-bottom: 25px;"><br>
-  <mat-label class="titleData">The help you need, when you need it</mat-label> <br><br>
-  <mat-label style="line-height: 22px; ">Reach out to our mentors 24/7 and have your coding questions answered quickly so you can keep learning.</mat-label>
-</mat-card>
+  <mat-card class="dataOfObjective" style="border-top-color: #f7b500">
+    <img src="../assets/2.PNG" alt="error" style="margin-bottom: 25px" /><br />
+    <mat-label class="titleData">Project-based, active learning</mat-label>
+    <br /><br />
+    <mat-label style="line-height: 22px"
+      >Learn by doing with real-world projects and other hands-on exercises that
+      lead to real skills mastery.</mat-label
+    >
+  </mat-card>
+  <mat-card class="dataOfObjective" style="border-top-color: #60d69a">
+    <img src="../assets/3.PNG" alt="error" style="margin-bottom: 25px" /><br />
+    <mat-label class="titleData">Learn on your schedule</mat-label> <br /><br />
+    <mat-label style="line-height: 22px"
+      >Self-paced learning - whenever and wherever you want. Graduate while
+      learning part-time for 10 hrs/week.</mat-label
+    >
+  </mat-card>
+  <mat-card class="dataOfObjective" style="border-top-color: #6236ff">
+    <img src="../assets/4.PNG" alt="error" style="margin-bottom: 25px" /><br />
+    <mat-label class="titleData">The help you need, when you need it</mat-label>
+    <br /><br />
+    <mat-label style="line-height: 22px"
+      >Reach out to our mentors 24/7 and have your coding questions answered
+      quickly so you can keep learning.</mat-label
+    >
+  </mat-card>
 </div>
 
 <div class="explorePart">
-    <h3 style="font-size: xx-large;">Make the most of your online learning experience</h3><br>
-    <p style="font-size: large;">Our Online Learning Resource Center has tips, tricks and inspiring stories to help you learn while staying home.</p><br><br>
-    <button mat-raised-button class="btnExplore">EXPLORE REOSURCE</button>
+  <h3 style="font-size: xx-large">
+    Make the most of your online learning experience
+  </h3>
+  <br />
+  <p style="font-size: large">
+    Our Online Learning Resource Center has tips, tricks and inspiring stories
+    to help you learn while staying home.
+  </p>
+  <br /><br />
+  <button mat-raised-button class="btnExplore">EXPLORE REOSURCE</button>
 </div>
 
 <section class="parent">
-    <h1 style="text-align: center; font-weight: 200; font-size: 40px; margin: 60px; padding-top: 80px; ">Strength in
-        numbers</h1>
-    <div>
-        <div id="one">
-            <h2><img src="assets/hat.svg"></h2>
-            <h1 style="font-size: 25px; font-weight:100;">100,000+ </h1>
-            <h1 style="font-size: 20px; font-weight: 400;"> Udacity graduations and <br> counting</h1>
-        </div>
-
-        <div id="one">
-            <h2><img src="assets/star.svg"></h2>
-            <h1 style="font-size: 25px; font-weight: 100;"> 200+ </h1>
-            <h1 style="font-size: 20px; font-weight: 400;"> Industry experts partnering <br> to build our content</h1>
-        </div>
-
-        <div id="one">
-            <h2><img src="assets/raise.svg"></h2>
-            <h1 style="font-size: 25px; font-weight: 100;"> 100+ </h1>
-            <h1 style="font-size: 20px; font-weight: 400;"> Enterprise customers <br> world-wide</h1>
-        </div>
+  <h1
+    style="
+      text-align: center;
+      font-weight: 200;
+      font-size: 40px;
+      margin: 60px;
+      padding-top: 80px;
+    "
+  >
+    Strength in numbers
+  </h1>
+  <div>
+    <div id="one">
+      <h2><img src="assets/hat.svg" /></h2>
+      <h1 style="font-size: 25px; font-weight: 100">100,000+</h1>
+      <h1 style="font-size: 20px; font-weight: 400">
+        Udacity graduations and <br />
+        counting
+      </h1>
     </div>
 
-    <div id="rest">
-        <div id="first">
-
-            <div class="imgs">
-                <img src="assets/Jesse.webp" style="width: 70px;">
-            </div>
-            <div id="remain">
-                <h1 style="text-align: center; font-size: 30px; font-weight: 100;color: black;">Jesse</h1>
-                <h6 style="font-weight: 400; font-size: 15px;">
-                    "The curriculum was directly targeted toward<br>
-                    <br>
-                    applied techniques with high profile projects –<br>
-                    <br>
-                    real datasets with industry partners.It helped<br>
-                    <br>
-                    me achieve my career transition goal."
-                    <br><br><br> <br>
-                </h6>
-            </div>
-            <div style="margin-top: 10px;">
-                <h4 id="now">
-                    <br>
-                    NOW AT
-                    <br>
-                    <br>
-                    Raytheon | Data Scientist
-                </h4>
-            </div>
-        </div>
-
-
-        <div id="second">
-            <div class="imgs">
-                <img src="assets/Sundar.webp" style="width: 70px;">
-            </div>
-            <div id="remain">
-                <h1 style="text-align: center; font-size: 30px; font-weight: 100;color: black;">Sundar</h1>
-                <h6 style="font-weight: 400; font-size: 15px;">
-                    "The curriculum was aligned with what I<br>
-                    <br>
-                    wanted to study. The assignments are specific<br>
-                    <br>
-                    to the industry I’m in. I was able to develop<br>
-                    <br>
-                    new language translation tools for my company."
-                    <br><br><br><br>
-                </h6>
-            </div>
-            <div style="margin-top: 10px;">
-                <h4 id="now">
-                    <br>
-                    NOW AT
-                    <br>
-                    <br>
-                    Comcast | Lead Data Scientist
-                </h4>
-            </div>
-        </div>
-
-        <div id="first">
-
-            <div class="imgs">
-                <img src="assets/David.webp" style="width: 70px;">
-            </div>
-            <div id="remain">
-                <h1 style="text-align: center; font-size: 30px; font-weight: 100;color: black;"> David</h1>
-                <h6 style="font-weight: 400; font-size: 15px;">
-                    "One of the things that attracted me to<br>
-                    <br>
-                    Udacity was a curriculum developed by<br>
-                    <br>
-                    to the industry I’m in. I was able to develop<br>
-                    <br>
-                    people that worked for some of the biggest
-                    <br>
-                    and most successful tech companies.”
-                    <br><br><br>
-                </h6>
-            </div>
-            <div style="margin-top: 10px;">
-                <h4 id="now">
-                    <br>
-                    NOW AT
-                    <br>
-                    <br>
-                    Panera Bread | Data Administrator
-                </h4>
-            </div>
-        </div>
+    <div id="one">
+      <h2><img src="assets/star.svg" /></h2>
+      <h1 style="font-size: 25px; font-weight: 100">200+</h1>
+      <h1 style="font-size: 20px; font-weight: 400">
+        Industry experts partnering <br />
+        to build our content
+      </h1>
     </div>
-    <a mat-raised-button routerLink="/"
-        style="  background-color: #275c6b; color: white;margin-top: 110px; margin-left: 610px;  letter-spacing: 2px;">More
-        Success Stories</a>
+
+    <div id="one">
+      <h2><img src="assets/raise.svg" /></h2>
+      <h1 style="font-size: 25px; font-weight: 100">100+</h1>
+      <h1 style="font-size: 20px; font-weight: 400">
+        Enterprise customers <br />
+        world-wide
+      </h1>
+    </div>
+  </div>
+
+  <div id="rest">
+    <div id="first">
+      <div class="imgs">
+        <img src="assets/Jesse.webp" style="width: 70px" />
+      </div>
+      <div id="remain">
+        <h1
+          style="
+            text-align: center;
+            font-size: 30px;
+            font-weight: 100;
+            color: black;
+          "
+        >
+          Jesse
+        </h1>
+        <h6 style="font-weight: 400; font-size: 15px">
+          "The curriculum was directly targeted toward<br />
+          <br />
+          applied techniques with high profile projects –<br />
+          <br />
+          real datasets with industry partners.It helped<br />
+          <br />
+          me achieve my career transition goal."
+          <br /><br /><br />
+          <br />
+        </h6>
+      </div>
+      <div style="margin-top: 10px">
+        <h4 id="now">
+          <br />
+          NOW AT
+          <br />
+          <br />
+          Raytheon | Data Scientist
+        </h4>
+      </div>
+    </div>
+
+    <div id="second">
+      <div class="imgs">
+        <img src="assets/Sundar.webp" style="width: 70px" />
+      </div>
+      <div id="remain">
+        <h1
+          style="
+            text-align: center;
+            font-size: 30px;
+            font-weight: 100;
+            color: black;
+          "
+        >
+          Sundar
+        </h1>
+        <h6 style="font-weight: 400; font-size: 15px">
+          "The curriculum was aligned with what I<br />
+          <br />
+          wanted to study. The assignments are specific<br />
+          <br />
+          to the industry I’m in. I was able to develop<br />
+          <br />
+          new language translation tools for my company."
+          <br /><br /><br /><br />
+        </h6>
+      </div>
+      <div style="margin-top: 10px">
+        <h4 id="now">
+          <br />
+          NOW AT
+          <br />
+          <br />
+          Comcast | Lead Data Scientist
+        </h4>
+      </div>
+    </div>
+
+    <div id="first">
+      <div class="imgs">
+        <img src="assets/David.webp" style="width: 70px" />
+      </div>
+      <div id="remain">
+        <h1
+          style="
+            text-align: center;
+            font-size: 30px;
+            font-weight: 100;
+            color: black;
+          "
+        >
+          David
+        </h1>
+        <h6 style="font-weight: 400; font-size: 15px">
+          "One of the things that attracted me to<br />
+          <br />
+          Udacity was a curriculum developed by<br />
+          <br />
+          to the industry I’m in. I was able to develop<br />
+          <br />
+          people that worked for some of the biggest
+          <br />
+          and most successful tech companies.”
+          <br /><br /><br />
+        </h6>
+      </div>
+      <div style="margin-top: 10px">
+        <h4 id="now">
+          <br />
+          NOW AT
+          <br />
+          <br />
+          Panera Bread | Data Administrator
+        </h4>
+      </div>
+    </div>
+  </div>
+  <a
+    mat-raised-button
+    routerLink="/"
+    style="
+      background-color: #275c6b;
+      color: white;
+      margin-top: 110px;
+      margin-left: 610px;
+      letter-spacing: 2px;
+    "
+    >More Success Stories</a
+  >
 </section>

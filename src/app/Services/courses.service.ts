@@ -17,4 +17,14 @@ export class CoursesService {
       return throwError(err.message || "error")
     }))
   }
+  getCoursess():Observable<ICourse> {
+    return this._http.get<ICourse>(this.Url).pipe(catchError((err)=>{
+      return throwError(err.message || "error")
+    }))
+  }
+  getCoursesByID(id:number):Observable<ICourse> {
+    return this._http.get<ICourse>(this.Url+"/"+id).pipe(catchError((err)=>{
+      return throwError(err.message || "error")
+    }))
+  }
 }

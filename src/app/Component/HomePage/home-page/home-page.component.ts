@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
@@ -18,12 +19,35 @@ widthCategory:any
 fourCourses:ICourse[]
 four= ["d","d","d","d "]
 
+customOptions: OwlOptions = {
+  loop: false,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: true,
+  dots: false,
+  navSpeed: 1500,
+  navText: ['', ''],
+  responsive: {
+    0: {
+      items: 1
+    },
+    400: {
+      items: 2
+    },
+    1130: {
+      items: 4
+    },
+    940: {
+      items: 1
+    }
+  },
+  nav: true
+  
+}
   constructor(private catService:CategoryService,private courseServise:CoursesService) { }
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
-    this.getFourCourses();
-    this.d();
   }
 
   getCatigoreis()
@@ -58,30 +82,9 @@ four= ["d","d","d","d "]
 
   getClikedCategoryID(idCurrent:number,witdhcat:any){
     this.currentCategoryId = idCurrent;
-    this.getFourCourses()
     // this.widthCategory = witdhcat
     // console.log("width",witdhcat)
   }
 
- getFourCourses(){
-   for(let course of this.Courses)
-   {
-     if(course.id === this.currentCategoryId)
-     {
-       console.log("entereeeee")
-        for(let i=0 ; i<2 ; i++)
-        {
-          this.fourCourses.push(this.Courses[i])
-        }
-     }
-   }
- }
 
-d(){
-  for(let i of this.Courses)
-  {
-    console.log("i",i.name)
-  }
-}
- 
 }

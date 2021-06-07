@@ -1,10 +1,15 @@
 export interface ICourse{
     id:number 
+    // id:string
     name:String
-    Price:number
+    price:number
     duration:number
     type:string
     description:string
-    LectureNumber:number
+    lectureNumber:number
     categoryId:number
+    subCategoryId:number
+    partLogo:string
+    preRequest:string
+    crsLogo:string
 }
