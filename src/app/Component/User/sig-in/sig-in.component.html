@@ -9,7 +9,7 @@
         <mat-tab label="SIGN UP" > <app-sign-up></app-sign-up> </mat-tab>
 
         <mat-tab label="SIGN IN"> <br><br>
-            <form class="example-form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()" #Login >
+            <form class="example-form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()" #Login  *ngIf="!isLoggedIn" >
                 <div class="titleSignIn">
                     <mat-label>Sign in to your account</mat-label>
                 </div><br>
@@ -48,7 +48,18 @@
                     <mat-label>By clicking Sign In, you agree to our <span class="styleText"> Terms of Use </span> and our <span class="styleText"> Privacy Policy.</span>
                     </mat-label>
                 </div>
-                <button type="submit" class="btnSignIn" mat-raised-button color="primary" >SIGN IN</button><br>
+                <button type="submit" class="btnSignIn" mat-raised-button color="primary" >
+                    SIGN IN
+                </button>
+                <br>
+                <div>
+                    <div
+                      class="alert alert-danger"
+                      role="alert"
+                      *ngIf="onSubmit && isLoginFailed">
+                      Login failed: {{ errorMessage }}
+                    </div>
+                  </div>
                 <div class="styleText">
                     <mat-label>Forgot your password?</mat-label>
                 </div><br><br>

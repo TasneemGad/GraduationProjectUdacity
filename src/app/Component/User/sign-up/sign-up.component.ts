@@ -15,12 +15,12 @@ export class SignUpComponent implements OnInit {
   constructor( private fb: FormBuilder, private signUpService:RegistrationService, private router:Router,private _router: Router,
 ) { }
   RegisterForm:FormGroup
-  user: ILogin
-  isSuccessed = false
+  user: ILogin;
   loading = false;
   error = '';
   hide = true;  
-
+  isSignUpFailed = false;
+  isSuccessful=false;
   ngOnInit(): void {
 
     this.RegisterForm = this.fb.group({
@@ -35,17 +35,20 @@ export class SignUpComponent implements OnInit {
     console.log("log")
     const user = this.RegisterForm.value;
     this.signUpUser(user);
-    this.router.navigate(['/']);
   }
   signUpUser(user: ILogin) {
     this.signUpService.SignUp(user).subscribe( data => {
       console.log("success")
-      this.isSuccessed = true;
-
+      this.router.navigate(['/SignIn']);
+      this.isSuccessful = true;
+      this.isSignUpFailed = false;
       },err=>{
         console.log("error")
+        this.error=err.message;
+        this.isSignUpFailed = true;
+      
       })
-      this.loading = true;
+        this.loading = true;
      
   }
 
