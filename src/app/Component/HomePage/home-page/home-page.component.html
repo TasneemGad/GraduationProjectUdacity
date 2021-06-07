@@ -51,8 +51,8 @@
   <section>
     <div style="width: 1130px">
       <owl-carousel-o [options]="customOptions">
-        <ng-container *ngFor="let course of Courses">
-            <ng-template carouselSlide id="course.id">
+        <ng-container *ngFor="let course of CoursesByID">
+           <ng-template carouselSlide id="course.id">
                 
               <mat-card class="course">
                 <img
@@ -71,21 +71,17 @@
                   <p>{{ course.duration }}</p>
                 </mat-card-content>
               </mat-card>
-
-<<<<<<< HEAD
-              <!-- <img src="{{course.partLogo}}" title="{{i.description}}" style="width: 50px;margin-left: 90px;" > -->
             </ng-template>
           </ng-container>
       </owl-carousel-o>
     </div>
   </section>
 </div>
-=======
-<div class="courses">
-<section style="margin-right: 12px; display: flex;" >
+<!-- <div class="courses">
+<section style="margin-right: 12px; display: flex;" > -->
     <!-- <span *ngFor="let course of Courses" >
         <span *ngIf="course.categoryId === currentCategoryId;">  -->
-            <span *ngFor="let course of CoursesByID" >
+            <!-- <span *ngFor="let course of CoursesByID" >
                 <mat-card class="course">
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"  style="width: 270px; height: 180px;" alt="error">
                     <mat-card-content>
@@ -94,13 +90,12 @@
                         <p >{{course.duration}}</p>
                     </mat-card-content>
                 </mat-card>
-            </span>
+            </span> -->
         <!-- </span>
 
     </span> -->
-</section>
-</div> 
->>>>>>> 496c07c388fc206a5f730c262e70be8833a29d17
+<!-- </section>
+</div>  -->
 
 <div class="partObjectiveWebSite">Don't waste your valuable time or money</div>
 <br />

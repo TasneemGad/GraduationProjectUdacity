@@ -55,27 +55,13 @@
                 <div class="lineWhitOr">
                     <hr class="line">
                     <div>
-                        <mat-label>By clicking Sign In, you agree to our <span class="styleText"> Terms of Use </span> and our <span class="styleText"> Privacy Policy.</span>
-                        </mat-label>
+                        <mat-label>or</mat-label>
                     </div>
-                    <button type="submit" [disabled]="loading" class="btnSignIn" mat-raised-button color="primary" >
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        SIGN IN</button><br>
-                    <div class="styleText">
-                        <mat-label>Forgot your password?</mat-label>
-                    </div><br><br>
-                    <div class="lineWhitOr">
-                        <hr class="line">
-                        <div>
-                            <mat-label>or</mat-label>
-                        </div>
-                        <hr class="line">
-                    </div><br><br>
-                    <div class="styleText">
-                        <mat-label>Sign in with your organization</mat-label>
-                    </div>
-                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-
+                    <hr class="line">
+                </div><br><br>
+                <div class="styleText">
+                    <mat-label>Sign in with your organization</mat-label>
+                </div>
 </form>
 </mat-tab>
 </mat-tab-group>

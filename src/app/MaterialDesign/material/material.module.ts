@@ -21,13 +21,10 @@ const materials:any =[
   MatTabsModule,
   MatInputModule,
   MatButtonModule,
-<<<<<<< HEAD
   MatMenuModule,
   MatTableModule,
-=======
   MatMenuModule,  
 
->>>>>>> 496c07c388fc206a5f730c262e70be8833a29d17
 ];
 @NgModule({
   declarations: [],
