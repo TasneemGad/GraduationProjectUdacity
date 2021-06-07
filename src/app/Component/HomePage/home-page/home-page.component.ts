@@ -16,12 +16,7 @@ Categoies:ICategory[]
 Error:string
 currentCategoryId = 1
 Courses:ICourse[] = []
-<<<<<<< HEAD
-widthCategory:any
-fourCourses:ICourse[]
-=======
 CoursesByID:ICourse[]=[]
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
 
 customOptions: OwlOptions = {
   loop: false,
@@ -52,11 +47,7 @@ customOptions: OwlOptions = {
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
-<<<<<<< HEAD
-    this.getFourCourses();
-=======
     this.getClikedCategoryID(this.currentCategoryId,55);
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
   }
 
   getCatigoreis()
@@ -91,34 +82,19 @@ customOptions: OwlOptions = {
 
   getClikedCategoryID(idCurrent:number,witdhcat:any){
     this.currentCategoryId = idCurrent;
-    // this.widthCategory = witdhcat
-    // console.log("width",witdhcat)
-  
-
-      this.courseServise.getCoursesByCatID(idCurrent).subscribe(
-        data=>
-        {
-<<<<<<< HEAD
-          this.fourCourses.push(this.Courses[i])
-        }
-     }
-   }
- }
-
-=======
-          console.log("course Category",data)
-          console.log("dddddddd"+idCurrent)
-          this.CoursesByID = data;
-        },
-        Wrong=>
-        {
-          this.Error = Wrong
-        }      
-      )    
-    // this.getFourCourses()
-   
-      }
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
+    this.courseServise.getCoursesByCatID(idCurrent).subscribe(
+      data=>
+      {
+        console.log("course Category",data)
+        console.log("dddddddd"+idCurrent)
+        this.CoursesByID = data;
+      },
+      Wrong=>
+      {
+        this.Error = Wrong
+      }      
+    )    
+    }
  
 
 

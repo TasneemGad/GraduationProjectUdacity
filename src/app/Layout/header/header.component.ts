@@ -58,13 +58,7 @@ export class HeaderComponent implements OnInit {
     getHoverCategoryID(idCurrent:number){
       console.log("hoverID",idCurrent)
       this.currentCategoryId = idCurrent;
-<<<<<<< HEAD
-    }    
-
-    getCurrentCategory(currentCategory:string){
-      this.router.navigate(["/school-of",currentCategory]);
-    }
-=======
+    
       this.courseServise.getCoursesByCatID(idCurrent).subscribe(
         data=>
         {
@@ -78,9 +72,10 @@ export class HeaderComponent implements OnInit {
         }      
       )
     }
-     
+
+    getCurrentCategory(currentCategory:string){
+      this.router.navigate(["/school-of",currentCategory]);
+    }
+  }
 
      
- 
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
-}

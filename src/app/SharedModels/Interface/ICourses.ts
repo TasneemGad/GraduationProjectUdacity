@@ -8,13 +8,8 @@ export interface ICourse{
     description:string
     lectureNumber:number
     categoryId:number
-<<<<<<< HEAD
     preRequest:string
-    subCategoryId:number
-=======
     subCategoryId:number
     partLogo:string
-    preRequest:string
     crsLogo:string
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
 }

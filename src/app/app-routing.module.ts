@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { CategoryComponent } from './Component/category/category.component';
-=======
 import { CourseComponent } from './Component/course/course.component';
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
-import { TestCategoryComponent } from './Component/test-category/test-category.component';
 import { SigINComponent } from './Component/User/sig-in/sig-in.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
 
@@ -15,14 +11,11 @@ const routes: Routes = [
   {path:'Home', component: HomePageComponent},
   {path:'SignUP', component: SigINComponent},
   {path:'SignIn', component: SigINComponent},
-<<<<<<< HEAD
   {path:'',redirectTo:'/Home',pathMatch:'full'},
-  {path:'school-of/:name',component:CategoryComponent}
-=======
+  {path:'school-of/:name',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
   {path:'Lecture/:lid', component:CourseComponent},
   {path:'',redirectTo:'/Home',pathMatch:'full'}
->>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
 ];
 
 @NgModule({

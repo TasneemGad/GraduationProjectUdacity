@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { LecturesService } from 'src/app/Services/lectures.service';
+import { MentorOrInstractorService } from 'src/app/Services/mentor-or-instractor.service';
+import { StudentReviewsService } from 'src/app/Services/student-reviews.service';
+import { TwoCoursesSuggestService } from 'src/app/Services/two-courses-suggest.service';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
+import { IMonterOrInstractor } from 'src/app/SharedModels/Interface/IMonterOrInstractor';
+import { IReviews } from 'src/app/SharedModels/Interface/IReviews';
 
 @Component({
   selector: 'app-course',
@@ -22,9 +27,21 @@ Isdetails:boolean=false
    lectureAllList:Lectures[]=[]
    idUrl:any
    idUrlLecture:any
-   constructor(private courseServices:CoursesService,private active:ActivatedRoute , private lectureServices:LecturesService) { }  
+   InstractorAndMentor : IMonterOrInstractor[] = []
+   Reviews:IReviews[] = []
+   Error:string
+   twoCoursesSuggest:ICourse[] = []
+
+   constructor(private courseServices:CoursesService,private active:ActivatedRoute ,
+    private instractorService:MentorOrInstractorService,
+    private reviewsService:StudentReviewsService,
+    private twoCoursesServies:TwoCoursesSuggestService,
+     private lectureServices:LecturesService) { }  
   
    ngOnInit(): void {
+    this.getInstractor();
+    this.getReviews()
+
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
   //  this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrlLecture=p.get('lid')})
 
@@ -32,6 +49,7 @@ Isdetails:boolean=false
     this.getCourseById(this.idUrl);
     this.getLecturesByID(this.idUrl);
     this.getLectureses();
+    this.getTwoCourses(this.idUrl)
   }
   
 
@@ -72,6 +90,51 @@ getLectureses(){
   console.log("enter2")
     this.lectureAllList=suces,
     console.log(this.lectureAllList)},err=>{console.log(err)})
+}
+
+getInstractor()
+{      
+  this.instractorService.getInstractor().subscribe(
+    data=>
+    {
+      this.InstractorAndMentor = data;
+      console.log("instractor",data)
+    },
+    Wrong=>
+    {
+      this.Error = Wrong
+    }      
+  )
+}
+
+getReviews()
+{      
+  this.reviewsService.getReviews().subscribe(
+    data=>
+    {
+      this.Reviews = data;
+      console.log("reviews",data)
+    },
+    Wrong=>
+    {
+      this.Error = Wrong
+    }      
+  )
+}
+
+getTwoCourses(currentCategoryID:number){
+  this.twoCoursesSuggest = []
+  this.twoCoursesServies.getTwoCourses(currentCategoryID).subscribe(
+    data=>
+    {
+      this.twoCoursesSuggest = data;
+      console.log("twoCrs22",this.twoCoursesSuggest)
+    },
+    Wrong=>
+    {
+      this.Error = Wrong
+    }      
+  )
 }
 
 }
