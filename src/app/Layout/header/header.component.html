@@ -14,11 +14,18 @@
     </mat-menu>
     
     <mat-menu #subMenu="matMenu">
+<<<<<<< HEAD
         <span *ngFor="let course of Courses" >
           <span *ngIf="course.categoryId === currentCategoryId;"> 
             <button mat-menu-item class="menu" routerLink="{{'/Course/'+course.id}}">{{course.name}}</button>
             <!-- <button mat-raised-button routerLink="{{'/Course'+course.id}}" style="color: brown; ">Course</button> -->
           </span>
+=======
+        <span *ngFor="let course of CoursesByID" >
+          <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
+            <button mat-menu-item class="menu">{{course.name}}</button>
+          <!-- </span> -->
+>>>>>>> 496c07c388fc206a5f730c262e70be8833a29d17
         </span>
     </mat-menu>
 

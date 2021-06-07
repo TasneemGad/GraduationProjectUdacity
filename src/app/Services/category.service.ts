@@ -17,6 +17,6 @@ export class CategoryService {
     return this._http.get<ICategory[]>(this.Url).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")
   }))
-
+  
   }
 }
