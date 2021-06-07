@@ -14,6 +14,7 @@ import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 export class HeaderComponent implements OnInit {
   Categoies:ICategory[] 
   Courses:ICourse[] 
+  CoursesByID:ICourse[]=[]
   courseNameForCurrentCategory:any[]
   Error:string
   currentCategoryId:number
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
       this.getCatigoreis();
       this.getCourses();
     }
-
+   
     getCatigoreis()
     {
       this.catService.getCategories().subscribe(
@@ -57,9 +58,29 @@ export class HeaderComponent implements OnInit {
     getHoverCategoryID(idCurrent:number){
       console.log("hoverID",idCurrent)
       this.currentCategoryId = idCurrent;
+<<<<<<< HEAD
     }    
 
     getCurrentCategory(currentCategory:string){
       this.router.navigate(["/school-of",currentCategory]);
     }
+=======
+      this.courseServise.getCoursesByCatID(idCurrent).subscribe(
+        data=>
+        {
+          console.log("course Category",data)
+          console.log("dddddddd"+idCurrent)
+          this.CoursesByID = data;
+        },
+        Wrong=>
+        {
+          this.Error = Wrong
+        }      
+      )
+    }
+     
+
+     
+ 
+>>>>>>> 556ea4f94c966695972a3411eba01c8bd6a542c0
 }
