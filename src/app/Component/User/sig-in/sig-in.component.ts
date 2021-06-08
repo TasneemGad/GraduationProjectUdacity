@@ -18,11 +18,13 @@ export class SigINComponent implements OnInit {
   loading = false;
   returnUrl: string;
   error = '';
-  
+  isLoggedIn=false
+  isLoginFailed: boolean;
+  errorMessage: any;
   constructor(private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
     private router: Router,) { }
     ngOnInit(): void {
-       if (this.authenticationService.isLoggedIn()) { 
+       if (!this.authenticationService.isLoggedIn()) { 
          this.router.navigate(['/SignIn']);
         }
       this.LoginForm = this.fb.group({
@@ -30,14 +32,14 @@ export class SigINComponent implements OnInit {
         Email: ['', [Validators.required, Validators.minLength(6)]],
         PasswordHash: ['', [Validators.required, Validators.minLength(6)]]
       })
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     }
  onSubmit() {
     console.log("log")
     const user = this.LoginForm.value;
     this.signInUser(user);
-    this.router.navigate(['/Home']);
+   // this.router.navigate(['/Home']);
   }
   get formFields() { return this.LoginForm.controls; }
   signInUser(user: ILogin) {
@@ -54,11 +56,14 @@ export class SigINComponent implements OnInit {
           .pipe(first())
           .subscribe(
               AData => {
-                  this.router.navigate([this.returnUrl]);
+                  this.router.navigate(['/ClassRoom']);
+                 this.isLoginFailed = false;
+                 this.isLoggedIn= this.authenticationService.isLoggedIn();
               },
               error => {
-                  this.error = error;
                   this.loading = false;
+                  this.errorMessage = error.message;
+                  this.isLoginFailed = true;
               });
 
            console.log(this.authenticationService.getRole());

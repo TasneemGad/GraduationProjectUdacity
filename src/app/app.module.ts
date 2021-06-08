@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     SigINComponent,
     HomePageComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
