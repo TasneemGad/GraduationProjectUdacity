@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
-import { OwlOptions } from 'ngx-owl-carousel-o'
 
 
 @Component({
@@ -17,17 +17,37 @@ Error:string
 currentCategoryId = 1
 Courses:ICourse[] = []
 CoursesByID:ICourse[]=[]
-widthCategory:any
-fourCourses:ICourse[]
-four= ["d","d","d","d "]
 
+customOptions: OwlOptions = {
+  loop: false,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: true,
+  dots: false,
+  navSpeed: 1500,
+  navText: ['', ''],
+  responsive: {
+    0: {
+      items: 1
+    },
+    400: {
+      items: 2
+    },
+    1130: {
+      items: 4
+    },
+    940: {
+      items: 1
+    }
+  },
+  nav: true
+  
+}
   constructor(private catService:CategoryService,private courseServise:CoursesService) { }
   ngOnInit(): void {
     this.getCatigoreis();
     this.getCourses();
-    this.getCoursesByCurrentCat();
-    this.getFourCourses();
-    this.d();
+    this.getClikedCategoryID(this.currentCategoryId,55);
   }
 
   getCatigoreis()
@@ -61,56 +81,21 @@ four= ["d","d","d","d "]
   }
 
   getClikedCategoryID(idCurrent:number,witdhcat:any){
-
-    
     this.currentCategoryId = idCurrent;
-      this.courseServise.getCoursesByCatID(idCurrent).subscribe(
-        data=>
-        {
-          console.log("course Category",data)
-          console.log("dddddddd"+idCurrent)
-          this.CoursesByID = data;
-        },
-        Wrong=>
-        {
-          this.Error = Wrong
-        }      
-      )    
-    this.getFourCourses()
-  }
-  getCoursesByCurrentCat()
-  {      
-    this.courseServise.getCoursesByCatID(this.currentCategoryId).subscribe(
+    this.courseServise.getCoursesByCatID(idCurrent).subscribe(
       data=>
       {
         console.log("course Category",data)
+        console.log("dddddddd"+idCurrent)
         this.CoursesByID = data;
       },
       Wrong=>
       {
         this.Error = Wrong
       }      
-    )
-  }
- getFourCourses(){
-   for(let course of this.Courses)
-   {
-     if(course.id === this.currentCategoryId)
-     {
-       console.log("entereeeee")
-        for(let i=0 ; i<2 ; i++)
-        {
-          this.fourCourses.push(this.Courses[i])
-        }
-     }
-   }
- }
-
-d(){
-  for(let i of this.Courses)
-  {
-    console.log("i",i.name)
-  }
-}
+    )    
+    }
  
+
+
 }

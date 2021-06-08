@@ -9,14 +9,14 @@
 
     <mat-menu #rootMenu="matMenu">
       <span *ngFor="let category of Categoies" >
-         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" >{{category.catName}}</button>
+         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" (click)="getCurrentCategory(category.catName)" >{{category.catName}}</button>
       </span>
     </mat-menu>
     
     <mat-menu #subMenu="matMenu">
         <span *ngFor="let course of CoursesByID" >
           <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
-            <button mat-menu-item class="menu">{{course.name}}</button>
+            <button mat-menu-item class="menu" routerLink="{{'/Course/'+course.id}}">{{course.name}}</button>
           <!-- </span> -->
         </span>
     </mat-menu>

@@ -1,0 +1,737 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<section>
+  <header>
+    <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay muted loop>
+      <!-- <source src="assets/Intro to Self-Driving Cars Nanodegree Program - Trailer 60 seconds.mp4" type="video/mp4"  controls muted id="myVideo"> -->
+    </video>
+    <div class="container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+          <p>NANODEGREE PROGRAM</p>
+
+          <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px">
+            Intro to Self-Driving Cars
+          </h1>
+          <p>
+            This introductory program is the perfect way to start your journey.
+          </p>
+          <button routerLink="/" mat-raised-button style="
+              color: #03607a;
+              margin-right: 15px;
+              width: 300px;
+              padding: 5px;
+              font-size: 15px;
+              letter-spacing: 2px;
+              font-weight: bold;
+            ">
+            Download Syllabus
+          </button>
+          <button routerLink="/" mat-raised-button style="
+              background-color: #03607a;
+              color: white;
+              width: 300px;
+              padding: 5px;
+              letter-spacing: 3px;
+              font-weight: 500;
+            ">
+            Enroll Now
+          </button>
+          <h1 style="margin-top: 90px; padding: 30px" id="myBtn" onclick="myFunction()">
+            <mat-icon>play_circle_outline</mat-icon>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="all" style="margin-right: 550px">
+    <div class="vl1">
+      <h1 style="
+          font-size: 15px;
+          margin-left: -120px;
+          letter-spacing: 2px;
+          opacity: 0.65;
+          font-weight: 600;
+        ">
+        ESTIMATED TIME
+      </h1>
+      <span>
+        <h1 style="margin-top: 30px; margin-left: -150px; font-size: 20px">
+          {{ courseList.duration }}Months
+        </h1>
+      </span>
+    </div>
+    <div class="vl1">
+      <h1 style="
+          font-size: 15px;
+          margin-left: -120px;
+          letter-spacing: 2px;
+          opacity: 0.65;
+          font-weight: 600;
+        ">
+        ENROLL BY
+      </h1>
+
+      <span>
+        <h1 style="margin-top: 30px; margin-left: -90px; font-size: 20px">
+          June 9, 2021
+        </h1>
+      </span>
+    </div>
+    <div class="vl1">
+      <h1 style="
+          font-size: 15px;
+          margin-left: -120px;
+          letter-spacing: 2px;
+          opacity: 0.65;
+          font-weight: 600;
+        ">
+        PREREQUISITES
+      </h1>
+      <span>
+        <h1 style="
+            margin-top: 30px;
+            margin-left: -150px;
+            font-size: 18px;
+            font-weight: 500;
+            width: 250px;
+          ">
+          {{ courseList.preRequest }}
+        </h1>
+        <a style="
+            font-size: 15px;
+            text-decoration: underline;
+            opacity: 0.5;
+            margin-left: -150px;
+          ">See prerequisites in detail</a>
+      </span>
+    </div>
+  </div>
+  <!-- <div class="vl1"></div> -->
+</section>
+<script>
+  var video = document.getElementById("myVideo");
+  var btn = document.getElementById("myBtn");
+
+  function myFunction() {
+    if (video.paused) {
+      video.play();
+      btn.innerHTML = "Pause";
+    } else {
+      video.pause();
+      btn.innerHTML = "Play";
+    }
+  }
+</script>
+
+<div id="logo">
+  <p style="letter-spacing: 2px; font-size: 15px; opacity: 0.65">
+    IN COLLABORATION WITH
+  </p>
+  <!-- <span *ngFor="let i of courseListImg"> -->
+  <img src="{{ courseList.partLogo }}" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
+
+  <!-- </span> -->
+</div>
+
+<section id="details">
+  <div style="display: flex; margin-bottom: 30px; margin-top: 30px">
+    <h1 style="
+        font-size: 35px;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 150px;
+      ">
+      What You Will Learn
+    </h1>
+    <button mat-raised-button style="
+        background-color: #657482;
+        margin-left: 700px;
+        font-size: 20px;
+        color: white;
+        padding: 5px;
+        width: 300px;
+        height: 50px;
+      ">
+      Download Syllabus
+    </button>
+  </div>
+  <div style="
+      align-content: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    ">
+    <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
+      <mat-card style="width: 1200px; height: 1050px; align-items: center">
+        <mat-card-header style="display: flex">
+          <div style="float: left">
+            <mat-card-title style="
+                font-size: 30px;
+                font-weight: 300;
+                font-style: normal;
+                line-height: 30px;
+                width: 600px;
+              ">
+              {{ courseList.name }}
+            </mat-card-title>
+            <mat-card-subtitle style="margin-top: 40px; font-size: 17px; font-weight: 500;width: 500px;">
+              {{ courseList.description }}
+            </mat-card-subtitle>
+          </div>
+          <div>
+            <h1>
+              <img src="{{ courseList.crsLogo }}" style="
+                  width: 550px;
+                  height: 300px;
+                  float: right;
+                 margin-top: -15px;
+                " />
+            </h1>
+
+          </div>
+          <br />
+
+          <div style="margin-top: 50px">
+            <hr style="border: solid rgb(236, 236, 236); opacity: 0.5" />
+          </div>
+        </mat-card-header>
+        <mat-card-subtitle>
+          <h1 style="
+              font-size: 15px;
+              margin-left: 30px;
+              color: #03607a;
+              cursor: pointer;
+
+            " (click)="detailsHide()">
+            {{ textHide }}
+          </h1>
+        </mat-card-subtitle>
+        <div >
+        <div *ngIf="Isdetails; then hide"></div>
+
+          <mat-card-content>
+            <ng-template #hide>
+              <mat-card-subtitle style="margin-left: 30px;" >
+                <div>
+                  <h1 style="
+                      font-size: 15px;
+                      letter-spacing: 2px;
+                      font-weight: 400;
+                      color: #657482;
+                    ">
+                    PREREQUISITES KNOWLEDGE
+                  </h1>
+                  <h1 style="font-size: 18px; font-weight: 500; width: 250px">
+                    {{ courseList.preRequest }}
+                  </h1>
+                  <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
+                </div>
+                <!-- <div class="vl1"></div > -->
+                <div *ngFor="let i of lectureList">
+                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
+                  <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
+                </div>
+              </mat-card-subtitle>
+              <mat-card class="boxCouse1">
+                <svg width="50" height="36" viewBox="0 0 50 36">
+                    <g fill="none" fill-rule="evenodd" stroke="#7D97AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M42 5h2.99063C45.54809 5 46 5.438615 46 5.998746v19.002508C46 25.552846 45.556738 26 45.003217 26H4.996782C4.446275 26 4 25.561385 4 25.001254V5.998746C4 5.447154 4.443353 5 5.00937 5H8">
+                        </path>
+                        <path d="M21 22H8V2h9.009246C21.42242 2 25 5.580076 25 9.991652V26m0 0c0-2.20914-1.79086-4-4-4m8 0h13V2h-9.009247C28.577583 2 25 5.580076 25 9.991652V26m0 0c0-2.20914 1.79086-4 4-4"></path>
+                        <path d="M46 8h2.001043C48.552753 8 49 8.439458 49 9.002462v19.995076C49 29.551183 48.55547 30 47.997452 30H2.002548C1.448856 30 1 29.560542 1 28.997538V9.002462C1 8.448817 1.44266 8 1.998957 8H4m21 22v-4"></path>
+                    </g>
+                </svg>
+                <div style="opacity: .8;">
+                    <mat-label>NEED TO PREPARE?</mat-label><br>
+                    <mat-label> We recommend the Intro {{twoCoursesSuggest[0].name}}</mat-label>
+                </div>
+              </mat-card>
+            </ng-template>
+          </mat-card-content>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<section style=" background-color: #eff8ff; padding: 70px 0px 70px 0px;">
+  <h1 style="text-align: center; font-size: xx-large; opacity: .8;">All Our Programs Include</h1>
+  <div class="programParts">
+      <div class="parts">
+          <img src="../../assets/ProgramsInclude1.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
+          <span class="icons">
+              <img src="../../assets/programIcon1.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+          </span>
+          <div>
+              <h3 class="title">Real-world projects from industry experts</h3>
+              <div class="line"></div>
+              <p>With real world projects and immersive content built in partnership with top tier companies,
+                  you’ll master the tech skills companies want.</p>
+          </div>
+      </div>
+      <div class="parts">
+          <img src="../../assets/ProgramsInclude2.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
+          <span class="icons">
+              <img src="../../assets/programIcon2.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+          </span>
+          <div>
+              <h3 class="title">Technical mentor support</h3>
+              <div class="line"></div>
+              <p>Our knowledgeable mentors guide your learning and are focused on answering your questions,
+                  motivating you and keeping you on track.</p>
+          </div>
+      </div>
+      </div>
+  <div class="programParts">
+      <div class="parts">
+          <img src="../../assets/ProgramsInclude3.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
+          <span class="icons">
+              <img src="../../assets/programIcon3.JPG" alt="error" width="25px" height="25px" style="padding: 13px 0px 0px 13px" >
+          </span>
+          <div>
+              <h3 class="title">Career services</h3>
+              <div class="line"></div>
+              <p>You’ll have access to resume support,
+                   Github portfolio review and LinkedIn profile optimization to help you advance your career and land a high-paying role..</p>
+          </div>
+      </div>
+      <div class="parts">
+          <img src="../../assets/ProgramsInclude4.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
+          <span class="icons">
+              <img src="../../assets/programIcon4.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+          </span>
+          <div>
+              <h3 class="title">Flexible learning program</h3>
+              <div class="line"></div>
+              <p>Get a custom learning plan tailored to fit your busy life.
+                   Learn at your own pace and reach your personal goals on the schedule that works best for you.</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="border-radius: 25px">
+    <table class="table" style="
+        border: 2px rgb(245, 243, 243);
+        margin-top: 30px;
+        margin-left: 45px;
+        box-shadow: 6px 2px 6px 3px rgb(192, 189, 189);
+        border-radius: 25px;
+        align-items: center;
+      ">
+      <thead>
+        <tr style="background-color: #03607a; color: white">
+          <th>Program Offerings</th>
+          <th></th>
+          <th>Enrollment Includes:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background-color: rgba(201, 193, 234, 0.42)">
+          <td>CLASS CONTENT</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr style="background-color: rgba(238, 234, 250, 0.42)">
+          <td>Real-world projects</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(239, 235, 250, 0.42)">
+          <td>Project reviews</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(239, 235, 252, 0.42)">
+          <td>Project feedback from experienced reviewers</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+
+        <tr style="background-color: rgba(201, 193, 234, 0.42); width: 200px">
+          <td>STUDENT SERVICES</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr style="background-color: rgba(238, 234, 250, 0.42)">
+          <td>
+            Technical mentor support
+            <button mat-raised-button style="margin-left: 5px; background-color: #ad3959; color: white">
+              NEW
+            </button>
+          </td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(238, 232, 253, 0.42)">
+          <td>
+            Student community
+            <button mat-raised-button style="margin-left: 5px; background-color: #ad3959; color: white">
+              IMPROVED
+            </button>
+          </td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(201, 193, 234, 0.42); width: 200px">
+          <td>CAREER SERVICES</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr style="background-color: rgba(238, 233, 252, 0.42)">
+          <td>Resume support</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(239, 235, 250, 0.42)">
+          <td>Github review</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+        <tr style="background-color: rgba(239, 236, 248, 0.42)">
+          <td>Linkedin profile optimization</td>
+          <td></td>
+          <td>
+            <mat-icon style="color: darkorange; font-size: 30px">done</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="child">
+  <h1 style="padding-top: 90px; font-size: 40px">
+    Succeed with Personalized Services
+  </h1>
+  <h4 style="margin-bottom: 90px">
+    We provide services customized for your needs at every <br />
+    step of your learning journey to ensure your success!
+  </h4>
+
+  <div *ngIf="isClick; then one; else second"></div>
+
+  <div style="margin-left: 50px">
+    <h1 (click)="gochange()" #h1 class="btn" style="
+        box-shadow: 6px 3px 10px rgb(169, 177, 184);
+        width: 300px;
+        height: 90px;
+        border-radius: 25px;
+        background: rgb(241, 226, 248);
+        opacity: 0.85;
+      ">
+      <h1>
+        Experienced <br />
+        Project Reviewers
+      </h1>
+      <img id="im" src="assets/white.svg" style="width: 90px" />
+    </h1>
+    <br />
+    <br />
+    <h1 (click)="gosecond()" #h2 class="btn" style="
+        box-shadow: 6px 3px 10px rgb(192, 202, 211);
+        width: 300px;
+        height: 90px;
+        border-radius: 25px;
+        background: rgb(241, 226, 248);
+        opacity: 0.85;
+      ">
+      <h1>
+        Technical Mentor <br />
+        Support
+      </h1>
+      <img id="im" src="assets/white2.svg" style="width: 90px" />
+    </h1>
+    <div class="vl"></div>
+  </div>
+
+  <div id="change">
+    <br />
+    <br />
+    <ng-template #one>
+      <div style="width: 50%; float: right">
+        <div>
+          <h1 style="margin-right: 400px; opacity: 0.8">
+            Get timely feedback on your projects
+          </h1>
+          <p style="
+              color: darkorange;
+              margin-right: 500px;
+              font-size: 20px;
+              opacity: 0.75;
+            ">
+            REVIEWS BY THE NUMBERS
+          </p>
+          <div style="display: flex; align-content: space-between">
+            <h1 style="margin-right: 150px; opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">1.400+</span>
+              project reviewers
+            </h1>
+            <h1 style="opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">
+                2.7M </span>project reviewed
+            </h1>
+          </div>
+          <div style="display: flex; padding-right: 50px">
+            <h1 style="margin-right: 150px; opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">88/100</span>
+              reviewer rating
+            </h1>
+            <h1 style="opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">1.1 hours</span>
+              avg project review <br style="margin-right: 150px" />
+              turnaround time
+            </h1>
+          </div>
+          <div>
+            <p style="
+                color: darkorange;
+                margin-right: 500px;
+                font-size: 18px;
+                opacity: 0.75;
+              ">
+              REVIEWER SERVICES
+            </p>
+            <div style="
+                background-color: white;
+                width: 600px;
+                height: 170px;
+                padding-top: 50px;
+                font-size: 20px;
+                opacity: 0.7;
+              ">
+              <ul>
+                <li style="color: darkorange">
+                  <span style="color: black; margin-left: -310px">
+                    Personalized feedback</span>
+                </li>
+                <li style="color: darkorange">
+                  <span style="color: black; margin-right: 130px">Unlimited submissions and feedback loops</span>
+                </li>
+                <li style="color: darkorange">
+                  <span style="color: black; margin-right: 150px">
+                    Practical tips and industry best practices</span>
+                </li>
+                <li style="color: darkorange">
+                  <span style="color: black; margin-right: 130px">
+                    Additional suggested resources to improve</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #second>
+      <div style="width: 50%; float: right">
+        <div>
+          <h1 style="margin-right: 300px; opacity: 0.8">
+            Mentors available to answer your questions
+          </h1>
+          <p style="
+              color: darkorange;
+              margin-right: 500px;
+              font-size: 18px;
+              opacity: 0.75;
+            ">
+            MENTORS BY THE NUMBERS
+          </p>
+          <div style="display: flex">
+            <h1 style="margin-right: 150px; opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">1,400+
+              </span>
+              technical mentors
+            </h1>
+            <h1 style="opacity: 0.75">
+              <span style="text-decoration: darkorange underline; font-weight: bold">
+                0.85 hours
+              </span>
+              median response time
+            </h1>
+          </div>
+        </div>
+        <div style="margin-top: 150px">
+          <p style="
+              color: darkorange;
+              margin-right: 500px;
+              font-size: 18px;
+              opacity: 0.75;
+            ">
+            MENTORSHIP SERVICES
+          </p>
+          <div style="
+              background-color: white;
+              width: 650px;
+              height: 130px;
+              padding-top: 50px;
+              font-size: 18px;
+              opacity: 0.7;
+            ">
+            <ul>
+              <li style="color: darkorange">
+                <span style="color: black; margin-right: 260px">
+                  Support for all your technical questions</span>
+              </li>
+              <li style="color: darkorange">
+                <span style="color: black; margin-right: 110px">Questions answered quickly by our team of technical
+                  mentors</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+
+
+<section style="text-align: center; padding: 40px 40px 40px 0px">
+  <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
+  <div class="stories">
+      <div *ngFor = "let instractor of InstractorAndMentor">
+          <span *ngIf="instractor.showOrNot == 1">
+              <mat-card class="boxStory" > 
+                  <img src="assets/Sundar.webp" alt="error" style="margin: -50px 0px 20px 0px;" height="90px" width="90px"><br>
+                  <mat-label style="font-weight: bold;" >{{instractor.fullName}}</mat-label><br>
+                  <mat-label style="color: grey;" class="titleData">{{instractor.memberType}}</mat-label> <br>
+                  <mat-label >{{instractor.specialzation}}</mat-label><br><br>
+                  <mat-label>{{instractor.story}}</mat-label>
+              </mat-card>
+          </span>
+      </div>
+  </div>
+</section> 
+
+
+
+
+<section class="reviews">
+  <mat-label class="reviewsTitel">Top Student Reviews</mat-label><br>
+  <div class="reviewsPart">
+      <div *ngFor="let review of Reviews"> 
+          <mat-card class="eachReview">
+              <mat-label class="reviewName">{{review.fullName}}</mat-label><br><br>
+              <mat-label>{{review.stdReviews}}</mat-label>
+          </mat-card>
+      </div>
+  </div>
+</section>
+
+<section style="text-align: center; padding: 45px 45px 45px 170px;">
+  <mat-label class="suggestCoursesTitel">Related Nanodegree Programs</mat-label>
+  <div class="suggestCoursesPart">
+      <div *ngFor="let course of twoCoursesSuggest">
+          <mat-card class="suggestCourse">
+              <mat-label style="font-weight: 100; font-size: xx-large;">{{course.name}}</mat-label><br><br>
+              <mat-label style="line-height: 22px; ">{{course.description}}</mat-label>
+          </mat-card>
+      </div>
+  </div>
+</section>
+
+<section class="Questions">
+  <h1 style="font-size: 35px; font-weight: 300; opacity: 0.75; margin-top: 90px">
+    Frequently Asked Questions
+  </h1>
+  <h5 style="
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.5;
+      margin-top: 20px;
+    ">
+    PROGRAM OVERVIEW - WHY SHOULD I TAKE THIS PROGRAM?
+  </h5>
+
+  <h1 style="opacity: 0.85">Why should I enroll?</h1>
+  <div style="font-size: 15px; opacity: 0.85">
+    <p>
+      Businesses everywhere are mobilizing to create and implement the AI
+      strategies that will transform industries in
+    </p>
+    <p>
+      coming years, and they need engineers to do it. Data from LinkedIn
+      indicates that AI specialists are among the most
+    </p>
+    <p>
+      sought after roles that companies are looking for, with a 74 percent
+      annual growth rate in hiring over the last four years.
+    </p>
+    <p>
+      To stay in-demand at companies on the cutting edge of technology,
+      engineers should prioritize developing their machine learning skill
+      set.<br /><br />
+    </p>
+    <div *ngIf="isClosed; then name"></div>
+    <h1 (click)="close()" style="
+        text-transform: uppercase;
+        color: #03607a;
+        cursor: pointer;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 500;
+      ">
+      {{ text }}
+    </h1>
+    <ng-template #name>
+      <p>
+        The Machine Learning Engineer for Microsoft Azure Nanodegree Program,
+        built in collaboration with Microsoft, offers
+      </p>
+      <p>
+        you the chance to build the practitioner-level skills that companies
+        across industries need. In the program, you’ll
+      </p>
+      <p>
+        strengthen your machine learning skills by training, validating, and
+        evaluating models using Azure Machine Learning,
+      </p>
+      <p>
+        and complete a series of three real-world projects to add to your
+        portfolio.
+      </p>
+
+      <hr />
+
+      <h1 style="color: black">What jobs will this program prepare me for?</h1>
+      <!-- <div style="opacity: .85;"> -->
+      <p>
+        Students in the program will learn about machine learning algorithms and
+        crucial deployment techniques, and will be
+      </p>
+      <p>
+        equipped to fill roles at companies seeking machine learning engineers
+        and AI specialists. These skills can also be
+      </p>
+      <p>
+        applied in roles at companies that are looking for data scientists to
+        introduce machine learning techniques into their
+      </p>
+      <p>organization.</p>
+      <!-- </div> -->
+    </ng-template>
+  </div>
+</section>
+

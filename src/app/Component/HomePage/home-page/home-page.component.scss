@@ -49,11 +49,18 @@
       flex-direction: row;
       overflow: hidden;
       outline: none;
+    //   margin-right: 50px;
+    //   padding: 100px;
+    
    }
    .course{
        width: 239px;
        height: 310px;
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       box-shadow: 0 4px 4px  rgba(133, 132, 132, 0.2);
+    //    padding-left: 3px;
+       margin-bottom: 50px;
+    //    margin-left: 30px;
+    
        }
    .titleCourse{
       font-weight: bold;
@@ -77,6 +84,8 @@
       margin-right: 10px;
       text-align: center;
       padding: 30px;
+      border-top-color: #02b3e4;
+      border-top-color: coral;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-top: 4px solid ;
       border-radius: 7px;

@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { FooterComponent } from './Layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryComponent } from './Component/category/category.component';
+import { CourseComponent } from './Component/course/course.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     SigINComponent,
     HomePageComponent,
     FooterComponent,
+<<<<<<< HEAD
+=======
+    CategoryComponent,
+    CourseComponent
+>>>>>>> ed078b53e35c27c38cbab604588b0af22ec2d5d4
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
