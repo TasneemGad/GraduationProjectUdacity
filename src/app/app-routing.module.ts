@@ -12,14 +12,13 @@ const routes: Routes = [
   {path:'Home', component: HomePageComponent},
   {path:'SignUP', component: SignUpComponent},
   {path:'SignIn', component: SigINComponent},
-<<<<<<< HEAD
+
   {path:'ClassRoom',component: ClassRoomComponent},
-=======
+
   {path:'',redirectTo:'/Home',pathMatch:'full'},
   {path:'school-of/:name',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
   {path:'Lecture/:lid', component:CourseComponent},
->>>>>>> ed078b53e35c27c38cbab604588b0af22ec2d5d4
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
 

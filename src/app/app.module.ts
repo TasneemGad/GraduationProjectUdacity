@@ -24,11 +24,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SigINComponent,
     HomePageComponent,
     FooterComponent,
-<<<<<<< HEAD
-=======
     CategoryComponent,
     CourseComponent
->>>>>>> ed078b53e35c27c38cbab604588b0af22ec2d5d4
   ],
   imports: [
     BrowserModule,
