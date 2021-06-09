@@ -116,7 +116,7 @@ this.getDataOfCurrentCategory();
   }
 
   goToCours(courseID:number){
-    this.router.navigate(["/test-category",courseID]);
+    this.router.navigate(["/Course",courseID]);
   }
 
   getSubCategory()

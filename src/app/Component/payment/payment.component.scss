@@ -1,0 +1,46 @@
+.home{
+    background-color: rgb(251, 251, 251);
+}
+.nav{
+    justify-content: center;
+    background-color: white; 
+    font-size: x-large;   
+    border: 1px solid white;
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+.data{
+    margin: 0 auto;
+    width: 45%;
+    text-align: center;
+    padding: 50px 0px 50px 0px;     
+}
+.Titel{
+    font-size: x-large;
+    font-weight: bold;
+}
+.subTitel{
+    font-size: large;
+    font-weight: 500;
+}
+.label{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+}
+.input{
+    height: 45px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 15px;
+}
+.btnCheckout{
+    font-size: 12px;
+    background-color: #017a9b;
+    height: 50px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    margin-right: 65%;
+}
