@@ -96,8 +96,7 @@ header .overlay {
   background-color: rgb(236, 230, 238);
   border: 2px solid rgb(202, 202, 202);
 }
-#details
-{
+#details{
   // display: flex;
   // align-items: stretch;
   display: block;
@@ -124,8 +123,7 @@ header .overlay {
   margin-left: -90px;
   top: -300px;
 }
-#all
-{
+#all{
   padding-top: 50px;
   display: flex;
   // align-items: stretch;
@@ -134,8 +132,7 @@ header .overlay {
 
 }
 
-.Questions
-{
+.Questions{
   margin-left: 170px;
 }
 .programParts{
@@ -236,4 +233,24 @@ header .overlay {
   float: right;
   margin: -150px 50px 0px 0px ;
   background-color: rgb(251, 251, 251);
+}
+.price{
+  background-image: url('/assets/canonical-degree-pricing-bg.jpg');
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.subtitle{
+ 
+  top: 50%;
+  margin-left: 800px;
+ 
+}
+.subtitle-one{
+  top: 70%;
+  margin-left: 800px;
+}
+.subtitle-two{
+  top: 50%;
+  margin-left: 200px;
 }

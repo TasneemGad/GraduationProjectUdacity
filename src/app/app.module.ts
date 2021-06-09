@@ -25,7 +25,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HomePageComponent,
     FooterComponent,
     CategoryComponent,
-    CourseComponent
+    CourseComponent,
   ],
   imports: [
     BrowserModule,
