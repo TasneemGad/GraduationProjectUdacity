@@ -28,11 +28,8 @@ import { PaymentComponent } from './Component/payment/payment.component';
     FooterComponent,
     CategoryComponent,
     CourseComponent,
-<<<<<<< HEAD
-=======
     OrderDetailsComponent,
     PaymentComponent
->>>>>>> c87d705508289082c097a13179664b13e7ba7216
   ],
   imports: [
     BrowserModule,
