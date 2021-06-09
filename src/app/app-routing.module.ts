@@ -10,8 +10,8 @@ import {ClassRoomComponent} from './Component/User/class-room/class-room.compone
 
 const routes: Routes = [
   {path:'Home', component: HomePageComponent},
-  {path:'SignUP', component: SignUpComponent},
-  {path:'SignIn', component: SigINComponent},
+  {path:'SignUP', component: SigINComponent},
+  {path:'SignIn', component:SigINComponent},
 
   {path:'ClassRoom',component: ClassRoomComponent},
 
