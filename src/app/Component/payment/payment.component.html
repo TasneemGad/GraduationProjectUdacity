@@ -1,0 +1,44 @@
+<div class="home">
+    <mat-toolbar class="nav">
+        <img mat-card-md-image routerLink="/Home" class="udacity" src="assets/udacity.svg" style="width: 30px; height: 30px;  ">
+        <p mat-title style="margin: 30px;" routerLink="/Home" class="udacity">U D A C I T Y</p>
+    </mat-toolbar>
+    
+    <div class="data">
+        <mat-label style="font-size: medium; color: gray;"> <mat-label style="color: #017a9b;">Get Started > Order Details </mat-label><mat-label style="font-weight: bold; color: #017a9b;">> Payment Method ></mat-label>  Review Your Order</mat-label><br><br><br>
+        <mat-label class="Titel">Payment Method</mat-label><br><br>
+        <mat-label class="subTitel">Introduction to Programming Nanodegree</mat-label><br><br> 
+    
+        <form>
+            <div>
+                <div class="label"><mat-label>Cardholder Name</mat-label><br></div>
+                <input type="text" class="input">
+            </div><br>
+            <div>
+                <div  class="label"><mat-label>Billing Country</mat-label><br></div>
+                <select class="input">
+                    <option value="Egypt" selected>Egypt</option>
+                    <option value="canda">canda</option>
+                    <option value="US">US</option>
+                  </select>
+            </div><br>
+            <div  class="label"><mat-label>Credit Card</mat-label><br><br></div>
+            <div>
+                <div  class="label"><mat-label>Credit Card Number</mat-label><br></div>
+                <input type="text" class="input">
+            </div><br>
+            <div style="display: flex; margin: 0 auto;">
+                <div>
+                    <div  class="label"><mat-label>Expiry</mat-label><br></div>
+                    <input type="text" class="input" style="width: 295px;">
+                </div><br>
+                <div >
+                    <div  class="label" style="margin-left: 20px;"><mat-label>CVC</mat-label><br></div>
+                    <input type="text" class="input" style="width: 295px; margin-left: 20px;">
+                </div><br>
+            </div><br><br>
+            <button mat-raised-button color="primary" class="btnCheckout">CONTINUE WITH CHECKOUT</button>
+        </form>
+    
+    </div>
+</div>

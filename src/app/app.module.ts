@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryComponent } from './Component/category/category.component';
 import { CourseComponent } from './Component/course/course.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { OrderDetailsComponent } from './Component/order-details/order-details.component';
+import { PaymentComponent } from './Component/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HomePageComponent,
     FooterComponent,
     CategoryComponent,
-    CourseComponent
+    CourseComponent,
+    OrderDetailsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

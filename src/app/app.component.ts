@@ -24,8 +24,8 @@ export class AppComponent {
     (event: NavigationEvent) => {
       if(event instanceof NavigationStart) {
         this.currentUrl = event.url
-        console.log("f", this.currentUrl );
-        if(this.currentUrl === "/SignUP") 
+        console.log("url", this.currentUrl );
+        if(this.currentUrl === "/SignIn" || this.currentUrl ===  "/orderDetails" || this.currentUrl === "/payment") 
         {
           this.flag = false
         }

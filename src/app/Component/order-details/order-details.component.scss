@@ -1,0 +1,80 @@
+.home{
+    padding-bottom: 40px;
+}
+.nav{
+    justify-content: center;
+    background-color: white; 
+    font-size: x-large;   
+    border: 1px solid white;
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+.data{
+    margin: 0 auto;
+    width: 38%;
+    text-align: center;
+    padding: 50px 0px 50px 0px;     
+}
+.Titel{
+    font-size: x-large;
+    font-weight: bold;
+}
+.subTitel{
+    font-size: large;
+    font-weight: 500;
+}
+.duration{
+    font-size: medium;
+    font-weight: 500;
+}
+.details{
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.priceTitels{
+    float: left;
+}
+.prices{
+    text-align: right;
+}
+.toggel{
+    font-weight: bold;
+    color: #96a0aa;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.btnCode{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.btnCheckout{
+    font-size: 12px;
+    background-color: #017a9b;
+    height: 50px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+}
+.boxFactor{
+    background-color: rgb(226, 236, 240);
+    text-align: center;
+    padding: 30px;
+    width: 45%;
+    margin: 0 auto;
+}
+.boxFactorTitel{
+    font-weight: bold;
+    font-size: x-large;
+}
+.boxFactorSubTitel{
+    font-weight: bold;
+    font-size: larger;
+}
+.parts{
+    display: flex;
+    margin-top: 30px;
+}
+.textFactor{
+    // text-align-last: justify;
+    margin-left: 10px;
+    font-size: 16px;
+}
