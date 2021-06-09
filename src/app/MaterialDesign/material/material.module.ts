@@ -9,7 +9,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
-
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
   MatIconModule,
