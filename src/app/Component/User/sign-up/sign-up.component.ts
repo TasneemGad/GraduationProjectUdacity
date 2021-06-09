@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
   signUpUser(user: ILogin) {
     this.signUpService.SignUp(user).subscribe( data => {
       console.log("success")
-      this.router.navigate(['/SignIn']);
+      this.router.navigate(['/ClassRoom']);
       this.isSuccessful = true;
       this.isSignUpFailed = false;
       },err=>{

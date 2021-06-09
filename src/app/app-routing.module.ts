@@ -13,7 +13,12 @@ import { PaymentComponent } from './Component/payment/payment.component';
 const routes: Routes = [
   {path:'Home', component: HomePageComponent},
   {path:'SignUP', component: SigINComponent},
+<<<<<<< HEAD
   {path:'SignIn', component: SigINComponent},
+=======
+  {path:'SignIn', component:SigINComponent},
+
+>>>>>>> b72c3f96f5c1d46f81ad22523a91fdb16b1695a8
   {path:'ClassRoom',component: ClassRoomComponent},
   {path:'',redirectTo:'/Home',pathMatch:'full'},
   {path:'school-of/:name',component:CategoryComponent},
