@@ -13,6 +13,7 @@
             </div>
         </div>
     </div>
+    <!--Return cat with Name -->
     <div style="float: right; width: 53%; margin-right: -345px;">
         <div *ngFor = "let category of Categoies" >
             <div *ngIf="currentCategoryName == category.catName">
@@ -23,7 +24,7 @@
 </div>
 
 <!-- ----------------------------------------------- -->
-
+<!-- ReturnAll Courses by Cat id -->
 <section style="padding: 60px 90px 30px 90px;">
     <mat-label style="font-size: xx-large; opacity: .7;">Programs Starting Soon</mat-label><br><br><br>
     <div *ngFor="let course of currentCourses">
@@ -46,6 +47,7 @@
     <mat-label style="font-size: xx-large; font-weight: 100px; opacity: .8; margin-left:90px;">Your path to the right job</mat-label>
     <section style="padding: 90px; display: flex;" >
         <section>
+            <!--Sub Category List-->
             <div *ngFor="let sub of subCategory" style="margin: 20px;">
                 <div *ngIf="sub.categoryID == currentCategoryID">
                     <mat-label style=" color: gray; font-weight: bold; font-size: large; " (click)="getCoursesBySubCategory(sub.id)">{{sub.subCategoryTitle}}</mat-label>

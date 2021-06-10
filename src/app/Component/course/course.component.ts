@@ -27,7 +27,7 @@ Isdetails:boolean=false
    lectureAllList:Lectures[]=[]
    idUrl:any
    idUrlLecture:any
-   InstractorAndMentor : IMonterOrInstractor[] = []
+   InstsList : IMonterOrInstractor[] = []
    Reviews:IReviews[] = []
    Error:string
    twoCoursesSuggest:ICourse[] = []
@@ -94,10 +94,10 @@ getLectureses(){
 
 getInstractor()
 {      
-  this.instractorService.getInstractor().subscribe(
+  this.instractorService.getTopFourInstracor().subscribe(
     data=>
     {
-      this.InstractorAndMentor = data;
+      this.InstsList = data;
       console.log("instractor",data)
     },
     Wrong=>
@@ -107,9 +107,11 @@ getInstractor()
   )
 }
 
+
+
 getReviews()
 {      
-  this.reviewsService.getReviews().subscribe(
+  this.reviewsService.getTopReviews().subscribe(
     data=>
     {
       this.Reviews = data;
