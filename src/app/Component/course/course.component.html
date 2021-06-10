@@ -611,16 +611,14 @@
 <section style="text-align: center; padding: 40px 40px 40px 0px">
   <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
   <div class="stories">
-      <div *ngFor = "let instractor of InstractorAndMentor">
-          <span *ngIf="instractor.showOrNot == 1">
+      <div *ngFor = "let instractor of InstsList">          
               <mat-card class="boxStory" > 
                   <img src="assets/Sundar.webp" alt="error" style="margin: -50px 0px 20px 0px;" height="90px" width="90px"><br>
                   <mat-label style="font-weight: bold;" >{{instractor.fullName}}</mat-label><br>
                   <mat-label style="color: grey;" class="titleData">{{instractor.memberType}}</mat-label> <br>
                   <mat-label >{{instractor.specialzation}}</mat-label><br><br>
                   <mat-label>{{instractor.story}}</mat-label>
-              </mat-card>
-          </span>
+              </mat-card>          
       </div>
   </div>
 </section> 
@@ -631,10 +629,17 @@
 <section class="reviews">
   <mat-label class="reviewsTitel">Top Student Reviews</mat-label><br>
   <div class="reviewsPart">
-      <div *ngFor="let review of Reviews"> 
-          <mat-card class="eachReview">
-              <mat-label class="reviewName">{{review.fullName}}</mat-label><br><br>
-              <mat-label>{{review.stdReviews}}</mat-label>
+      <div *ngFor="let review of Reviews" > 
+          <mat-card class="eachReview dataOfObjective"  >
+              <mat-label class="reviewName">{{review.fullName}} 
+                <br>
+                <span>
+                  <p>{{(review.rate)}}</p>
+                  <!-- <star-rating-comp ></star-rating-comp> -->
+                  <img src="/assets/Filled_star.png">
+                </span> 
+             </mat-label><br><br>
+              <mat-card-content>{{review.stdReviews}}</mat-card-content>
           </mat-card>
       </div>
   </div>
