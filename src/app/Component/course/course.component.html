@@ -27,6 +27,10 @@
               font-size: 15px;
               letter-spacing: 2px;
               font-weight: bold;
+              display:inline-block;
+              overflow: auto;
+              white-space: nowrap;  
+              
             ">
             Download Syllabus
           </button>
@@ -150,7 +154,10 @@
     </h1>
     <button mat-raised-button style="
         background-color: #657482;
-        margin-left: 700px;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin:0px auto;
         font-size: 20px;
         color: white;
         padding: 5px;
@@ -232,9 +239,10 @@
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
                 <!-- <div class="vl1"></div > -->
-                <div *ngFor="let i of lectureList">
-                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
-                  <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
+                <div *ngFor="let lecture of lectureList">
+                  <span>fffffffffffffffffffff{{lecture}}</span>
+                  <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
+                  <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
                 </div>
               </mat-card-subtitle>
               <mat-card class="boxCouse1">
@@ -432,7 +440,7 @@
 
   <div *ngIf="isClick; then one; else second"></div>
 
-  <div style="margin-left: 50px">
+  <div >
     <h1 (click)="gochange()" #h1 class="btn" style="
         box-shadow: 6px 3px 10px rgb(169, 177, 184);
         width: 300px;
