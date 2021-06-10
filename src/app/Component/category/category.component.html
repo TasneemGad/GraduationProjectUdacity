@@ -1,7 +1,7 @@
 <div class="introCategory">
     <div style="float: left;">
         <div *ngFor = "let category of Categoies" >
-            <div *ngIf="currentCategoryName == category.catName">
+            <div *ngIf="currentCategoryName == category.id">
                 <p  style=" color: rgb(19, 119, 158); padding-top: 70px; margin-left: 90px;">THE  SCHOOL  OF</p>
                 <div style="display: flex; ">
                         <img src="../../assets/categoryFlag.jpg" style="margin: -30px 50px 0px 0px;"  width="60px" height="60px" alt="error" class="dataCat" >
@@ -15,7 +15,7 @@
     </div>
     <div style="float: right; width: 53%; margin-right: -345px;">
         <div *ngFor = "let category of Categoies" >
-            <div *ngIf="currentCategoryName == category.catName">
+            <div *ngIf="currentCategoryName == category.id">
                     <img src="{{category.catImage}}"  width="630px" height="450px"> 
             </div>
         </div>
@@ -67,21 +67,17 @@
             </div>
         </section>
         <section class="story">
-            <mat-label>ALUMNI SUCCESS</mat-label><br><br>
-            <img src="../../assets/1.PNG" alt="error" width="110px" height="150px" ><br><br>
-            <!-- <img src="{{studentStories.image}}" alt="error" width="150px" height="200px" > -->
-            <!-- <mat-label>{{Name}}</mat-label> -->
-    <!-- Question         -->
-            <!-- <mat-label>{{studentStories.story}}</mat-label><br><br> -->
-            <!-- <mat-label> Graduate of the {{studentStories.specialzation}}</mat-label> -->
-            <div >
-                <div *ngFor="let std of stories">
+              <div *ngFor="let std of stories">
+           
                     <div *ngIf="std.specialzation === currentSubName">
-                        <p >{{std.story}}</p><br><br> 
+            <img src="../../assets/1.PNG" alt="error" width="110px" height="150px" ><br><br>
+            <mat-label>ALUMNI SUCCESS</mat-label><br><br>
+                        <p >{{std.story}}</p>
+                        <br><br> 
                         <mat-label> Graduate of the {{std.specialzation}}</mat-label>
-                    </div>
+                        <br><br><br><br> </div>
                 </div>
-            </div>
+        
         </section>
     </section>
 </section>
@@ -150,7 +146,11 @@
     <mat-label class="freePartTitel">Free Courses</mat-label>
     <div class="coursesFree">
         <div *ngFor="let crs of freeCourses" >
-            <mat-label class="corsesFreeName">{{crs.name}}</mat-label>
+            <!-- <mat-label class="corsesFreeName">{{crs.name}}</mat-label> -->
+            <a href="Course/{{crs.id}}" >
+                {{crs.name}}
+            </a>
+             
         </div>
     </div>
 </section>

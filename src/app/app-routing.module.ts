@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'SignUP', component: SigINComponent},
   {path:'SignIn', component: SigINComponent},
   {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:name',component:CategoryComponent},
+  {path:'school-of/:id',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
   {path:'Lecture/:lid', component:CourseComponent},
   {path:'orderDetails', component: OrderDetailsComponent},
