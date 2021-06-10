@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'school-of/:id',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
   {path:'Lecture/:lid', component:CourseComponent},
-  {path:'orderDetails', component: OrderDetailsComponent},
+  {path:'orderDetails/:id', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

@@ -757,10 +757,10 @@
           <mat-card-subtitle style="color: #03607a;font-size: 15px;margin-left:10px;"> {{courseList.duration }} MONTHS ACCESS</mat-card-subtitle>
           <mat-card-title style="color: #03607a; font-size: 35px;letter-spacing: 3px;font-weight: 200;line-height: 50px;">EGP {{courseList.price}}</mat-card-title>
         <mat-card-subtitle style="font-size: 15px;color: black;line-height: 20px;">EGP 1380 per month</mat-card-subtitle>
-        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 50px;margin-left: 15px;">75% OFF COUPON APPLIED</mat-card-title>
+        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 50px;margin-left: 15px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
-          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails">Enroll Now</button>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails/{{courseList.id}}">Enroll Now</button>
         </mat-card-actions>
         <mat-card-subtitle style="font-size: 15px;font-weight: 200;width: 330px;margin-left: 15px;">Start learning today! Switch to the monthly price afterwards if more time is needed.</mat-card-subtitle>
       </mat-card>
@@ -774,7 +774,7 @@
           
               EGP {{courseList.price}}<h5 style="font-size: 15px;color: black;margin-top: -45px;margin-left: 200px;line-height: 40px;">per month</h5></div>
           </mat-card-title>
-        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">75% OFF COUPON APPLIED</mat-card-title>
+        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
           <button mat-raised-button style="margin-left: 50px; margin-top: 5px;background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;" routerLink="/">Enroll Now</button>

@@ -11,20 +11,20 @@
        <div style="margin-top: 20px;">
             <div class="details">
                 <mat-label class="priceTitels" >Base Price</mat-label>
-            <div class="prices"><mat-label >25,996 EGP</mat-label></div>
+            <div class="prices"><mat-label >{{courseList.price}} EGP</mat-label></div>
             </div>
             <div class="details">
                 <mat-label class="priceTitels" >Bundle Discount</mat-label>
-                <div class="prices" style="color: #ff5483;"><mat-label >-ج.م3,920 EGP</mat-label></div>
+                <div class="prices" style="color: #ff5483;"><mat-label >{{courseList.discount}}% </mat-label></div>
             </div>
             <div class="details">
                 <mat-label class="priceTitels" >Coupon Discount</mat-label>
-                <div class="prices" style="color: #ff5483;"><mat-label>-ج.م16,557 EGP</mat-label></div>
+                <div class="prices" style="color: #ff5483;"><mat-label>0.0 EGP</mat-label></div>
             </div>
             <br><hr><br>
             <div class="details">
                 <mat-label class="priceTitels" >Total</mat-label>
-                <div class="prices" ><mat-label>5,519 EGP</mat-label></div>
+                <div class="prices" ><mat-label>{{total}} EGP</mat-label></div>
             </div>
        </div>
     
