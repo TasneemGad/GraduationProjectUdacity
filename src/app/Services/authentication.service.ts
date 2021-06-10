@@ -11,6 +11,7 @@ export class AuthenticationService {
     key:any;
     private userSubject: BehaviorSubject<ILogin>;
     public user: Observable<ILogin>;
+    userN: any;
     constructor(
         private router: Router,
         private http: HttpClient
@@ -23,11 +24,15 @@ export class AuthenticationService {
     public get userValue(): ILogin {
         return this.userSubject.value;
     }
-
+    
+   
     login(username: string, PasswordHash: string) {
         return this.http.post<any>(`${this.apiUrl}/Login`, { username, PasswordHash })
             .pipe(map(res => {
                 this.setSession(res);
+                this.userSubject.forEach(el=>{
+                   console.log(el.UserName)
+                });
             }));
     }
 

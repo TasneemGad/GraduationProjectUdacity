@@ -3,4 +3,6 @@ export interface IStudentStory{
     specialzation:string
     story:string
     showOrNot:number
+    categoryId:number
+    studentId:string
 }
