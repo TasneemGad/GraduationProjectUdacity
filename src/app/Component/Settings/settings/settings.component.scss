@@ -1,8 +1,9 @@
 #nav{
     background-color: white;
     box-shadow:2px 4px 15px rgb(185, 184, 184);
-    width: auto;height: 50px;
-    padding-top: 20px;
+    width: auto;
+    height: 50px;
+    padding-top: 2.5%;
     padding-left: 40px;
     margin-left: -20px;
     margin-top: -20px;
@@ -14,10 +15,49 @@
 }
 
 h2 { color:black;}
-// a:visited {background-color: indigo; }
-h2:focus { background-color: rgb(1, 61, 1);
+h2 a:visited {background-color: indigo; }
+h2:focus { background-color: rgb(0, 97, 0);
     width: 200px;color: white;
-    font-size: 15px;
+    font-size: 20px;
     text-align: center;
     height: 40px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    padding-top: 2px;
+ }
+
+ mat-sidenav-container{
+    height: 100%;
+    
+}
+mat-icon{
+    margin-top: 20px;
+    // margin-left: px;
+}
+mat-sidenav{
+    background-color:#001d25;
+    width: 4.5%;
+    color: white;
+    height: 100%;
+    position: fixed;
+    padding: 13px;
+}
+.tabs{
+    padding: 16px;
+    width: 70%;
+    // border:1px solid black;
+
+}
+#one ,#two ,#three ,#four ,#five{
+    line-height: 20px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+.iconBtn{
+    position: absolute;
+    bottom: 0;
+}
+
+
+

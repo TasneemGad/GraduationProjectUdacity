@@ -1,18 +1,68 @@
-<h1 id="nav">Settings</h1>
+<!-- <app-class-room></app-class-room> -->
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg"
+            style="width: 30px;height: 50px;cursor: pointer;">
+      
+         <div routerLink="/Home">
+           
+           <h1 id="one">
+            <mat-icon>home</mat-icon >
+            Home
+           </h1>
+        </div>
 
-
-<h1 style="font-size: 20px;padding-left: 110px;">ACCOUNT</h1>
-<h2 class="info" #style routerLink="/Personal_Information" >Personal Information  
-    
-   
-
-</h2>
-<h2  class="info" routerLink="/newPassword">Password</h2>
-<h2  class="info" routerLink="/Notification">Notifications</h2>
-<h2  class="info">Linked Account</h2>
-<h2  class="info">Language Preference</h2>
-
-
-
+        <div routerLink="/Home">
+        <h1 routerLink="/Home" id="two">
+            <mat-icon>support</mat-icon>Help
+        </h1>
+        </div>
+        <div routerLink="/Home">
+        <h1 routerLink="/Home" id="three">
+            <mat-icon>explore</mat-icon>Catalog
+        </h1>
+        </div>
+        <div class="iconBtn" >
+        <div routerLink="/Setting"   >
+        <h1 routerLink="/Setting" id="four">
+            <mat-icon>settings</mat-icon>Setting
+        </h1>
+        </div>
+        <div routerLink="/Home"   >
+        <h1 routerLink="/Home" id="five">
+            <mat-icon>logout</mat-icon>Logout
+        </h1>
+        </div>
+    </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    <h1 id="nav">Settings</h1>
+   <div style="display: flex;">
+    <div class="tabs">      
+        
+          <h1 style="font-size: 20px;padding-left: 110px;">ACCOUNT</h1>
+        <h2  class="info" #style (click)="getUrl('personalInformation ')">Personal Information</h2>
+        <h2  class="info"  (click)="getUrl('newPassword')">Password</h2>
+        <h2  class="info"  (click)="getUrl('Notifications')">Notifications</h2>
+        <h2  class="info" (click)="getUrl('linkedAccount')">Linked Account</h2>
+        <h2  class="info" (click)="getUrl('languagePreference')">Language Preference</h2>
+    </div>
+     <!-- <div *ngIf=" Url=='newPassword'; then password      Url=='Notifications';  then notifications " >
+         
+    </div> -->
+    <div style="width: 50%;"  >
+    <ng-template #password>
+        <app-new-password></app-new-password>
+    </ng-template>
+    <ng-template #notifications>
+        <!-- <app-notifications></app-notifications> -->
+    </ng-template>
+    <ng-template #information>
+      <app-personal-information></app-personal-information>
+    </ng-template>
+    </div> 
+    </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>
 
   
