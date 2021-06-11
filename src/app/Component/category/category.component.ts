@@ -15,6 +15,7 @@ import { IStudentStory } from 'src/app/SharedModels/Interface/IStudentStory';
 import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
+import { filter, first, take } from 'rxjs/operators';
 
 
 @Component({
@@ -191,17 +192,6 @@ this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
         this.Error = Wrong
       }      
     )
-
-    // this.coursesBySubCategory = []
-    // for(let crs of this.Courses)
-    // {
-    //   // if(  crs.categoryId == this.currentCategoryID)
-    //   if(crs.subCategoryId == this.defultSubID) 
-    //   {
-    //     this.coursesBySubCategory.push(crs) 
-    //     console.log("defult",this.coursesBySubCategory)
-    //   }
-    // }
   }
 
 
@@ -225,34 +215,26 @@ this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
         this.currentSubName = this.currentSubCategory.subCategoryTitle
         this.currentSubDescription = this.currentSubCategory.subCategoryDescribtion
         console.log("s2",sub)      
-          this.getStories(this.currentSubName)
+         
 
         console.log("curNammmmmm",this.currentSubName)  
       }
     }
-  
+   this.getStories()
   }
 
-  getStories(curr:string)
+  getStories()
   {      
-    this.StudentStoriesService.getStudentStory().subscribe(
+    this.StudentStoriesService.getTopStudentStories(this.currentCategoryName).pipe(first()).subscribe(
       data=>
       {
-        console.log("coursehbbhjb",data)
-        this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
-          { 
-        for (let std of data)
-        {
-          console.log("coursehbcattttttttttttt",std.categoryId)
-          console.log("coursehbcattttttttttttt",std.specialzation)
-           if(std.categoryId === el.id)
-           {
-                 this.stories = data 
-                 console.log("story", this.stories)
-           }
+       
+             console.log("story", this.stories)
+             this.stories=data;
+           
         }
-      })
-      },
+      
+      ,
       Wrong=>
       {
         this.Error = Wrong

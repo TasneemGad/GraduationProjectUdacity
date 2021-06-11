@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { PaymentService } from 'src/app/Services/Payment.service';
+import { ICountry } from 'src/app/SharedModels/Interface/ICountry';
 import { IPayment } from 'src/app/SharedModels/Interface/IPayment';
+import { CountryService } from 'src/app/Services/Country.service';
+
 
 @Component({
   selector: 'app-payment',
@@ -13,16 +16,18 @@ import { IPayment } from 'src/app/SharedModels/Interface/IPayment';
 })
 export class PaymentComponent implements OnInit {
 
+  Country:ICountry[]=[];
   paymentForm: FormGroup;
   errMsg: string;
   get formFields() { return this.paymentForm.controls; }
   constructor( private _formBuilder: FormBuilder, 
     private _paymentService: PaymentService,
-    private _router: Router,private auth:AuthenticationService) {
+    private _router: Router,private auth:AuthenticationService,public count:CountryService) {
    
    }
    ngOnInit(): void {
- 
+   this.count.getAllCountry( )
+   console.log(this.count.getAllCountry());
     //bulid payment form
     this.paymentForm = this._formBuilder.group({
       cardOwnerName: ['', Validators.required],

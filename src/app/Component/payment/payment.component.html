@@ -16,11 +16,18 @@
             </div><br>
             <div>
                 <div  class="label"><mat-label>Billing Country</mat-label><br></div>
-                <select class="input">
+                <!-- <select class="input">
                     <option value="Egypt" selected>Egypt</option>
                     <option value="canda">canda</option>
                     <option value="US">US</option>
-                  </select>
+                  </select> -->
+                  <select class="input" required name="country">
+                          <option> choose Country</option>
+                          <option *ngFor="let item of count.countries" [value]="item.country_Name">
+                              {{item.country_Name}}
+                          </option>
+                      </select>
+                      
             </div><br>
             <div  class="label"><mat-label>Credit Card</mat-label><br><br></div>
             <div>
@@ -37,7 +44,7 @@
             <div style="display: flex; margin: 0 auto;">
                 <div>
                     <div  class="label"><mat-label>Expiry</mat-label><br></div>
-                    <input  class="input" style="width: 295px;" formControlName="ExperationDate" type="date"   name="ExperationDate" [class.is-invalid]="formFields.ExperationDate?.invalid && formFields.cardOwnerName?.touched">
+                    <input  class="input" style="width:710px;" formControlName="ExperationDate" type="date"   name="ExperationDate" [class.is-invalid]="formFields.ExperationDate?.invalid && formFields.cardOwnerName?.touched">
                    
                     <div *ngIf="formFields.ExperationDate?.invalid && formFields.ExperationDate?.touched">
                 <small class="text-danger" *ngIf="formFields.ExperationDate?.errors.required">Experation Date  is required</small>
@@ -51,9 +58,7 @@
                 </div><br>
                 <div >
                     <div  class="label" style="margin-left: 20px;"><mat-label>CVC</mat-label><br></div>
-                    <input type="text" class="input" style="width: 295px; margin-left: 20px;" formControlName="cvc" name="cvc"[class.is-invalid]="formFields.cvc?.invalid && formFields.cvc?.touched"
-                    
-                    >
+                    <input type="text" class="input"  formControlName="cvc" name="cvc"[class.is-invalid]="formFields.cvc?.invalid && formFields.cvc?.touched">
                     <div *ngIf="formFields.cvc?.invalid && formFields.cvc?.touched">
                         <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.required">CVC is required</small> 
                         <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.minlength">minmum length Length of 3 digits</small>
