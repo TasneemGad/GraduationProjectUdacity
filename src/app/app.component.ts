@@ -25,7 +25,7 @@ export class AppComponent {
       if(event instanceof NavigationStart) {
         this.currentUrl = event.url
         console.log("url", this.currentUrl );
-        if(this.currentUrl === "/SignIn" || this.currentUrl ===  "/orderDetails" || this.currentUrl === "/payment") 
+        if(this.currentUrl === "/SignIn" || this.currentUrl === "/SignUP" ||this.currentUrl ===  "/orderDetails" || this.currentUrl === "/payment"||this.currentUrl === "/ClassRoom"||this.currentUrl ===  "/Setting"||this.currentUrl  === "/Personal_Information"||this.currentUrl==="/newPassword" || this.currentUrl==="/Notification") 
         {
           this.flag = false
         }
@@ -34,4 +34,5 @@ export class AppComponent {
         }
       }
     });
-  }}
+  }
+}

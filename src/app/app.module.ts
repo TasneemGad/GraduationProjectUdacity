@@ -17,7 +17,11 @@ import { CourseComponent } from './Component/course/course.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
-import { NavComponent } from './nav/nav.component';
+import { ClassRoomComponent } from './Component/class-room/class-room.component';
+import { PersonalInformationComponent } from './Component/Settings/personal-information/personal-information.component';
+import { NewPasswordComponent } from './Component/Settings/new-password/new-password.component';
+import { NotificationsComponent } from './Component/Settings/notifications/notifications.component';
+import { SettingsComponent } from './Component/Settings/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { NavComponent } from './nav/nav.component';
     CourseComponent,
     OrderDetailsComponent,
     PaymentComponent,
-    NavComponent
+    ClassRoomComponent,
+    PersonalInformationComponent,
+    NewPasswordComponent,
+    NotificationsComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

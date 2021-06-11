@@ -1,0 +1,52 @@
+<div id="part1">
+<mat-card class="card">
+    <form #form>
+        <h1 style="margin-left: 60px;margin-top: 30px;">Basic Information</h1>
+    <img src="assets/i.png" >
+    <mat-card-header>
+        <mat-card-title>
+            <mat-form-field class="example-full-width">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput formControlName="name">
+              </mat-form-field>
+        </mat-card-title>
+      <mat-card-title>
+        <mat-form-field class="example-full-width">
+            <input type="text" matInput formControlName="Second" placeholder="Second">
+          </mat-form-field>
+      </mat-card-title>
+      <mat-card-title>
+         <mat-form-field class="example-full-width">
+        <input type="email" matInput formControlName="email" placeholder="Email">
+      </mat-form-field>
+      <button type="submit" mat-raised-button 
+    style="text-transform: uppercase;width: 150px;height: 50px;margin-top: -650px;"  [disabled]="form.invalid">
+        Verify Email 
+    </button>
+    </mat-card-title>
+    <mat-card-title>
+        <mat-form-field class="example-full-width">
+       <input type="tel" matInput formControlName="tel" placeholder="tel">
+     </mat-form-field>
+     <button type="submit" mat-raised-button 
+   style="text-transform: uppercase;width: 120px;height: 50px;margin-top: -150px;background-color: teal;color: white;"  [disabled]="form.invalid">
+    Send Code 
+   </button>
+   </mat-card-title>
+        </mat-card-header>
+        <mat-icon style="color:#ffae0c;">error_outline</mat-icon>
+<h3 style="margin-top:-30px ;margin-left: 30px;">email verification before SMS verification</h3>
+
+    </form>
+</mat-card>
+
+</div>
+<div id="two">
+    <button type="submit" mat-raised-button 
+    style="float: right;margin-top: 50px;margin-right: 470px;
+    background-color: #017a9b;color: white;margin-left: 30px;text-transform: uppercase;"  [disabled]="form.invalid">
+        Save
+    </button>
+    <button type="submit"  mat-raised-button style="float: right;text-transform: uppercase;margin-top: 50px;" >Cancel</button>
+
+    </div>

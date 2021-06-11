@@ -1,0 +1,23 @@
+#nav{
+    background-color: white;
+    box-shadow:2px 4px 15px rgb(185, 184, 184);
+    width: auto;height: 50px;
+    padding-top: 20px;
+    padding-left: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    font-size: 20px;
+}
+.info{
+    margin-left: 110px;
+    cursor: pointer;
+}
+
+h2 { color:black;}
+// a:visited {background-color: indigo; }
+h2:focus { background-color: rgb(1, 61, 1);
+    width: 200px;color: white;
+    font-size: 15px;
+    text-align: center;
+    height: 40px;
+    border-radius: 5px; }

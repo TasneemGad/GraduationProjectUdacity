@@ -1,8 +1,8 @@
 export interface IEnrollCourse {
     id:number;
-    StdID?: String
-    CourseID:number;
-    EnrollDate:String;
-    EndEnrollDate:string;
+    stdID?: String
+    courseID:number;
+    enrollDate:String;
+    endEnrollDate:string;
        
 }

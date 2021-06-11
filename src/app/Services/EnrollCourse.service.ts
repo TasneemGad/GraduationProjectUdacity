@@ -33,9 +33,9 @@ export class EnrollService {
    this.stdId=window.sessionStorage.getItem("auth-userID")
   if(this.stdId!=null)
   {
-    this.result =  this.stdId.substring(1, this.stdId.length-1);    
+       this.result =  this.stdId.substring(1, this.stdId.length-1);    
   }
-     this.http.get(API_URL+"?stdID="+this.result).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])     
+  return this.http.get(API_URL+"?stdID="+this.result).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])     
  }
  Unenroll(id:number){
    this.http.delete('http://localhost:44326/api/EnrollCourse/{id}/'+id).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])
@@ -43,10 +43,10 @@ export class EnrollService {
  }
   EnrollInCourse(courseid:number): Observable<any>
   {
-   this.newenroll.StdID= this.tokenUser.getUserId();
-   this.newenroll.CourseID=courseid;
-   this.newenroll.EnrollDate;
-   this.newenroll.EndEnrollDate;
+   this.newenroll.stdID= this.tokenUser.getUserId();
+   this.newenroll.courseID=courseid;
+   this.newenroll.enrollDate;
+   this.newenroll.endEnrollDate;
    console.log("--------------------")   
    console.log(this.newenroll)
 

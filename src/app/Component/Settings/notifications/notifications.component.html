@@ -1,0 +1,89 @@
+<div>
+<mat-card id="parent">
+    <mat-card-title id="title">Notification Preferences</mat-card-title>
+    <mat-card-subtitle id="sub">Configure your notification settings by checking the delivery method you prefer.
+         Uncheck the box if you do not wish to receive the notifications for that communication type. SMS notifications require a verified phone number. 
+        You may receive up to three messages per day and message rates may apply. Reply STOP to end.
+    </mat-card-subtitle>
+    <mat-card-content>
+        <mat-card class="card">
+            <img src="assets/i.png" width="90px" >
+            <mat-card-header>
+            <mat-card-title>Payment Reminders</mat-card-title>
+            <mat-card-subtitle id="msg">Send me messages for payment reminders.</mat-card-subtitle>
+            </mat-card-header>
+            <hr style="border-color: teal;">
+            <div id="part">
+            <mat-card-actions style="display: inline-flex; margin-left: 400px;margin-top: 15px;">
+                <mat-checkbox  [disabled]="true">SMS 
+            </mat-checkbox>
+            <mat-icon style="color:#ffae0c;font-size: 25px;margin-top: -3px;margin-left: 15px;">warning</mat-icon>
+
+            </mat-card-actions>
+            </div>
+        </mat-card>
+
+
+        <mat-card class="card">
+            <img src="assets/i1.png" width="90px" >
+            <mat-card-header>
+            <mat-card-title>Learning Progress</mat-card-title>
+            <mat-card-subtitle id="msg1" style="width: 500px;line-height: 40px;">Notify me with due date reminders, check-ins and more to help me stay on track of my learning goals.</mat-card-subtitle>
+            </mat-card-header>
+            <hr style="border-color: teal;">
+            <div id="part">
+            <mat-card-actions style="display: inline-flex; margin-left: 300px;margin-top: 15px;">
+            <mat-checkbox  [disabled]="true">Email</mat-checkbox>
+                <mat-checkbox style="margin-left: 10px; " [disabled]="true">SMS 
+            </mat-checkbox>
+            <mat-icon style="color:#ffae0c;font-size: 25px;margin-top: -2px;margin-left: 10px;">warning</mat-icon>
+            </mat-card-actions>
+            </div>
+        </mat-card>
+
+
+        <mat-card class="card">
+            <img src="assets/i2.png" width="90px" >
+            <mat-card-header>
+            <mat-card-title>Community</mat-card-title>
+            <mat-card-subtitle id="msg2">Send me personalized messages from my Community Manager about events and news in the field.</mat-card-subtitle>
+            </mat-card-header>
+            <hr style="border-color: teal;">
+            <div id="part" style="height: 100px;">
+                <mat-card-actions style="display: inline-flex; margin-left: 300px;margin-top: 15px;">
+                    <mat-checkbox  [disabled]="true">Email</mat-checkbox>
+                        <mat-checkbox style="margin-left: 10px; " [disabled]="true">SMS 
+                    </mat-checkbox>
+                    <mat-icon style="color:#ffae0c;font-size: 25px;margin-top: -2px;margin-left: 10px;">warning</mat-icon>
+                    </mat-card-actions>
+            </div>
+        </mat-card>
+
+        <mat-card class="card">
+            <img src="assets/i3.png" width="90px" >
+            <mat-card-header>
+            <mat-card-title>Alumni Services</mat-card-title>
+            <mat-card-subtitle id="msg4">Keep me connected with alumni support included in my Nanodegree program.
+                Opt-out of emails from our network of Talent Program employers by unsharing your Udacity Profile.</mat-card-subtitle>
+            </mat-card-header>
+            <hr style="border-color: teal;">
+            <div id="part">
+                <mat-card-actions style="display: inline-flex; margin-left: 300px;margin-top: 15px;">
+                <mat-checkbox  [disabled]="true">Email</mat-checkbox>
+                    <mat-checkbox style="margin-left: 10px; " [disabled]="true">SMS 
+                </mat-checkbox>
+                <mat-icon style="color:#ffae0c;font-size: 25px;margin-top: -2px;margin-left: 10px;">warning</mat-icon>
+                </mat-card-actions>
+                </div>
+        </mat-card>
+
+        <mat-card-actions>
+            <mat-checkbox style="font-size: 25px;font-weight: 400;line-height: 90px;margin-left:50px;" >Unsubscribe me from all Udacity email notifications</mat-checkbox>
+            <br>
+            <mat-checkbox style="font-size: 25px;font-weight: 400;margin-left: 50px;">Unsubscribe me from all Udacity SMS notifications</mat-checkbox>
+        </mat-card-actions>
+    </mat-card-content>
+   
+</mat-card>
+</div>
+
