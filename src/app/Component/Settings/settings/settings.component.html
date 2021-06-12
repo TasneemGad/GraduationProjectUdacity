@@ -39,30 +39,24 @@
     <h1 id="nav">Settings</h1>
    <div style="display: flex;">
     <div class="tabs">      
-        
-          <h1 style="font-size: 20px;padding-left: 110px;">ACCOUNT</h1>
-        <h2  class="info" #style (click)="getUrl('personalInformation ')">Personal Information</h2>
-        <h2  class="info"  (click)="getUrl('newPassword')">Password</h2>
-        <h2  class="info"  (click)="getUrl('Notifications')">Notifications</h2>
-        <h2  class="info" (click)="getUrl('linkedAccount')">Linked Account</h2>
-        <h2  class="info" (click)="getUrl('languagePreference')">Language Preference</h2>
+        <h1 style="font-size: 15px;padding-left: 110px;">ACCOUNT</h1>
+        <h2  class="info" #style (click)="GoToSettingPersonalInformation()">Personal Information</h2>
+        <h2  class="info"  (click)="GoToSettingPassword()">Password</h2>
+        <h2  class="info"  (click)="GoToSettingNotifications()">Notifications</h2>
+        <h2  class="info" (click)="GoToSettingLinkedAccount()">Linked Account</h2>
+        <h2  class="info" (click)="GoToSettingLanguagePreference()">Language Preference</h2>
+
+        <br><br>
+        <h1 style="font-size: 15px;padding-left: 110px;">ENROLLMENT</h1>
+        <h2  class="info" (click)="GoToSettingSubscriptions()">Subscriptions & Billing</h2>
+        <h2  class="info" (click)="GoToSettingCourses()">Courses</h2>
     </div>
-     <!-- <div *ngIf=" Url=='newPassword'; then password      Url=='Notifications';  then notifications " >
-         
-    </div> -->
+
     <div style="width: 50%;"  >
-    <ng-template #password>
-        <app-new-password></app-new-password>
-    </ng-template>
-    <ng-template #notifications>
-        <!-- <app-notifications></app-notifications> -->
-    </ng-template>
-    <ng-template #information>
-      <app-personal-information></app-personal-information>
-    </ng-template>
+        <router-outlet></router-outlet>
     </div> 
     </div>
         </mat-sidenav-content>
 </mat-sidenav-container>
 
-  
+

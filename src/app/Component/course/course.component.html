@@ -1,7 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 <section>
   <header>
     <div class="overlay"></div>
@@ -30,7 +42,7 @@
             ">
             Download Syllabus
           </button>
-          <button routerLink="/Course" mat-raised-button style="
+          <button mat-raised-button style="
               background-color: #03607a;
               color: white;
               width: 300px;
@@ -40,7 +52,7 @@
               text-decoration: none;
             ">
             Enroll Now
-        </button>
+          </button>
           <h1 style="margin-top: 90px; padding: 30px" id="myBtn" onclick="myFunction()">
             <mat-icon>play_circle_outline</mat-icon>
           </h1>
@@ -235,6 +247,7 @@
                 <div *ngFor="let i of lectureList">
                   <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
                   <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
+                  <p>Get started with the second course in the Growth Product Manager Nanodegree Program to hone skills in activation and retention strategy.</p>
                 </div>
               </mat-card-subtitle>
               <mat-card class="boxCouse1">
@@ -809,3 +822,5 @@
 
 </section>
 
+</body>
+</html>
