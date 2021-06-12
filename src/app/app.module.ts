@@ -26,6 +26,8 @@ import { LinkedAccountComponent } from './Component/Settings/linked-account/link
 import { LanguagePreferenceComponent } from './Component/Settings/language-preference/language-preference.component';
 import { SubscriptionsBillingComponent } from './Component/Settings/subscriptions-billing/subscriptions-billing.component';
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
+import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
+import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { CoursesComponent } from './Component/Settings/courses/courses.component
     LanguagePreferenceComponent,
     SubscriptionsBillingComponent,
     CoursesComponent,
+    LecturesComponent,
+    LessonsComponent,
   ],
   imports: [
     BrowserModule,

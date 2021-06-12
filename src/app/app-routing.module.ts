@@ -17,6 +17,7 @@ import { LinkedAccountComponent } from './Component/Settings/linked-account/link
 import { LanguagePreferenceComponent } from './Component/Settings/language-preference/language-preference.component';
 import { SubscriptionsBillingComponent } from './Component/Settings/subscriptions-billing/subscriptions-billing.component';
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
+import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
 
 const routes: Routes = [
   // Routing
@@ -40,8 +41,9 @@ const routes: Routes = [
 {path:"LinkedAccount",component:LinkedAccountComponent},
 {path:"LanguagePreference",component:LanguagePreferenceComponent},
 {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
-{path:"Courses",component:CoursesComponent},
-]},
+{path:"Courses",component:CoursesComponent},]},
+//Lectures
+{path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
   
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}

@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
+
 
 <section>
   <header>
@@ -25,7 +17,7 @@
         <div class="w-100 text-white">
           <p>NANODEGREE PROGRAM</p>
 
-          <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px;width: 600px;padding-left: 70px;line-height: 50px;">
+          <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px;width:90%;padding-left: 70px;line-height: 50px;">
            {{courseList.name}}
           </h1>
           <p style="width: 700px;font-size: 15px;margin-left: 180px;">
@@ -179,7 +171,7 @@
       align-items: center;
     ">
     <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
-      <mat-card style="width: 1200px; align-items: center">
+      <mat-card style=" align-items: center">
         <mat-card-header style="display: flex">
           <div style="float: left">
             <mat-card-title style="
@@ -241,13 +233,18 @@
                   <h1 style="font-size: 18px; font-weight: 500; width: 250px">
                     {{ courseList.preRequest }}
                   </h1>
+                  <div *ngFor="let i of lectureList">
+                    {{i.lessoneNumber}}
+                  </div>
+                  
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
                 <!-- <div class="vl1"></div > -->
                 <div *ngFor="let i of lectureList">
-                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
+                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.lessoneNumber }}</h1>
+                  <div class="vl2"></div>
                   <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
-                  <p>Get started with the second course in the Growth Product Manager Nanodegree Program to hone skills in activation and retention strategy.</p>
+                  <!-- <p>Get started with the second course in the Growth Product Manager Nanodegree Program to hone skills in activation and retention strategy.</p> -->
                 </div>
               </mat-card-subtitle>
               <mat-card class="boxCouse1">
@@ -822,5 +819,3 @@
 
 </section>
 
-</body>
-</html>
