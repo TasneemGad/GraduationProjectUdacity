@@ -32,6 +32,7 @@ const routes: Routes = [
   {path:"Personal_Information",component:PersonalInformationComponent},
   {path:"newPassword",component:NewPasswordComponent},
   {path:"Notification",component:NotificationsComponent},
+  
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
 

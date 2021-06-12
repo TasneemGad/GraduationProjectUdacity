@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IEnrollCourse } from '../SharedModels/Interface/IEnrollCourse';
 import {AuthenticationService } from '../Services/authentication.service';
 import { ICourse } from '../SharedModels/Interface/ICourses';
@@ -20,7 +21,7 @@ export class EnrollService {
   enrolled:IEnrollCourse[]=[];
   trueenroll:IEnrollCourse[]=[]
   stdId:string|null=""
-   result:string|null="";
+  result:string|null="";
 
   constructor(private http:HttpClient,public tokenUser:AuthenticationService) { }
 
@@ -43,14 +44,21 @@ export class EnrollService {
  }
   EnrollInCourse(courseid:number): Observable<any>
   {
-   this.newenroll.stdID= this.tokenUser.getUserId();
-   this.newenroll.courseID=courseid;
+   this.newenroll.studentId= this.tokenUser.getUserId();
+   this.newenroll.courseId=courseid;
    this.newenroll.enrollDate;
    this.newenroll.endEnrollDate;
    console.log("--------------------")   
    console.log(this.newenroll)
 
     return this.http.post('http://localhost:44326/api/EnrollCourse' ,this.newenroll,httpOptions);
+  }
+
+  getAllStdEnrolledCourses(): Observable<IEnrollCourse[]>{
+   this.stdId= this.tokenUser.getUserId();
+    return this.http.get<IEnrollCourse[]>("https://localhost:44326/AllStdEnrollCourses"+"/" + this.stdId).pipe(catchError((err) => {
+      return throwError(err.message || "error")
+    }))
   }
  
 }
