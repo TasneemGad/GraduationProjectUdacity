@@ -37,4 +37,33 @@ export class SettingsComponent implements OnInit {
     // }
   }
 
+  GoToSettingPersonalInformation()
+  {
+    this.router.navigate(['Personal_Information'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingPassword()
+  {
+    this.router.navigate(['newPassword'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingNotifications()
+  {
+    this.router.navigate(['Notification'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingLinkedAccount()
+  {
+    this.router.navigate(['LinkedAccount'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingLanguagePreference()
+  {
+    this.router.navigate(['LanguagePreference'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingSubscriptions()
+  {
+    this.router.navigate(['SubscriptionsBilling'],{relativeTo:this.activatedRouter})
+  }
+  GoToSettingCourses()
+  {
+    this.router.navigate(['Courses'],{relativeTo:this.activatedRouter})
+  }
+
 }

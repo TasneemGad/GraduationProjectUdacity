@@ -8,23 +8,22 @@
     <mat-card-header>
         <mat-card-title>
             <mat-form-field class="example-full-width">
-                <mat-label>First Name</mat-label>
+                <mat-label>Full Name</mat-label>
                 <input type="text" matInput formControlName="name">
               </mat-form-field>
         </mat-card-title>
-      <mat-card-title>
-        <mat-form-field class="example-full-width">
-            <input type="text" matInput formControlName="Second" placeholder="Second">
-          </mat-form-field>
-      </mat-card-title>
-      <mat-card-title>
+      <mat-card-title >
+        <div style="display: flex;">
+          <div>
          <mat-form-field class="example-full-width">
         <input type="email" matInput formControlName="email" placeholder="Email">
-      </mat-form-field>
+      </mat-form-field></div>
+      <div>
       <button type="submit" mat-raised-button 
     style="text-transform: uppercase;width: 150px;height: 50px;margin-top: -650px;"  [disabled]="form.invalid">
         Verify Email 
-    </button>
+    </button></div>
+  </div>
     </mat-card-title>
     <mat-card-title>
         <mat-form-field class="example-full-width">
@@ -43,12 +42,9 @@
 </mat-card>
 
 </div>
-<div id="two">
-    <button type="submit" mat-raised-button 
-    style="float: right;margin-top: 50px;margin-right: 470px;
-    background-color: #017a9b;color: white;margin-left: 30px;text-transform: uppercase;"  [disabled]="form.invalid">
-        Save
-    </button>
-    <button type="submit"  mat-raised-button style="float: right;text-transform: uppercase;margin-top: 50px;" >Cancel</button>
 
+
+    <div style="float: right; margin-top: 10px;">
+      <button mat-raised-button class="btnCancel">CANCEL</button>
+      <button mat-raised-button  color="primary" class="btnSave" [disabled]="form.invalid">SAVE</button>
     </div>

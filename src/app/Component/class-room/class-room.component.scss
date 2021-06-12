@@ -4,7 +4,7 @@ mat-sidenav-container{
 }
 mat-sidenav{
     background-color:#001d25;
-    width: 300px;
+    width: 18%;
     color: white;
 }
 mat-sidenav , mat-sidenav-content{
@@ -13,36 +13,28 @@ mat-sidenav , mat-sidenav-content{
 #one{
     line-height: 50px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
 }
 #two{
     line-height: 50px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
 
 }
 #three{
     line-height: 50px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
 
 }
-#four{
-    margin-top: 250px;
-    line-height: 70px;
+.tabsBottom{
     color: white;
-    font-size: 20px;
     cursor: pointer;
-
-}
-#five{
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-
+    position: absolute;
+    bottom: 0;
 }
 mat-icon{
     margin-right: 20px;

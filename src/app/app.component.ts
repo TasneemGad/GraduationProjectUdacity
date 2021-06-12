@@ -25,8 +25,14 @@ export class AppComponent {
       if(event instanceof NavigationStart) {
         this.currentUrl = event.url
         console.log("url", this.currentUrl );
-        if(this.currentUrl === "/SignIn" || this.currentUrl === "/SignUP" ||this.currentUrl ===  "/orderDetails" || this.currentUrl === "/payment"||this.currentUrl === "/ClassRoom"||this.currentUrl ===  "/Setting"||this.currentUrl  === "/Personal_Information"||this.currentUrl==="/newPassword" || this.currentUrl==="/Notification") 
-        {
+        if(this.currentUrl === "/SignIn" || this.currentUrl === "/SignUP" ||
+        this.currentUrl ===  "/orderDetails" ||this.currentUrl === "/payment"||
+        this.currentUrl === "/ClassRoom"|| this.currentUrl ===  "/Setting"||
+        this.currentUrl  === "/Setting/Personal_Information"||this.currentUrl=== "/Setting/LanguagePreference"||
+        this.currentUrl==="/Setting/newPassword" || this.currentUrl==="/Setting/Notification" ||
+        this.currentUrl=== "/Setting/LinkedAccount" || this.currentUrl=== "/Setting/SubscriptionsBilling"||
+        this.currentUrl=== "/Setting/Courses" ) 
+          {
           this.flag = false
         }
         else{
