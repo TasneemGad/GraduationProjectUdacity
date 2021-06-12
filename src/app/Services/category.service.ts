@@ -19,4 +19,14 @@ export class CategoryService {
   }))
   
   }
+
+  getCategoryById(id:number):Observable<ICategory>{
+    let url = `${this.Url}/${id}`;
+    return this._http.get<ICategory>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  }
+
+ 
 }

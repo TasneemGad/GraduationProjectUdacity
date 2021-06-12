@@ -24,9 +24,17 @@ export class MentorOrInstractorService {
   }))
   }
 
+
+  getTopFourInstracor():Observable<IMonterOrInstractor[]> {
+    return this.http.get<IMonterOrInstractor[]>(this.Url+"/TopFourInstStories").pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")
+  }))
+  }
   getAllInstracor():Observable<IMentorOrInstractor[]> {
     return this.http.get<IMentorOrInstractor[]>(API_URL+"/InstractorsStories")    
  }
+
+ 
  getAllMentor():Observable<IMentorOrInstractor[]> {
   return this.http.get<IMentorOrInstractor[]>(API_URL+"/MentorStories")    
 }

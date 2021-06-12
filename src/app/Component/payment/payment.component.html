@@ -9,35 +9,67 @@
         <mat-label class="Titel">Payment Method</mat-label><br><br>
         <mat-label class="subTitel">Introduction to Programming Nanodegree</mat-label><br><br> 
     
-        <form>
+        <form [formGroup]="paymentForm">
             <div>
                 <div class="label"><mat-label>Cardholder Name</mat-label><br></div>
                 <input type="text" class="input">
             </div><br>
             <div>
                 <div  class="label"><mat-label>Billing Country</mat-label><br></div>
-                <select class="input">
+                <!-- <select class="input">
                     <option value="Egypt" selected>Egypt</option>
                     <option value="canda">canda</option>
                     <option value="US">US</option>
-                  </select>
+                  </select> -->
+                  <select class="input" required name="country">
+                          <option> choose Country</option>
+                          <option *ngFor="let item of count.countries" [value]="item.country_Name">
+                              {{item.country_Name}}
+                          </option>
+                      </select>
+                      
             </div><br>
             <div  class="label"><mat-label>Credit Card</mat-label><br><br></div>
             <div>
                 <div  class="label"><mat-label>Credit Card Number</mat-label><br></div>
-                <input type="text" class="input">
+               
+                <input type="text" class="input" formControlName="CardNumber"    name="CardNumber" [class.is-invalid]="formFields.CardNumber?.invalid && formFields.CardNumber?.touched">
+                <div *ngIf="formFields.CardNumber?.invalid && formFields.CardNumber?.touched">
+                    <small class="text-danger d-block" *ngIf="formFields.CardNumber?.errors.required">User Name is required</small> 
+                    <small class="text-danger d-block" *ngIf="formFields.CardNumber?.errors.minlength">minmum length Length of 16 digits</small>
+                    <small class="text-danger d-block" *ngIf="formFields.CardNumber?.errors.maxlength">maximum length Length of 16 digits</small>
+                    <small class="text-danger d-block" *ngIf="formFields.CardNumber?.errors.pattern">accept only numbers</small> 
+                </div>
             </div><br>
             <div style="display: flex; margin: 0 auto;">
                 <div>
                     <div  class="label"><mat-label>Expiry</mat-label><br></div>
-                    <input type="text" class="input" style="width: 295px;">
+                    <input  class="input" style="width:710px;" formControlName="ExperationDate" type="date"   name="ExperationDate" [class.is-invalid]="formFields.ExperationDate?.invalid && formFields.cardOwnerName?.touched">
+                   
+                    <div *ngIf="formFields.ExperationDate?.invalid && formFields.ExperationDate?.touched">
+                <small class="text-danger" *ngIf="formFields.ExperationDate?.errors.required">Experation Date  is required</small>
+             
+            </div>
+             
+                    
+                    </div>
+                    
+                    
                 </div><br>
                 <div >
                     <div  class="label" style="margin-left: 20px;"><mat-label>CVC</mat-label><br></div>
-                    <input type="text" class="input" style="width: 295px; margin-left: 20px;">
+                    <input type="text" class="input"  formControlName="cvc" name="cvc"[class.is-invalid]="formFields.cvc?.invalid && formFields.cvc?.touched">
+                    <div *ngIf="formFields.cvc?.invalid && formFields.cvc?.touched">
+                        <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.required">CVC is required</small> 
+                        <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.minlength">minmum length Length of 3 digits</small>
+                        <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.maxlength">maximum length Length of 3 digits</small>
+                        <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.pattern">accept only numbers</small> 
+                    </div>
+
                 </div><br>
-            </div><br><br>
-            <button mat-raised-button color="primary" class="btnCheckout">CONTINUE WITH CHECKOUT</button>
+            <br><br>
+            <button mat-raised-button color="primary" class="btnCheckout"  (click)="addPayment()">CONTINUE WITH CHECKOUT</button>
+            
         </form>
     
     </div>

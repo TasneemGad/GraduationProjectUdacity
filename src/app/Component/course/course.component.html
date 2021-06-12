@@ -27,6 +27,10 @@
               font-size: 15px;
               letter-spacing: 2px;
               font-weight: bold;
+              display:inline-block;
+              overflow: auto;
+              white-space: nowrap;  
+              
             ">
             Download Syllabus
           </button>
@@ -150,7 +154,10 @@
     </h1>
     <button mat-raised-button style="
         background-color: #657482;
-        margin-left: 700px;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin:0px auto;
         font-size: 20px;
         color: white;
         padding: 5px;
@@ -232,9 +239,10 @@
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
                 <!-- <div class="vl1"></div > -->
-                <div *ngFor="let i of lectureList">
-                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
-                  <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
+                <div *ngFor="let lecture of lectureList">
+                  <span>fffffffffffffffffffff{{lecture}}</span>
+                  <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
+                  <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
                 </div>
               </mat-card-subtitle>
               <mat-card class="boxCouse1">
@@ -432,7 +440,7 @@
 
   <div *ngIf="isClick; then one; else second"></div>
 
-  <div style="margin-left: 50px">
+  <div >
     <h1 (click)="gochange()" #h1 class="btn" style="
         box-shadow: 6px 3px 10px rgb(169, 177, 184);
         width: 300px;
@@ -611,16 +619,14 @@
 <section style="text-align: center; padding: 40px 40px 40px 0px">
   <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
   <div class="stories">
-      <div *ngFor = "let instractor of InstractorAndMentor">
-          <span *ngIf="instractor.showOrNot == 1">
+      <div *ngFor = "let instractor of InstsList">          
               <mat-card class="boxStory" > 
                   <img src="assets/Sundar.webp" alt="error" style="margin: -50px 0px 20px 0px;" height="90px" width="90px"><br>
                   <mat-label style="font-weight: bold;" >{{instractor.fullName}}</mat-label><br>
                   <mat-label style="color: grey;" class="titleData">{{instractor.memberType}}</mat-label> <br>
                   <mat-label >{{instractor.specialzation}}</mat-label><br><br>
                   <mat-label>{{instractor.story}}</mat-label>
-              </mat-card>
-          </span>
+              </mat-card>          
       </div>
   </div>
 </section> 
@@ -631,10 +637,17 @@
 <section class="reviews">
   <mat-label class="reviewsTitel">Top Student Reviews</mat-label><br>
   <div class="reviewsPart">
-      <div *ngFor="let review of Reviews"> 
-          <mat-card class="eachReview">
-              <mat-label class="reviewName">{{review.fullName}}</mat-label><br><br>
-              <mat-label>{{review.stdReviews}}</mat-label>
+      <div *ngFor="let review of Reviews" > 
+          <mat-card class="eachReview dataOfObjective"  >
+              <mat-label class="reviewName">{{review.fullName}} 
+                <br>
+                <span>
+                  <p>{{(review.rate)}}</p>
+                  <!-- <star-rating-comp ></star-rating-comp> -->
+                  <img src="/assets/Filled_star.png">
+                </span> 
+             </mat-label><br><br>
+              <mat-card-content>{{review.stdReviews}}</mat-card-content>
           </mat-card>
       </div>
   </div>
@@ -744,11 +757,16 @@
           <mat-card-subtitle style="color: #03607a;font-size: 15px;margin-left:10px;"> {{courseList.duration }} MONTHS ACCESS</mat-card-subtitle>
           <mat-card-title style="color: #03607a; font-size: 35px;letter-spacing: 3px;font-weight: 200;line-height: 50px;">EGP {{courseList.price}}</mat-card-title>
         <mat-card-subtitle style="font-size: 15px;color: black;line-height: 20px;">EGP 1380 per month</mat-card-subtitle>
-        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 50px;margin-left: 15px;">75% OFF COUPON APPLIED</mat-card-title>
+        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 50px;margin-left: 15px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
-          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails">Enroll Now</button>
-        </mat-card-actions>
+          <span *ngIf="courseList.price==0">
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom">Enroll Now</button>
+        </span>
+        <span *ngIf="courseList.price!=0">
+        <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails/{{courseList.id}}">Enroll Now</button>
+       </span>
+      </mat-card-actions>
         <mat-card-subtitle style="font-size: 15px;font-weight: 200;width: 330px;margin-left: 15px;">Start learning today! Switch to the monthly price afterwards if more time is needed.</mat-card-subtitle>
       </mat-card>
     </div>
@@ -761,7 +779,7 @@
           
               EGP {{courseList.price}}<h5 style="font-size: 15px;color: black;margin-top: -45px;margin-left: 200px;line-height: 40px;">per month</h5></div>
           </mat-card-title>
-        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">75% OFF COUPON APPLIED</mat-card-title>
+        <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
           <button mat-raised-button style="margin-left: 50px; margin-top: 5px;background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;" routerLink="/">Enroll Now</button>

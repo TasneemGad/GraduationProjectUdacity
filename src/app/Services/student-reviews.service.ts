@@ -13,8 +13,8 @@ export class StudentReviewsService {
 
   constructor(private _http : HttpClient) { }
 
-  getReviews():Observable<IReviews[]> {
-    return this._http.get<IReviews[]>(this.Url).pipe(catchError((err)=>{
+  getTopReviews():Observable<IReviews[]> {
+    return this._http.get<IReviews[]>(this.Url+"/topFourReviews").pipe(catchError((err)=>{
       return throwError(err.massage || "Error")
   }))
 

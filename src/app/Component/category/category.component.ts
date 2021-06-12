@@ -13,6 +13,10 @@ import { IMonterOrInstractor } from 'src/app/SharedModels/Interface/IMonterOrIns
 import { IReviews } from 'src/app/SharedModels/Interface/IReviews';
 import { IStudentStory } from 'src/app/SharedModels/Interface/IStudentStory';
 import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
+import { filter, first, take } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-category',
@@ -33,16 +37,19 @@ export class CategoryComponent implements OnInit {
   currentSubName:string 
   currentSubDescription:string
   stories:IStudentStory[] = []
-  studentStories:IStudentStory
+  //currentstudentStories:
   defultSubID:number
   freeCourses:ICourse[] = []
+  cat:any
+  Student:any
+  user:ILogin
   
 
   constructor(private catService:CategoryService,
     private courseServise:CoursesService,
     private activeRouter:ActivatedRoute, private router:Router,
     private subCategoryService:SubCategoryService,
-    private StudentStoriesService:StudentStoriesService) { }
+    private StudentStoriesService:StudentStoriesService,private auth:AuthenticationService) { }
 
   ngOnInit(): void {
     this.getCatigoreis();
@@ -50,7 +57,7 @@ export class CategoryComponent implements OnInit {
 
 
     this.activeRouter.paramMap.subscribe((params:ParamMap)=>{
-      this.currentCategoryName = params.get('name')
+      this.currentCategoryName = params.get('id')
       console.log("currentCat",this.currentCategoryName)
       this.makDefultOfSubCategory()
 //Question
@@ -93,27 +100,44 @@ this.getDataOfCurrentCategory();
 
 //Question
   getDataOfCurrentCategory(){
-    for(let i of this.Categoies)
-    {
-      if(i.catName === this.currentCategoryName)
+   
+       
+        this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
+          { 
+            this.Categoies.forEach(i=>
       {
-        this.currentCategory = i;
-        this.currentCategoryID = i.id
-      }
-    }
-  }
-
+             if(i.catName === el.catName)
+            {
+               this.currentCategory = el;
+              this.currentCategoryID = el.id
+            
+            console.log("catttt"+el.id)
+         }
+          })})}
+       
+     
 
   getDataOfCurrentCourses(){
     this.currentCourses = []
+console.log("iiiiiiii"+this.currentCategoryID)
+this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
+  { 
+  
     for(let i of this.Courses)
     {
-      if(i.categoryId === this.currentCategoryID)
+      if(i.categoryId === el.id)
       {
         this.currentCourses.push(i);
-      }
+      
     }
   }
+  })
+
+    }
+    
+  
+  
+  
 
   goToCours(courseID:number){
     this.router.navigate(["/Course",courseID]);
@@ -126,9 +150,11 @@ this.getDataOfCurrentCategory();
       {
         this.subCategory = data;
         console.log("subCat",this.subCategory)
+        this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
+          { 
         for(let sub of data)
         {
-          if(sub.categoryID == this.currentCategoryID)
+          if(sub.categoryID === el.id)
           {
              this.currentSubName =  sub.subCategoryTitle  //data[0].subCategoryTitle
              this.currentSubDescription = sub.subCategoryDescribtion
@@ -138,6 +164,7 @@ this.getDataOfCurrentCategory();
              return
           }
         }
+      })
       },
       Wrong=>
       {
@@ -165,17 +192,6 @@ this.getDataOfCurrentCategory();
         this.Error = Wrong
       }      
     )
-
-    // this.coursesBySubCategory = []
-    // for(let crs of this.Courses)
-    // {
-    //   // if(  crs.categoryId == this.currentCategoryID)
-    //   if(crs.subCategoryId == this.defultSubID) 
-    //   {
-    //     this.coursesBySubCategory.push(crs) 
-    //     console.log("defult",this.coursesBySubCategory)
-    //   }
-    // }
   }
 
 
@@ -193,33 +209,32 @@ this.getDataOfCurrentCategory();
     }
     for(let sub of this.subCategory )
     {
-      if(sub.id == subCategoryID)
+      if(sub.id === subCategoryID)
       {
         this.currentSubCategory = sub;
         this.currentSubName = this.currentSubCategory.subCategoryTitle
         this.currentSubDescription = this.currentSubCategory.subCategoryDescribtion
-        console.log("s2",sub)
+        console.log("s2",sub)      
+         
+
+        console.log("curNammmmmm",this.currentSubName)  
       }
     }
-    this.getStories()
+   this.getStories()
   }
 
   getStories()
   {      
-    this.StudentStoriesService.getStudentStory().subscribe(
+    this.StudentStoriesService.getTopStudentStories(this.currentCategoryName).pipe(first()).subscribe(
       data=>
       {
-        console.log("coursehbbhjb",data)
-        for (let std of data)
-        {
-          this.stories = data
-          // if(std.specialzation == this.currentSubName)
-          // {
-              // this.studentStories = std;
-              // console.log("story", this.studentStories)
-          // }
+       
+             console.log("story", this.stories)
+             this.stories=data;
+           
         }
-      },
+      
+      ,
       Wrong=>
       {
         this.Error = Wrong
@@ -229,13 +244,16 @@ this.getDataOfCurrentCategory();
 
   getFreeCourses(){
     this.freeCourses = []
+    this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
+      { 
     for(let crs of this.Courses)
     {
-      if(crs.price === 0 && crs.categoryId === this.currentCategoryID)
+      if(crs.price === 0 && crs.categoryId === el.id)
       {
         this.freeCourses.push(crs)
       }
     }
+  })
     console.log("free",this.freeCourses)
   }
 }

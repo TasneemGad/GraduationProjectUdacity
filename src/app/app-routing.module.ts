@@ -16,10 +16,10 @@ const routes: Routes = [
   {path:'SignUP', component: SigINComponent},
   {path:'SignIn', component: SigINComponent},
   {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:name',component:CategoryComponent},
+  {path:'school-of/:id',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
   {path:'Lecture/:lid', component:CourseComponent},
-  {path:'orderDetails', component: OrderDetailsComponent},
+  {path:'orderDetails/:id', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
   {path:'Nav', component:NavComponent},
   {path:'',redirectTo:'/Home',pathMatch:'full'}

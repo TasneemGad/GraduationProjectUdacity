@@ -17,7 +17,11 @@ import { CourseComponent } from './Component/course/course.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
+<<<<<<< HEAD
 import { NavComponent } from './nav/nav.component';
+=======
+import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+>>>>>>> 397704a3a054124f445b704a8a5457402817d5e2
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { NavComponent } from './nav/nav.component';
     CourseComponent,
     OrderDetailsComponent,
     PaymentComponent,
+<<<<<<< HEAD
     NavComponent
+=======
+    CareerPrepComponent
+>>>>>>> 397704a3a054124f445b704a8a5457402817d5e2
   ],
   imports: [
     BrowserModule,
