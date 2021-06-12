@@ -40,7 +40,7 @@ import { CareerPrepComponent } from './Component/career-prep/career-prep.compone
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

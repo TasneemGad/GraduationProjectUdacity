@@ -9,16 +9,22 @@
     background-repeat: no-repeat;    
     width: 100%;
     padding: 20px 0;
-    height: 100%;     
+    height: 80%;     
     z-index: 1001;
 }
+.button--white {
+    width: 13.75rem;
+    padding: 20px;
+    color: #017a9b;
+    background-color: #fff;
+    border: .125rem solid transparent;
+}
+
 *, :after, :before {
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
-div {
-    display: block;
-}
+
 body, p {
     color: #525c65;
     line-height: 24px;
@@ -41,8 +47,11 @@ body {
     box-sizing: inherit;
 }
 .center {
-    line-height: 200px;        
+    // line-height: 200px;        
+    // text-align: center;
+    padding: 200px 0; 
     text-align: center;
+    color: white;
   }
   .centerTop {
     line-height: 50px;        
@@ -53,3 +62,12 @@ body {
     display: inline-block;
     vertical-align: middle;
   }
+
+  .imgSecondPart
+{   
+    background-size: cover;        
+    width: 80%;
+    height: 70%;
+    padding: 20px;
+
+}  
