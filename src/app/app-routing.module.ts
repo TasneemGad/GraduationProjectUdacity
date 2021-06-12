@@ -32,11 +32,6 @@ const routes: Routes = [
   {path:'orderDetails', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
   // Setting  
-  {path:'Setting',component:SettingsComponent},
-  {path:"Personal_Information",component:PersonalInformationComponent},
-  {path:"newPassword",component:NewPasswordComponent},
-  {path:"Notification",component:NotificationsComponent},
-  
   {path:'Setting',component:SettingsComponent,
   children:[
  {path:"Personal_Information",component:PersonalInformationComponent},
@@ -45,7 +40,8 @@ const routes: Routes = [
 {path:"LinkedAccount",component:LinkedAccountComponent},
 {path:"LanguagePreference",component:LanguagePreferenceComponent},
 {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
-{path:"Courses",component:CoursesComponent},]},
+{path:"Courses",component:CoursesComponent},
+]},
   
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}

@@ -16,8 +16,8 @@ import { IReviews } from 'src/app/SharedModels/Interface/IReviews';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
-isClick:boolean=false
-isClosed:boolean=false
+isClick:boolean=true
+isClosed:boolean=true
 text="Show more";
 textHide="SEE DETAILS";
 Isdetails:boolean=false
