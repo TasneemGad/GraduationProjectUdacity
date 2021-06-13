@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'ClassRoom',component: ClassRoomComponent},
   {path:'school-of/:name',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
-  {path:'Lecture/:lid', component:CourseComponent},
+  
   // Payment 
   {path:'orderDetails', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
@@ -44,7 +44,7 @@ const routes: Routes = [
 {path:"Courses",component:CoursesComponent},]},
 //Lectures
 {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
-  
+{path:'Lecture/:id', component:LecturesComponent},
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

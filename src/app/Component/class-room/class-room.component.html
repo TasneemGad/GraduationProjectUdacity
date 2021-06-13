@@ -17,7 +17,7 @@
         </h1>
 
     <div class="tabsBottom">    
-    <h1 routerLink="/Setting" style="font-size: 15px;">
+    <h1 (click)="routToSetting()" routerLink="/Setting" style="font-size: 15px;">
             <mat-icon>settings</mat-icon>Setting
         </h1>
         <h1 routerLink="/Home" style="font-size: 15px;">
@@ -33,7 +33,7 @@
             <mat-label style="font-size:17px; opacity: .7;color:#00485c;font-weight:600;">PAID PROGRAM</mat-label><br><br><br>
             <div *ngFor="let course of CourseList">
                 <mat-card class="courses">
-                    <div style="display: flex;">
+                    <div style="display: flex;" routerLink="{{'/Lecture/'+course.id}}">
                         <div>
                             <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
                                 <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
