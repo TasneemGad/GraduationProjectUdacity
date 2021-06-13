@@ -18,10 +18,6 @@ export class ClassRoomComponent implements OnInit {
   ngOnInit(): void {
     this.AllStdCourses();
   }
-getCurrent()
-{
-this.Enrollservices.getStsEnrollCourse()
-}
 
   AllStdCourses() {
     this.Enrollservices.getAllStdEnrolledCourses().subscribe(
