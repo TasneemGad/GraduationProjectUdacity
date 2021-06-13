@@ -19,6 +19,7 @@ import { OrderDetailsComponent } from './Component/order-details/order-details.c
 import { PaymentComponent } from './Component/payment/payment.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
 import { GovernmentComponent } from './Component/government/government.component';
+import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GovernmentComponent } from './Component/government/government.component
     OrderDetailsComponent,
     PaymentComponent,
     CareerPrepComponent,
-    GovernmentComponent
+    GovernmentComponent,
+    BecomeAnInstractorComponent
   ],
   imports: [
     BrowserModule,
