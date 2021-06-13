@@ -29,7 +29,7 @@ const routes: Routes = [
   {path:'ClassRoom',component: ClassRoomComponent},
   {path:'school-of/:name',component:CategoryComponent},
   {path:'Course/:id', component:CourseComponent},
-  {path:'Lecture/:lid', component:CourseComponent},
+  
   // Payment 
   {path:'orderDetails', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
@@ -44,10 +44,15 @@ const routes: Routes = [
           {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
           {path:"Courses",component:CoursesComponent},]},
 //Lectures
+<<<<<<< HEAD
 {path:"Lectures",component:LecturesComponent,
 children:[
   {path:"Lesson",component:LessonsComponent}]},
   
+=======
+{path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
+{path:'Lecture/:id', component:LecturesComponent},
+>>>>>>> 5a4b1e6d9b91acfbd575a7c0fd62b290df0d0758
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

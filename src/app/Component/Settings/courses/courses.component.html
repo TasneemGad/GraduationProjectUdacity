@@ -1,5 +1,33 @@
+<<<<<<< HEAD
  <svg style="stroke:#15c26b!important; ">
     <path d="M11.859 11.486l6 10A1 1 0 0117.002 23h-12a1 1 0 01-.858-1.514l6-10a1 1 0 011.715 0zm13 5l3 5A1 1 0 0127.002 23h-6a1 1 0 01-.858-1.514l3-5a1 1 0 011.715 0zm-13.857-2.542L6.768 21h8.467l-4.233-7.056zm13 5L22.768 21h2.467l-1.233-2.056zm-2-9.944a1 1 0 01.857 1.514l-3 5a1 1 0 01-1.715 0l-3-5A1 1 0 0116.002 9h6zm-1.767 2h-2.467l1.234 2.056L20.235 11z"></path>
 </svg> 
 
 
+=======
+<mat-card>
+    <div class="titel">
+        <div>
+            <img src="../../../../assets/triangelCourses.JPG" alt="error" >
+        </div>
+        <div>
+            <p class="coursesTitel">Courses</p>
+        </div>
+    </div><br><br>
+
+    <div *ngFor="let course of CourseList">
+        <mat-card class="courses">
+            <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
+                <mat-label > {{course.description}}</mat-label><br>
+                <mat-label class="remove"> REMOVE COURSE</mat-label>
+        </mat-card><br><br>
+    </div>
+</mat-card>
+<!-- <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <div *ngFor="let i of lectureAllList">
+        <h1 style="width: 60%;font-size: 15px;" routerLink="/payment">{{i.tilte}}</h1>
+    </div>
+    </mat-sidenav>
+</mat-sidenav-container> -->
+>>>>>>> 5a4b1e6d9b91acfbd575a7c0fd62b290df0d0758

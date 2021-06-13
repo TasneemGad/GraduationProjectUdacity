@@ -1,0 +1,43 @@
+<<<<<<< HEAD
+=======
+.titel{
+    display: flex;
+    margin-bottom: 10px;
+    padding: 30px 0px 0px 15px;
+}
+.coursesTitel{
+    margin: 3px 0px 0px 10px;
+    font-size: x-large;
+    font-weight: 100;
+}
+.courses{
+    border: 1px solid rgb(189, 189, 189);
+    opacity: .8;
+    line-height: 30px;
+    width: 90%;
+    margin: 0 auto;
+
+}
+.remove{
+    color: teal;
+    font-weight: 600;
+}
+
+
+
+mat-sidenav-container{
+    height: 100%;
+    
+}
+mat-sidenav{
+    background-color:#001d25;
+    width: 40%;
+    color: white;
+}
+mat-sidenav , mat-sidenav-content{
+    padding: 16px;
+}
+mat-icon{
+    margin-right: 20px;
+}
+>>>>>>> 5a4b1e6d9b91acfbd575a7c0fd62b290df0d0758

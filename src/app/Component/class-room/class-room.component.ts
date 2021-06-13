@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { EnrollService } from 'src/app/Services/EnrollCourse.service';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
@@ -11,16 +12,20 @@ import { IEnrollCourse } from 'src/app/SharedModels/Interface/IEnrollCourse';
 })
 export class ClassRoomComponent implements OnInit {
 
-  constructor(private Enrollservices:EnrollService,private courseServices:CoursesService) { }
+  constructor(private Enrollservices:EnrollService,private courseServices:CoursesService,
+    private router:Router, private activeRouter:ActivatedRoute) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
 
   ngOnInit(): void {
     this.AllStdCourses();
   }
+<<<<<<< HEAD
 getCurrent(){
 this.Enrollservices.getStsEnrollCourse()
 }
+=======
+>>>>>>> 5a4b1e6d9b91acfbd575a7c0fd62b290df0d0758
 
   AllStdCourses(){
     this.Enrollservices.getAllStdEnrolledCourses().subscribe(
@@ -37,5 +42,10 @@ this.Enrollservices.getStsEnrollCourse()
         console.log(this.CourseList)
       }
     )
+  }
+
+  routToSetting(){
+    // this.router.navigate(['Setting/Personal_Information'])
+    // this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
   }
 }

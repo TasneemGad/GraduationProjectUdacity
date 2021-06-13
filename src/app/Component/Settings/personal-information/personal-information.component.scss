@@ -1,7 +1,11 @@
+.home{
+  padding-bottom: 40px;
+}
 #part1{
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    width: 100%;
     // width: 400px;
 }
 #two{
@@ -16,7 +20,7 @@
     margin-top: 70px;
   }
   .example-full-width {
-    width:600px;
+    width:400px;
     // top: -140px;
     // margin-left: 120px;
 
@@ -29,7 +33,7 @@
   }
  .card{
     box-shadow: 2px 2px 8px rgb(231, 231, 231);
-    width:900px;
+    // width:900px;
     // height: 400px;
 
  }
@@ -44,4 +48,23 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 50px;
   border-radius: 10px;
+}
+.mat-card{
+  padding: 70px 50px 50px 50px;
+  width: 100%;
+}
+.mat-card-title{
+  font-weight: 100;
+}
+.requestTitel{
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.prag{
+  color: gray;
+}
+.btnVerification{
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(85, 85, 85, 0.2), 0 6px 20px 0 rgba(87, 87, 87, 0.19);
 }
