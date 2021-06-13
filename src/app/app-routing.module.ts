@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:'SignUP', component: SigINComponent},
   {path:'SignIn', component: SigINComponent},
   {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:name',component:CategoryComponent},
+  {path:'school-of/:name',component:CategoryComponent,data:{footer:true,header:true}},
   {path:'Course/:id', component:CourseComponent,data:{footer:true,header:true}},
   
   // Payment 

@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'udacityproject';
   public currentUrl : any
   flag = true
-  idCourse : any
+ 
   visibility:boolean=false;
   constructor(private activatedRouter:ActivatedRoute, private router:Router){
   }
@@ -20,11 +20,6 @@ export class AppComponent {
   
    ngOnInit(){
     // this.getUrl();
-
-    this.activatedRouter.paramMap.subscribe((params:ParamMap)=>{
-      this.idCourse =  params.get('id')
-      console.log("idCourse", this.idCourse)
-    })
 
     // start
     this.router.events.pipe(
