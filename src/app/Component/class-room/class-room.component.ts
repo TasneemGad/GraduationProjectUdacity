@@ -44,12 +44,6 @@ export class ClassRoomComponent implements OnInit {
     // this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
   }
   Logout(){
-<<<<<<< HEAD
-    console.log("logout")
-     this.Authservices.logout()    
-    }
-=======
    this.Authservices.logout();   
      }
->>>>>>> af4038c184751b261dbe63cac0f592f8621296bf
 }

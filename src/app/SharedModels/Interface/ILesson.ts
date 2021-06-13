@@ -1,10 +1,10 @@
 export interface Lesson {
     id?: number
-    tilte: string
-    Details: string
-    Type: string
-    ContentNumber: number
-    Duration:number
-    LectureId :number
+    title: string
+    details: string
+    type: string
+    contentNumber: number
+    duration:number
+    lectureId :number
     
 }
