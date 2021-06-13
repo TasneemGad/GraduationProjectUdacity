@@ -35,21 +35,24 @@ const routes: Routes = [
   {path:'payment',component:PaymentComponent},
   // Setting  
   {path:'Setting',component:SettingsComponent,
-  children:[
+    children:[
           {path:"Personal_Information",component:PersonalInformationComponent},
           {path:"newPassword",component:NewPasswordComponent},
           {path:"Notification",component:NotificationsComponent},
           {path:"LinkedAccount",component:LinkedAccountComponent},
           {path:"LanguagePreference",component:LanguagePreferenceComponent},
           {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
-          {path:"Courses",component:CoursesComponent},]},
-//Lectures
-{path:"Lectures",component:LecturesComponent,
-children:[{path:"Lesson",component:LessonsComponent}]},
-{path:'Lecture/:id', component:LecturesComponent},
-  
+          {path:"Courses",component:CoursesComponent},
+            ]},
+
+   //Lectures
+  {path:"Lectures",component:LecturesComponent,
+     children:[{path:"Lesson",component:LessonsComponent},
+  //  {path:'Lecture/:id', component:LecturesComponent},
+   {path:"Lesson",component:LessonsComponent},
+]},
 // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
-// {path:'Lecture/:id', component:LecturesComponent,data:{header:false}},
+{path:'Lecture/:id', component:LecturesComponent,children:[{path:"Lesson",component:LessonsComponent},]},
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

@@ -50,6 +50,7 @@
             <hr>
             <h1 class="navContent">Program Home</h1>
             <hr>
+<<<<<<< HEAD
             <h1 class="navContent">Syllabus </h1>
             <hr>
             <div style="display: flex;" (click)="hideList()">
@@ -58,6 +59,19 @@
                 </div>
                 <div style="margin: 0 auto;">
                     <mat-icon class="hideIcon">{{text}}</mat-icon>
+=======
+            <h1 style="font-size: 15px;margin-top: 20px;text-transform: uppercase;">Syllabus</h1>
+            <h1 style="font-size: 15px;margin-top: 30px;cursor: pointer;" (click)="hideList()">Core Curriculum<mat-icon style="margin-left: 90px;margin-top: -30px;">{{text}}</mat-icon></h1>
+          <ng-template #list>
+            <div *ngFor="let i of lectureList ;let e=index ">
+                <hr>
+                <div class="all" >
+                    <h1 class="second">{{e+1}}.</h1>
+                    <h1 mat-stroked-button class="first" routerLink="Lesson" (click)="done(i.id)">{{i.tilte}}</h1>
+                    <button mat-icon-button class="first">
+                        <mat-icon id="one" [style.color]='color'>task_alt</mat-icon>
+                    </button>
+>>>>>>> 29044a26a8824bd5738f09775697f8e736447a55
                 </div>
             </div>
             <ng-template #list>
