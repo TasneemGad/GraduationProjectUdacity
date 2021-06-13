@@ -43,7 +43,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem("token");
         localStorage.removeItem("expires_at");
-        this.router.navigate(['/login']);
+        this.router.navigate(['/Home']);
     }
     
     public isLoggedIn() {
