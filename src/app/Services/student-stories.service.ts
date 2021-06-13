@@ -19,6 +19,12 @@ export class StudentStoriesService {
   }))
   }
 
+
+  TopFiveStudentStories():Observable<IStudentStory[]> {
+    return this._http.get<IStudentStory[]>(this.Url+"/TopFiveStdStories").pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")
+  }))
+  }
   getTopStudentStories(id:number):Observable<IStudentStory[]> {
     return this._http.get<IStudentStory[]>(this.Url+"/StdTopStory/"+id).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")

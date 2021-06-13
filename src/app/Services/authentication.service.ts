@@ -31,7 +31,7 @@ export class AuthenticationService {
             .pipe(map(res => {
                 this.setSession(res);
                 this.userSubject.forEach(el=>{
-                   console.log(el.UserName)
+                   console.log(el.userName)
                 });
             }));
     }
