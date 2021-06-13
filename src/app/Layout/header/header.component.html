@@ -50,4 +50,11 @@
     <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
 
     <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button> 
-</mat-toolbar>
+
+    <div *ngIf="logined(); then name"></div>
+    <ng-template #name>
+      <a routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;"
+        >My ClassRoom</a
+      >
+    </ng-template>
+  </mat-toolbar>

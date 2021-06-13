@@ -9,7 +9,7 @@ import { Lectures } from '../SharedModels/Interface/ILectures';
 })
 export class LecturesService {
   lectureUrl="https://localhost:44326/api/lecture"
-  getLectureUrl="https://localhost:44326/api/lecture/GetAllCrsLectures"
+  getLectureUrl="https://localhost:44326/api/lecture/GetAllCrsLectures?CrsID="
   constructor(private http: HttpClient) { }
 
   getAllLectures(): Observable<Lectures[]> {
@@ -19,8 +19,10 @@ export class LecturesService {
     }))
   }
   getLecturesByID(id: number): Observable<Lectures[]> {
-    let x= this.http.get<Lectures[]>(this.getLectureUrl + "?CrsID=" + id).pipe();
-    console.log(x)
-    return x
+    // let x= this.http.get<Lectures[]>(this.getLectureUrl + id).pipe();
+    return this.http.get<Lectures[]>(this.getLectureUrl + id).pipe();
+
+    // console.log("x",this.getLectureUrl)
+    // return x
   }
 }

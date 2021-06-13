@@ -22,13 +22,13 @@ import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.co
 
 const routes: Routes = [
   // Routing
-  {path:'Home', component: HomePageComponent},
+  {path:'Home', component: HomePageComponent,data:{footer:true,header:true}},
   //User Login 
   {path:'SignUP', component: SigINComponent},
   {path:'SignIn', component: SigINComponent},
   {path:'ClassRoom',component: ClassRoomComponent},
   {path:'school-of/:name',component:CategoryComponent},
-  {path:'Course/:id', component:CourseComponent},
+  {path:'Course/:id', component:CourseComponent,data:{footer:true,header:true}},
   
   // Payment 
   {path:'orderDetails', component: OrderDetailsComponent},
@@ -44,15 +44,12 @@ const routes: Routes = [
           {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
           {path:"Courses",component:CoursesComponent},]},
 //Lectures
-<<<<<<< HEAD
 {path:"Lectures",component:LecturesComponent,
-children:[
-  {path:"Lesson",component:LessonsComponent}]},
-  
-=======
-{path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
+children:[{path:"Lesson",component:LessonsComponent}]},
 {path:'Lecture/:id', component:LecturesComponent},
->>>>>>> 5a4b1e6d9b91acfbd575a7c0fd62b290df0d0758
+  
+// {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
+// {path:'Lecture/:id', component:LecturesComponent,data:{header:false}},
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

@@ -76,6 +76,18 @@ export class HeaderComponent implements OnInit {
     getCurrentCategory(currentCategory:string){
       this.router.navigate(["/school-of",currentCategory]);
     }
+    logined()
+    {
+     const UserName =!! localStorage.getItem('UserName');
+     if(UserName)
+     {
+       return true
+     }
+     else
+     {
+       return false
+     }
+    }
   }
 
      

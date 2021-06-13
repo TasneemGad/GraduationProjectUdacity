@@ -50,6 +50,7 @@ Isdetails:boolean=true
     this.getLecturesByID(this.idUrl);
     this.getLectureses();
     this.getTwoCourses(this.idUrl)
+    console.log("ss",this.idUrl)
   }
   
 

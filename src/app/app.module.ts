@@ -28,6 +28,7 @@ import { SubscriptionsBillingComponent } from './Component/Settings/subscription
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
 import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
+import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.co
     CoursesComponent,
     LecturesComponent,
     LessonsComponent,
+    LessonContentComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,16 +16,19 @@ export class LecturesComponent implements OnInit {
   lectureAllList:Lectures[]
   courseList:ICourse
   change:any
+  Isdetails:boolean=true
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router) { }
   idUrl:any
  color="white"
  getID:number
+ text="expand_less"
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
     this.getLecturesByID(this.idUrl);
     this.getLectureses();
     this.getCourseById(this.idUrl);
+    console.log("id",this.idUrl)
   }
   category(){
 this.router.navigate(['Courses'],{relativeTo:this.active})
@@ -57,5 +60,10 @@ done(id:any){
   // }
   // this.getID=id
   // console.log(this.getID)
+}
+hideList(){
+  this.Isdetails = !this.Isdetails
+  this.text=this.Isdetails?"expand_more":"expand_less" 
+   
 }
 }
