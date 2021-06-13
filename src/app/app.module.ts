@@ -18,6 +18,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+import { GovernmentComponent } from './Component/government/government.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CareerPrepComponent } from './Component/career-prep/career-prep.compone
     CourseComponent,
     OrderDetailsComponent,
     PaymentComponent,
-    CareerPrepComponent
+    CareerPrepComponent,
+    GovernmentComponent
   ],
   imports: [
     BrowserModule,

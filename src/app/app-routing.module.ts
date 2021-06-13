@@ -10,6 +10,7 @@ import {ClassRoomComponent} from './Component/User/class-room/class-room.compone
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+import {GovernmentComponent  } from './Component/government/government.component';
 
 const routes: Routes = [
   {path:'Home', component: HomePageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'Lecture/:lid', component:CourseComponent},
   {path:'orderDetails/:id', component: OrderDetailsComponent},
   {path:'payment',component:PaymentComponent},
+  {path:'Government',component: GovernmentComponent},
   {path:'career-prep',component:CareerPrepComponent},
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
