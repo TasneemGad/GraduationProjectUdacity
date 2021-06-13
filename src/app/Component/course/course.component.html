@@ -6,11 +6,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-<section>
+<section  style="height: 100%;">
   <header>
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay muted loop>
-      <!-- <source src="assets/Intro to Self-Driving Cars Nanodegree Program - Trailer 60 seconds.mp4" type="video/mp4"  controls muted id="myVideo"> -->
+      <source src="//videos.ctfassets.net/2y9b3o528xhq/t6jmhTyGfENJhZWiPvdND/866cc0c06859a4c2ae73cb0c3c698a83/Azure_MLEND_nd00333_heroLoop.mp4"  controls muted id="myVideo">
     </video>
     <div class="container h-100">
       <div class="d-flex h-100 text-center align-items-center">
@@ -94,6 +94,7 @@
           letter-spacing: 2px;
           opacity: 0.65;
           font-weight: 600;
+          margin-top: -10px;
         ">
         PREREQUISITES
       </h1>
@@ -233,15 +234,11 @@
                   <h1 style="font-size: 18px; font-weight: 500; width: 250px">
                     {{ courseList.preRequest }}
                   </h1>
-                  <div *ngFor="let i of lectureList">
-                    {{i.lessoneNumber}}
-                  </div>
-                  
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
                 <!-- <div class="vl1"></div > -->
                 <div *ngFor="let i of lectureList">
-                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.lessoneNumber }}</h1>
+                  <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
                   <div class="vl2"></div>
                   <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>
                   <!-- <p>Get started with the second course in the Growth Product Manager Nanodegree Program to hone skills in activation and retention strategy.</p> -->
@@ -443,7 +440,7 @@
   <div *ngIf="isClick; then one; else second"></div>
 
   <div style="margin-left: 50px">
-    <h1 (click)="gochange()" #h1 class="btn" style="
+    <h1 (click)="gochange()"   class="btn" tabindex="1" style="
         box-shadow: 6px 3px 10px rgb(169, 177, 184);
         width: 300px;
         height: 90px;
@@ -617,7 +614,6 @@
 </section>
 
 
-
 <section style="text-align: center; padding: 40px 40px 40px 0px">
   <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
   <div class="stories">
@@ -634,8 +630,6 @@
       </div>
   </div>
 </section> 
-
-
 
 
 <section class="reviews">

@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav mode="side" opened class="sideNav">
         <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg"
             style="width: 30px;height: 50px;cursor: pointer;">
       
@@ -34,4 +34,22 @@
         </div>
     </div>
     </mat-sidenav>
+
+
+    <mat-sidenav-container>
+        <mat-sidenav mode="side" opened  class="lectNav">
+            <!-- <h1>{{}}</h1> -->
+            <div *ngFor="let i of lectureAllList ;let e=index ">
+                <hr>
+                <div class="all" >
+                    <h1 class="second">{{e+1}}.</h1>
+                    <button mat-stroked-button class="first" (click)="done(i.id)">{{i.tilte}}</button>
+                    <button mat-icon-button class="first">
+                        <mat-icon id="one" [style.color]='color'>task_alt</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <hr>
+        </mat-sidenav>     
     </mat-sidenav-container>
+</mat-sidenav-container>

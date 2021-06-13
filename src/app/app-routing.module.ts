@@ -18,6 +18,7 @@ import { LanguagePreferenceComponent } from './Component/Settings/language-prefe
 import { SubscriptionsBillingComponent } from './Component/Settings/subscriptions-billing/subscriptions-billing.component';
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
 import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
+import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 
 const routes: Routes = [
   // Routing
@@ -35,15 +36,17 @@ const routes: Routes = [
   // Setting  
   {path:'Setting',component:SettingsComponent,
   children:[
- {path:"Personal_Information",component:PersonalInformationComponent},
-{path:"newPassword",component:NewPasswordComponent},
-{path:"Notification",component:NotificationsComponent},
-{path:"LinkedAccount",component:LinkedAccountComponent},
-{path:"LanguagePreference",component:LanguagePreferenceComponent},
-{path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
-{path:"Courses",component:CoursesComponent},]},
+          {path:"Personal_Information",component:PersonalInformationComponent},
+          {path:"newPassword",component:NewPasswordComponent},
+          {path:"Notification",component:NotificationsComponent},
+          {path:"LinkedAccount",component:LinkedAccountComponent},
+          {path:"LanguagePreference",component:LanguagePreferenceComponent},
+          {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
+          {path:"Courses",component:CoursesComponent},]},
 //Lectures
-{path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
+{path:"Lectures",component:LecturesComponent,
+children:[
+  {path:"Lesson",component:LessonsComponent}]},
   
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}

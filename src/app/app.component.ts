@@ -31,7 +31,7 @@ export class AppComponent {
         this.currentUrl  === "/Setting/Personal_Information"||this.currentUrl=== "/Setting/LanguagePreference"||
         this.currentUrl==="/Setting/newPassword" || this.currentUrl==="/Setting/Notification" ||
         this.currentUrl=== "/Setting/LinkedAccount" || this.currentUrl=== "/Setting/SubscriptionsBilling"||
-        this.currentUrl=== "/Setting/Courses"||this.currentUrl==="/Lectures" ||this.currentUrl=== "/Courses") 
+        this.currentUrl=== "/Setting/Courses"||this.currentUrl==="/Lectures" ||this.currentUrl=== "/Courses"||this.currentUrl=== "/Lectures/Lesson") 
           {
           this.flag = false
         }

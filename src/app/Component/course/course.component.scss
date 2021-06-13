@@ -44,8 +44,12 @@ header .overlay {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgb(121, 56, 56);
-  opacity: 0.85;
+  //  background-image: url("assets/NDOP_Hero.webp");
+   background-image: url("../../../assets/NDOP_Hero.webp");
+
+  // background-color: chocolate;
+  // background-image: image("assets/NDOP_Hero.webp");
+  opacity: 0.5;
   z-index: 1;
   margin-bottom: 30px;
 }
@@ -69,7 +73,7 @@ header .overlay {
   transform: translateX(-70%);
 }
 
-.btn :hover {
+.btn:hover{
   box-shadow: 6px 3px 10px rgb(169, 177, 184);
   width: auto;
   height: 90px;
@@ -109,7 +113,7 @@ header .overlay {
   margin-top: 300px;
   display: flex;
   border-left: 3px solid rgb(223, 220, 220);
-  height: 150px;
+  height: 100%;
   position: relative;
   left: 50%;
   margin-right:150px;
@@ -134,6 +138,7 @@ header .overlay {
   display: flex;
   align-items: center;
   // margin-left: -200px;
+  height: auto;
 
 }
 

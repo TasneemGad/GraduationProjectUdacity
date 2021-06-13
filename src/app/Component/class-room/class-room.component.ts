@@ -18,12 +18,11 @@ export class ClassRoomComponent implements OnInit {
   ngOnInit(): void {
     this.AllStdCourses();
   }
-getCurrent()
-{
+getCurrent(){
 this.Enrollservices.getStsEnrollCourse()
 }
 
-  AllStdCourses() {
+  AllStdCourses(){
     this.Enrollservices.getAllStdEnrolledCourses().subscribe(
       data => {
         console.log(data)

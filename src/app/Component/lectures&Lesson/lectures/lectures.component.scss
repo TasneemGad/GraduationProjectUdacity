@@ -1,42 +1,7 @@
-#nav{
-    background-color: white;
-    box-shadow:2px 4px 15px rgb(185, 184, 184);
-    width: auto;
-    height: 50px;
-    padding-top: 2.5%;
-    padding-left: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
-    font-size: 20px;
-}
-.info{
-    margin-left: 110px;
-    cursor: pointer;
-    font-size: 15px;
-    color: rgb(56, 55, 55);
-    line-height: 23px;
-}
-
-h2 { color:black;}
-h2:visited {background-color: indigo; }
-h2:focus { background-color: rgb(0, 97, 0);
-    width: 200px;color: white;
-    font-size: 20px;
-    text-align: center;
-    height: 40px;
-    border-radius: 5px;
-    padding-top: 2px;
- }
-
  mat-sidenav-container{
     height: 100%;
-    
-}
-mat-icon{
-    margin-top: 20px;
-    // margin-left: px;
-}
-mat-sidenav{
+ }
+.sideNav{
     background-color:#001d25;
     width: 4.5%;
     color: white;
@@ -44,11 +9,13 @@ mat-sidenav{
     position: fixed;
     padding: 13px;
 }
-.tabs{
-    padding: 16px;
-    width: 30%;
-    // border:1px solid black;
+.all{
+    display: flex;
+    
 
+}
+mat-icon{
+margin-top: 20px;
 }
 #one ,#two ,#three ,#four ,#five{
     line-height: 15px;
@@ -57,9 +24,25 @@ mat-sidenav{
     cursor: pointer;
     text-align: center;
 }
+
 .iconBtn{
     position: absolute;
     bottom: 0;
+}
+
+mat-sidenav-container{
+    height: 100%;
+    
+}
+
+mat-sidenav , mat-sidenav-content{
+    padding: 16px;
+}
+.lectNav{
+    background-color:#004c61;
+    width:20%;
+    color: white;
+    height: 100%;
 }
 
 
