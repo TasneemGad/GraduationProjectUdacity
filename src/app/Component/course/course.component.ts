@@ -82,7 +82,7 @@ getCourseById(id:number){
 }
 getLecturesByID(id:number){
   console.log("ID")
-  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+  this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
     this.lectureList=sucess,
     console.log("kkk",this.lectureList)})
 }

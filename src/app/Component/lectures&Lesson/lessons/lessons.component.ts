@@ -10,14 +10,13 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
   styleUrls: ['./lessons.component.scss']
 })
 export class LessonsComponent implements OnInit {
-allLesson:Lesson[]
+allLesson:Lesson[] 
 LessonList:Lesson[]
-lectureList:Lectures[]
+lectureList:Lectures[] 
 idUrl:any
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,private lectureServices:LecturesService) { }
 
   ngOnInit(): void {
-    this.LessonList
        this.active.paramMap.subscribe((params:ParamMap)=>{this.idUrl =params.get('id')
       console.log("idLesson", this.idUrl)
     })
@@ -29,11 +28,11 @@ getAllLesson(){
   this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
 }
 getLessonByID(id:number){
-this.lessonService.GetLessonById(id).subscribe(sucess=>{this.LessonList=sucess,console.log(this.LessonList)})
+this.lessonService.GetLessonById(id).subscribe(sucess=>{this.LessonList=sucess,console.log("lessonID",this.LessonList)})
 }
 getLecturesByID(id:number){
   console.log("ID")
-  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+  this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
     this.lectureList=sucess,
     console.log("kkk",this.lectureList)})
 }

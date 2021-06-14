@@ -46,13 +46,18 @@ const routes: Routes = [
             ]},
 
    //Lectures
-  {path:"Lectures",component:LecturesComponent,
-     children:[{path:"Lesson",component:LessonsComponent},
-  //  {path:'Lecture/:id', component:LecturesComponent},
-   {path:"Lesson",component:LessonsComponent},
-]},
+//   {path:"Lectures",component:LecturesComponent,
+//      children:[{path:"Lesson",component:LessonsComponent},
+//   //  {path:'Lecture/:id', component:LecturesComponent},
+// ]},
 // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
-{path:'Lecture/:id', component:LecturesComponent,children:[{path:"Lesson",component:LessonsComponent},]},
+{path:'Lecture/:id', component:LecturesComponent,
+children:
+        [// [{path:"Lesson/:id",component:LessonsComponent},
+        {path:"SpasificLecture/:id",component:LecturesComponent}
+      ]},
+
+  {path:"Lesson/:id",component:LessonsComponent},
   //Nothing
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];

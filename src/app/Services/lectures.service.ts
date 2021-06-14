@@ -18,11 +18,14 @@ export class LecturesService {
       return throwError(err.message || "error")
     }))
   }
-  getLecturesByID(id: number): Observable<Lectures[]> {
+  getLecturesByCoursID(id: number): Observable<Lectures[]> {
     // let x= this.http.get<Lectures[]>(this.getLectureUrl + id).pipe();
     return this.http.get<Lectures[]>(this.getLectureUrl + id).pipe();
 
     // console.log("x",this.getLectureUrl)
     // return x
+  }
+  getLecturesByID(id: number): Observable<Lectures> {
+    return this.http.get<Lectures>(this.lectureUrl+"/" + id).pipe();
   }
 }

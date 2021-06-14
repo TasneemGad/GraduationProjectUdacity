@@ -35,7 +35,6 @@
         </div>
     </mat-sidenav>
 
-
     <mat-sidenav-container>
         <mat-sidenav mode="side" opened class="lectNav">
             <h1 class="title">{{courseList.name}}</h1>
@@ -50,7 +49,6 @@
             <hr>
             <h1 class="navContent">Program Home</h1>
             <hr>
-<<<<<<< HEAD
             <h1 class="navContent">Syllabus </h1>
             <hr>
             <div style="display: flex;" (click)="hideList()">
@@ -59,25 +57,12 @@
                 </div>
                 <div style="margin: 0 auto;">
                     <mat-icon class="hideIcon">{{text}}</mat-icon>
-=======
-            <h1 style="font-size: 15px;margin-top: 20px;text-transform: uppercase;">Syllabus</h1>
-            <h1 style="font-size: 15px;margin-top: 30px;cursor: pointer;" (click)="hideList()">Core Curriculum<mat-icon style="margin-left: 90px;margin-top: -30px;">{{text}}</mat-icon></h1>
-          <ng-template #list>
-            <div *ngFor="let i of lectureList ;let e=index ">
-                <hr>
-                <div class="all" >
-                    <h1 class="second">{{e+1}}.</h1>
-                    <h1 mat-stroked-button class="first" routerLink="Lesson" (click)="done(i.id)">{{i.tilte}}</h1>
-                    <button mat-icon-button class="first">
-                        <mat-icon id="one" [style.color]='color'>task_alt</mat-icon>
-                    </button>
->>>>>>> 29044a26a8824bd5738f09775697f8e736447a55
                 </div>
             </div>
             <ng-template #list>
                 <div *ngFor="let i of lectureList ;let e=index ">
                     <hr>
-                    <div class="all" >
+                    <div class="all" (click)="getLecturesByID(i.id,e+1)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
@@ -86,9 +71,9 @@
                                 <h1 mat-stroked-button class="first"(click)="done(i.id)">{{i.tilte}}</h1>
                             </div>
                             <div class="CompletIcon">
-                                <!-- <button mat-icon-button class="first"> -->
+                                <button mat-icon-button>
                                     <mat-icon id="iconComplet" [style.color]='color'>task_alt</mat-icon>
-                                <!-- </button> -->
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -97,5 +82,37 @@
             </ng-template>
             <div *ngIf="Isdetails then list"></div>
         </mat-sidenav>
+
+        <mat-sidenav-container>
+            <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1>
+
+            <div *ngFor="let lesson of  allLesson; let i=index">
+                <mat-card class="Lessons">
+                    <div style="display: flex;">
+                        <div class="contentLesson">
+                            <mat-label>LESSON {{i+1}}</mat-label><br><br>
+                            <mat-label style="font-size: x-large;">{{lesson.title}}</mat-label><br><br>
+                            <mat-label >{{lesson.details}}</mat-label><br><br>
+                            <button mat-raised-button class="btnLesson">CONTINUE<mat-icon style="margin-top: -1%;">arrow_forward</mat-icon></button>
+                            <br><br> <hr class="hrLesson"> <br>
+                            <mat-label class="durationLesson">{{lesson.duration}} hour</mat-label>
+                        </div>
+                        <div class="imgLesson">
+                            <img src="../../../../assets/lesson.jpg" class="img"  alt="error">
+                        </div>
+                    </div>
+                </mat-card><br><br>
+            </div>
+            <hr class="hrLesson">
+            <mat-card class="nextLecture">
+                <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle>
+                <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO {{NextLecture.tilte}}</mat-card-subtitle>
+                <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext">
+                    <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
+                </svg>
+
+            </mat-card>
+
+        </mat-sidenav-container>
     </mat-sidenav-container>
 </mat-sidenav-container>
