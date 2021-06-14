@@ -17,6 +17,9 @@ import { CourseComponent } from './Component/course/course.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
+import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+import { GovernmentComponent } from './Component/government/government.component';
+import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PaymentComponent } from './Component/payment/payment.component';
     CategoryComponent,
     CourseComponent,
     OrderDetailsComponent,
-    PaymentComponent
+    PaymentComponent,
+    CareerPrepComponent,
+    GovernmentComponent,
+    BecomeAnInstractorComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,7 @@ import { PaymentComponent } from './Component/payment/payment.component';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
