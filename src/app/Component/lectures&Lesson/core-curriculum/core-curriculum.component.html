@@ -1,0 +1,30 @@
+<h1 id="nav">Program Syllabus</h1>
+<div class="card">
+    <mat-card>
+        <mat-card-title>
+        </mat-card-title>
+        <div class="content">
+        <mat-card-title style="line-height: 50px; font-weight: 100;">
+            Core Curriculum
+        </mat-card-title>
+        <mat-card-subtitle style="width: 65%;">
+            This section consists of all the lessons and projects you need to complete in order to receive your
+            certificate
+        </mat-card-subtitle>
+    </div>
+        <hr>
+        <div *ngFor="let i of lectureList ">
+            <mat-card-title style="line-height: 50px; font-weight: 100;color: #017a9b;">{{i.tilte}}</mat-card-title>
+            <mat-card-subtitle style="width: 65%;">{{i.lectureDescription}}</mat-card-subtitle>
+            <hr>
+        </div>
+       
+     <mat-vertical-stepper [linear]="isLinear" #stepper>
+         <mat-step>
+
+         </mat-step>
+     </mat-vertical-stepper>
+    </mat-card>
+</div>
+
+

@@ -1,54 +1,64 @@
-<div class="home">
-<!-- <app-settings></app-settings> -->
-<div id="part1">
-<mat-card class="card">
-    <form #form>
-        <h1 style="margin-left: 60px;margin-top: 30px;">Basic Information</h1>
-    <img src="assets/i.png" >
-    <mat-card-header>
-        <mat-card-title>
-            <mat-form-field class="example-full-width">
-                <mat-label>Full Name</mat-label>
-                <input type="text" matInput formControlName="name">
-              </mat-form-field>
-        </mat-card-title>
-      <mat-card-title >
-        <div style="display: flex;">
-          <div>
-         <mat-form-field class="example-full-width">
-        <input type="email" matInput formControlName="email" placeholder="Email">
-      </mat-form-field></div>
+<div>
+  <mat-card class="Allcard">
+    <div style="display: flex;padding: 0;">
       <div>
-      <button type="submit" mat-raised-button 
-    style="text-transform: uppercase;width: 150px;height: 50px;margin-top: -650px;"  [disabled]="form.invalid">
-        Verify Email 
-    </button></div>
+        <img src="assets/i.png">
+      </div>
+    <div>
+    <h1 style="position: relative;left: 180px;">Basic Information</h1>
   </div>
-    </mat-card-title>
-    <mat-card-title>
-        <mat-form-field class="example-full-width">
-       <input type="tel" matInput formControlName="tel" placeholder="tel">
-     </mat-form-field>
-     <button type="submit" mat-raised-button 
-   style="text-transform: uppercase;width: 120px;height: 50px;margin-top: -150px;background-color: teal;color: white;"  [disabled]="form.invalid">
-    Send Code 
-   </button>
-   </mat-card-title>
-        </mat-card-header>
-        <mat-icon style="color:#ffae0c;">error_outline</mat-icon>
-<h3 style="margin-top:-30px ;margin-left: 30px;">email verification before SMS verification</h3>
+  
+    </div>
+<div class="example-container" #form>
+  <mat-form-field  class="contain">
+    <mat-label>Full Name</mat-label>
+    <input matInput placeholder="" formControlName="name" required >
+  </mat-form-field>
+<br>
+<div style="display: flex;">
+<div >
+  <mat-form-field  class="contain">
+    <mat-label>Enter your email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Email">
+  </mat-form-field>
+</div>
+  <div>
+  <button type="submit" mat-raised-button 
+  style="text-transform: uppercase;width: 150px;height: 50px;"  class="btnverify"> Verify Email</button>
+</div>
+</div>
 
-    </form>
+<br>
+<div style="display: flex;">
+  <div>  <mat-form-field class="contain">
+    <mat-label>Verify your tel</mat-label>
+    <input type="tel" matInput formControlName="tel" placeholder="tel">
+  </mat-form-field>
+</div>
+  <div>
+    <button type="submit" mat-raised-button class="btn">Send Code</button>
+  </div>
+</div>
+ 
+<div style="display: flex;">
+  <div>
+  <mat-icon style="color:#ffae0c;">error_outline</mat-icon>
+</div>
+
+
+  <div>
+  <h3>email verification before SMS verification</h3>
+</div>
+</div>
+</div>
 </mat-card>
-
 </div>
 
 <div style="float: right; margin: 10px 0px 10px 0px ; margin-bottom: 10%;">
   <button mat-raised-button class="btnCancel">CANCEL</button>
-  <button mat-raised-button  color="primary" class="btnSave" [disabled]="form.invalid">SAVE</button>
+  <button mat-raised-button  color="primary" class="btnSave">SAVE</button>
 </div>
 <br><br><br><br>
-<!-- -------------------------------------------------------------------- -->
 <mat-card>
   <mat-card-title>Account Management</mat-card-title><br>
   <mat-label class="titel">REQUEST ACCOUNT DATA</mat-label><br><br>
@@ -68,4 +78,3 @@
   </mat-label><br><br><br>
   <button class="btnVerification" mat-raised-button >SEND DELETE CODE</button><br><br><br>
 </mat-card>
-</div>

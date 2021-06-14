@@ -97,4 +97,8 @@ getNextLectures(id:any){
 goToSpasificLecture(id:any){
   this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
 }
+goto(){
+ var x=  this.router.navigate(["coreCurriculum"],{relativeTo:this.active})
+  console.log("c",x)
+}
 }

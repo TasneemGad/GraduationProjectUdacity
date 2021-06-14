@@ -6,7 +6,7 @@ import { CourseComponent } from './Component/course/course.component';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { SigINComponent } from './Component/User/sig-in/sig-in.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
-import {ClassRoomComponent} from './Component/class-room/class-room.component'
+import { ClassRoomComponent } from './Component/class-room/class-room.component'
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
 import { SettingsComponent } from './Component/Settings/settings/settings.component';
@@ -19,47 +19,54 @@ import { SubscriptionsBillingComponent } from './Component/Settings/subscription
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
 import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
+import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 
 const routes: Routes = [
   // Routing
-  {path:'Home', component: HomePageComponent,data:{footer:true,header:true}},
+  { path: 'Home', component: HomePageComponent, data: { footer: true, header: true } },
   //User Login 
-  {path:'SignUP', component: SigINComponent},
-  {path:'SignIn', component: SigINComponent},
-  {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:name',component:CategoryComponent,data:{footer:true,header:true}},
-  {path:'Course/:id', component:CourseComponent,data:{footer:true,header:true}},
-  
+  { path: 'SignUP', component: SigINComponent },
+  { path: 'SignIn', component: SigINComponent },
+  { path: 'ClassRoom', component: ClassRoomComponent },
+  { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
+  { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
+
   // Payment 
-  {path:'orderDetails', component: OrderDetailsComponent},
-  {path:'payment',component:PaymentComponent},
+  { path: 'orderDetails', component: OrderDetailsComponent },
+  { path: 'payment', component: PaymentComponent },
   // Setting  
-  {path:'Setting',component:SettingsComponent,
-    children:[
-          {path:"Personal_Information",component:PersonalInformationComponent},
-          {path:"newPassword",component:NewPasswordComponent},
-          {path:"Notification",component:NotificationsComponent},
-          {path:"LinkedAccount",component:LinkedAccountComponent},
-          {path:"LanguagePreference",component:LanguagePreferenceComponent},
-          {path:"SubscriptionsBilling",component:SubscriptionsBillingComponent},
-          {path:"Courses",component:CoursesComponent},
-            ]},
+  {
+    path: 'Setting', component: SettingsComponent,
+    children: [
+      { path: "Personal_Information", component: PersonalInformationComponent },
+      { path: "newPassword", component: NewPasswordComponent },
+      { path: "Notification", component: NotificationsComponent },
+      { path: "LinkedAccount", component: LinkedAccountComponent },
+      { path: "LanguagePreference", component: LanguagePreferenceComponent },
+      { path: "SubscriptionsBilling", component: SubscriptionsBillingComponent },
+      { path: "Courses", component: CoursesComponent },
+    ]
+  },
 
-   //Lectures
-//   {path:"Lectures",component:LecturesComponent,
-//      children:[{path:"Lesson",component:LessonsComponent},
-//   //  {path:'Lecture/:id', component:LecturesComponent},
-// ]},
-// {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
-{path:'Lecture/:id', component:LecturesComponent,
-children:
-        [// [{path:"Lesson/:id",component:LessonsComponent},
-        {path:"SpasificLecture/:id",component:LecturesComponent}
-      ]},
+  //Lectures
+  //   {path:"Lectures",component:LecturesComponent,
+  //      children:[{path:"Lesson",component:LessonsComponent},
+  //   //  {path:'Lecture/:id', component:LecturesComponent},
+  // ]},
+  // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
+  {
+    path: 'Lecture/:id', component: LecturesComponent,
+    children:
+      [// [{path:"Lesson/:id",component:LessonsComponent},
+        { path: "SpasificLecture/:id", component: LecturesComponent },
+        {path:"coreCurriculum",component:CoreCurriculumComponent},
+      ]
+  },
+  // {path:"coreCurriculum",component:CoreCurriculumComponent},
 
-  {path:"Lesson/:id",component:LessonsComponent},
+  { path: "Lesson/:id", component: LessonsComponent },
   //Nothing
-  {path:'',redirectTo:'/Home',pathMatch:'full'}
+  { path: '', redirectTo: '/Home', pathMatch: 'full' }
 ];
 
 @NgModule({
