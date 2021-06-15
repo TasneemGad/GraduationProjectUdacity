@@ -45,8 +45,6 @@ export class LecturesComponent implements OnInit {
   getAllLesson(){
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
-<<<<<<< HEAD
-=======
   getLessonByLectureID(id:number){
    
     this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
@@ -59,7 +57,6 @@ export class LecturesComponent implements OnInit {
   
     }
   
->>>>>>> 13b8c0df3fffdea2c16ebc08ea9305c3609e7f5b
   category(){
 this.router.navigate(['Courses'],{relativeTo:this.active})
 

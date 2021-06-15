@@ -86,39 +86,23 @@
 
         <mat-sidenav-container >
 
-<<<<<<< HEAD
-            <!-- <div *ngIf="flag==0; then Program else  other"></div>
+            <div *ngIf="flag==0; then Program else  other"></div>
             <ng-template #Program>
                 <h1 id="nav"> C++++++</h1>
                 <app-program-home></app-program-home>
-            </ng-template> -->
+            </ng-template>
 
-            <!-- <ng-template #other>
+            <ng-template #other>
                <div *ngIf="flag==1; then Syllabus else lecture"></div>
                
-            <ng-template #Syllabus> -->
-                <!-- <app-core-curriculum></app-core-curriculum> -->
-                <router-outlet></router-outlet> 
-            <!-- </ng-template>
+            <ng-template #Syllabus>
+                <app-core-curriculum></app-core-curriculum>
+                <!-- <router-outlet></router-outlet>  -->
+            </ng-template>
 
             <ng-template #lecture>
-                <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1>
-                <div *ngFor="let lesson of  allLesson; let i=index">
-                    <mat-card class="Lessons">
-                        <div style="display: flex;">
-                            <div class="contentLesson">
-                                <mat-label>LESSON {{i+1}}</mat-label><br><br>
-                                <mat-label style="font-size: x-large;">{{lesson.title}}</mat-label><br><br>
-                                <mat-label >{{lesson.details}}</mat-label><br><br>
-                                <button mat-raised-button class="btnLesson">CONTINUE<mat-icon style="margin-top: -1%;">arrow_forward</mat-icon></button>
-                                <br><br> <hr class="hrLesson"> <br>
-                                <mat-label class="durationLesson">{{lesson.duration}} hour</mat-label>
-                            </div>
-                            <div class="imgLesson">
-                                <img src="../../../../assets/lesson.jpg" class="img"  alt="error">
-                            </div>
-=======
-            <div *ngFor="let lesson of LessonByLectureID; let i=index">
+                <!-- <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1> -->
+                <div *ngFor="let lesson of LessonByLectureID; let i=index">
                 <mat-card class="Lessons">
                     <div style="display: flex;">
                         <div class="contentLesson">
@@ -131,9 +115,9 @@
                         </div>
                         <div class="imgLesson">
                             <img src="../../../../assets/lesson.jpg" class="img"  alt="error">
->>>>>>> 13b8c0df3fffdea2c16ebc08ea9305c3609e7f5b
                         </div>
-                    </mat-card><br><br>
+                    </div>
+                </mat-card><br><br>
                 </div>
                 <hr class="hrLesson">
                 <mat-card class="nextLecture">
@@ -145,7 +129,7 @@
 
                 </mat-card>
             </ng-template>
-            </ng-template> -->
+            </ng-template>
 
         </mat-sidenav-container>
     </mat-sidenav-container>
