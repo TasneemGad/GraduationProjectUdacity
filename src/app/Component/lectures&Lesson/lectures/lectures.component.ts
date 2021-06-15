@@ -16,14 +16,14 @@ export class LecturesComponent implements OnInit {
   allLesson:Lesson[] 
 
   lectureList:Lectures[]=[]
-  lectureAllList:Lectures[]
+  lectureAllList:Lectures[]=[]
   courseList:ICourse
   change:any
   Isdetails:boolean=true
   clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   indexLecture:number
-  LessonByLectureID: Lesson[];
+  LessonByLectureID: Lesson[]=[];
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -46,12 +46,12 @@ export class LecturesComponent implements OnInit {
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
   getLessonByLectureID(id:number){
-   
+         console.log("Lecidgggggggggggggggg",id)
     this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
       {
-      console.log("Lecid",id)
-       {console.log("lessonLectures",sucess)
-      this.LessonByLectureID=sucess;
+      this.LessonByLectureID=sucess;     
+        {console.log("lessonLectures",this.LessonByLectureID)
+
       }
     })
   
@@ -79,6 +79,47 @@ this.router.navigate(['Courses'],{relativeTo:this.active})
   done(id:any){
     this.router.navigate(['Lesson'],{relativeTo:this.active})
 
+  // for (let i of this.lectureAllList) {
+  //   if(i.id==id){
+  //     //  console.log(this.getID)
+  //     // this.color="green"
+  //   }
+  // }
+  // this.getID=id
+  // console.log(this.getID)
+}
+hideList(){
+  this.Isdetails = !this.Isdetails
+  this.text=this.Isdetails?"expand_more":"expand_less" 
+   
+}
+GetLectureByID(LecId:number,index:any){
+  console.log("ID")
+  this.indexLecture = index
+  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
+    this.clickedLecture=sucess,
+ 
+    console.log("L",this.clickedLecture.tilte)
+  })
+     this.getLessonByLectureID(LecId);
+     console.log("Iddddddddddd",LecId)
+    this.goToSpasificLecture(LecId)
+    this.getNextLectures(LecId)
+    
+}
+getNextLectures(id:any){
+  console.log("ID")
+  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
+    this.NextLecture=sucess,
+    console.log("L",this.NextLecture.tilte)})
+}
+goToSpasificLecture(id:any){
+  this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
+}
+goto(){
+ var x=  this.router.navigate(["coreCurriculum"],{relativeTo:this.active})
+  console.log("c",x)
+}
     // for (let i of this.lectureAllList) {
     //   if(i.id==id){
     //     //  console.log(this.getID)
@@ -87,35 +128,6 @@ this.router.navigate(['Courses'],{relativeTo:this.active})
     // }
     // this.getID=id
     // console.log(this.getID)
-  }
-  hideList(){
-    this.Isdetails = !this.Isdetails
-    this.text=this.Isdetails?"expand_more":"expand_less" 
-    
-  }
-  getLecturesByID(id:any,index:any){
-    console.log("ID")
-    this.indexLecture = index
-    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
-      this.clickedLecture=sucess,
-      console.log("L",this.clickedLecture.tilte)})
-      this.goToSpasificLecture(id)
-      this.getNextLectures(id)
-      this.showLecture()
-  }
-  getNextLectures(id:any){
-    console.log("ID")
-    this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
-      this.NextLecture=sucess,
-      console.log("L",this.NextLecture.tilte)})
-  }
-  goToSpasificLecture(id:any){
-    this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
-  }
-  goto(id:any){
-  var x=  this.router.navigate(["coreCurriculum/",id],{relativeTo:this.active})
-    console.log("c",x)
-  }
   showProgram(){
     this.flag = 0
   }
