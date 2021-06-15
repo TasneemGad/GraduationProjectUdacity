@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
+import { AuthGuard } from 'src/app/Helper/auth.guard';
+
 
 @Component({
   selector: 'app-sig-in',
@@ -21,7 +23,7 @@ export class SigINComponent implements OnInit {
   isLoggedIn=false
   isLoginFailed: boolean;
   errorMessage: any;
-  constructor(private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
+  constructor(private gruad:AuthGuard,private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
     private router: Router,) { }
     ngOnInit(): void {
        if (!this.authenticationService.isLoggedIn()) { 

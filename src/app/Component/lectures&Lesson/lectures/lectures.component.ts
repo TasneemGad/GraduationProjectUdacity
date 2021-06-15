@@ -15,7 +15,7 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
 export class LecturesComponent implements OnInit {
   allLesson:Lesson[] 
 
-  lectureList:Lectures[]
+  lectureList:Lectures[]=[]
   lectureAllList:Lectures[]
   courseList:ICourse
   change:any
@@ -23,6 +23,7 @@ export class LecturesComponent implements OnInit {
   clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   indexLecture:number
+  LessonByLectureID: Lesson[];
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -36,7 +37,7 @@ export class LecturesComponent implements OnInit {
     this.getLecturesByCourseID(this.idUrl);
     this.getLectureses();
     this.getCourseById(this.idUrl);
-    console.log("id",this.idUrl)
+    console.log("Lecid",this.idUrl)
     this.getAllLesson();
     
   }
@@ -44,6 +45,21 @@ export class LecturesComponent implements OnInit {
   getAllLesson(){
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
+<<<<<<< HEAD
+=======
+  getLessonByLectureID(id:number){
+   
+    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
+      {
+      console.log("Lecid",id)
+       {console.log("lessonLectures",sucess)
+      this.LessonByLectureID=sucess;
+      }
+    })
+  
+    }
+  
+>>>>>>> 13b8c0df3fffdea2c16ebc08ea9305c3609e7f5b
   category(){
 this.router.navigate(['Courses'],{relativeTo:this.active})
 

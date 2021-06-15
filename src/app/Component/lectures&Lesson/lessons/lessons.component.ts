@@ -14,6 +14,7 @@ allLesson:Lesson[]
 LessonList:Lesson[]
 lectureList:Lectures[] 
 idUrl:any
+  LessonByLectureID: Lesson[];
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,private lectureServices:LecturesService) { }
 
   ngOnInit(): void {
@@ -33,7 +34,8 @@ this.lessonService.GetLessonById(id).subscribe(sucess=>{this.LessonList=sucess,c
 getLecturesByID(id:number){
   console.log("ID")
   this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
-    this.lectureList=sucess,
+    this.lectureList=sucess
     console.log("kkk",this.lectureList)})
 }
+
 }
