@@ -30,6 +30,7 @@ import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
+import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curric
     LessonsComponent,
     LessonContentComponent,
     CoreCurriculumComponent,
+    ProgramHomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ import { CoursesComponent } from './Component/Settings/courses/courses.component
 import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
+import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 
 const routes: Routes = [
   // Routing
@@ -59,10 +60,11 @@ const routes: Routes = [
     children:
       [// [{path:"Lesson/:id",component:LessonsComponent},
         { path: "SpasificLecture/:id", component: LecturesComponent },
-        {path:"coreCurriculum",component:CoreCurriculumComponent},
+        {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
       ]
   },
   // {path:"coreCurriculum",component:CoreCurriculumComponent},
+  {path:"ProgramHome",component:ProgramHomeComponent},
 
   { path: "Lesson/:id", component: LessonsComponent },
   //Nothing

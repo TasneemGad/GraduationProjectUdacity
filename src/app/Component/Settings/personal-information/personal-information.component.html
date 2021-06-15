@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <mat-card class="Allcard">
     <div style="display: flex;padding: 0;">
       <div>
@@ -39,17 +39,72 @@
     <button type="submit" mat-raised-button class="btn">Send Code</button>
   </div>
 </div>
- 
+ <br>
 <div style="display: flex;">
   <div>
-  <mat-icon style="color:#ffae0c;">error_outline</mat-icon>
-</div>
-
-
+    <img src="../../../../assets/error_outline.svg" style="color:#ffae0c;" width="20px" height="20px" alt="error">
+  </div>
   <div>
-  <h3>email verification before SMS verification</h3>
+    <h3>Complete  email verification before SMS verification</h3>
+  </div>
 </div>
 </div>
+</mat-card>
+</div> -->
+
+<div>
+  <mat-card class="Allcard">
+    <h1>Basic Information</h1>
+    <div class="example-container" #form>
+      <div style="display: flex;">
+        <div>
+            <img src="assets/i.png"><br>
+        </div>
+        <div >
+          <mat-form-field  class="contain">
+          <!-- <mat-label>Full Name</mat-label> -->
+          <input matInput placeholder="Full Name" formControlName="name" required >
+          </mat-form-field>
+        </div>
+      </div>
+<br>
+<div style="display: flex;">
+  <div >
+    <mat-form-field  class="contain">
+      <!-- <mat-label>Enter your email</mat-label> -->
+      <input type="email" matInput formControlName="email" placeholder="Email">
+    </mat-form-field>
+  </div>
+  <div>
+    <button type="submit" mat-raised-button 
+    style="text-transform: uppercase;width: 150px;height: 50px;"  class="btnverify"> Verify Email</button>
+  </div>
+</div>
+
+<br>
+<div style="display: flex;">
+  <div>  
+    <mat-form-field class="contain">
+      <!-- <mat-label>Verify your tel</mat-label> -->
+      <input type="tel" matInput formControlName="tel" placeholder="Phone Number">
+    </mat-form-field>
+  </div>
+  <div>
+    <button type="submit" mat-raised-button class="btn">Send Code</button>
+  </div>
+</div>
+</div>
+
+
+ <br>
+<div style="display: flex;">
+  <div>
+    <!-- <span><mat-icon style="color:#ffae0c;">error_outline</mat-icon></span>  -->
+    <!-- <img src="../../../../assets/error_outline.svg" style="color:#ffae0c;" width="20px" height="20px" alt="error"> -->
+  </div>
+  <div>
+    <h4>Complete email verification before SMS verification</h4>
+  </div>
 </div>
 </mat-card>
 </div>
