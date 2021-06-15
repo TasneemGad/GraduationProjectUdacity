@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 
@@ -12,8 +13,10 @@ import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 })
 export class SignUpComponent implements OnInit {
   private _registerService: any;
+  userNaa: { User: string; pass: string; };
+  isLoggedIn: any;
   constructor( private fb: FormBuilder, private signUpService:RegistrationService, private router:Router,private _router: Router,
-) { }
+    private auth:AuthenticationService,) { }
   RegisterForm:FormGroup
   user: ILogin;
   loading = false;
@@ -39,6 +42,20 @@ export class SignUpComponent implements OnInit {
   signUpUser(user: ILogin) {
     this.signUpService.SignUp(user).subscribe( data => {
       console.log("success")
+      this.auth.login(this.formFields.UserName.value, this.formFields.PasswordHash.value)
+      .pipe(first())
+      .subscribe(
+          AData => {
+             
+             this.isLoggedIn= this.auth.isLoggedIn();
+              console.log("llllllllllllllllllllllllllllll");
+
+          },
+          error => {
+              this.loading = false;
+              this.error = error.message;
+             
+          });
       this.router.navigate(['/ClassRoom']);
       this.isSuccessful = true;
       this.isSignUpFailed = false;
@@ -49,6 +66,7 @@ export class SignUpComponent implements OnInit {
       
       })
         this.loading = true;
+       
      
   }
 

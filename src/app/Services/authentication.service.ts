@@ -31,8 +31,9 @@ export class AuthenticationService {
             }));
     }
 
+  
    
-    private setSession(authResult:any) {
+    setSession(authResult:any) {
         //const expiresAt = moment().add(authResult.expiresIn,'second');
         const expiresAt = authResult.expiration;
         localStorage.setItem('token', authResult.token);
