@@ -63,7 +63,9 @@
         <div >
           <mat-form-field  class="contain">
           <!-- <mat-label>Full Name</mat-label> -->
-          <input matInput placeholder="Full Name" formControlName="name" required >
+          <!-- <input matInput placeholder="Full Name" formControlName="name" required > -->
+    <input matInput placeholder="Full Name" formControlName="name" required  [value]="userInfo.userName"  #userName>
+
           </mat-form-field>
         </div>
       </div>
