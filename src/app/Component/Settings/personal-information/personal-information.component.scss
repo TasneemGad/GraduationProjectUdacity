@@ -1,98 +1,100 @@
 .home{
-  padding-bottom: 40px;
+padding-bottom: 40px;
 }
 #part1{
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    width: 100%;
-    // width: 400px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+  // width: 400px;
 }
 #two{
-    // display: inline-block;
-   float: right;
-    
+  // display: inline-block;
+  float: right;
+  
 }
 .example-form {
-    // min-width: 150px;
-    // max-width: 500px;
-    width: 100%;
-    margin-top: 70px;
-  }
-
-  img{
-      width: 120px;
-      border-radius: 70px;
-      position: absolute;
-     top: 0;
-// bottom: 20px;     
-
-  }
-  .Allcard{
-    width: 500px;
-    height: 400px;
-    box-shadow: 2px 2px 8px rgb(231, 231, 231);
-    margin-top: 40px;
-  }
- .card{
-    box-shadow: 2px 2px 8px rgb(231, 231, 231);
-    // width:900px;
-    // height: 400px;
-
- }
- .btnCancel{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-right: 10px;
-  height: 50px;
-  border-radius: 10px;
+// min-width: 150px;
+// max-width: 500px;
+width: 100%;
+margin-top: 70px;
 }
-.btnSave{
-  background-color: #017a9b;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 50px;
-  border-radius: 10px;
-}
-.mat-card{
-  padding: 70px 50px 50px 50px;
-  width: 100%;
-}
-.mat-card-title{
-  font-weight: 100;
-}
-.requestTitel{
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-.prag{
-  color: gray;
-}
-.btnVerification{
-  height: 50px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(85, 85, 85, 0.2), 0 6px 20px 0 rgba(87, 87, 87, 0.19);
-}
-
-.btn{
-  text-transform: uppercase;
-  height: 50px;
-  background-color: teal;
-  color: white;
-  position: absolute;
-  right:   50px;
-  margin-top:  25px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+img{
+width: 120px;
+border-radius: 70px;
+// margin-right: 10%;
+// position: absolute;
+// top: 0;
+// bottom: 20px;   
 }
 .btnverify{
   text-transform: uppercase;
   height: 50px;
-  margin-top:  25px;
   text-transform: uppercase;
   width: 150px;
   position: absolute;
   right:   50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.contain{
-  width: 500px;
-  padding-top: 20px;
+.btn{
+  text-transform: uppercase;
+  height: 50px;
+  background-color: #017a9b;
+  color: white;
+  position: absolute;
+  right:   50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+.name{
+  margin: 15% 0% 0% 15%;
 }
+.contain{
+  width: 230%;
+  padding-left: 10px;
+  border: 1px solid ;
+  border-color: rgb(204, 203, 203);
+}
+.Allcard{
+  width: 500px;
+  height: auto;
+  box-shadow: 2px 2px 8px rgb(231, 231, 231);
+  margin-top: 40px;
+}
+.card{
+  box-shadow: 2px 2px 8px rgb(231, 231, 231);
+  // width:900px;
+  // height: 400px;
+
+}
+.btnCancel{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin-right: 10px;
+height: 50px;
+border-radius: 10px;
+}
+.btnSave{
+background-color: #017a9b;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+height: 50px;
+border-radius: 10px;
+}
+.mat-card{
+padding: 70px 50px 50px 50px;
+width: 100%;
+}
+.mat-card-title{
+font-weight: 100;
+}
+.requestTitel{
+font-weight: 500;
+letter-spacing: 1px;
+}
+.prag{
+color: gray;
+}
+.btnVerification{
+height: 50px;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(85, 85, 85, 0.2), 0 6px 20px 0 rgba(87, 87, 87, 0.19);
+}
+
