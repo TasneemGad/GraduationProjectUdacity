@@ -16,14 +16,14 @@ export class LecturesComponent implements OnInit {
   allLesson:Lesson[] 
 
   lectureList:Lectures[]=[]
-  lectureAllList:Lectures[]
+  lectureAllList:Lectures[]=[]
   courseList:ICourse
   change:any
   Isdetails:boolean=true
   clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   indexLecture:number
-  LessonByLectureID: Lesson[];
+  LessonByLectureID: Lesson[]=[];
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -44,12 +44,12 @@ export class LecturesComponent implements OnInit {
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
   getLessonByLectureID(id:number){
-   
+         console.log("Lecidgggggggggggggggg",id)
     this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
       {
-      console.log("Lecid",id)
-       {console.log("lessonLectures",sucess)
-      this.LessonByLectureID=sucess;
+      this.LessonByLectureID=sucess;     
+        {console.log("lessonLectures",this.LessonByLectureID)
+
       }
     })
   
@@ -91,14 +91,19 @@ hideList(){
   this.text=this.Isdetails?"expand_more":"expand_less" 
    
 }
-getLecturesByID(id:any,index:any){
+GetLectureByID(LecId:number,index:any){
   console.log("ID")
   this.indexLecture = index
-  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
     this.clickedLecture=sucess,
-    console.log("L",this.clickedLecture.tilte)})
-    this.goToSpasificLecture(id)
-    this.getNextLectures(id)
+ 
+    console.log("L",this.clickedLecture.tilte)
+  })
+     this.getLessonByLectureID(LecId);
+     console.log("Iddddddddddd",LecId)
+    this.goToSpasificLecture(LecId)
+    this.getNextLectures(LecId)
+    
 }
 getNextLectures(id:any){
   console.log("ID")
