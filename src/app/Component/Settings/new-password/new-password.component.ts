@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-new-password',
@@ -7,9 +8,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./new-password.component.scss']
 })
 export class NewPasswordComponent implements OnInit {
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private accountService:AccountService) { }
 
-   newPasswordForm:FormGroup
+   newPasswordForm:FormGroup;
+   password:string;
 
   getErrorMessagecurrentPassword() {
     if (this.newPasswordForm.get('currentPassword')?.hasError('required')) {
@@ -44,5 +46,10 @@ export class NewPasswordComponent implements OnInit {
     return this.newPasswordForm.get('currentPassword')
   }
   onSubmit(){
+      this.accountService.updatePassword(this.password).subscribe(
+        data=>{
+          console.log("Done")
+        }
+      )
   }
 }
