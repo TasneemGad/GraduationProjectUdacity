@@ -20,6 +20,7 @@ import { PaymentComponent } from './Component/payment/payment.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
 import { GovernmentComponent } from './Component/government/government.component';
 import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
+import { OverViewComponent } from './Component/over-view/over-view.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BecomeAnInstractorComponent } from './Component/become-an-instractor/be
     PaymentComponent,
     CareerPrepComponent,
     GovernmentComponent,
-    BecomeAnInstractorComponent
+    BecomeAnInstractorComponent,
+    OverViewComponent
   ],
   imports: [
     BrowserModule,
