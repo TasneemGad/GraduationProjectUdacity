@@ -3,7 +3,7 @@
         <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg"
             style="width: 30px;height: 50px;cursor: pointer;">
 
-        <div routerLink="/Home">
+        <div routerLink="/ClassRoom">
 
             <h1 id="one">
                 <mat-icon>home</mat-icon>
@@ -47,28 +47,32 @@
                 </div>
             </div>
             <hr>
-            <h1 class="navContent">Program Home</h1>
+            <h1 class="navContent" (click)="showProgram(courseList.id)">Program Home</h1>
             <hr>
             <h1 class="navContent"  (click)="goto(courseList.id)">Syllabus </h1>
+<<<<<<< HEAD
+=======
+            <!-- <h1 class="navContent"   (click)="showSyllabus()">Syllabus </h1> -->
+>>>>>>> 545882aaace2a7077418e2e64151ba5c6b7f1bfe
             <hr>
             <div style="display: flex;" (click)="hideList()">
                 <div>
-                    <h1 class="navContent" >Core Curriculum </h1>   
+                    <h1 class="navContent">Core Curriculum </h1>   
                 </div>
                 <div style="margin: 0 auto;">
                     <mat-icon class="hideIcon">{{text}}</mat-icon>
                 </div>
             </div>
             <ng-template #list>
-                <div *ngFor="let i of lectureList ;let e=index ">
+                <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="getLecturesByID(i.id,e+1)">
+                    <div class="all" (click)="getLessonByLectureID(i.id)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
                             </div>
                             <div >
-                                <h1 mat-stroked-button class="first"(click)="done(i.id)">{{i.tilte}}</h1>
+                                <h1 mat-stroked-button class="first">{{i.tilte}}</h1>
                             </div>
                             <div class="CompletIcon">
                                 <button mat-icon-button>
@@ -86,35 +90,23 @@
         </mat-sidenav>
         <router-outlet></router-outlet>
 
-        <mat-sidenav-container>
-            <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1>
+        <mat-sidenav-container >
 
-            <div *ngFor="let lesson of  allLesson; let i=index">
-                <mat-card class="Lessons">
-                    <div style="display: flex;">
-                        <div class="contentLesson">
-                            <mat-label>LESSON {{i+1}}</mat-label><br><br>
-                            <mat-label style="font-size: x-large;">{{lesson.title}}</mat-label><br><br>
-                            <mat-label >{{lesson.details}}</mat-label><br><br>
-                            <button mat-raised-button class="btnLesson">CONTINUE<mat-icon style="margin-top: -1%;">arrow_forward</mat-icon></button>
-                            <br><br> <hr class="hrLesson"> <br>
-                            <mat-label class="durationLesson">{{lesson.duration}} hour</mat-label>
-                        </div>
-                        <div class="imgLesson">
-                            <img src="../../../../assets/lesson.jpg" class="img"  alt="error">
-                        </div>
-                    </div>
-                </mat-card><br><br>
-            </div>
-            <hr class="hrLesson">
-            <mat-card class="nextLecture">
-                <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle>
-                <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO {{NextLecture.tilte}}</mat-card-subtitle>
-                <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext">
-                    <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
-                </svg>
+            <!-- <div *ngIf="flag==0; then Program else  other"></div>
+            <ng-template #Program>
+                <h1 id="nav"> C++++++</h1>
+                <app-program-home></app-program-home>
+            </ng-template> -->
 
-            </mat-card>
+            <!-- <ng-template #other>
+               <div *ngIf="flag==1; then Syllabus else lecture"></div>
+               
+            <ng-template #Syllabus>
+                <app-core-curriculum></app-core-curriculum> -->
+                <router-outlet></router-outlet> 
+            <!-- </ng-template> -->
+
+            
 
         </mat-sidenav-container>
 

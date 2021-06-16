@@ -6,5 +6,5 @@ export interface Lesson {
     contentNumber: number
     duration:number
     lectureId :number
-    
+
 }

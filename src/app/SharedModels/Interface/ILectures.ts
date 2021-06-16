@@ -1,5 +1,5 @@
 export interface Lectures {
-    id?: number
+    id: number
     tilte: string
     courseId: number
     lessoneNumber: number

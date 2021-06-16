@@ -46,10 +46,14 @@
 
     <button mat-button class="menuData">For Government</button>
     
-    <p style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
-    <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
-
-    <div *ngIf="logined(); then name else log"></div>
+    <p *ngIf="isLoggedIn();then Login else NotLogin" style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
+    <ng-template #NotLogin >
+      <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
+</ng-template>
+<ng-template #Login >
+  <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Blog</button>
+</ng-template>
+    <div *ngIf="isLoggedIn(); then name else log"></div>
 
     <ng-template #log>
       <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button> 
@@ -59,4 +63,5 @@
       <button routerLink="/ClassRoom" mat-raised-button style="background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;"
         >My ClassRoom</button>
     </ng-template>
+    
   </mat-toolbar>

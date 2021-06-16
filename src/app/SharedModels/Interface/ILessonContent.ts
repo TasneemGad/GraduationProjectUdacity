@@ -1,4 +1,4 @@
-export interface Lesson {
+export interface LessonContent {
     id?: number
     VideoLinkId: number
     QuestionGroupId:number
