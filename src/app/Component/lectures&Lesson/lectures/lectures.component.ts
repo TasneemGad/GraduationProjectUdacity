@@ -20,10 +20,9 @@ export class LecturesComponent implements OnInit {
   courseList:ICourse
   change:any
   Isdetails:boolean=true
-  clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
-  NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
   indexLecture:number
-  LessonByLectureID: Lesson[]=[];
+  
+  LessonByLectureID: Lesson[];
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -45,17 +44,7 @@ export class LecturesComponent implements OnInit {
   getAllLesson(){
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
-  getLessonByLectureID(id:number){
-         console.log("Lecidgggggggggggggggg",id)
-    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
-      {
-      this.LessonByLectureID=sucess;     
-        {console.log("lessonLectures",this.LessonByLectureID)
-
-      }
-    })
   
-    }
   
   category(){
 this.router.navigate(['Courses'],{relativeTo:this.active})
@@ -93,31 +82,13 @@ hideList(){
   this.text=this.Isdetails?"expand_more":"expand_less" 
    
 }
-GetLectureByID(LecId:number,index:any){
-  console.log("ID")
-  this.indexLecture = index
-  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
-    this.clickedLecture=sucess,
- 
-    console.log("L",this.clickedLecture.tilte)
-  })
-     this.getLessonByLectureID(LecId);
-     console.log("Iddddddddddd",LecId)
-    this.goToSpasificLecture(LecId)
-    this.getNextLectures(LecId)
-    
-}
-getNextLectures(id:any){
-  console.log("ID")
-  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
-    this.NextLecture=sucess,
-    console.log("L",this.NextLecture.tilte)})
-}
-goToSpasificLecture(id:any){
-  this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
-}
-goto(){
- var x=  this.router.navigate(["coreCurriculum"],{relativeTo:this.active})
+
+
+// goToSpasificLecture(id:any){
+//   this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
+// }
+goto(id:any){
+ var x=  this.router.navigate(["coreCurriculum/",id],{relativeTo:this.active})
   console.log("c",x)
 }
     // for (let i of this.lectureAllList) {
@@ -128,13 +99,29 @@ goto(){
     // }
     // this.getID=id
     // console.log(this.getID)
-  showProgram(){
+
+  showProgram(id:any){
     this.flag = 0
+    var x=  this.router.navigate(["ProgramHome/",id],{relativeTo:this.active})
+
   }
   showSyllabus(){
     this.flag = 1
   }
-  showLecture(){
+  showLecture(id:any){
     this.flag = 2
+    var x=  this.router.navigate(["Lesson/",id],{relativeTo:this.active})
   }
+
+  getLessonByLectureID(id:number){
+    console.log("Lecidgggggggggggggggg",id)
+this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
+ {
+ this.LessonByLectureID=sucess;     
+   {console.log("lessonLectures",this.LessonByLectureID)
+ }
+
+})
+this.showLecture(id)
+}
 }

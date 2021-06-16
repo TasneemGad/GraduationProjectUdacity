@@ -10,32 +10,52 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
   styleUrls: ['./lessons.component.scss']
 })
 export class LessonsComponent implements OnInit {
-allLesson:Lesson[] 
-LessonList:Lesson[]
-lectureList:Lectures[] 
-idUrl:any
-  LessonByLectureID: Lesson[];
-  constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,private lectureServices:LecturesService) { }
+  LessonByLectureID: Lesson[]=[];
+  idUrl:any
+  // NextLecture:Lectures
+  // clickedLecture:Lectures
+  clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
+  NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"k",lessoneNumber:3,tilte:"j"}
+  constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
+    private lectureServices:LecturesService) { }
 
   ngOnInit(): void {
-       this.active.paramMap.subscribe((params:ParamMap)=>{this.idUrl =params.get('id')
-      console.log("idLesson", this.idUrl)
-    })
-this.getAllLesson();
-this.getLessonByID(this.idUrl);
-this.getLecturesByID(this.idUrl);
-  }
-getAllLesson(){
-  this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
-}
-getLessonByID(id:number){
-this.lessonService.GetLessonById(id).subscribe(sucess=>{this.LessonList=sucess,console.log("lessonID",this.LessonList)})
-}
-getLecturesByID(id:number){
-  console.log("ID")
-  this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
-    this.lectureList=sucess
-    console.log("kkk",this.lectureList)})
-}
+    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
+    // console.log("lessonID",this.idUrl)
+    this.getLessonByLectureID(this.idUrl);
+    // console.log("enter",this.NextLecture)
+    // this.GetLectureByID(this.idUrl)
+  })
 
+  }
+getLessonByLectureID(id:number){
+         console.log("Lecidgggggggggggggggg",id)
+    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
+      {
+      this.LessonByLectureID=sucess;     
+        {console.log("lessonLectures",this.LessonByLectureID)
+      }
+    })
+  
+    }
+getNextLectures(id:any){
+  console.log("ID",id)
+  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
+    this.NextLecture=sucess,
+    console.log("Ljnkjnb",this.NextLecture)})
+}
+GetLectureByID(LecId:number){
+  console.log("ID")
+  // this.indexLecture = index
+  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
+    this.clickedLecture=sucess,
+ 
+    console.log("LLLLL",this.clickedLecture.tilte)
+  })
+  // this.getNextLectures(LecId)
+}
+goToLessonContent(id:any){
+  console.log("content",id)
+  this.router.navigate(["lessonContent/",id])
+}
 }

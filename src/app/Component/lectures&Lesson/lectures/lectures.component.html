@@ -47,7 +47,7 @@
                 </div>
             </div>
             <hr>
-            <h1 class="navContent" (click)="showProgram()">Program Home</h1>
+            <h1 class="navContent" (click)="showProgram(courseList.id)">Program Home</h1>
             <hr>
             <h1 class="navContent"  (click)="goto(courseList.id)">Syllabus </h1>
             <!-- <h1 class="navContent"   (click)="showSyllabus()">Syllabus </h1> -->
@@ -61,9 +61,9 @@
                 </div>
             </div>
             <ng-template #list>
-                <div *ngFor="let i of lectureList ;let e=index ">
+                <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="GetLectureByID(i.id,e+1)">
+                    <div class="all" (click)="getLessonByLectureID(i.id)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
@@ -86,50 +86,21 @@
 
         <mat-sidenav-container >
 
-            <div *ngIf="flag==0; then Program else  other"></div>
+            <!-- <div *ngIf="flag==0; then Program else  other"></div>
             <ng-template #Program>
                 <h1 id="nav"> C++++++</h1>
                 <app-program-home></app-program-home>
-            </ng-template>
+            </ng-template> -->
 
-            <ng-template #other>
+            <!-- <ng-template #other>
                <div *ngIf="flag==1; then Syllabus else lecture"></div>
                
             <ng-template #Syllabus>
-                <app-core-curriculum></app-core-curriculum>
-                <!-- <router-outlet></router-outlet>  -->
-            </ng-template>
+                <app-core-curriculum></app-core-curriculum> -->
+                <router-outlet></router-outlet> 
+            <!-- </ng-template> -->
 
-            <ng-template #lecture>
-                <!-- <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1> -->
-                <div *ngFor="let lesson of LessonByLectureID; let i=index">
-                <mat-card class="Lessons">
-                    <div style="display: flex;">
-                        <div class="contentLesson">
-                            <mat-label>LESSON {{i+1}}</mat-label><br><br>
-                            <mat-label style="font-size: x-large;">{{lesson.title}}</mat-label><br><br>
-                            <mat-label >{{lesson.details}}</mat-label><br><br>
-                            <button mat-raised-button class="btnLesson">CONTINUE<mat-icon style="margin-top: -1%;">arrow_forward</mat-icon></button>
-                            <br><br> <hr class="hrLesson"> <br>
-                            <mat-label class="durationLesson">{{lesson.duration}} hour</mat-label>
-                        </div>
-                        <div class="imgLesson">
-                            <img src="../../../../assets/lesson.jpg" class="img"  alt="error">
-                        </div>
-                    </div>
-                </mat-card><br><br>
-                </div>
-                <hr class="hrLesson">
-                <mat-card class="nextLecture">
-                    <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle>
-                    <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO {{NextLecture.tilte}}</mat-card-subtitle>
-                    <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext">
-                        <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
-                    </svg>
-
-                </mat-card>
-            </ng-template>
-            </ng-template>
+            
 
         </mat-sidenav-container>
     </mat-sidenav-container>
