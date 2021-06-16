@@ -22,6 +22,9 @@ export class EnrollService {
   trueenroll:IEnrollCourse[]=[]
   stdId:string|null=""
   result:string|null="";
+  enrollCrsId:number;
+  // enrolledcrs:IEnrollCourse={id:0,courseId:0,studentId:"",endEnrollDate:"",enrollDate:""};
+
 
   constructor(private http:HttpClient,public tokenUser:AuthenticationService) { }
 
@@ -60,5 +63,26 @@ export class EnrollService {
       return throwError(err.message || "error")
     }))
   }
- 
+  getStdEnrollcrs(crsID:number): Observable<IEnrollCourse>{
+    console.log("iiiiiiiiiiiiiiiooooooooooooo")
+
+    this.stdId= this.tokenUser.getUserId();
+     return this.http.get<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
+       return throwError(err.message || "error")
+     }))
+   }
+  //RemoveCourse
+  RemoveEnrollCourse(crsId:number){
+    console.log("Hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+
+    this.getStdEnrollcrs(crsId).subscribe(
+      data=>{
+        this.enrollCrsId=data.id;
+      }
+    );
+    return this.http.delete<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses" + "/" + this.enrollCrsId).pipe(catchError((err) => {
+      return throwError(err.message || "error")
+    }))
+
+}
 }

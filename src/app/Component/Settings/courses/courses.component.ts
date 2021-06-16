@@ -46,6 +46,19 @@ export class CoursesComponent implements OnInit {
       }
     )
   }
+Test(){
+  console.log("Here")
+}
+  removeEnrollCrs(crsid:number){
+    console.log("Here")
+    
+    this.Enrollservices.RemoveEnrollCourse(crsid).subscribe(
+      data=>{
+          console.log("Removed")
+      }
+    )
+
+  }
 
 //   getLecturesByID(id:number){
 //     console.log("ID")
