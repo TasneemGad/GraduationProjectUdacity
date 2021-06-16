@@ -28,4 +28,6 @@ export class LecturesService {
   getLecturesByID(id: number): Observable<Lectures> {
     return this.http.get<Lectures>(this.lectureUrl+"/" + id).pipe();
   }
+
+  
 }

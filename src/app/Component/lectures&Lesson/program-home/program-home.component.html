@@ -1,0 +1,64 @@
+  <h2 class="nav">{{currentCourse.name}}</h2>
+  
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step>
+        <ng-template matStepLabel>start</ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Lab1</ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Lab2</ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Term End</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <hr style="margin: 0;">
+
+<div class="part2">
+    <div class="contentPart2">
+        <mat-label class="subTitel">To Do</mat-label><br><br>
+        <mat-card class="Details">
+            <div style="display: flex;">
+                <div style="display: flex;">
+                <span> <svg ViewBox="0 0 32 32" class="svg">
+                        <path d="M24.238 7.76a2 2 0 01.095.61V9H27a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V10a1 1 0 011-1h2.666v-.63a2 2 0 012.61-1.905L16 8.6l5.724-2.134a2 2 0 012.514 1.295zM7.666 11H6v11h7.108l-4.05-1.492a2 2 0 01-1.391-1.905L7.666 11zM26 11h-1.667v7.603a2 2 0 01-1.39 1.905L18.89 22 26 22V11zM9.667 8.37v10.233L15 20.63V10.397L9.667 8.37zm12.666 0L17 10.397V20.63l5.333-2.027V8.37z"></path>
+                    </svg></span>
+                    <span> <mat-label  class="titelDetails">Pick up where you left off</mat-label></span><br><br>
+                </div>
+                <div class="divBtn">
+                    <button mat-raised-button class="btnDetails" >CONTINUE</button>
+                </div>
+            </div>
+        </mat-card><br>
+        <mat-card class="Details">
+            <div style="display: flex;">
+                <div style="display: flex;">
+                <span> <svg ViewBox="0 0 32 32" class="svg">
+                        <path d="M25.217 5.208a2 2 0 011.638 1.708c.415 3.129-.058 5.807-1.475 7.957a24.124 24.124 0 01-1.75 2.324l-.402.462-.3.331-.012 1.695a3.467 3.467 0 01-.562 1.863l-.149.216-.149.191-.166.18-4.14 4.134a2.501 2.501 0 01-4.194-1.171l-.035-.167-.023-.18-.008-.089-.006-.179.006-.897a3.589 3.589 0 01-2.012.964l-.228.022-1.811.12a2 2 0 01-2.133-1.978l.005-.15.12-1.808a3.57 3.57 0 01.982-2.234l-.896.006a2.5 2.5 0 01-2.494-2.156l-.016-.162L5 16.046a2.5 2.5 0 01.598-1.638l.135-.147 4.14-4.134A3.5 3.5 0 0112.11 9.11l.21-.008 1.716-.012.45-.394c.523-.45 1.054-.873 1.594-1.27l.542-.388.548-.37c2.299-1.512 5.016-1.99 8.046-1.46zm-2.443 1.793c-1.679.022-3.18.468-4.505 1.338a24.713 24.713 0 00-2.967 2.304l-.48.443-2.486.017a1.501 1.501 0 00-.94.34l-.11.099-4.14 4.134a.5.5 0 00.268.845l.09.007 2.588-.018c.219-.001.434-.039.637-.11l.15-.058.04.097c.032.063.07.123.116.18l.074.081 4.217 4.212c.067.067.14.122.22.166l.12.056a1.994 1.994 0 00-.157.617l-.007.161-.018 2.585.007.09a.5.5 0 00.4.404l.089.009.08-.006a.5.5 0 00.216-.089l.061-.051 4.14-4.134.098-.109c.186-.226.302-.502.333-.793l.008-.147.018-2.476c1.1-1.143 2.026-2.284 2.776-3.422 1.13-1.715 1.518-3.913 1.163-6.594a11.617 11.617 0 00-1.761-.177l-.338-.001zM10.99 19.409a1.588 1.588 0 00-1.548 1.335l-.016.145-.12 1.808 1.81-.12a1.584 1.584 0 00.163-3.145l-.163-.02-.126-.003zm7.605-8.813c.786-.787 2.052-.796 2.828-.02.776.776.767 2.042-.02 2.828-.786.787-2.052.796-2.828.02-.776-.776-.767-2.042.02-2.828z"></path>
+                    </svg></span>
+                    <span> <mat-label  class="titelDetails">Labs</mat-label></span><br><br>
+                </div>
+                <div class="divBtn">
+                    <button mat-raised-button class="btnDetails" >GO TO Lab</button>
+                </div>
+            </div>
+        </mat-card><br>
+        <mat-card class="Details">
+            <div style="display: flex;">
+                <div style="display: flex;">
+                <span> <svg ViewBox="0 0 32 32" class="svg">
+                        <path d="M20 6a1 1 0 011 1v1h3a2 2 0 012 2v8.586A2 2 0 0125.414 20L20 25.414a2 2 0 01-1.414.586H8a2 2 0 01-2-2V10a2 2 0 012-2h3V7a1 1 0 012 0v1h6V7a1 1 0 011-1zm4 9H8v9h10v-4a2 2 0 012-2h4v-3zm-1.415 5H20v2.585L22.585 20zM11 10H8v3h16v-3h-3a1 1 0 01-2 0h-6a1 1 0 01-2 0z"></path>
+                    </svg></span>
+                    <span> <mat-label  class="titelDetails">Plan your next two weeks of study </mat-label><br><br>
+                    <mat-label style="font-size: 16px;">Set aside time to work towards finishing the program.</mat-label> </span><br><br>
+                </div>
+                <div class="divBtn">
+                    <button mat-raised-button class="btnDetails" >SET UP SESSION</button>
+                </div>
+            </div>
+        </mat-card><br><br><br>
+        <mat-label class="subTitel">Up Coming</mat-label>
+    </div>
+</div>

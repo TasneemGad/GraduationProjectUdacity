@@ -40,8 +40,9 @@ export class ClassRoomComponent implements OnInit {
   }
 
   routToSetting(){
-    this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])
+    // this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])
     // this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
+    this.router.navigate(['Setting'])
   }
   Logout(){
    this.Authservices.logout();   
