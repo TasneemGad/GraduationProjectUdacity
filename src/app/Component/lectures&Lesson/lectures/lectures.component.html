@@ -49,7 +49,7 @@
             <hr>
             <h1 class="navContent">Program Home</h1>
             <hr>
-            <h1 class="navContent"  (click)="goto()">Syllabus </h1>
+            <h1 class="navContent"  (click)="goto(courseList.id)">Syllabus </h1>
             <hr>
             <div style="display: flex;" (click)="hideList()">
                 <div>
@@ -80,8 +80,11 @@
                 </div>
                 <hr>
             </ng-template>
+
+
             <div *ngIf="Isdetails then list"></div>
         </mat-sidenav>
+        <router-outlet></router-outlet>
 
         <mat-sidenav-container>
             <h1 id="nav"> {{indexLecture}} . {{clickedLecture.tilte}}</h1>
@@ -114,5 +117,6 @@
             </mat-card>
 
         </mat-sidenav-container>
+
     </mat-sidenav-container>
 </mat-sidenav-container>

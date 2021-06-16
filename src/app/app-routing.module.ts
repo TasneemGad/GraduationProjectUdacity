@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'SignUP', component: SigINComponent },
   { path: 'SignIn', component: SigINComponent },
   { path: 'ClassRoom', component: ClassRoomComponent },
+    //Category && Course
   { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
   { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
 
@@ -59,7 +60,7 @@ const routes: Routes = [
     children:
       [// [{path:"Lesson/:id",component:LessonsComponent},
         { path: "SpasificLecture/:id", component: LecturesComponent },
-        {path:"coreCurriculum",component:CoreCurriculumComponent},
+        {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
       ]
   },
   // {path:"coreCurriculum",component:CoreCurriculumComponent},
