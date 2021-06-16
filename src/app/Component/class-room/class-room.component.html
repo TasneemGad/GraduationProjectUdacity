@@ -30,14 +30,18 @@
     
     <mat-sidenav-content>
         <h1 id="nav">Home</h1>
-        <section style="padding: 20px 0px 30px 60px;font-size: 15px;">
-            <mat-label style="font-size:17px; opacity: .7;color:#00485c;font-weight:600;">PAID PROGRAM</mat-label><br><br><br>
+        <section class="content">
+            <div style="display: flex;">
+                <mat-label class="sectionCourses">PAID PROGRAM &nbsp; | </mat-label><br><br><br>
+                <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label><br><br><br>
+                <!-- <mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br> -->
+            </div>
             <div *ngFor="let course of CourseList">
                 <mat-card class="courses">
                     <div style="display: flex;" routerLink="{{'/Lecture/'+course.id}}">
                         <div>
                             <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
-                                <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
+                            <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
                             <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
                             <mat-label > {{course.description}}</mat-label>
                         </div>

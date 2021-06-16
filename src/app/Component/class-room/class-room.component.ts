@@ -22,29 +22,31 @@ export class ClassRoomComponent implements OnInit {
     this.AllStdCourses();
   }
 
-  AllStdCourses(){
-    this.Enrollservices.getAllStdEnrolledCourses().subscribe(
-      data => {
-        console.log(data)
-        for (let enrollCrs of data) {
-            console.log(enrollCrs.courseId)
-          this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
-            crsData => {
-              this.CourseList.push(crsData);
-            }
-          )
-        }
-        console.log(this.CourseList)
+AllStdCourses(){
+  this.Enrollservices.getAllStdEnrolledCourses().subscribe(
+    data => {
+      console.log(data)
+      for (let enrollCrs of data) {
+          console.log(enrollCrs.courseId)
+        this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
+          crsData => {
+            this.CourseList.push(crsData);
+          }
+        )
       }
-    )
-  }
-
-  routToSetting(){
-    // this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])
-    // this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
-    this.router.navigate(['Setting'])
-  }
-  Logout(){
-   this.Authservices.logout();   
-     }
+      console.log(this.CourseList)
+    }
+  )
+}
+routToSetting(){
+  // this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])
+  // this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
+  this.router.navigate(['Setting'])
+}
+Logout(){
+  this.Authservices.logout();   
+}
+getFreeCourses(){
+  
+}
 }
