@@ -52,11 +52,7 @@ Test(){
   removeEnrollCrs(crsid:number){
     console.log("Here")
     
-    this.Enrollservices.RemoveEnrollCourse(crsid).subscribe(
-      data=>{
-          console.log("Removed")
-      }
-    )
+    this.Enrollservices.RemoveEnrollCourse(crsid)    
 
   }
 

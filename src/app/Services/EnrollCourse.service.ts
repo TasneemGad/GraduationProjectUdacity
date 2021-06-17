@@ -67,7 +67,7 @@ export class EnrollService {
     console.log("iiiiiiiiiiiiiiiooooooooooooo")
 
     this.stdId= this.tokenUser.getUserId();
-     return this.http.get<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
+     return this.http.get<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
        return throwError(err.message || "error")
      }))
    }
@@ -78,11 +78,15 @@ export class EnrollService {
     this.getStdEnrollcrs(crsId).subscribe(
       data=>{
         this.enrollCrsId=data.id;
-      }
-    );
-    return this.http.delete<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses" + "/" + this.enrollCrsId).pipe(catchError((err) => {
+        console.log(this.enrollCrsId)
+        console.log("https://localhost:44326/api/EnrollCourse" + "/" + this.enrollCrsId)
+        return this.http.delete<IEnrollCourse>("https://localhost:44326/api/EnrollCourse" + "/" + this.enrollCrsId).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))
+
+      }
+    );
+    
 
 }
 }
