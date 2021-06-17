@@ -22,6 +22,7 @@ import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.co
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
+import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 
 const routes: Routes = [
   // Routing
@@ -52,28 +53,17 @@ const routes: Routes = [
   },
 
   //Lectures
-  //   {path:"Lectures",component:LecturesComponent,
-  //      children:[{path:"Lesson",component:LessonsComponent},
-  //   //  {path:'Lecture/:id', component:LecturesComponent},
-  // ]},
-  // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
   { path: 'Lecture/:id', component: LecturesComponent,
     children:
-      [// [{path:"Lesson/:id",component:LessonsComponent},
-<<<<<<< HEAD
-        { path: "SpasificLecture/:id", component: LecturesComponent },
-        {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
-      ]
-=======
-        // { path: "SpasificLecture/:id", component: LecturesComponent },
+      [
         {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
         {path:"ProgramHome/:id",component:ProgramHomeComponent},
         { path: "Lesson/:id", component: LessonsComponent,}]
->>>>>>> 545882aaace2a7077418e2e64151ba5c6b7f1bfe
   },
-  // {path:"coreCurriculum",component:CoreCurriculumComponent},
 
-  { path: "lessonContent/:id", component: LessonContentComponent },
+  { path: "lessonContent/:id", component: LessonContentComponent ,children:[ 
+    { path: "lessonData/:id", component: LessonDataComponent,}
+  ]},
   
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' }

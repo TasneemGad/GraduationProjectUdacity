@@ -1,32 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { LessonService } from 'src/app/Services/lesson.service';
 import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
 import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
+import { LecturesComponent } from '../lectures/lectures.component';
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.scss']
 })
-export class LessonsComponent implements OnInit {
+export class LessonsComponent implements OnInit,AfterViewInit{
   LessonByLectureID: Lesson[]=[];
   idUrl:any
-  // NextLecture:Lectures
-  // clickedLecture:Lectures
-  clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:""}
-  NextLecture:Lectures = {id:1,courseId:3,lectureDescription:"k",lessoneNumber:3,tilte:"j"}
+  nextid:any
+  clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"kk"}
+  NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
-    private lectureServices:LecturesService) { }
+  private lectureServices:LecturesService) { }
+
+    
+@ViewChild(LecturesComponent) data : LecturesComponent
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
-    // console.log("lessonID",this.idUrl)
     this.getLessonByLectureID(this.idUrl);
-    // console.log("enter",this.NextLecture)
-    // this.GetLectureByID(this.idUrl)
+    this.GetLectureByID(this.idUrl)
   })
+  
+  }
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.data.print();
+    console.log('Values on ngAfterViewInit():');
+    console.log("dfggg",this.data)
 
+    // this.nextid= this.data.NextLecture.tilte
+    
   }
 getLessonByLectureID(id:number){
          console.log("Lecidgggggggggggggggg",id)
@@ -36,14 +47,10 @@ getLessonByLectureID(id:number){
         {console.log("lessonLectures",this.LessonByLectureID)
       }
     })
+
   
     }
-getNextLectures(id:any){
-  console.log("ID",id)
-  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
-    this.NextLecture=sucess,
-    console.log("Ljnkjnb",this.NextLecture)})
-}
+
 GetLectureByID(LecId:number){
   console.log("ID")
   // this.indexLecture = index
@@ -52,10 +59,12 @@ GetLectureByID(LecId:number){
  
     console.log("LLLLL",this.clickedLecture.tilte)
   })
-  // this.getNextLectures(LecId)
 }
 goToLessonContent(id:any){
   console.log("content",id)
   this.router.navigate(["lessonContent/",id])
 }
+
 }
+
+

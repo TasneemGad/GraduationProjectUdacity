@@ -10,6 +10,7 @@ import { LessonContent} from '../SharedModels/Interface/ILessonContent';
 })
 export class LessonContentService {
     lessonContentUrl="https://localhost:44326/api/lessonContent"
+    lessonContentByLesson="https://localhost:44326/api/lessonContent/LessonContentByLes/"
     constructor(private http: HttpClient) { }
 
     GetAllLessonContent(): Observable<LessonContent[]> {
@@ -17,7 +18,12 @@ export class LessonContentService {
           return throwError(err.massage || "Error")}))
       }
     
-      GetLessonContentById(id:number){
-        return this.http.get<LessonContent[]>(this.lessonContentUrl+"/" + id).pipe();
+      GetLessonContentById(id:number): Observable<LessonContent>{
+        console.log("d")
+        return this.http.get<LessonContent>(this.lessonContentUrl+"/" + id).pipe();
       }
+      GetLessonContentByLesson(id:number){
+        return this.http.get<LessonContent[]>(this.lessonContentByLesson+id).pipe();
+      }
+
 }

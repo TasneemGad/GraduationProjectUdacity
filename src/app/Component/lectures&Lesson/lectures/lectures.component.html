@@ -50,10 +50,7 @@
             <h1 class="navContent" (click)="showProgram(courseList.id)">Program Home</h1>
             <hr>
             <h1 class="navContent"  (click)="goto(courseList.id)">Syllabus </h1>
-<<<<<<< HEAD
-=======
             <!-- <h1 class="navContent"   (click)="showSyllabus()">Syllabus </h1> -->
->>>>>>> 545882aaace2a7077418e2e64151ba5c6b7f1bfe
             <hr>
             <div style="display: flex;" (click)="hideList()">
                 <div>
@@ -66,7 +63,7 @@
             <ng-template #list>
                 <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="getLessonByLectureID(i.id)">
+                    <div class="all" (click)="getLessonByLectureID(i.id,e+1)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
@@ -88,7 +85,7 @@
 
             <div *ngIf="Isdetails then list"></div>
         </mat-sidenav>
-        <router-outlet></router-outlet>
+        <!-- <router-outlet></router-outlet> -->
 
         <mat-sidenav-container >
 

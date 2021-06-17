@@ -15,7 +15,7 @@
         <hr>
         <mat-vertical-stepper [linear]="isLinear"   color="accent"   >
         <div *ngFor="let i of lectureList ">
-            <mat-step label=Part{{part}}   editable="false" >
+            <mat-step label=Part{{part}}  >
             <mat-card-title style="line-height: 50px; font-weight: 100;color: #017a9b;">{{i.tilte}}</mat-card-title>
             <mat-card-subtitle style="width: 65%;">{{i.lectureDescription}}</mat-card-subtitle>
             <hr>

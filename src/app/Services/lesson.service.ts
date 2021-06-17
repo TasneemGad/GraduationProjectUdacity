@@ -11,6 +11,7 @@ import { Lesson } from '../SharedModels/Interface/ILesson';
 })
 export class LessonService {
   lessonUrl="https://localhost:44326/api/Lesson"
+  lessonUrl2="https://localhost:44326/api/Lesson/LessonByLec/"
   constructor(private http: HttpClient) { }
 
   GetAllLesson(): Observable<Lesson[]> {
@@ -23,6 +24,6 @@ export class LessonService {
   }
 
   GetAllLessonByLectureId(id:number){
-    return this.http.get<Lesson[]>(this.lessonUrl+"/LessonByLec/"+id).pipe();
+    return this.http.get<Lesson[]>(this.lessonUrl2+id).pipe();
   }
 }

@@ -5,6 +5,7 @@ import { CoursesService } from 'src/app/Services/courses.service';
 import { EnrollService } from 'src/app/Services/EnrollCourse.service';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 import { IEnrollCourse } from 'src/app/SharedModels/Interface/IEnrollCourse';
+import { CourseComponent } from '../course/course.component';
 
 @Component({
   selector: 'app-class-room',
@@ -12,14 +13,21 @@ import { IEnrollCourse } from 'src/app/SharedModels/Interface/IEnrollCourse';
   styleUrls: ['./class-room.component.scss']
 })
 export class ClassRoomComponent implements OnInit {
-
+freeCoures:ICourse[]=[]
+paidCourses:ICourse[]=[]
   constructor(private Enrollservices:EnrollService,private courseServices:CoursesService,
     private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
+  isFree=false
+  isPaid=false
 
   ngOnInit(): void {
     this.AllStdCourses();
+    this.getCoursePaidAndFree();
+    for (let list of this.CourseList) {
+      console.log("free" ,list.price)
+ }
   }
 
   AllStdCourses(){
@@ -35,6 +43,7 @@ export class ClassRoomComponent implements OnInit {
           )
         }
         console.log(this.CourseList)
+        // this.getCoursePaidAndFree();
       }
     )
   }
@@ -47,4 +56,25 @@ export class ClassRoomComponent implements OnInit {
   Logout(){
    this.Authservices.logout();   
      }
-}
+ getCoursePaidAndFree(){
+   const i= this.CourseList
+  // this.AllStdCourses()
+   console.log("enter",i)
+   for (let list of this.freeCoures) {
+        console.log("free" ,list.price)
+   }
+//          if(list.price==0){
+//            this.isFree=true
+//            this.freeCoures.push(list)
+//            console.log("free",this.freeCoures)
+//          }
+//          else{
+//            this.isPaid=true
+//            this.paidCourses.push(list)
+//            console.log("paid",this.paidCourses)
+//          }
+//        }
+     }
+
+ }
+  

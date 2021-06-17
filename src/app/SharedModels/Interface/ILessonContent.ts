@@ -1,12 +1,12 @@
 export interface LessonContent {
     id?: number
-    VideoLinkId: number
-    QuestionGroupId:number
-    Description : string
-    LessonId: number
-    Type:string
-    LectureId :number
-    Header:string
-    Title:string
+    videoLinkId: number
+    questionGroupId:number
+    description : string
+    lessonId: number
+    type:string
+    lectureId :number
+    header:string
+    title:string
     
 }

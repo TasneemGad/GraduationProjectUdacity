@@ -4,6 +4,8 @@ import { LessonService } from 'src/app/Services/lesson.service';
 import { LessonContentService } from 'src/app/Services/LessonContent.service';
 import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
 import { LessonContent } from 'src/app/SharedModels/Interface/ILessonContent';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-lesson-content',
@@ -18,13 +20,14 @@ export class LessonContentComponent implements OnInit {
 
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
   allContentCurrentLesson:LessonContent[]=[];
-  constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
-    // private lessonContentService:LessonContentService
+  constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,private location:Location,
+    private lessonContentService:LessonContentService
     ) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
     this.getLessonById(this.idUrl)
+    this.getLessonContentById(this.idUrl);
   })
 
   }
@@ -39,8 +42,18 @@ export class LessonContentComponent implements OnInit {
   controlSidenav(){
     this.IsOpened = !this.IsOpened
   }
-  // getLessonContentById(id){
-  //   this.lessonContentService.(id).subscribe(sucess=>{this.allContentCurrentLesson=sucess,console.log(this.allContentCurrentLesson)})
-  // }
+  getLessonContentById(id:number){
+    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
+      this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
+    
+    })
+  }
+
+  goBack(){
+    this.location.back();
+  }
+  goToLessonData(id:number){
+    this.router.navigate(['lessonData/',id],{relativeTo:this.active})
+  }
 
 }
