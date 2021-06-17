@@ -7,7 +7,7 @@ import {AuthenticationService } from '../Services/authentication.service';
 import { ICourse } from '../SharedModels/Interface/ICourses';
 
 
-const API_URL = 'https://localhost:44326//api/EnrollCourse'
+const API_URL = 'https://localhost:44326/api/EnrollCourse'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -72,17 +72,17 @@ export class EnrollService {
      }))
    }
   //RemoveCourse
-  RemoveEnrollCourse(crsId:number){
+  RemoveEnrollCourse(crsId:number):Observable<IEnrollCourse>{
     console.log("Hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-
     this.getStdEnrollcrs(crsId).subscribe(
       data=>{
         this.enrollCrsId=data.id;
-      }
-    );
-    return this.http.delete<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses" + "/" + this.enrollCrsId).pipe(catchError((err) => {
+        console.log("gg",this.enrollCrsId)
+      });
+    let x= this.http.delete<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/" + crsId,httpOptions).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))
-
+    console.log("x",x)
+   return x
 }
 }
