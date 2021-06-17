@@ -13,7 +13,7 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
   styleUrls: ['./lectures.component.scss']
 })
 export class LecturesComponent implements OnInit {
-  allLesson:Lesson[] 
+  allLesson:Lesson[] =[]
 
   lectureList:Lectures[]=[]
   lectureAllList:Lectures[]=[]
@@ -94,15 +94,15 @@ hideList(){
    
 }
 GetLectureByID(LecId:number,index:any){
-  console.log("ID")
-  this.indexLecture = index
+  
+     this.getLessonByLectureID(LecId);
+     console.log("Iddddddddddd",LecId)  
+        this.indexLecture = index
   this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
-    this.clickedLecture=sucess,
- 
+  
+      this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
-     this.getLessonByLectureID(LecId);
-     console.log("Iddddddddddd",LecId)
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
     
@@ -116,8 +116,8 @@ getNextLectures(id:any){
 goToSpasificLecture(id:any){
   this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
 }
-goto(){
- var x=  this.router.navigate(["coreCurriculum"],{relativeTo:this.active})
+goto(id:any){
+ var x=  this.router.navigate(["coreCurriculum/",id],{relativeTo:this.active})
   console.log("c",x)
 }
     // for (let i of this.lectureAllList) {
