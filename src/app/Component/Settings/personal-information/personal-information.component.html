@@ -12,14 +12,14 @@
 <div class="example-container" #form>
   <mat-form-field  class="contain">
     <mat-label>Full Name</mat-label>
-    <input matInput placeholder="" formControlName="name" required >
+    <input matInput placeholder="" formControlName="name" required  [value]="userInfo.userName"  #userName>
   </mat-form-field>
 <br>
 <div style="display: flex;">
 <div >
   <mat-form-field  class="contain">
     <mat-label>Enter your email</mat-label>
-    <input type="email" matInput formControlName="email" placeholder="Email">
+    <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email">
   </mat-form-field>
 </div>
   <div>
@@ -32,7 +32,7 @@
 <div style="display: flex;">
   <div>  <mat-form-field class="contain">
     <mat-label>Verify your tel</mat-label>
-    <input type="tel" matInput formControlName="tel" placeholder="tel">
+    <input type="tel" matInput formControlName="tel" placeholder="tel" [value]="userInfo.phoneNumber">
   </mat-form-field>
 </div>
   <div>
@@ -63,7 +63,9 @@
         <div >
           <mat-form-field  class="contain">
           <!-- <mat-label>Full Name</mat-label> -->
-          <input matInput placeholder="Full Name" formControlName="name" required >
+          <!-- <input matInput placeholder="Full Name" formControlName="name" required > -->
+    <input matInput placeholder="Full Name" formControlName="name" required  [value]="userInfo.userName"  #userName>
+
           </mat-form-field>
         </div>
       </div>
@@ -72,7 +74,7 @@
   <div >
     <mat-form-field  class="contain">
       <!-- <mat-label>Enter your email</mat-label> -->
-      <input type="email" matInput formControlName="email" placeholder="Email">
+      <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email">
     </mat-form-field>
   </div>
   <div>
@@ -86,7 +88,7 @@
   <div>  
     <mat-form-field class="contain">
       <!-- <mat-label>Verify your tel</mat-label> -->
-      <input type="tel" matInput formControlName="tel" placeholder="Phone Number">
+      <input type="tel" matInput formControlName="tel" placeholder="Phone Number" [value]="userInfo.phoneNumber">
     </mat-form-field>
   </div>
   <div>
@@ -108,10 +110,21 @@
 </div>
 </mat-card>
 </div>
-
 <div style="float: right; margin: 10px 0px 10px 0px ; margin-bottom: 10%;">
   <button mat-raised-button class="btnCancel">CANCEL</button>
-  <button mat-raised-button  color="primary" class="btnSave">SAVE</button>
+
+
+  <!-- <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm"> -->
+  <!-- <span>Here  {{userName.value}}  </span> -->
+
+    
+      <input type="hidden" name="stdID" id="stdID" #stdID [value]="userInfo.id" >
+    <button mat-raised-button type="submit" color="primary" class="btnSave"
+      (click)="UpdateUserName(userName.value,stdID.value)">SAVE</button>
+      <br>
+
+  <!-- </form> -->
+
 </div>
 <br><br><br><br>
 <mat-card>

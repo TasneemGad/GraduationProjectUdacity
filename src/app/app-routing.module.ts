@@ -22,6 +22,7 @@ import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.co
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import {ResourcesComponent } from './Component/resources/resources.component';
+import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 
 const routes: Routes = [
   // Routing
@@ -56,18 +57,18 @@ const routes: Routes = [
   //   //  {path:'Lecture/:id', component:LecturesComponent},
   // ]},
   // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
-  {
-    path: 'Lecture/:id', component: LecturesComponent,
+  { path: 'Lecture/:id', component: LecturesComponent,
     children:
       [// [{path:"Lesson/:id",component:LessonsComponent},
-        { path: "SpasificLecture/:id", component: LecturesComponent },
+        // { path: "SpasificLecture/:id", component: LecturesComponent },
         {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
-      ]
+        {path:"ProgramHome/:id",component:ProgramHomeComponent},
+        { path: "Lesson/:id", component: LessonsComponent,}]
   },
   // {path:"coreCurriculum",component:CoreCurriculumComponent},
-  {path:"ProgramHome",component:ProgramHomeComponent},
 
-  { path: "Lesson/:id", component: LessonsComponent },
+  { path: "lessonContent/:id", component: LessonContentComponent },
+  
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' }
 ];

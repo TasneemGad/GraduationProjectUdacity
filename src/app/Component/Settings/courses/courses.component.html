@@ -9,17 +9,11 @@
     </div><br><br>
 
     <div *ngFor="let course of CourseList">
+        <input type="hidden" [value]="course.id" #crsID name="crsID" id="crsID">
         <mat-card class="courses">
             <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
                 <mat-label > {{course.description}}</mat-label><br>
-                <mat-label class="remove"> REMOVE COURSE</mat-label>
+                <button class="remove" (click)="removeEnrollCrs(course.id)"  type="submit"> REMOVE COURSE</button>
         </mat-card><br><br>
     </div>
 </mat-card>
-<!-- <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-        <div *ngFor="let i of lectureAllList">
-        <h1 style="width: 60%;font-size: 15px;" routerLink="/payment">{{i.tilte}}</h1>
-    </div>
-    </mat-sidenav>
-</mat-sidenav-container> -->

@@ -47,7 +47,7 @@
                 </div>
             </div>
             <hr>
-            <h1 class="navContent" (click)="showProgram()">Program Home</h1>
+            <h1 class="navContent" (click)="showProgram(courseList.id)">Program Home</h1>
             <hr>
             <h1 class="navContent" (click)="goto(courseList.id)">Syllabus </h1>
             <!-- <h1 class="navContent"   (click)="showSyllabus()">Syllabus </h1> -->
@@ -61,9 +61,9 @@
                 </div>
             </div>
             <ng-template #list>
-                <div *ngFor="let i of lectureList ;let e=index ">
+                <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="GetLectureByID(i.id,e+1)">
+                    <div class="all" (click)="getLessonByLectureID(i.id)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>

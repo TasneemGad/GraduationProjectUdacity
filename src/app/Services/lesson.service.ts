@@ -19,7 +19,7 @@ export class LessonService {
   }
 
   GetLessonById(id:number){
-    return this.http.get<Lesson[]>(this.lessonUrl+"/" + id).pipe();
+    return this.http.get<Lesson>(this.lessonUrl+"/" + id).pipe();
   }
 
   GetAllLessonByLectureId(id:number){

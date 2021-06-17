@@ -1,1 +1,56 @@
-<p>lesson-content works!</p>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="IsOpened" class="lectNav">
+        <h1 class="title">{{currentLesson.title}}</h1>
+        <hr>
+        <div style="display: flex; height: 30px;">
+            <div>
+                <h1 class="navContent" style="margin-top:-3px;">Search</h1>
+            </div>
+            <div>
+                <mat-icon style="margin-left: 120px; margin-top: -1px;">search</mat-icon>
+            </div>
+        </div>
+        <hr>
+        <h1 class="navContent">RESOURSES</h1>
+        <hr>
+        <div style="display: flex;">
+            <div>
+                <h1 class="navContent">CONTENTS </h1>   
+            </div>
+            <div style="margin: 0 auto;">
+                <mat-icon class="hideIcon"></mat-icon>
+            </div>
+        </div>
+        <ng-template #list>
+            <!-- <div *ngFor="let i of lectureList ;let e=index " > -->
+                <hr>
+                <div class="all">
+                    <div style="display: flex; ">
+                        <div>
+                            <h1 class="lecturesNumber"></h1>
+                        </div>
+                        <div >
+                            <h1 mat-stroked-button class="first"></h1>
+                        </div>
+                        <div class="CompletIcon">
+                            <button mat-icon-button>
+                                <!-- <mat-icon id="iconComplet" [style.color]='color'>task_alt</mat-icon> -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+            <hr>
+        </ng-template>
+        <!-- <div *ngIf="Isdetails then list"></div> -->
+    </mat-sidenav>
+
+    <div class="nav">
+        <div><mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon></div>
+        <div class="contentName"> <mat-label >content Name</mat-label> </div>
+        <div class="feedback"> <mat-label>SEND FEEDBAK</mat-label> </div>
+    </div>
+
+    <mat-sidenav-container>
+    </mat-sidenav-container>
+</mat-sidenav-container>
