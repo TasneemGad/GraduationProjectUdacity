@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -8,10 +8,9 @@ import { ICourse } from '../SharedModels/Interface/ICourses';
 
 
 const API_URL = 'https://localhost:44326/api/EnrollCourse'
-
+// let params =  new HttpParams().set { 'X-MyHeader': 'k6test' } 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),}
 @Injectable({
   providedIn: 'root'
 })
@@ -41,8 +40,9 @@ export class EnrollService {
   }
   return this.http.get(API_URL+"?stdID="+this.result).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])     
  }
- Unenroll(id:number){
-   this.http.delete('http://localhost:44326/api/EnrollCourse/{id}/'+id).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])
+ Unenroll(id:number):Observable<any>{
+ return  this.http.delete('http://localhost:44326/api/EnrollCourse/'+id,httpOptions)
+  //  .toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])
 
  }
   EnrollInCourse(courseid:number): Observable<any>
@@ -67,22 +67,34 @@ export class EnrollService {
     console.log("iiiiiiiiiiiiiiiooooooooooooo")
 
     this.stdId= this.tokenUser.getUserId();
-     return this.http.get<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
+     return this.http.get<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
        return throwError(err.message || "error")
      }))
    }
   //RemoveCourse
   RemoveEnrollCourse(crsId:number):Observable<IEnrollCourse>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' ,'Authorization':'token'}),
+      // body: {id: crsId} 
+    };
     console.log("Hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-    this.getStdEnrollcrs(crsId).subscribe(
-      data=>{
-        this.enrollCrsId=data.id;
-        console.log("gg",this.enrollCrsId)
-      });
-    let x= this.http.delete<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/" + crsId,httpOptions).pipe(catchError((err) => {
-      return throwError(err.message || "error")
-    }))
-    console.log("x",x)
+    // this.getStdEnrollcrs(crsId).subscribe(
+    //   data=>{
+    //     this.enrollCrsId=data.id;
+    //     console.log("gg",this.enrollCrsId)
+    //   });
+      let x= this.http.delete<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/ "+crsId)
+    //   .pipe(catchError((err) => {
+    //   return throwError(err.message || "error")
+    // }))
+  //   console.log("x",x)
    return x
 }
+refreshList() {
+  this.http.get(API_URL)
+    // .toPromise()
+    // .then(res =>this.coursesList = res as ICourse[]);
+}
+
+
 }

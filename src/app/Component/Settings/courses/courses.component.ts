@@ -49,14 +49,20 @@ export class CoursesComponent implements OnInit {
 Test(){
   console.log("Here")
 }
-  removeEnrollCrs(crsid:number){
+  removeEnrollCrs(crsid:any){
     console.log("Here")
-    
-    this.Enrollservices.RemoveEnrollCourse(crsid).subscribe(
+    this.Enrollservices.getStdEnrollcrs(crsid).subscribe(
       data=>{
-          console.log("Removed")
-      }
-    )
+        this.Enrollservices.RemoveEnrollCourse(data.id).subscribe
+        // console.log("Removed",crsid)
+        (
+          data=>{
+              console.log("Removed",crsid)
+          }
+        )
+        console.log("gg",data.id)      
+      });
+      // this.Enrollservices.RemoveEnrollCourse(crsid)
 
   }
 

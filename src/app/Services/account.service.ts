@@ -33,28 +33,16 @@ export class AccountService {
     }))
   }
 
- UpdateStdName(userName:string,stID:string){    
-   const httpOtions={
-     headers:new HttpHeaders({'Content-Type':'application/json'})
-  }; 
+ UpdateStdName(userName:string,stID:string,account:IAccount):Observable<any>{    
+  //  const httpOtions={
+  //    headers:new HttpHeaders({'Content-Type':'application/json','Authorization':'token'})
+  // }; 
   this.stID=this.token.getUserId();
   stID=this.stID;
-  this.getStudentInformation(stID).subscribe(
-
-    data=>{
-      
-  console.log("enter")
-      data.id=stID;
-      data.userName=userName
-      console.log(data)
-      console.log(stID)
-      console.log(userName)
-      return this.http.put(URL_Update+stID, data ,httpOtions).pipe(catchError((err) => {
-        return throwError(err.message || "error")
-        }))
-        
-    }
-  )
+  return this.http.put(URL_Update+stID, account ).pipe(catchError((err) => {
+    return throwError(err.message || "error")
+    }))
+  
    }
 
   updatePassword(newPassword:string){

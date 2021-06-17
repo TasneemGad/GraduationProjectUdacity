@@ -45,8 +45,23 @@ export class PersonalInformationComponent implements OnInit {
   }
 
 
-  UpdateUserName(userName:string,stID:string){   
-    this.accountService.UpdateStdName(userName,stID)
+  UpdateUserName(userName:string,stID:string){  
+  this.accountService.getStudentInformation(stID).subscribe(
+    data=>{    
+    console.log("enter")
+        data.id=stID;
+        data.userName=userName
+    this.accountService.UpdateStdName(userName,stID,data).subscribe(
+      testObj=>{
+        console.log("test",testObj)
+      }
+    )
+
+        console.log(data)
+        console.log(stID)
+        console.log(userName)        
+      }
+    )
     console.log("User Name Updated",userName,stID)
 
   }
