@@ -49,10 +49,12 @@ export class CoursesComponent implements OnInit {
 Test(){
   console.log("Here")
 }
-  removeEnrollCrs(crsid:number){
-    console.log("Here")
-    
-    this.Enrollservices.RemoveEnrollCourse(crsid)    
+  removeEnrollCrs(crsid:number){    
+    this.Enrollservices.RemoveEnrollCourse(crsid).subscribe(
+data=>{
+  console.log("Remove")
+
+}    ) 
 
   }
 

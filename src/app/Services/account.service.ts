@@ -32,19 +32,14 @@ export class AccountService {
       return throwError(err.message || "error")
     }))
   }
-
+//Update UserName
  UpdateStdName(userName:string,stID:string){     
   this.stID=this.token.getUserId();
   stID=this.stID;
   this.getStudentInformation(stID).subscribe(
     data=>{
-  
-      data.id=stID;
-      data.userName=userName
-      console.log(data)
-      console.log(stID)
-      console.log(userName)
-      return this.http.put(URL_Update+"/"+stID, data).pipe(catchError((err) => {
+      data.userName=userName  
+      return this.http.put(`${URL_Update}/${data.id}`, data).pipe(catchError((err) => {
         return throwError(err.message || "error")
         }))
         
