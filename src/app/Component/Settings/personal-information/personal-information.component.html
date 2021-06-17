@@ -74,7 +74,7 @@
   <div >
     <mat-form-field  class="contain">
       <!-- <mat-label>Enter your email</mat-label> -->
-      <input type="email" matInput formControlName="email" placeholder="Email">
+      <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email">
     </mat-form-field>
   </div>
   <div>
@@ -88,7 +88,7 @@
   <div>  
     <mat-form-field class="contain">
       <!-- <mat-label>Verify your tel</mat-label> -->
-      <input type="tel" matInput formControlName="tel" placeholder="Phone Number">
+      <input type="tel" matInput formControlName="tel" placeholder="Phone Number" [value]="userInfo.phoneNumber">
     </mat-form-field>
   </div>
   <div>
@@ -110,20 +110,20 @@
 </div>
 </mat-card>
 </div>
-
 <div style="float: right; margin: 10px 0px 10px 0px ; margin-bottom: 10%;">
   <button mat-raised-button class="btnCancel">CANCEL</button>
 
-  <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm">
-  <span>Here  {{userNamehidde.value}}  </span>
 
-    <input type="hidden" [value]="userName.value" id="userNamehidde" name="userNamehidde" #userNamehidde
-      formControlName="userNamehidde" />
+  <!-- <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm"> -->
+  <!-- <span>Here  {{userName.value}}  </span> -->
+
+    
+      <input type="hidden" name="stdID" id="stdID" #stdID [value]="userInfo.id" >
     <button mat-raised-button type="submit" color="primary" class="btnSave"
-      (onclick)="UpdateUserName(userNamehidde.value)">SAVE</button>
+      (click)="UpdateUserName(userName.value,stdID.value)">SAVE</button>
       <br>
 
-  </form>
+  <!-- </form> -->
 
 </div>
 <br><br><br><br>

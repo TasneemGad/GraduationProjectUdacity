@@ -12,15 +12,15 @@ import { IAccount } from 'src/app/SharedModels/Interface/iaccount';
 export class PersonalInformationComponent implements OnInit {
 
   userInfo:IAccount;
-  stdID:string;
-  UserForm:FormGroup;
+  stdID:string=this.tokenUser.getUserId();
+  // UserForm:FormGroup;
   constructor(private accountService:AccountService,private tokenUser:AuthenticationService,private fb: FormBuilder) { }
 
    
   ngOnInit(): void {
-    this.UserForm = this.fb.group({
-      userNamehidde: ['', [Validators.required, Validators.maxLength(15)]]
-    })
+    // this.UserForm = this.fb.group({
+    //   userNamehidde: ['', [Validators.required, Validators.maxLength(15)]]
+    // })
     this.getStdInformation();
     
   }
@@ -36,14 +36,10 @@ export class PersonalInformationComponent implements OnInit {
         }
       )
   }
-  onSubmit(){    
-    // this.accountService.UpdateStdName()
-    // console.log("User Name Updated")
-    this.UpdateUserName(this.UserForm.value)
-  }
 
-  UpdateUserName(userName:string){    
-    this.accountService.UpdateStdName(userName)
+
+  UpdateUserName(userName:string,stID:string){    
+    this.accountService.UpdateStdName(userName,stID)
     console.log("User Name Updated")
   }
 

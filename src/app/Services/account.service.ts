@@ -10,6 +10,7 @@ import { AuthenticationService } from './authentication.service';
 
 const URL="https://localhost:44326/api/Account";
 
+const URL_Update="https://localhost:44326/api/Account/UpdateUserName";                 
 @Injectable({
   providedIn: 'root'
 })
@@ -26,26 +27,34 @@ export class AccountService {
     }))
   }
 
-  getStudentInformation(id:string){
+  getStudentInformation(id:string):Observable<IAccount>{
     return this.http.get<IAccount>(URL+"/"+id).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))
   }
 
- UpdateStdName(userName:string){     
+ UpdateStdName(userName:string,stID:string){     
   this.stID=this.token.getUserId();
-
-  console.log(this.stID)
-  console.log(userName)
-
-    return this.http.put(URL+"UpdateUserName/"+this.stID+"/"+userName,this.getStudentInformation(this.stID)).pipe(catchError((err) => {
-      return throwError(err.message || "error")
-    }))
-  }
+  stID=this.stID;
+  this.getStudentInformation(stID).subscribe(
+    data=>{
+  
+      data.id=stID;
+      data.userName=userName
+      console.log(data)
+      console.log(stID)
+      console.log(userName)
+      return this.http.put(URL_Update+"/"+stID, data).pipe(catchError((err) => {
+        return throwError(err.message || "error")
+        }))
+        
+    }
+  )
+   }
 
   updatePassword(newPassword:string){
     this.stID=this.token.getUserId();
-    return this.http.put(URL+"UpdateUserName/"+this.stID+"/"+newPassword,this.getStudentInformation(this.stID)).pipe(catchError((err) => {
+    return this.http.put(URL+"/"+this.stID+"/"+newPassword,this.getStudentInformation(this.stID)).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))
   }
