@@ -21,6 +21,8 @@ import { CareerPrepComponent } from './Component/career-prep/career-prep.compone
 import { GovernmentComponent } from './Component/government/government.component';
 import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
 import { OverViewComponent } from './Component/over-view/over-view.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { OverViewComponent } from './Component/over-view/over-view.component';
     CareerPrepComponent,
     GovernmentComponent,
     BecomeAnInstractorComponent,
-    OverViewComponent
+    OverViewComponent,
+    StudentSucessComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { OverViewComponent } from './Component/over-view/over-view.component';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule    
+    CarouselModule,
+    NgbModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
