@@ -25,7 +25,7 @@ export class LecturesComponent implements OnInit {
   
   LessonByLectureID: Lesson[];
   clickedLecture: Lectures;
-  NextLecture: any;
+  // NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -98,7 +98,7 @@ GetLectureByID(LecId:number,index:any){
       this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
-  this.getLessonByLectureID(LecId);
+  // this.getLessonByLectureID(LecId);
   console.log("Iddddddddddd",LecId)  
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
