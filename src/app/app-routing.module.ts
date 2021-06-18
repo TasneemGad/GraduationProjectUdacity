@@ -37,25 +37,6 @@ const routes: Routes = [
   { path: 'SignUP', component: SigINComponent },
   { path: 'SignIn', component: SigINComponent },
   { path: 'ClassRoom', component: ClassRoomComponent },
-<<<<<<< HEAD
-  //Category && Course
-  {
-    path: 'school-of/:name',
-    component: CategoryComponent,
-    data: { footer: true, header: true },
-  },
-  {
-    path: 'Course/:id',
-    component: CourseComponent,
-    data: { footer: true, header: true },
-  },
-  {
-    path: 'Resources',
-    component: ResourcesComponent,
-    data: { footer: true, header: true },
-  },
-  // Payment
-=======
     //Category && Course
   { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
   { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
@@ -64,7 +45,6 @@ const routes: Routes = [
 {path: 'AboutAs', component:AboutASComponent, data: { footer: true, header: true }},
 
 // Payment 
->>>>>>> e28c8bc126ad2c573f378f104adc8e6e7e0c135e
   { path: 'orderDetails', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   // Setting

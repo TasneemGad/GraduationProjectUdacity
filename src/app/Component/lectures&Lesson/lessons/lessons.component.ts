@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { LessonService } from 'src/app/Services/lesson.service';
@@ -16,11 +16,20 @@ export class LessonsComponent implements OnInit{
   nextid:any
   clickedLecture:Lectures = {id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"kk"}
   NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
+  getNextOfClickedLecture:Lectures
+  nameOfNextLecture:string
+
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
   private lectureServices:LecturesService) { }
 
     
-@ViewChild(LecturesComponent) data : LecturesComponent
+// @ViewChild(LecturesComponent) data : LecturesComponent
+// @Input() getNextLectureId:number
+
+// ngOnChanges():void{
+//   console.log("isChange?", this.getNextLectureId)
+//   this.getNextLecture()
+// }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -47,10 +56,20 @@ GetLectureByID(LecId:number){
   // this.indexLecture = index
   this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
     this.clickedLecture=sucess,
- 
-    console.log("LLLLL",this.clickedLecture.tilte)
+    console.log("LLLLL",this.clickedLecture?.tilte)
   })
+
 }
+
+// getNextLecture(){
+//   console.log("in")
+//   this.lectureServices.getLecturesByID(this.getNextLectureId).subscribe(sucess=>{
+//     this.getNextOfClickedLecture=sucess,
+//     this.nameOfNextLecture = this.getNextOfClickedLecture?.tilte
+//     console.log("LLnextLLL",this.nameOfNextLecture)
+
+//   })
+// }
 goToLessonContent(id:any){
   console.log("content",id)
   this.router.navigate(["lessonContent/",id])

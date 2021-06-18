@@ -39,9 +39,9 @@ mat-sidenav , mat-sidenav-content{
 }
 .title{
     background-image: linear-gradient(to bottom right,#017a9b,#018377);
-    height: 17%;
+    height: auto;
     text-align: center;
-    padding-top: 25%;
+    padding: 20% 10% 20% 10%;
 }
 .all{
     display: flex;
@@ -104,4 +104,13 @@ hr{
 }
 .hrLesson{
     border-color: rgb(255, 255, 255);
+}
+.goNext{
+    width: 40px;
+    height: 40px;
+    float:right;
+    color: #017a9b;
+    position: absolute;
+    right: 0;
+    bottom: 50px;
 }
