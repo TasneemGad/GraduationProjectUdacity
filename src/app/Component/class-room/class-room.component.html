@@ -31,27 +31,42 @@
     <mat-sidenav-content>
         <h1 id="nav">Home</h1>
         <section class="content">
-            <!-- <div style="display: flex;">
-                <mat-label class="sectionCourses">PAID PROGRAM &nbsp; | </mat-label><br><br><br>
-                <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label><br><br><br>
-                <mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br>
+            <div style="display: flex;">
+                <div *ngIf="isPaid then paid "></div>
+                <ng-template #paid> <mat-label class="sectionCourses">PAID PROGRAM &nbsp; | </mat-label> </ng-template><br><br><br>
+                
+                <div *ngIf="isFree then free "></div>
+                <ng-template #free> <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label> </ng-template><br><br><br>
+                
+                <div *ngIf="isPaid then graduated "></div>
+                <ng-template #graduated><mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br></ng-template>
             </div>
-            <div *ngFor="let course of freeCourses">
-                <mat-card class="courses">
-                    <div style="display: flex;" routerLink="{{'/Lecture/'+course.id}}"> -->
-        <section style="padding: 20px 0px 30px 60px;font-size: 15px;">
-            <ng-template #paid>
-            <mat-label style="font-size:17px; opacity: .7;color:#00485c;font-weight:600;">PAID PROGRAM</mat-label><br><br><br>
+        </section>
+
+        <section style="padding: 20px 0px 30px 60px;font-size: 15px;">      
+        <div *ngIf="flag then lastcourse"></div>
+        <ng-template #lastcourse>
+            <mat-label class="section" >LATEST ACTIVITY</mat-label><br><br>
+            <mat-card class="courses" (click)="lastActiveCourse(lastCourse.id)" routerLink="{{'/Lecture/'+lastCourse.id+'/ProgramHome/'+lastCourse.id}}">
+                <div style="display: flex;"   >
+                    <div>
+                        <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
+                        <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
+                        <mat-label style="font-size: x-large;">{{lastCourse.name}}</mat-label><br><br>
+                        <mat-label > {{lastCourse.description}}</mat-label>
+                    </div>
+                    <div class="btnDiv">
+                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </mat-card><br><br>
         </ng-template>
-        <ng-template #free>
-            <mat-label style="font-size:17px; opacity: .7;color:#00485c;font-weight:600;">Free PROGRAM</mat-label><br><br><br>
-        </ng-template>
+        
         <div *ngIf="isFree then cardFree "></div>
-        <div *ngIf="isPaid then cardPaid "></div>
         <ng-template #cardFree>  
-            <h2>CURRENT FREE ENROLLMENTS</h2>
+            <mat-label class="section" >CURRENT FREE ENROLLMENTS</mat-label><br><br>
             <div *ngFor="let course of freeCoures">
-                <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
+                <mat-card class="courses" (click)="lastActiveCourse(course.id)"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
                     <div style="display: flex;"   >
                         <div>
                             <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
@@ -66,10 +81,12 @@
                 </mat-card><br><br>
             </div>
         </ng-template>
+
+        <div *ngIf="isPaid then cardPaid "></div>
         <ng-template #cardPaid>  
-            <h2>CURRENT Free ENROLLMENTS</h2>
+            <mat-label class="section">CURRENT FREE ENROLLMENTS</mat-label><br><br>
             <div *ngFor="let course of paidCourses">
-                <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
+                <mat-card class="courses" (click)="lastActiveCourse(course.id)" routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
                     <div style="display: flex;"   >
                         <div>
                             <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
@@ -84,22 +101,6 @@
                 </mat-card><br><br>
             </div>
         </ng-template>
-
-        <div *ngFor="let course of CourseList">
-            <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
-                <div style="display: flex;"   >
-                    <div>
-                        <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
-                            <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
-                        <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
-                        <mat-label > {{course.description}}</mat-label>
-                    </div>
-                    <div class="btnDiv">
-                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
-                    </div>
-                </div>
-            </mat-card><br><br>
-        </div>
         </section><br><br><br>
    
     </mat-sidenav-content>

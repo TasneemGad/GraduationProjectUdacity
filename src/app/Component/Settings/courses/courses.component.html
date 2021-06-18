@@ -9,19 +9,11 @@
     </div><br><br>
 
     <div *ngFor="let course of CourseList">
-<<<<<<< HEAD
-        <input type="hidden" [value]="course.id" #crsID name="crsID" id="crsID">
-        <mat-card class="courses" >
-            <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
-                <mat-label > {{course.description}}</mat-label><br>
-                <div (click)="Test()"> <button class="remove"> REMOVE COURSE</button> </div>
-=======
         <input  [value]="course.id" #crsID name="crsID" id="crsID">
         <mat-card class="courses">
             <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
                 <mat-label > {{course.description}}</mat-label><br>
                 <button class="remove" (click)="removeEnrollCrs(course.id)"> REMOVE COURSE</button>
->>>>>>> eb9fb361fca6dad4e87f5587bd95c04a6a0e855e
         </mat-card><br><br>
     </div>
 </mat-card>

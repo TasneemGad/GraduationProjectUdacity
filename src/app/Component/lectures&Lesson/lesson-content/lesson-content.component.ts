@@ -20,12 +20,8 @@ export class LessonContentComponent implements OnInit {
 
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
   allContentCurrentLesson:LessonContent[]=[];
-<<<<<<< HEAD
-  constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
-=======
   CurrentLesson:LessonContent
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,private location:Location,
->>>>>>> eb9fb361fca6dad4e87f5587bd95c04a6a0e855e
     private lessonContentService:LessonContentService
     ) { }
 
@@ -47,11 +43,6 @@ export class LessonContentComponent implements OnInit {
   controlSidenav(){
     this.IsOpened = !this.IsOpened
   }
-<<<<<<< HEAD
-  // getLessonContentById(){
-  //   this.lessonContentService.(id).subscribe(sucess=>{this.allContentCurrentLesson=sucess,console.log(this.allContentCurrentLesson)})
-  // }
-=======
   getLessonContentById(id:number){
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
       this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
@@ -73,6 +64,5 @@ export class LessonContentComponent implements OnInit {
     this.getLessonOneById(id);
     this.router.navigate(['lessonData/',id],{relativeTo:this.active})
   }
->>>>>>> eb9fb361fca6dad4e87f5587bd95c04a6a0e855e
 
 }
