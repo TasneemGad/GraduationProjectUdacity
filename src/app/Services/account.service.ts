@@ -32,7 +32,6 @@ export class AccountService {
       return throwError(err.message || "error")
     }))
   }
-<<<<<<< HEAD
 
  UpdateStdName(userName:string,stID:string,account:IAccount):Observable<any>{    
   //  const httpOtions={
@@ -44,21 +43,6 @@ export class AccountService {
     return throwError(err.message || "error")
     }))
   
-=======
-//Update UserName
- UpdateStdName(userName:string,stID:string){     
-  this.stID=this.token.getUserId();
-  stID=this.stID;
-  this.getStudentInformation(stID).subscribe(
-    data=>{
-      data.userName=userName  
-      return this.http.put(`${URL_Update}/${data.id}`, data).pipe(catchError((err) => {
-        return throwError(err.message || "error")
-        }))
-        
-    }
-  )
->>>>>>> af8b9068204aecee0140020db0bf075b31f725d2
    }
 
   updatePassword(newPassword:string){

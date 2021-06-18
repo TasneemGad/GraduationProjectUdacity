@@ -20,6 +20,7 @@ export class LessonContentComponent implements OnInit {
 
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
   allContentCurrentLesson:LessonContent[]=[];
+  CurrentLesson:LessonContent
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,private location:Location,
     private lessonContentService:LessonContentService
     ) { }
@@ -45,6 +46,13 @@ export class LessonContentComponent implements OnInit {
   getLessonContentById(id:number){
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
       this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
+      this.getLessonOneById(id)
+    
+    })
+  }
+  getLessonOneById(id:number){
+    this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
+      this.CurrentLesson=sucess,console.log("content",this.CurrentLesson)
     
     })
   }
@@ -53,6 +61,7 @@ export class LessonContentComponent implements OnInit {
     this.location.back();
   }
   goToLessonData(id:number){
+    this.getLessonOneById(id);
     this.router.navigate(['lessonData/',id],{relativeTo:this.active})
   }
 

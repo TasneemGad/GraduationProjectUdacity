@@ -75,7 +75,6 @@ export class EnrollService {
      }))
    }
   //RemoveCourse
-<<<<<<< HEAD
   RemoveEnrollCourse(crsId:number):Observable<IEnrollCourse>{
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' ,'Authorization':'token'}),
@@ -101,29 +100,4 @@ refreshList() {
 }
 
 
-=======
-  RemoveEnrollCourse(crsId:number):Observable<any>{    
-    console.log("Here---------")
-    this.getStdEnrollcrs(crsId).subscribe(
-      data=>{  
-        console.log(data)
-        
-        this.x=this.http.delete<any>("https://localhost:44326/api/EnrollCourse/" + data.id,httpOptions)
-        // "https://localhost:44326/api/EnrollCourse/Test"+"/" + data.id).pipe(catchError((err) => {
-        //   return throwError(err.message || "error")
-        //}))
-
-      }
-    );
-        console.log(this.x)
-        return this.x;
-
- }
-//     return this.http.delete("https://localhost:44326/api/EnrollCourse/8")
-//         .pipe(catchError((err) => {
-//           console.log("err",err)
-//               return throwError(err.message || "error")
-//             }))
-// }
->>>>>>> af8b9068204aecee0140020db0bf075b31f725d2
 }
