@@ -63,7 +63,7 @@
             <ng-template #list>
                 <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="getLessonByLectureID(i.id,e+1)">
+                    <div class="all" (click)="getLessonByLectureID(i.id)">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
@@ -85,12 +85,12 @@
 
             <div *ngIf="Isdetails then list"></div>
         </mat-sidenav>
-        <!-- <router-outlet></router-outlet> -->
+        <router-outlet></router-outlet>
 
         <mat-sidenav-container>
 
             <div *ngFor="let lesson of LessonByLectureID; let i=index">
-                <mat-card class="Lessons">
+                <mat-card class="Lessons" >
                     <div style="display: flex;">
                         <div class="contentLesson">
                             <mat-label>LESSON {{i+1}}</mat-label><br><br>
@@ -109,7 +109,7 @@
                 </mat-card><br><br>
             </div>
             <hr class="hrLesson">
-            <mat-card class="nextLecture">
+            <!-- <mat-card class="nextLecture">
                 <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);">UP NEXT</mat-card-subtitle>
                 <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);"> WELCOME TO {{NextLecture.tilte}}
                 </mat-card-subtitle>
@@ -120,7 +120,7 @@
                 </svg>
 
             </mat-card>
-         
+          -->
 
         </mat-sidenav-container>
 

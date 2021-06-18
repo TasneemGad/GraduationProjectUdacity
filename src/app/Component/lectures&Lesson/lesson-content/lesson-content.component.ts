@@ -40,29 +40,30 @@ export class LessonContentComponent implements OnInit {
     this.text=this.Isdetails?"expand_more":"expand_less" 
      
   }
-  controlSidenav(){
-    this.IsOpened = !this.IsOpened
-  }
+
   getLessonContentById(id:number){
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
       this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
       this.getLessonOneById(id)
-    
+      // this.controlSidenav()
     })
   }
   getLessonOneById(id:number){
     this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
       this.CurrentLesson=sucess,console.log("content",this.CurrentLesson)
-    
     })
   }
 
   goBack(){
+    
     this.location.back();
   }
-  goToLessonData(id:number){
+  goToLessonData(id:any){
     this.getLessonOneById(id);
     this.router.navigate(['lessonData/',id],{relativeTo:this.active})
+  }
+  controlSidenav(){
+    this.IsOpened = !this.IsOpened
   }
 
 }
