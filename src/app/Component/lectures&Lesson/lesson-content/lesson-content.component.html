@@ -1,5 +1,9 @@
 <mat-sidenav-container>
     <mat-sidenav mode="side" [opened]="IsOpened" class="lectNav">
+        <!-- <img src="assets/Screenshot 2021-06-16 224348.png" (click)="goBack()" class="goNext"> -->
+        <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext" (click)="goBack()">
+            <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
+        </svg>
         <h1 class="title">{{currentLesson.title}}</h1>
         <hr>
         <div style="display: flex; height: 30px;">
@@ -18,39 +22,41 @@
                 <h1 class="navContent">CONTENTS </h1>   
             </div>
             <div style="margin: 0 auto;">
-                <mat-icon class="hideIcon"></mat-icon>
+                <mat-icon class="hideIcon" (click)="hideList()">{{text}}</mat-icon>
             </div>
         </div>
         <ng-template #list>
-            <!-- <div *ngFor="let i of lectureList ;let e=index " > -->
+            <div *ngFor="let i of allContentCurrentLesson ;let e=index " >
                 <hr>
-                <div class="all">
+                <div class="all" (click)="goToLessonData(i.id)">
                     <div style="display: flex; ">
                         <div>
-                            <h1 class="lecturesNumber"></h1>
+                            <h1 class="lecturesNumber">{{e+1}}</h1>
                         </div>
                         <div >
-                            <h1 mat-stroked-button class="first"></h1>
+                            <h1 mat-stroked-button class="first">{{i.title}}</h1>
                         </div>
-                        <div class="CompletIcon">
-                            <button mat-icon-button>
+                        <!-- <div class="CompletIcon">
+                            <button mat-icon-button> -->
                                 <!-- <mat-icon id="iconComplet" [style.color]='color'>task_alt</mat-icon> -->
-                            </button>
-                        </div>
+                            <!-- </button>
+                        </div> -->
                     </div>
                 </div>
-            <!-- </div> -->
+            </div>
             <hr>
         </ng-template>
-        <!-- <div *ngIf="Isdetails then list"></div> -->
+        <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
 
     <div class="nav">
         <div><mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon></div>
-        <div class="contentName"> <mat-label >content Name</mat-label> </div>
+        <div class="contentName"> <mat-label >content Name : {{CurrentLesson.title}}</mat-label> </div>
         <div class="feedback"> <mat-label>SEND FEEDBAK</mat-label> </div>
     </div>
 
     <mat-sidenav-container>
+        <router-outlet></router-outlet>
+        
     </mat-sidenav-container>
 </mat-sidenav-container>

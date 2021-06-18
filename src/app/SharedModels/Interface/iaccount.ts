@@ -5,4 +5,5 @@ passwordHash:string
 email:string
 phoneNumber:string
 country:string
+roleName:string
 }

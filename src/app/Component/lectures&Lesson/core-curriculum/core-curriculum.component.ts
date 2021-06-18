@@ -12,17 +12,26 @@ export class CoreCurriculumComponent implements OnInit {
   isLinear:boolean=false
   lectureList:Lectures[]
   idUrl:any
+  part:any
   constructor(private lectureServices:LecturesService,private active:ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
-    this.getLecturesByCourseID(this.idUrl);
+    // this.part++
+        this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
+    this.getLecturesByCourseID(this.idUrl,this.part);
   }
-  getLecturesByCourseID(id:number){
+  getLecturesByCourseID(id:number,index:number){
     console.log("ID")
     this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
       this.lectureList=sucess,
       console.log("kkk",this.lectureList)})
+      this.getNextLectures(id);
+  }
+  getNextLectures(id:any){
+    console.log("ID")
+    this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
+      this.part=sucess,
+      console.log("L",this.part.tilte)})
   }
 
 }

@@ -13,7 +13,7 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
   styleUrls: ['./lectures.component.scss']
 })
 export class LecturesComponent implements OnInit {
-  allLesson:Lesson[] 
+  allLesson:Lesson[] =[]
 
   lectureList:Lectures[]=[]
   lectureAllList:Lectures[]=[]
@@ -21,8 +21,11 @@ export class LecturesComponent implements OnInit {
   change:any
   Isdetails:boolean=true
   indexLecture:number
+  NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
   
   LessonByLectureID: Lesson[];
+  clickedLecture: Lectures;
+  // NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -30,6 +33,8 @@ export class LecturesComponent implements OnInit {
   getID:number
   text="expand_less"
   flag = 0
+  flag32 = "HI"
+  
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
@@ -38,9 +43,11 @@ export class LecturesComponent implements OnInit {
     this.getCourseById(this.idUrl);
     console.log("Lecid",this.idUrl)
     this.getAllLesson();
-    
+  //  this.print()
   }
-
+  print(){
+    console.log("iiiiii")
+  }
   getAllLesson(){
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
@@ -82,6 +89,31 @@ hideList(){
   this.text=this.Isdetails?"expand_more":"expand_less" 
    
 }
+GetLectureByID(LecId:number,index:any){
+  
+    
+        this.indexLecture = index
+  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
+  
+      this.clickedLecture=sucess,
+    console.log("L",this.clickedLecture.tilte)
+  })
+  // this.getLessonByLectureID(LecId);
+  console.log("Iddddddddddd",LecId)  
+    this.goToSpasificLecture(LecId)
+    this.getNextLectures(LecId)
+    
+}
+getNextLectures(id:any){
+  console.log("ID")
+  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
+    this.NextLecture=sucess,
+    console.log("L",this.NextLecture.tilte)})
+}
+goToSpasificLecture(id:any){
+  this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
+}
+
 
 
 // goToSpasificLecture(id:any){
@@ -113,15 +145,25 @@ goto(id:any){
     var x=  this.router.navigate(["Lesson/",id],{relativeTo:this.active})
   }
 
-  getLessonByLectureID(id:number){
+  getLessonByLectureID(id:any ,index:any){
     console.log("Lecidgggggggggggggggg",id)
 this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
  {
- this.LessonByLectureID=sucess;     
-   {console.log("lessonLectures",this.LessonByLectureID)
- }
+ this.LessonByLectureID=sucess,
+  //  this.NextLecture=sucess
+     console.log("lessonLectures",this.LessonByLectureID)
+   
 
-})
+     this.goToNext(this.lectureList[index].id)
+     console.log("hh", this.lectureList[index].id)
+    }
+)
 this.showLecture(id)
+}
+goToNext(id:any){
+  console.log("ID2ii",id)
+  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+    this.NextLecture=sucess,
+    console.log("tasneem",this.NextLecture.tilte)})
 }
 }

@@ -12,19 +12,25 @@ import { IAccount } from 'src/app/SharedModels/Interface/iaccount';
 export class PersonalInformationComponent implements OnInit {
 
   userInfo:IAccount;
-  stdID:string;
+  stdID:string=this.tokenUser.getUserId();
   UserForm:FormGroup;
   constructor(private accountService:AccountService,private tokenUser:AuthenticationService,private fb: FormBuilder) { }
 
    
   ngOnInit(): void {
     this.UserForm = this.fb.group({
-      userNamehidde: ['', [Validators.required, Validators.maxLength(15)]]
+      id: [''],
+      userName:['']
     })
-    this.getStdInformation();
+        this.getStdInformation();
     
   }
-
+  // name(){
+  // return  this.UserForm.get('userName');
+  // }
+  // Id(){
+  //  return this.UserForm.get('id');
+  // }
  
   getStdInformation(){
     this.stdID=this.tokenUser.getUserId();
@@ -33,18 +39,42 @@ export class PersonalInformationComponent implements OnInit {
         data=>{
             console.log("dddddddddddddddddd",data)
             this.userInfo=data;
+            console.log("usetd",this.userInfo.userName,this.userInfo.id)
         }
       )
   }
-  onSubmit(){    
-    // this.accountService.UpdateStdName()
-    // console.log("User Name Updated")
-    this.UpdateUserName(this.UserForm.value)
-  }
 
-  UpdateUserName(userName:string){    
-    this.accountService.UpdateStdName(userName)
-    console.log("User Name Updated")
-  }
 
+  UpdateUserName(userName:string,stID:string){  
+  this.accountService.getStudentInformation(stID).subscribe(
+    data=>{    
+    console.log("enter")
+        data.id=stID;
+        data.userName=userName
+    this.accountService.UpdateStdName(userName,stID,data).subscribe(
+      testObj=>{
+        console.log("test",testObj)
+      }
+    )
+
+        console.log(data)
+        console.log(stID)
+        console.log(userName)        
+      }
+    )
+    console.log("User Name Updated",userName,stID)
+
+  }
+   onSubmit(){
+  //   this.getNames()
+  //   this.accountService.UpdateStdName(this.userInfo)
+  //   console.log("User Name Updated",this.userInfo.id,this.userInfo.userName)
+   }
+getNames(){
+  console.log("Model")
+  this.userInfo.id=this.UserForm.value.id
+    this.userInfo.userName=this.UserForm.value.userName
+  //   console.log("User Name Updated",this.userInfo.id,this.userInfo.userName)
+
+}
 }
