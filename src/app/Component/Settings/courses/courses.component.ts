@@ -46,7 +46,7 @@ export class CoursesComponent implements OnInit {
       }
     )
   }
-Test(){
+  Test(){
   console.log("Here")
 }
   removeEnrollCrs(crsid:number){

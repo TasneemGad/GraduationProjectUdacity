@@ -17,9 +17,13 @@ export class ClassRoomComponent implements OnInit {
     private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
+    freeCourses:ICourse[]=[]
+    paidCourses:ICourse[]=[]
+
 
   ngOnInit(): void {
     this.AllStdCourses();
+    this.getFreeCourses()
   }
 
 AllStdCourses(){
@@ -34,7 +38,7 @@ AllStdCourses(){
           }
         )
       }
-      console.log(this.CourseList)
+      console.log("enrolled",this.CourseList[1].name)
     }
   )
 }
@@ -47,6 +51,21 @@ Logout(){
   this.Authservices.logout();   
 }
 getFreeCourses(){
-  
+  console.log("eeeeeeeeeeeeeeeenter")
+  for(let i of this.CourseList)
+  {
+    console.log("enterrrrr",i)
+
+    if(i.price == 0)
+    {
+      this.freeCourses.push(i)
+      console.log("eeeeeeeeeeeeeeeenter",i)
+
+    }
+    else
+    {
+      this.paidCourses.push(i)
+    }
+  }
 }
 }

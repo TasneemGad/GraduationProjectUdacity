@@ -19,7 +19,7 @@ export class LessonContentComponent implements OnInit {
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
   allContentCurrentLesson:LessonContent[]=[];
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
-    // private lessonContentService:LessonContentService
+    private lessonContentService:LessonContentService
     ) { }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class LessonContentComponent implements OnInit {
   controlSidenav(){
     this.IsOpened = !this.IsOpened
   }
-  // getLessonContentById(id){
+  // getLessonContentById(){
   //   this.lessonContentService.(id).subscribe(sucess=>{this.allContentCurrentLesson=sucess,console.log(this.allContentCurrentLesson)})
   // }
 

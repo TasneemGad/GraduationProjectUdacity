@@ -36,7 +36,7 @@
                 <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label><br><br><br>
                 <!-- <mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br> -->
             </div>
-            <div *ngFor="let course of CourseList">
+            <div *ngFor="let course of freeCourses">
                 <mat-card class="courses">
                     <div style="display: flex;" routerLink="{{'/Lecture/'+course.id}}">
                         <div>
