@@ -24,6 +24,7 @@ import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/p
 import {ResourcesComponent } from './Component/resources/resources.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
+import { AboutASComponent } from './Component/about-as/about-as.component';
 
 const routes: Routes = [
   // Routing
@@ -36,7 +37,10 @@ const routes: Routes = [
   { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
   { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
 {path: 'Resources', component:ResourcesComponent, data: { footer: true, header: true }},
-  // Payment 
+
+{path: 'AboutAs', component:AboutASComponent, data: { footer: true, header: true }},
+
+// Payment 
   { path: 'orderDetails', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
   // Setting  
