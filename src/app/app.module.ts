@@ -31,6 +31,7 @@ import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.co
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
+import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 
 @NgModule({
@@ -59,6 +60,7 @@ import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/les
     LessonContentComponent,
     CoreCurriculumComponent,
     ProgramHomeComponent,
+    ResourcesComponent,
     LessonDataComponent,
   ],
   imports: [

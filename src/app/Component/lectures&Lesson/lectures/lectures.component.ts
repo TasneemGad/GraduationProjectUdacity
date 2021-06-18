@@ -13,7 +13,7 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
   styleUrls: ['./lectures.component.scss']
 })
 export class LecturesComponent implements OnInit {
-  allLesson:Lesson[] 
+  allLesson:Lesson[] =[]
 
   lectureList:Lectures[]=[]
   lectureAllList:Lectures[]=[]
@@ -24,6 +24,8 @@ export class LecturesComponent implements OnInit {
   NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
   
   LessonByLectureID: Lesson[];
+  clickedLecture: Lectures;
+  NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -86,6 +88,30 @@ hideList(){
   this.Isdetails = !this.Isdetails
   this.text=this.Isdetails?"expand_more":"expand_less" 
    
+}
+GetLectureByID(LecId:number,index:any){
+  
+    
+        this.indexLecture = index
+  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
+  
+      this.clickedLecture=sucess,
+    console.log("L",this.clickedLecture.tilte)
+  })
+  this.getLessonByLectureID(LecId);
+  console.log("Iddddddddddd",LecId)  
+    this.goToSpasificLecture(LecId)
+    this.getNextLectures(LecId)
+    
+}
+getNextLectures(id:any){
+  console.log("ID")
+  this.lectureServices.getLecturesByID(id+1).subscribe(sucess=>{
+    this.NextLecture=sucess,
+    console.log("L",this.NextLecture.tilte)})
+}
+goToSpasificLecture(id:any){
+  this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
 }
 
 
