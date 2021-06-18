@@ -98,7 +98,7 @@ GetLectureByID(LecId:number,index:any){
       this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
-  // this.getLessonByLectureID(LecId);
+  this.getLessonByLectureID(LecId);
   console.log("Iddddddddddd",LecId)  
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
@@ -145,18 +145,34 @@ goto(id:any){
     var x=  this.router.navigate(["Lesson/",id],{relativeTo:this.active})
   }
 
-  getLessonByLectureID(id:any ,index:any){
-    console.log("Lecidgggggggggggggggg",id)
-this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
- {
- this.LessonByLectureID=sucess,
-  //  this.NextLecture=sucess
-     console.log("lessonLectures",this.LessonByLectureID)
+//   getLessonByLectureID(id:any ,index:any){
+//     console.log("Lecidgggggggggggggggg",id)
+//    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
+//  {
+//  this.LessonByLectureID=sucess,
+//   //  this.NextLecture=sucess
+//      console.log("lessonLectures",this.LessonByLectureID)
    
 
-     this.goToNext(this.lectureList[index].id)
-     console.log("hh", this.lectureList[index].id)
-    }
+//      this.goToNext(this.lectureList[index].id)
+//      console.log("hh", this.lectureList[index].id)
+//     }
+// )
+// this.showLecture(id)
+// }
+
+getLessonByLectureID(id:any){
+  console.log("Lecidgggggggggggggggg",id)
+ this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
+{
+this.LessonByLectureID=sucess,
+//  this.NextLecture=sucess
+   console.log("lessonLectures",this.LessonByLectureID)
+ 
+
+  //  this.goToNext(this.lectureList[index].id)
+  //  console.log("hh", this.lectureList[index].id)
+  }
 )
 this.showLecture(id)
 }

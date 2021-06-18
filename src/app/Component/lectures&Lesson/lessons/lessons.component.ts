@@ -10,7 +10,7 @@ import { LecturesComponent } from '../lectures/lectures.component';
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.scss']
 })
-export class LessonsComponent implements OnInit,AfterViewInit{
+export class LessonsComponent implements OnInit{
   LessonByLectureID: Lesson[]=[];
   idUrl:any
   nextid:any
@@ -29,16 +29,7 @@ export class LessonsComponent implements OnInit,AfterViewInit{
   })
   
   }
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    this.data.print();
-    console.log('Values on ngAfterViewInit():');
-    console.log("dfggg",this.data)
-
-    // this.nextid= this.data.NextLecture.tilte
-    
-  }
+ 
 getLessonByLectureID(id:number){
          console.log("Lecidgggggggggggggggg",id)
     this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
