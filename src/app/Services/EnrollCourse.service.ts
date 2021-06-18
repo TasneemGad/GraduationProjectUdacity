@@ -1,17 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IEnrollCourse } from '../SharedModels/Interface/IEnrollCourse';
 import {AuthenticationService } from '../Services/authentication.service';
 import { ICourse } from '../SharedModels/Interface/ICourses';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
-const API_URL = 'https://localhost:44326//api/EnrollCourse'
-
+const API_URL = 'https://localhost:44326/api/EnrollCourse'
+// let params =  new HttpParams().set { 'X-MyHeader': 'k6test' } 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),}
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +22,13 @@ export class EnrollService {
   trueenroll:IEnrollCourse[]=[]
   stdId:string|null=""
   result:string|null="";
-  enrollCrsId:number;
+  id:number;
+  x:any="1"
+
   // enrolledcrs:IEnrollCourse={id:0,courseId:0,studentId:"",endEnrollDate:"",enrollDate:""};
 
+
+  Url:string="https://localhost:44326/api/EnrollCourse"
 
   constructor(private http:HttpClient,public tokenUser:AuthenticationService) { }
 
@@ -41,8 +45,9 @@ export class EnrollService {
   }
   return this.http.get(API_URL+"?stdID="+this.result).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])     
  }
- Unenroll(id:number){
-   this.http.delete('http://localhost:44326/api/EnrollCourse/{id}/'+id).toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])
+ Unenroll(id:number):Observable<any>{
+ return  this.http.delete('http://localhost:44326/api/EnrollCourse/'+id,httpOptions)
+  //  .toPromise().then(res=>this.trueenroll=res as IEnrollCourse[])
 
  }
   EnrollInCourse(courseid:number): Observable<any>
@@ -63,26 +68,62 @@ export class EnrollService {
       return throwError(err.message || "error")
     }))
   }
-  getStdEnrollcrs(crsID:number): Observable<IEnrollCourse>{
-    console.log("iiiiiiiiiiiiiiiooooooooooooo")
-
+  getStdEnrollcrs(crsID:number): Observable<IEnrollCourse>{    
     this.stdId= this.tokenUser.getUserId();
-     return this.http.get<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
+     return this.http.get<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/EnrollCrs"+"/"+crsID+"/" + this.stdId).pipe(catchError((err) => {
        return throwError(err.message || "error")
      }))
    }
   //RemoveCourse
-  RemoveEnrollCourse(crsId:number){
+<<<<<<< HEAD
+  RemoveEnrollCourse(crsId:number):Observable<IEnrollCourse>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' ,'Authorization':'token'}),
+      // body: {id: crsId} 
+    };
     console.log("Hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+    // this.getStdEnrollcrs(crsId).subscribe(
+    //   data=>{
+    //     this.enrollCrsId=data.id;
+    //     console.log("gg",this.enrollCrsId)
+    //   });
+      let x= this.http.delete<IEnrollCourse>("https://localhost:44326/api/EnrollCourse/ "+crsId)
+    //   .pipe(catchError((err) => {
+    //   return throwError(err.message || "error")
+    // }))
+  //   console.log("x",x)
+   return x
+}
+refreshList() {
+  this.http.get(API_URL)
+    // .toPromise()
+    // .then(res =>this.coursesList = res as ICourse[]);
+}
 
+
+=======
+  RemoveEnrollCourse(crsId:number):Observable<any>{    
+    console.log("Here---------")
     this.getStdEnrollcrs(crsId).subscribe(
-      data=>{
-        this.enrollCrsId=data.id;
+      data=>{  
+        console.log(data)
+        
+        this.x=this.http.delete<any>("https://localhost:44326/api/EnrollCourse/" + data.id,httpOptions)
+        // "https://localhost:44326/api/EnrollCourse/Test"+"/" + data.id).pipe(catchError((err) => {
+        //   return throwError(err.message || "error")
+        //}))
+
       }
     );
-    return this.http.delete<IEnrollCourse>("https://localhost:44326/AllStdEnrollCourses" + "/" + this.enrollCrsId).pipe(catchError((err) => {
-      return throwError(err.message || "error")
-    }))
+        console.log(this.x)
+        return this.x;
 
-}
+ }
+//     return this.http.delete("https://localhost:44326/api/EnrollCourse/8")
+//         .pipe(catchError((err) => {
+//           console.log("err",err)
+//               return throwError(err.message || "error")
+//             }))
+// }
+>>>>>>> af8b9068204aecee0140020db0bf075b31f725d2
 }

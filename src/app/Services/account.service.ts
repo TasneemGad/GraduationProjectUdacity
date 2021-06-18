@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ICourse } from '../SharedModels/Interface/ICourses';
@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication.service';
 
 const URL="https://localhost:44326/api/Account";
 
-const URL_Update="https://localhost:44326/api/Account/UpdateUserName";                 
+const URL_Update="https://localhost:44326/api/Account/UpdateUserName/";                 
 @Injectable({
   providedIn: 'root'
 })
@@ -32,24 +32,33 @@ export class AccountService {
       return throwError(err.message || "error")
     }))
   }
+<<<<<<< HEAD
 
+ UpdateStdName(userName:string,stID:string,account:IAccount):Observable<any>{    
+  //  const httpOtions={
+  //    headers:new HttpHeaders({'Content-Type':'application/json','Authorization':'token'})
+  // }; 
+  this.stID=this.token.getUserId();
+  stID=this.stID;
+  return this.http.put(URL_Update+stID, account ).pipe(catchError((err) => {
+    return throwError(err.message || "error")
+    }))
+  
+=======
+//Update UserName
  UpdateStdName(userName:string,stID:string){     
   this.stID=this.token.getUserId();
   stID=this.stID;
   this.getStudentInformation(stID).subscribe(
     data=>{
-  
-      data.id=stID;
-      data.userName=userName
-      console.log(data)
-      console.log(stID)
-      console.log(userName)
-      return this.http.put(URL_Update+"/"+stID, data).pipe(catchError((err) => {
+      data.userName=userName  
+      return this.http.put(`${URL_Update}/${data.id}`, data).pipe(catchError((err) => {
         return throwError(err.message || "error")
         }))
         
     }
   )
+>>>>>>> af8b9068204aecee0140020db0bf075b31f725d2
    }
 
   updatePassword(newPassword:string){

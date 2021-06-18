@@ -1,148 +1,92 @@
-<!-- <div>
-  <mat-card class="Allcard">
-    <div style="display: flex;padding: 0;">
-      <div>
-        <img src="assets/i.png">
-      </div>
-    <div>
-    <h1 style="position: relative;left: 180px;">Basic Information</h1>
-  </div>
-  
-    </div>
-<div class="example-container" #form>
-  <mat-form-field  class="contain">
-    <mat-label>Full Name</mat-label>
-    <input matInput placeholder="" formControlName="name" required  [value]="userInfo.userName"  #userName>
-  </mat-form-field>
-<br>
-<div style="display: flex;">
-<div >
-  <mat-form-field  class="contain">
-    <mat-label>Enter your email</mat-label>
-    <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email">
-  </mat-form-field>
-</div>
-  <div>
-  <button type="submit" mat-raised-button 
-  style="text-transform: uppercase;width: 150px;height: 50px;"  class="btnverify"> Verify Email</button>
-</div>
-</div>
-
-<br>
-<div style="display: flex;">
-  <div>  <mat-form-field class="contain">
-    <mat-label>Verify your tel</mat-label>
-    <input type="tel" matInput formControlName="tel" placeholder="tel" [value]="userInfo.phoneNumber">
-  </mat-form-field>
-</div>
-  <div>
-    <button type="submit" mat-raised-button class="btn">Send Code</button>
-  </div>
-</div>
- <br>
-<div style="display: flex;">
-  <div>
-    <img src="../../../../assets/error_outline.svg" style="color:#ffae0c;" width="20px" height="20px" alt="error">
-  </div>
-  <div>
-    <h3>Complete  email verification before SMS verification</h3>
-  </div>
-</div>
-</div>
-</mat-card>
-</div> -->
-
+<!-- <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm"> -->
 <div>
   <mat-card class="Allcard">
     <h1>Basic Information</h1>
     <div class="example-container" #form>
       <div style="display: flex;">
         <div>
-            <img src="assets/i.png"><br>
+          <img src="assets/i.png"><br>
         </div>
-        <div >
-          <mat-form-field  class="contain">
-          <!-- <mat-label>Full Name</mat-label> -->
-          <!-- <input matInput placeholder="Full Name" formControlName="name" required > -->
-    <input matInput placeholder="Full Name" formControlName="name" required  [value]="userInfo.userName"  #userName>
+        <div>
+          <mat-form-field class="contain">
+
+            <input matInput placeholder="Full Name" formControlName="userName" required [value]="userInfo.userName"
+              #userName>
 
           </mat-form-field>
         </div>
       </div>
-<br>
-<div style="display: flex;">
-  <div >
-    <mat-form-field  class="contain">
-      <!-- <mat-label>Enter your email</mat-label> -->
-      <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email">
-    </mat-form-field>
-  </div>
-  <div>
-    <button type="submit" mat-raised-button 
-    style="text-transform: uppercase;width: 150px;height: 50px;"  class="btnverify"> Verify Email</button>
-  </div>
-</div>
+      <br>
+      <div style="display: flex;">
+        <div>
+          <mat-form-field class="contain">
+            <input type="email" matInput formControlName="email" placeholder="Email" [value]="userInfo.email" >
+          </mat-form-field>
+        </div>
+        <div>
+          <button type="submit" mat-raised-button style="text-transform: uppercase;width: 150px;height: 50px;"
+            class="btnverify"> Verify Email</button>
+        </div>
+      </div>
 
-<br>
-<div style="display: flex;">
-  <div>  
-    <mat-form-field class="contain">
-      <!-- <mat-label>Verify your tel</mat-label> -->
-      <input type="tel" matInput formControlName="tel" placeholder="Phone Number" [value]="userInfo.phoneNumber">
-    </mat-form-field>
-  </div>
-  <div>
-    <button type="submit" mat-raised-button class="btn">Send Code</button>
-  </div>
-</div>
-</div>
+      <br>
+      <div style="display: flex;">
+        <div>
+          <mat-form-field class="contain">
+            <input type="tel" matInput formControlName="tel" placeholder="Phone Number" [value]="userInfo.phoneNumber">
+          </mat-form-field>
+        </div>
+        <div>
+          <button type="submit" mat-raised-button class="btn">Send Code</button>
+        </div>
+      </div>
+    </div>
 
 
- <br>
-<div style="display: flex;">
-  <div>
-    <!-- <span><mat-icon style="color:#ffae0c;">error_outline</mat-icon></span>  -->
-    <!-- <img src="../../../../assets/error_outline.svg" style="color:#ffae0c;" width="20px" height="20px" alt="error"> -->
-  </div>
-  <div>
-    <h4>Complete email verification before SMS verification</h4>
-  </div>
-</div>
-</mat-card>
+    <br>
+    <div style="display: flex;">
+      <div>
+        <!-- <span><mat-icon style="color:#ffae0c;">error_outline</mat-icon></span>  -->
+        <!-- <img src="../../../../assets/error_outline.svg" style="color:#ffae0c;" width="20px" height="20px" alt="error"> -->
+      </div>
+      <div>
+        <h4>Complete email verification before SMS verification</h4>
+      </div>
+    </div>
+  </mat-card>
 </div>
 <div style="float: right; margin: 10px 0px 10px 0px ; margin-bottom: 10%;">
   <button mat-raised-button class="btnCancel">CANCEL</button>
-
-
-  <!-- <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm"> -->
   <!-- <span>Here  {{userName.value}}  </span> -->
-
-    
-      <input type="hidden" name="stdID" id="stdID" #stdID [value]="userInfo.id" >
-    <button mat-raised-button type="submit" color="primary" class="btnSave"
-      (click)="UpdateUserName(userName.value,stdID.value)">SAVE</button>
-      <br>
-
-  <!-- </form> -->
-
+  <input  name="stdID" id="stdID" #stdID [value]="userInfo.id" formControlName="id">
+  <!-- <button mat-raised-button  color="primary" class="btnSave" type="submit">SAVE</button>
+<br> -->
+  <button mat-raised-button  color="primary" class="btnSave"
+    (click)="UpdateUserName(userName.value,stdID.value)">SAVE</button>
+  <br>
 </div>
+  <!-- </form> -->
 <br><br><br><br>
 <mat-card>
   <mat-card-title>Account Management</mat-card-title><br>
   <mat-label class="titel">REQUEST ACCOUNT DATA</mat-label><br><br>
-  <mat-label class="prag">Verify your email address so that we send your data to the correct place.</mat-label><br><br><br>
-  <button class="btnVerification" mat-raised-button >SEND VERIFICATION</button><br><br><br>
-  
+  <mat-label class="prag">Verify your email address so that we send your data to the correct place.</mat-label>
+  <br><br><br>
+  <button class="btnVerification" mat-raised-button>SEND VERIFICATION</button><br><br><br>
+
   <mat-label class="titel">DELETE YOUR ACCOUNT</mat-label><br><br>
-  <mat-label class="titel" >NOTE: You must cancel any active enrollments prior to deleting your account, to avoid any future charges.</mat-label><br><br>
+  <mat-label class="titel">NOTE: You must cancel any active enrollments prior to deleting your account, to avoid any
+    future charges.</mat-label><br><br>
   <mat-label class="prag">
     Before deleting your account, please review the following:
     <ul>
-      <li>If you delete your account, all of your personal information, including enrollments and certificates, will be deleted. You will immediately lose access to your account and be unable to log in.</li>
+      <li>If you delete your account, all of your personal information, including enrollments and certificates, will be
+        deleted. You will immediately lose access to your account and be unable to log in.</li>
       <li>This action is irreversible - once your data has been deleted, we cannot recover it again.</li>
       <li>You will not be able to sign up again using the same email address for 30 days.</li>
     </ul>
-    To prevent account deletion by accident, we have a 2-step verification process. Click below to get a delete code sent to your email. Use that code to verify your request and to continue with the deletion process.
+    To prevent account deletion by accident, we have a 2-step verification process. Click below to get a delete code
+    sent to your email. Use that code to verify your request and to continue with the deletion process.
   </mat-label><br><br><br>
-  <button class="btnVerification" mat-raised-button >SEND DELETE CODE</button><br><br><br>
+  <button class="btnVerification" mat-raised-button>SEND DELETE CODE</button><br><br><br>
 </mat-card>

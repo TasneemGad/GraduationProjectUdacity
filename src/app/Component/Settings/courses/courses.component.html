@@ -9,11 +9,11 @@
     </div><br><br>
 
     <div *ngFor="let course of CourseList">
-        <input type="hidden" [value]="course.id" #crsID name="crsID" id="crsID">
+        <input  [value]="course.id" #crsID name="crsID" id="crsID">
         <mat-card class="courses">
             <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
                 <mat-label > {{course.description}}</mat-label><br>
-                <button class="remove" (click)="removeEnrollCrs(course.id)"  type="submit"> REMOVE COURSE</button>
+                <button class="remove" (click)="removeEnrollCrs(course.id)"> REMOVE COURSE</button>
         </mat-card><br><br>
     </div>
 </mat-card>

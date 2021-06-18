@@ -23,6 +23,7 @@ import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curric
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import {ResourcesComponent } from './Component/resources/resources.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
+import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 
 const routes: Routes = [
   // Routing
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'SignUP', component: SigINComponent },
   { path: 'SignIn', component: SigINComponent },
   { path: 'ClassRoom', component: ClassRoomComponent },
+    //Category && Course
   { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
   { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
 {path: 'Resources', component:ResourcesComponent, data: { footer: true, header: true }},
@@ -52,22 +54,17 @@ const routes: Routes = [
   },
 
   //Lectures
-  //   {path:"Lectures",component:LecturesComponent,
-  //      children:[{path:"Lesson",component:LessonsComponent},
-  //   //  {path:'Lecture/:id', component:LecturesComponent},
-  // ]},
-  // {path:"Lectures",component:LecturesComponent,children:[{path:"Courses",component:CoursesComponent}]},
   { path: 'Lecture/:id', component: LecturesComponent,
     children:
-      [// [{path:"Lesson/:id",component:LessonsComponent},
-        // { path: "SpasificLecture/:id", component: LecturesComponent },
+      [
         {path:"coreCurriculum/:id",component:CoreCurriculumComponent},
         {path:"ProgramHome/:id",component:ProgramHomeComponent},
         { path: "Lesson/:id", component: LessonsComponent,}]
   },
-  // {path:"coreCurriculum",component:CoreCurriculumComponent},
 
-  { path: "lessonContent/:id", component: LessonContentComponent },
+  { path: "lessonContent/:id", component: LessonContentComponent ,children:[ 
+    { path: "lessonData/:id", component: LessonDataComponent,}
+  ]},
   
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' }
