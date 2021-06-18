@@ -23,6 +23,8 @@ export class LecturesComponent implements OnInit {
   indexLecture:number
   
   LessonByLectureID: Lesson[];
+  clickedLecture: Lectures;
+  NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
   idUrl:any
@@ -84,14 +86,15 @@ hideList(){
 }
 GetLectureByID(LecId:number,index:any){
   
-     this.getLessonByLectureID(LecId);
-     console.log("Iddddddddddd",LecId)  
+    
         this.indexLecture = index
   this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
   
       this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
+  this.getLessonByLectureID(LecId);
+  console.log("Iddddddddddd",LecId)  
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
     

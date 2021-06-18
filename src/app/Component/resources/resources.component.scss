@@ -101,10 +101,8 @@
         color: #525c65;
         line-height: 24px;
         box-sizing: inherit;
-     
-        margin: 0 auto;
         max-width: 35rem;
-        flex: 1 1 auto;
+
         
     }
     .mb-half{
@@ -137,50 +135,92 @@
         float: left;
         
     }
-    .selling-points_row{
-   
+    .selling{
     display: flex;
-    flex-direction: column;
     padding: 2rem 0;
-    text-align:center;
+    margin: 0 auto;
+    justify-content: center;
+    width:70%
 }
 
    .selling-points{
-    text-align: center;
     margin-top: 60px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
    }
    .img4,.selling-points-rigth{
     display:inline-block;
-    width:50%;
-    margin-right:70px;
+    width:70%;
+    text-align: center;
    }
-   .img4{
   
-    float: left;
-    margin-top:30px;
-    line-height:30px;
-    box-sizing: inherit;
- 
-   }
    .texttt{
        font-size:20px;
        font-weight: bold;
       
+      
    }
    .selling-points-rigth{
     box-sizing: inherit;
-           line-height:30px;
+    line-height:30px;
     font-size: 16px;
     font-family: Open Sans,sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #525c65;
-    padding: 0 20px 20px 0;
-display: inline;
-float: right;
+
   
    }
+
+   .section{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    width:100%;
+    text-align: center;
+   
+   }
+ .sectionContent{
+    display:inline-block;
+    width:80%;
+margin-left:5%;
+    box-sizing: inherit;
+    line-height:30px;
+    font-size: 16px;
+    font-family: Open Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #525c65;
+ }
+.RImg{
+   
+    display:inline-block;
+    text-align: center;
+    
+}
+
+.example-card2{
+    width: 70%;
+    margin:0 auto;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    
+    }
+    
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      input[type=submit] {
+        width: 100%;
+        color: rgb(15, 15, 15);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: 2px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .mat-card-actions{
+          text-align: center;
+      }
