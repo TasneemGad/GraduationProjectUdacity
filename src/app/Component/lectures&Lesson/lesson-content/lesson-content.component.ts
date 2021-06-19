@@ -7,15 +7,17 @@ import { LessonContent } from 'src/app/SharedModels/Interface/ILessonContent';
 import { Location } from '@angular/common';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { CoursesService } from 'src/app/Services/courses.service';
-<<<<<<< HEAD
-import { MatDialog } from '@angular/material/dialog';
-=======
 import { ProgressService } from 'src/app/Services/progress.service';
 import { WatchService } from 'src/app/Services/watch.service';
 import { IwatchContent } from 'src/app/SharedModels/Interface/iwatchcontent';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { IProgress } from 'src/app/SharedModels/Interface/iprogress';
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
+import { VideosService } from 'src/app/Services/videos.service';
+import { CourseVideos } from 'src/app/SharedModels/Interface/ICourseVideos';
+import { Question } from 'src/app/SharedModels/Interface/IQestions';
+import { QuestionsService } from 'src/app/Services/questions.service';
+import { StudentAnswerService } from 'src/app/Services/student-answer.service';
+import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
 
 
 @Component({
@@ -35,8 +37,9 @@ export class LessonContentComponent implements OnInit {
   allContentCurrentLesson:LessonContent[]=[];
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
-  
-
+  QByLessonContent:Question[]
+  StudentAnswer:StudentAnswer[]
+  CoursesVideos:CourseVideos
 @Input() CourseId:any
 
 ngOnChanges():void{
@@ -48,19 +51,17 @@ ngOnChanges():void{
 
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
-<<<<<<< HEAD
-    private lessonContentService:LessonContentService,public dialog: MatDialog
-=======
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
-    private token:AuthenticationService
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
+    private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
+  private  StudentASService:StudentAnswerService
     ) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
     this.getLessonById(this.idUrl)
     this.getLessonContentById(this.idUrl);
-    this.getCurrentCourse(this.idUrl)
+    this.getCurrentCourse(this.idUrl);
+    this.getVideosById(this.idUrl);
 
   })
 
@@ -80,6 +81,54 @@ ngOnChanges():void{
             })
         })
       })    
+  }
+  getLessonById(id:any){
+    this.lessonService.GetLessonById(id).subscribe(sucess=>{this.currentLesson=sucess,console.log("currentLesson",this.currentLesson)})
+  }
+  getLessonContentById(id:number){
+    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
+      this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
+      this.getLessonOneById(id)
+      this.getVideosById(id);
+      this.getQuestionsByLessonContent(id)
+    })
+  }
+  getLessonOneById(id:number){
+    this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
+      this.CurrentLesson=sucess,console.log("content-------",this.CurrentLesson)
+    })
+  }
+  goToLessonData(id:any){
+    this.getLessonOneById(id);
+    this.getVideosById(id)
+    this.getQuestionsByLessonContent(id)
+    if(sessionStorage.getItem("CourseID")!=null)
+    {
+      this.CourseId=sessionStorage.getItem("CourseID")
+      this.getProgress(this.CourseId,id)
+
+    }
+    this.router.navigate(['lessonData/',id],{relativeTo:this.active})
+    
+
+
+  }
+  hideList(){
+    this.Isdetails = !this.Isdetails
+    this.text=this.Isdetails?"expand_more":"expand_less" 
+     
+  }
+  goBack(){
+    
+    this.location.back();
+  }
+  controlSidenav(){
+    this.IsOpened = !this.IsOpened
+  }
+  getVideosById(id:number){
+    this.videoServices.getAllCourseViedosById(id).subscribe(sucess=>{
+      this.CoursesVideos=sucess,console.log("currentvv",this.CoursesVideos)
+    })
   }
   insertWatch(lessonContentID:number,crsId:number){
     this.watchObj.whatchedOrNot=1;
@@ -118,65 +167,16 @@ ngOnChanges():void{
      
     })
   }
-  getLessonById(id:any){
-    this.lessonService.GetLessonById(id).subscribe(sucess=>{this.currentLesson=sucess,console.log("currentLesson",this.currentLesson)})
-  }
-  hideList(){
-    this.Isdetails = !this.Isdetails
-    this.text=this.Isdetails?"expand_more":"expand_less" 
-     
-  }
-
-  getLessonContentById(id:number){
-    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
-      this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
-      this.getLessonOneById(id)
-      // this.controlSidenav()
-    })
-  }
-  getLessonOneById(id:number){
-    this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
-      this.CurrentLesson=sucess,console.log("content-------",this.CurrentLesson)
-    })
-  }
-
-  goBack(){
-    
-    this.location.back();
-  }
-  goToLessonData(id:any){
-    this.getLessonOneById(id);
-    if(sessionStorage.getItem("CourseID")!=null)
-    {
-      this.CourseId=sessionStorage.getItem("CourseID")
-      this.getProgress(this.CourseId,id)
-
-    }
-    this.router.navigate(['lessonData/',id],{relativeTo:this.active})
-    
-
-
-  }
-  controlSidenav(){
-    this.IsOpened = !this.IsOpened
-  }
-
-<<<<<<< HEAD
-  getCurrentCourse(id:any){
-    console.log("enterLesson1",id)
-    this.lessonService.GetLessonById(id).subscribe(sucess=>
-      { console.log("enterLesson",sucess?.lectureId)
-        this.lectureServices.getLecturesByID(sucess?.lectureId).subscribe(sucess=>
-      { console.log("enterLesson",sucess?.courseId)
-          this.courseServices.getCoursesByID(sucess.courseId).subscribe(
-            data => {
-              this.currentCourseToSearch = data.name              
-              console.log("sc",this.currentCourseToSearch)
-            })
-        })
-      })
-  }
-=======
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
- 
+  getQuestionsByLessonContent(id:number){
+    console.log("first")
+    this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
+      this.QByLessonContent=sucess,console.log("currentQGL",this.QByLessonContent)
+  })
+}
+ getStudentAnswerByLessonContent(id:number){
+  console.log("first")
+  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+    this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+})
+}
 }

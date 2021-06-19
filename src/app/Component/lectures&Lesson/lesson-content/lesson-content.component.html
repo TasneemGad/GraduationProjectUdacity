@@ -48,17 +48,27 @@
 
    <div class="nav">
         <div><mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon></div>
-        <div class="contentName"> <mat-label >content Name : {{CurrentLesson?.title}}</mat-label> </div>
+        <div class="contentName"> <mat-label>content Name : {{CurrentLesson?.title}}{{CurrentLesson.description}}</mat-label></div>
         <div class="feedback"> <mat-label>SEND FEEDBAK</mat-label> </div>
     </div> 
+    <mat-sidenav-container>
+        <div style="margin-left: 60px;margin-top: 20px;">
+            <video controls  width="70%" >
+                <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
+            </video>
+            </div>
+            <div *ngFor="let i of QByLessonContent">
+                <h1>{{i.title}}</h1>
+                
+                </div>
+        <!-- <div class="contentName"> <mat-label >content Name : {{CurrentLesson?.title}}</mat-label> </div> -->
+    </mat-sidenav-container>
 
     <mat-sidenav-container>
         <router-outlet></router-outlet>
     </mat-sidenav-container>
 </mat-sidenav-container>
 
-<<<<<<< HEAD
-=======
 
 
    <!-- Modal -->
@@ -91,4 +101,3 @@
        </div>
      </div>
    </div>
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046

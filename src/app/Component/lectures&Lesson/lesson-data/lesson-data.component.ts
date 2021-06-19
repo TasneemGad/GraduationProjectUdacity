@@ -32,11 +32,7 @@ QByLessonContent:Question[]
 AllQuestionsGroups:QuestionGroup[]
   constructor(private Services:LessonContentService,private active:ActivatedRoute,private videoServices:VideosService,
     private QDragAndDrop:DragAndDropService ,private QuestionsGroupServices:QuestionsGroupService,
-<<<<<<< HEAD
-    private QuestionsServices:QuestionsService,public dialog: MatDialog) { }
-=======
     private QuestionsServices:QuestionsService,private progress:ProgressService) { }
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
    
 
   ngOnInit(): void {

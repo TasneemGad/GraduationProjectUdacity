@@ -1,5 +1,5 @@
 export interface IProgress {
-     id:number
+     id?:number
      numOfLesson:number
      numOfLessonFinshed:number
      studentId:string

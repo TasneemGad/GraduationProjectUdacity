@@ -75,10 +75,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
-<<<<<<< HEAD
-=======
-    NgbModule,
->>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
     // NgbModule
   ],
   providers: [],
