@@ -1,11 +1,12 @@
 mat-sidenav-container{
     height: 100%;
-    
 }
 mat-sidenav{
     background-color:#001d25;
     width: 18%;
     color: white;
+    height: 100%;
+    position: fixed;
 }
 mat-sidenav , mat-sidenav-content{
     padding: 16px;
@@ -40,9 +41,9 @@ mat-icon{
 #nav{
     background-color: white;
     box-shadow:2px 4px 15px rgb(185, 184, 184);
-    width: auto;height: 50px;
-    padding-top: 20px;
-    padding-left: 40px;
+    width: 100%;
+    height: auto;
+    padding: 20px 0px 20px 40px;
     margin-left: -20px;
     margin-top: -20px;
     font-size: 20px;

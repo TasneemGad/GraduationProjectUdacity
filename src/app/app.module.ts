@@ -35,6 +35,7 @@ import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,10 @@ import { AboutASComponent } from './Component/about-as/about-as.component';
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
+<<<<<<< HEAD
+=======
+    NgbModule,
+>>>>>>> 0a1a38f2cc7807fe418999468cddf12d7f8b3046
     // NgbModule
   ],
   providers: [],

@@ -15,7 +15,6 @@ import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
 })
 export class LecturesComponent implements OnInit {
   allLesson:Lesson[] =[]
-
   lectureList:Lectures[]=[]
   lectureAllList:Lectures[]=[]
   courseList:ICourse
@@ -50,6 +49,7 @@ export class LecturesComponent implements OnInit {
     this.getCourseById(this.idUrl);
     console.log("Lecid",this.idUrl)
     this.getAllLesson();
+    sessionStorage.setItem("CourseID",this.idUrl)
   //  this.print()
   }
   print(){

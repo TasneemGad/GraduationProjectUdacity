@@ -63,8 +63,7 @@
         </ng-template>
         </section>
         
-
-        <section class="cardCourses">      
+      <!-- <section class="cardCourses">      
         <div *ngIf="isFree then cardFree "></div>
         <ng-template #cardFree>  
             <mat-label class="section" >CURRENT FREE ENROLLMENTS</mat-label><br><br>
@@ -106,8 +105,12 @@
                 </mat-card><br><br>
             </div>
         </ng-template>
+        </section>
+   -->
+       <section class="cardCourses">      
         <div style="font-size: 16px;font-weight: bold;">Paid Courses</div>
         <div style="line-height: 40px;">&nbsp;</div>
+        
         <div *ngFor="let course of paidCourses">
             <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
                 <div style="display: flex;"   >
@@ -118,11 +121,13 @@
                         <mat-label > {{course.description}}</mat-label>
                     </div>
                     <div class="btnDiv">
-                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                        
+                        <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)"  >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
                     </div>
                 </div>
             </mat-card><br><br>
         </div>
+
         <div style="font-size: 16px;font-weight: bold;">Free Courses</div>
         <div style="line-height: 40px;">&nbsp;</div>
 
@@ -136,12 +141,12 @@
                         <mat-label > {{course.description}}</mat-label>
                     </div>
                     <div class="btnDiv">
-                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                        <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
                     </div>
                 </div>
             </mat-card><br><br>
         </div>
-        </section><br><br><br>
+       </section> <br><br><br>
    
     </mat-sidenav-content>
 </mat-sidenav-container>

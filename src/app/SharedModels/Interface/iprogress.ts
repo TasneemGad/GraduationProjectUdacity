@@ -1,7 +1,7 @@
 export interface IProgress {
-     Id:number
-     NumOfLesson:number
-     NumOfLessonFinshed:number
-     StudentId:string
-     CourseId:number
+     id:number
+     numOfLesson:number
+     numOfLessonFinshed:number
+     studentId:string
+     courseId:number
 }

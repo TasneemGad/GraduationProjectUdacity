@@ -3,8 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { EnrollService } from 'src/app/Services/EnrollCourse.service';
+import { LessonContentService } from 'src/app/Services/LessonContent.service';
+import { ProgressService } from 'src/app/Services/progress.service';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 import { IEnrollCourse } from 'src/app/SharedModels/Interface/IEnrollCourse';
+import { IProgress } from 'src/app/SharedModels/Interface/iprogress';
 import { CourseComponent } from '../course/course.component';
 
 @Component({
@@ -16,7 +19,7 @@ export class ClassRoomComponent implements OnInit {
 freeCoures:ICourse[]=[]
 paidCourses:ICourse[]=[]
   constructor(private Enrollservices:EnrollService,private courseServices:CoursesService,
-    private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService) { }
+    private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService,private lessonContent:LessonContentService,private progress:ProgressService) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
   isFree=false
@@ -24,6 +27,7 @@ paidCourses:ICourse[]=[]
   flag=false
   lastCourseId:any
   lastCourse:ICourse
+  progressObj:IProgress={id:0,numOfLesson:0,numOfLessonFinshed:0,courseId:0,studentId:""}
 
   ngOnInit(): void {
     this.AllStdCourses();
@@ -43,9 +47,11 @@ paidCourses:ICourse[]=[]
             crsData => {
               this.CourseList.push(crsData);
               if(crsData.price==0){
+                this.isFree = true
                 this.freeCoures.push(crsData);
               }
               else if(crsData.price>0){
+                this.isPaid = true
                 this.paidCourses.push(crsData);
               }
           
@@ -72,6 +78,26 @@ getlastActiveCourse(){
       this.flag=true
       console.log("lastCourse",this.lastCourseId, this.lastCourse,this.flag)
     })
+}
+
+StdProgress(crsID:number){
+  this.lessonContent.getLessonContentCount(crsID).subscribe(
+    data=>{
+      console.log("Data----------",data)
+
+        this.progressObj.numOfLesson=data;
+        this.progressObj.courseId=crsID;
+        this.progressObj.studentId=this.Authservices.getUserId();
+        this.progressObj.numOfLessonFinshed=0;
+      console.log("progressObj",this.progressObj)
+
+        this.progress.insertLessonContentProgress(this.progressObj).subscribe(
+          progressCrs=>{
+            console.log(progressCrs,"Done")
+          }
+        )
+    }
+  )
 }
 
 }
