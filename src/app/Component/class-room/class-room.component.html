@@ -89,7 +89,7 @@
         <section class="cardCourses">      
         <div *ngIf="isPaid then cardPaid "></div>
         <ng-template #cardPaid>  
-            <mat-label class="section">CURRENT FREE ENROLLMENTS</mat-label><br><br>
+            <mat-label class="section">CURRENT Paid ENROLLMENTS</mat-label><br><br>
             <div *ngFor="let course of paidCourses">
                 <mat-card class="courses" (click)="lastActiveCourse(course.id)" routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
                     <div style="display: flex;"   >

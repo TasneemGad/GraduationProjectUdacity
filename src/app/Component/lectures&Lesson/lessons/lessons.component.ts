@@ -24,12 +24,7 @@ export class LessonsComponent implements OnInit{
 
     
 // @ViewChild(LecturesComponent) data : LecturesComponent
-// @Input() getNextLectureId:number
 
-// ngOnChanges():void{
-//   console.log("isChange?", this.getNextLectureId)
-//   this.getNextLecture()
-// }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -53,7 +48,6 @@ getLessonByLectureID(id:number){
 
 GetLectureByID(LecId:number){
   console.log("ID")
-  // this.indexLecture = index
   this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
     this.clickedLecture=sucess,
     console.log("LLLLL",this.clickedLecture?.tilte)
