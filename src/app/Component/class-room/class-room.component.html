@@ -75,8 +75,27 @@
                 </mat-card><br><br>
             </div>
         </ng-template>
+        <div style="font-size: 16px;font-weight: bold;">Paid Courses</div>
+        <div style="line-height: 40px;">&nbsp;</div>
+        <div *ngFor="let course of paidCourses">
+            <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
+                <div style="display: flex;"   >
+                    <div>
+                        <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
+                            <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
+                        <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
+                        <mat-label > {{course.description}}</mat-label>
+                    </div>
+                    <div class="btnDiv">
+                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </mat-card><br><br>
+        </div>
+        <div style="font-size: 16px;font-weight: bold;">Free Courses</div>
+        <div style="line-height: 40px;">&nbsp;</div>
 
-        <div *ngFor="let course of CourseList">
+        <div *ngFor="let course of freeCoures">
             <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
                 <div style="display: flex;"   >
                     <div>

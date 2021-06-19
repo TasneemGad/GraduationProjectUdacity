@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication.service';
 
 const URL="https://localhost:44326/api/Account";
 
-const URL_Update="https://localhost:44326/api/Account/UpdateUserName/";                 
+const URL_Update="https://localhost:44326/api/Account/UpdateUserInfo/";                 
 @Injectable({
   providedIn: 'root'
 })
@@ -33,21 +33,16 @@ export class AccountService {
     }))
   }
 
- UpdateStdName(userName:string,stID:string,account:IAccount):Observable<any>{    
-  //  const httpOtions={
-  //    headers:new HttpHeaders({'Content-Type':'application/json','Authorization':'token'})
-  // }; 
-  this.stID=this.token.getUserId();
-  stID=this.stID;
-  return this.http.put(URL_Update+stID, account ).pipe(catchError((err) => {
+ UpdateStInfo(account:IAccount):Observable<any>{    
+  this.stID=this.token.getUserId();  
+  return this.http.put(URL_Update+this.stID, account ).pipe(catchError((err) => {
     return throwError(err.message || "error")
     }))
-  
    }
 
-  updatePassword(newPassword:string){
+  updatePassword(account:IAccount,oldPasswordHashed:string):Observable<any>{
     this.stID=this.token.getUserId();
-    return this.http.put(URL+"/"+this.stID+"/"+newPassword,this.getStudentInformation(this.stID)).pipe(catchError((err) => {
+    return this.http.put(URL+"/updatePassword/"+this.stID+"/"+oldPasswordHashed,account).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))
   }

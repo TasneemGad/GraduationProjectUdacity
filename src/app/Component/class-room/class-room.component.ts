@@ -39,6 +39,12 @@ paidCourses:ICourse[]=[]
           this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
             crsData => {
               this.CourseList.push(crsData);
+              if(crsData.price==0){
+                this.freeCoures.push(crsData);
+              }
+              else if(crsData.price>0){
+                this.paidCourses.push(crsData);
+              }
             }
           )
         }
