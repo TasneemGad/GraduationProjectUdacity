@@ -66,7 +66,7 @@ ngOnChanges():void{
           this.courseServices.getCoursesByID(sucess.courseId).subscribe(
             data => {
 
-              this.currentCourseToSearch = data.id              
+              this.currentCourseToSearch = data.name              
               console.log("sc",this.currentCourseToSearch)              
               return data.id
             })
@@ -86,7 +86,7 @@ ngOnChanges():void{
     )
 
   }
-  getProgress(crsId:number,lessonContentID:number){    
+  getProgress(crsId:any,lessonContentID:number){    
     this.progress.getLessonContentProgress(crsId).subscribe(
       data=>{      
         console.log(data);  
