@@ -10,8 +10,8 @@
       line-height: 1.6;
   }
   .forWhom{
-      width: 200px;
-      height: 100px;
+      width: auto;
+      height: auto;
       float: left;
       margin-right: 15px;
       text-align: center;
@@ -79,9 +79,9 @@
       margin-top: 50px ;
    }
    .dataOfObjective{
-      width: 238px;
-      height: 280px;
-      margin-right: 10px;
+      width: 285px;
+      height: auto;
+      margin-right: 20px;
       text-align: center;
       padding: 30px;
       border-top-color: #02b3e4;
@@ -108,7 +108,7 @@
 {
  
     width: 100%;
-    height: 1000px;
+    height: auto;
     background-color:rgb(228, 246, 253);
     padding-bottom: 60px;
 }

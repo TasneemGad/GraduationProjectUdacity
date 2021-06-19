@@ -43,9 +43,11 @@ paidCourses:ICourse[]=[]
             crsData => {
               this.CourseList.push(crsData);
               if(crsData.price==0){
+                this.isFree = true
                 this.freeCoures.push(crsData);
               }
               else if(crsData.price>0){
+                this.isPaid = true
                 this.paidCourses.push(crsData);
               }
           
