@@ -7,6 +7,7 @@ import { LessonContent } from 'src/app/SharedModels/Interface/ILessonContent';
 import { Location } from '@angular/common';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { CoursesService } from 'src/app/Services/courses.service';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class LessonContentComponent implements OnInit {
 
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
-    private lessonContentService:LessonContentService
+    private lessonContentService:LessonContentService,public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -96,4 +97,5 @@ export class LessonContentComponent implements OnInit {
         })
       })
   }
+ 
 }

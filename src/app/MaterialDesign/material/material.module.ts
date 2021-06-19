@@ -12,7 +12,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
+import {MatDialogModule} from '@angular/material/dialog';
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
   MatIconModule,
@@ -29,7 +29,8 @@ const materials:any =[
   MatMenuModule,  
   MatCheckboxModule,
   MatStepperModule,
-  DragDropModule
+  DragDropModule,
+  MatDialogModule
 
 ];
 @NgModule({

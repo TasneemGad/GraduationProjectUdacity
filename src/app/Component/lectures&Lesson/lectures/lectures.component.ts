@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { LecturesService } from 'src/app/Services/lectures.service';
@@ -27,7 +28,8 @@ export class LecturesComponent implements OnInit {
   clickedLecture: Lectures;
   // NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
-    private courseServices:CoursesService,private router:Router, private lessonService:LessonService) { }
+    private courseServices:CoursesService,private router:Router, 
+    private lessonService:LessonService) { }
   idUrl:any
   color="white"
   getID:number
@@ -165,33 +167,6 @@ goto(id:any,text:any){
       this.nameOfNextLecture = this.getNextOfClickedLecture?.tilte
       console.log("LLnextLLL",this.nameOfNextLecture)
 
-<<<<<<< HEAD
-//   getLessonByLectureID(id:any ,index:any){
-//     console.log("Lecidgggggggggggggggg",id)
-//    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
-//  {
-//  this.LessonByLectureID=sucess,
-//   //  this.NextLecture=sucess
-//      console.log("lessonLectures",this.LessonByLectureID)
-   
-
-//      this.goToNext(this.lectureList[index].id)
-//      console.log("hh", this.lectureList[index].id)
-//     }
-// )
-// this.showLecture(id)
-// }
-
-getLessonByLectureID(id:any){
-  console.log("Lecidgggggggggggggggg",id)
- this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
-{
-this.LessonByLectureID=sucess,
-//  this.NextLecture=sucess
-   console.log("lessonLectures",this.LessonByLectureID)
-  //  this.goToNext(this.lectureList[index].id)
-  //  console.log("hh", this.lectureList[index].id)
-=======
     })
   }
   showNextLectire(text:string){
@@ -204,6 +179,6 @@ this.LessonByLectureID=sucess,
       this.showNext = true
     }
 
->>>>>>> f2718a92441a7c0fa20d66539e1d961d08500eb4
   }
+ 
 }

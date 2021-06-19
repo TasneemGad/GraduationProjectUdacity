@@ -3,5 +3,6 @@ export interface Question{
      title:string    
      type:string
     questionGroupId:number
+    LessonContentId:number
     
 }

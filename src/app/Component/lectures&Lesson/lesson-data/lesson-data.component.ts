@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DragAndDropService } from 'src/app/Services/drag-and-drop.service';
 import { LessonContentService } from 'src/app/Services/LessonContent.service';
@@ -26,10 +27,11 @@ IsOpened:boolean=false
 QuestionsGroup:QuestionGroup
 Questions:Question
 AllQuestions:Question[]=[]
+QByLessonContent:Question[]
 AllQuestionsGroups:QuestionGroup[]
   constructor(private Services:LessonContentService,private active:ActivatedRoute,private videoServices:VideosService,
     private QDragAndDrop:DragAndDropService ,private QuestionsGroupServices:QuestionsGroupService,
-    private QuestionsServices:QuestionsService) { }
+    private QuestionsServices:QuestionsService,public dialog: MatDialog) { }
    
 
   ngOnInit(): void {
@@ -44,7 +46,8 @@ AllQuestionsGroups:QuestionGroup[]
       this.getVideosById(id);
       this.getQDragAndDropById(id);
       this.getQuestionsGroupById(id);
-      this.getQuestionsById(id)
+      this.getQuestionsById(id);
+      this.getQuestionsByLessonContent(id);
     })
   }
   getVideosById(id:number){
@@ -88,6 +91,13 @@ AllQuestionsGroups:QuestionGroup[]
       this.AllQuestionsGroups=sucess,console.log("currentQGList",this.AllQuestionsGroups)
     })
   }
+  getQuestionsByLessonContent(id:number){
+    console.log("first")
+    this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
+      this.QByLessonContent=sucess,console.log("currentQGL",this.QByLessonContent)
+  })
+}
+
   SubmitAnswer(){
     
   } 

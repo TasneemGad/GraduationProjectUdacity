@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { LessonService } from 'src/app/Services/lesson.service';
@@ -20,16 +21,12 @@ export class LessonsComponent implements OnInit , AfterViewInit{
   nameOfNextLecture:string
 
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
-  private lectureServices:LecturesService) { }
+  private lectureServices:LecturesService,public dialog: MatDialog) { }
  
 
     
-<<<<<<< HEAD
-@ViewChild(LecturesComponent) child : LecturesComponent;
-=======
 // @ViewChild(LecturesComponent) data : LecturesComponent
 
->>>>>>> f2718a92441a7c0fa20d66539e1d961d08500eb4
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -39,7 +36,7 @@ export class LessonsComponent implements OnInit , AfterViewInit{
   
   }
   ngAfterViewInit(): void {
-    console.log("child",this.child.lectureAllList)
+    // console.log("child",this.child.lectureAllList)
   }
 getLessonByLectureID(id:number){
          console.log("Lecidgggggggggggggggg",id)
