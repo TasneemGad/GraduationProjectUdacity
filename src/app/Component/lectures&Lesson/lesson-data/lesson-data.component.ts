@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DragAndDropService } from 'src/app/Services/drag-and-drop.service';
 import { LessonContentService } from 'src/app/Services/LessonContent.service';
+import { ProgressService } from 'src/app/Services/progress.service';
 import { QuestionsGroupService } from 'src/app/Services/questions-group.service';
 import { QuestionsService } from 'src/app/Services/questions.service';
 import { VideosService } from 'src/app/Services/videos.service';
@@ -29,7 +30,7 @@ AllQuestions:Question[]=[]
 AllQuestionsGroups:QuestionGroup[]
   constructor(private Services:LessonContentService,private active:ActivatedRoute,private videoServices:VideosService,
     private QDragAndDrop:DragAndDropService ,private QuestionsGroupServices:QuestionsGroupService,
-    private QuestionsServices:QuestionsService) { }
+    private QuestionsServices:QuestionsService,private progress:ProgressService) { }
    
 
   ngOnInit(): void {

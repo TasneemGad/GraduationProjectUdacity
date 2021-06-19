@@ -14,6 +14,7 @@ export class ProgressService {
   constructor(private token:AuthenticationService,private http:HttpClient) { }
 
   UpdateLessonContentProgress(progress:IProgress,ProgressId:number):Observable<IProgress>{
+    console.log("UpdateLessonContentProgress")
      return this.http.put<IProgress>(this.Url+"/"+ProgressId,progress).pipe(catchError((err) => {
     return throwError(err.message || "error")
   }))
@@ -24,7 +25,8 @@ export class ProgressService {
       return throwError(err.message || "error")
     }))
   }
-  getLessonContentProgress(crsId:string):Observable<IProgress>{    
+  getLessonContentProgress(crsId:number):Observable<IProgress>{    
+    console.log("getLessonContentProgress",crsId)
     return this.http.get<IProgress>(this.Url+"/progress/"+this.token.getUserId()+"/"+crsId).pipe(catchError((err) => {
       return throwError(err.message || "error")
     }))

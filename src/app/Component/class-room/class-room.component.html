@@ -121,7 +121,8 @@
                         <mat-label > {{course.description}}</mat-label>
                     </div>
                     <div class="btnDiv">
-                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                        
+                        <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)"  >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
                     </div>
                 </div>
             </mat-card><br><br>
@@ -140,7 +141,7 @@
                         <mat-label > {{course.description}}</mat-label>
                     </div>
                     <div class="btnDiv">
-                        <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                        <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
                     </div>
                 </div>
             </mat-card><br><br>
