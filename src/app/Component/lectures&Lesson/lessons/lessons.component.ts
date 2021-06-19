@@ -10,7 +10,7 @@ import { LecturesComponent } from '../lectures/lectures.component';
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.scss']
 })
-export class LessonsComponent implements OnInit{
+export class LessonsComponent implements OnInit , AfterViewInit{
   LessonByLectureID: Lesson[]=[];
   idUrl:any
   nextid:any
@@ -18,9 +18,10 @@ export class LessonsComponent implements OnInit{
   NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
   private lectureServices:LecturesService) { }
+ 
 
     
-@ViewChild(LecturesComponent) data : LecturesComponent
+@ViewChild(LecturesComponent) child : LecturesComponent;
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -29,7 +30,9 @@ export class LessonsComponent implements OnInit{
   })
   
   }
- 
+  ngAfterViewInit(): void {
+    console.log("child",this.child.lectureAllList)
+  }
 getLessonByLectureID(id:number){
          console.log("Lecidgggggggggggggggg",id)
     this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>

@@ -168,8 +168,6 @@ getLessonByLectureID(id:any){
 this.LessonByLectureID=sucess,
 //  this.NextLecture=sucess
    console.log("lessonLectures",this.LessonByLectureID)
- 
-
   //  this.goToNext(this.lectureList[index].id)
   //  console.log("hh", this.lectureList[index].id)
   }
