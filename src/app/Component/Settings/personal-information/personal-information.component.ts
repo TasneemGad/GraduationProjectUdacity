@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/Services/account.service';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
@@ -14,6 +15,9 @@ export class PersonalInformationComponent implements OnInit {
   userInfo:IAccount;
   stdID:string=this.tokenUser.getUserId();
   UserForm:FormGroup;
+  alertFlag=false;
+  public response: {dbPath: ''};
+
   constructor(private accountService:AccountService,private tokenUser:AuthenticationService,private fb: FormBuilder) { }
 
    
@@ -45,36 +49,34 @@ export class PersonalInformationComponent implements OnInit {
   }
 
 
-  UpdateUserName(userName:string,stID:string){  
-  this.accountService.getStudentInformation(stID).subscribe(
+  UpdateUserInfo(userName:string,email:string,tel:string){  
+  this.accountService.getStudentInformation(this.tokenUser.getUserId()).subscribe(
     data=>{    
-    console.log("enter")
-        data.id=stID;
+    console.log("enter")        
         data.userName=userName
-    this.accountService.UpdateStdName(userName,stID,data).subscribe(
+        data.email=email
+        data.phoneNumber=tel;
+    this.accountService.UpdateStInfo(data).subscribe(
       testObj=>{
         console.log("test",testObj)
+        this.alertFlag=true;
       }
     )
 
-        console.log(data)
-        console.log(stID)
-        console.log(userName)        
+        console.log(data)         
       }
     )
-    console.log("User Name Updated",userName,stID)
+    console.log("User Name Updated",userName,email,tel)
 
   }
-   onSubmit(){
-  //   this.getNames()
-  //   this.accountService.UpdateStdName(this.userInfo)
-  //   console.log("User Name Updated",this.userInfo.id,this.userInfo.userName)
-   }
 getNames(){
   console.log("Model")
   this.userInfo.id=this.UserForm.value.id
     this.userInfo.userName=this.UserForm.value.userName
-  //   console.log("User Name Updated",this.userInfo.id,this.userInfo.userName)
-
 }
+  
+  // upload image
+  // public uploadFinished = (event) => { 
+  //   this.response = event;
+  // }
 }

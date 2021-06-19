@@ -33,6 +33,7 @@ import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curric
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 
 @NgModule({
@@ -72,7 +73,8 @@ import { AboutASComponent } from './Component/about-as/about-as.component';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

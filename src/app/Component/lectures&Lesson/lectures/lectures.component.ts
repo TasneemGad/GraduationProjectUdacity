@@ -34,7 +34,12 @@ export class LecturesComponent implements OnInit {
   text="expand_less"
   flag = 0
   flag32 = "HI"
-  
+//next  
+  nextLectureId:number
+  getNextOfClickedLecture:Lectures
+  nameOfNextLecture:string
+  nextIndex:number
+  showNext = false
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
@@ -51,11 +56,8 @@ export class LecturesComponent implements OnInit {
   getAllLesson(){
     this.lessonService.GetAllLesson().subscribe(sucess=>{this.allLesson=sucess,console.log(this.allLesson)})
   }
-  
-  
   category(){
-this.router.navigate(['Courses'],{relativeTo:this.active})
-
+    this.router.navigate(['Courses'],{relativeTo:this.active})
   }
   getLecturesByCourseID(id:number){
     console.log("ID")
@@ -90,15 +92,13 @@ hideList(){
    
 }
 GetLectureByID(LecId:number,index:any){
-  
-    
         this.indexLecture = index
-  this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
+      this.lectureServices.getLecturesByID(LecId).subscribe(sucess=>{
   
       this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
-  this.getLessonByLectureID(LecId);
+  // this.getLessonByLectureID(LecId,index:any);
   console.log("Iddddddddddd",LecId)  
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
@@ -113,13 +113,8 @@ getNextLectures(id:any){
 goToSpasificLecture(id:any){
   this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
 }
-
-
-
-// goToSpasificLecture(id:any){
-//   this.router.navigate(["SpasificLecture",id],{relativeTo:this.active})
-// }
-goto(id:any){
+goto(id:any,text:any){
+  this.showNextLectire(text)
  var x=  this.router.navigate(["coreCurriculum/",id],{relativeTo:this.active})
   console.log("c",x)
 }
@@ -132,10 +127,10 @@ goto(id:any){
     // this.getID=id
     // console.log(this.getID)
 
-  showProgram(id:any){
+  showProgram(id:any,text:string){
     this.flag = 0
     var x=  this.router.navigate(["ProgramHome/",id],{relativeTo:this.active})
-
+    this.showNextLectire(text)
   }
   showSyllabus(){
     this.flag = 1
@@ -144,7 +139,33 @@ goto(id:any){
     this.flag = 2
     var x=  this.router.navigate(["Lesson/",id],{relativeTo:this.active})
   }
+  getLessonByLectureID(id:any,index:any,text:any){
+    this.nextIndex=index
+    console.log("Lecidgggggggggggggggg",id)
+  this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>{
+  this.LessonByLectureID=sucess,
+    console.log("lessonLectures",this.LessonByLectureID)
+    })
+  this.showLecture(id)
+      this.nextLectureId = this.lectureList[index].id
+      this.getNextLecture()
+      this.showNextLectire(text)
+  }
+  goToNext(id:any){
+    console.log("ID2ii",id)
+    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+      this.NextLecture=sucess,
+      console.log("tasneem",this.NextLecture.tilte)})
+  }
+  //next
+  getNextLecture(){
+    console.log("in")
+    this.lectureServices.getLecturesByID(this.nextLectureId).subscribe(sucess=>{
+      this.getNextOfClickedLecture=sucess,
+      this.nameOfNextLecture = this.getNextOfClickedLecture?.tilte
+      console.log("LLnextLLL",this.nameOfNextLecture)
 
+<<<<<<< HEAD
 //   getLessonByLectureID(id:any ,index:any){
 //     console.log("Lecidgggggggggggggggg",id)
 //    this.lessonService.GetAllLessonByLectureId(id).subscribe(sucess=>
@@ -170,14 +191,19 @@ this.LessonByLectureID=sucess,
    console.log("lessonLectures",this.LessonByLectureID)
   //  this.goToNext(this.lectureList[index].id)
   //  console.log("hh", this.lectureList[index].id)
+=======
+    })
   }
-)
-this.showLecture(id)
-}
-goToNext(id:any){
-  console.log("ID2ii",id)
-  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
-    this.NextLecture=sucess,
-    console.log("tasneem",this.NextLecture.tilte)})
-}
+  showNextLectire(text:string){
+    if(text == "proAndCore")
+    {
+      this.showNext = false
+    }
+    else
+    {
+      this.showNext = true
+    }
+
+>>>>>>> f2718a92441a7c0fa20d66539e1d961d08500eb4
+  }
 }

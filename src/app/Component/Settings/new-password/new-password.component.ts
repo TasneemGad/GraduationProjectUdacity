@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/Services/account.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'app-new-password',
@@ -8,10 +9,11 @@ import { AccountService } from 'src/app/Services/account.service';
   styleUrls: ['./new-password.component.scss']
 })
 export class NewPasswordComponent implements OnInit {
-  constructor(private fb:FormBuilder,private accountService:AccountService) { }
+  constructor(private fb:FormBuilder,private accountService:AccountService,private token:AuthenticationService) { }
 
    newPasswordForm:FormGroup;
    password:string;
+   alertFlag=false;
 
   getErrorMessagecurrentPassword() {
     if (this.newPasswordForm.get('currentPassword')?.hasError('required')) {
@@ -45,11 +47,22 @@ export class NewPasswordComponent implements OnInit {
   currentPassword(){
     return this.newPasswordForm.get('currentPassword')
   }
-  onSubmit(){
-      this.accountService.updatePassword(this.password).subscribe(
-        data=>{
-          console.log("Done")
-        }
-      )
+  updatePassword(newPassword:string,oldPassword:string){
+    this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+      data=>{
+        data.passwordHash=newPassword;        
+        this.accountService.updatePassword(data,oldPassword).subscribe(
+          dataUpdate=>{
+              console.log("Test",dataUpdate)
+              this.alertFlag=true
+          }
+        )
+      }
+    )
+      // this.accountService.updatePassword().subscribe(
+      //   data=>{
+      //     console.log("Done")
+      //   }
+      // )
   }
 }
