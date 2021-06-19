@@ -1,5 +1,5 @@
 <!-- {{indexLecture}} . -->
-<h1 id="nav">  {{clickedLecture.tilte}}</h1>
+<h1 id="nav">  {{clickedLecture?.tilte}}</h1>
 <div *ngFor="let lesson of LessonByLectureID; let i=index">
     <mat-card class="Lessons" (click)="goToLessonContent(lesson.id)" >
         <!-- <mat-card class="Lessons" routerLink="{{'/lessonContent/' + lesson.id}}" > -->
@@ -18,13 +18,13 @@
     </div>
 </mat-card><br><br>
 </div>
-<hr class="hrLesson">
-<mat-card class="nextLecture" >
-    <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle>
-    <!-- <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO {{ this.data.NextLecture.tilte}}</mat-card-subtitle>  -->
-    <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext">
+<!-- <hr class="hrLesson"> -->
+<!-- <mat-card > -->
+    <!-- <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle> -->
+    <!-- <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO{{nameOfNextLecture}}</mat-card-subtitle>  -->
+    <!-- <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext">
         <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
-    </svg>
-    {{nextid.tilte}}
+    </svg> -->
+    <!-- {{nextid.tilte}} -->
 
-</mat-card>
+<!-- </mat-card> -->

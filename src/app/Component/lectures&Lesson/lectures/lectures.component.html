@@ -37,9 +37,9 @@
 
     <mat-sidenav-container>
         <mat-sidenav mode="side" opened class="lectNav">
-            <h1 class="title">{{courseList.name}}</h1>
+            <h1 class="title">{{courseList?.name}}</h1>
             <div style="display: flex; height: 30px;">
-                <div>
+                <div data-toggle="modal" data-target="#exampleModalCenter"> 
                     <h1 class="navContent" style="margin-top:-3px;">Search</h1>
                 </div>
                 <div>
@@ -47,9 +47,9 @@
                 </div>
             </div>
             <hr>
-            <h1 class="navContent" (click)="showProgram(courseList.id)">Program Home</h1>
+            <h1 class="navContent" (click)="showProgram(courseList.id,'proAndCore')">Program Home</h1>
             <hr>
-            <h1 class="navContent" (click)="goto(courseList.id)">Syllabus </h1>
+            <h1 class="navContent" (click)="goto(courseList.id,'proAndCore')">Syllabus </h1>
             <!-- <h1 class="navContent"   (click)="showSyllabus()">Syllabus </h1> -->
             <hr>
             <div style="display: flex;" (click)="hideList()">
@@ -63,7 +63,7 @@
             <ng-template #list>
                 <div *ngFor="let i of lectureList ;let e=index " >
                     <hr>
-                    <div class="all" (click)="getLessonByLectureID(i.id,e+1)">
+                    <div class="all" (click)="getLessonByLectureID(i.id,e+1,'lec')">
                         <div style="display: flex; ">
                             <div>
                                 <h1 class="lecturesNumber">{{e+1}}.</h1>
@@ -85,44 +85,57 @@
 
             <div *ngIf="Isdetails then list"></div>
         </mat-sidenav>
-        <!-- <router-outlet></router-outlet> -->
 
         <mat-sidenav-container>
+            <router-outlet></router-outlet>
 
-            <div *ngFor="let lesson of LessonByLectureID; let i=index">
-                <mat-card class="Lessons">
-                    <div style="display: flex;">
-                        <div class="contentLesson">
-                            <mat-label>LESSON {{i+1}}</mat-label><br><br>
-                            <mat-label style="font-size: x-large;">{{lesson.title}}</mat-label><br><br>
-                            <mat-label>{{lesson.details}}</mat-label><br><br>
-                            <button mat-raised-button class="btnLesson">CONTINUE<mat-icon style="margin-top: -1%;">
-                                    arrow_forward</mat-icon></button>
-                            <br><br>
-                            <hr class="hrLesson"> <br>
-                            <mat-label class="durationLesson">{{lesson.duration}} hour</mat-label>
-                        </div>
-                        <div class="imgLesson">
-                            <img src="../../../../assets/lesson.jpg" class="img" alt="error">
-                        </div>
-                    </div>
-                </mat-card><br><br>
-            </div>
-            <hr class="hrLesson">
-            <mat-card class="nextLecture">
-                <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);">UP NEXT</mat-card-subtitle>
-                <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);"> WELCOME TO {{NextLecture.tilte}}
-                </mat-card-subtitle>
-                <svg viewBox=" 0 0 32 32" stroke="currentColor" fill="currentColor" class="goNext">
-                    <path
-                        d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z">
-                    </path>
+            <div *ngIf="showNext; then nextLecture"></div>
+            <ng-template #nextLecture>
+            <mat-card >
+                <mat-card-subtitle style="font-size: 15;color: rgb(98, 98, 98);" >UP NEXT</mat-card-subtitle>
+                <div style="display: flex;">
+                <mat-card-subtitle style="font-size: large; color: rgb(98, 98, 98);" > WELCOME TO  &nbsp;&nbsp; {{nameOfNextLecture}}</mat-card-subtitle> 
+                </div>
+                <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goNext" (click)="getLessonByLectureID(nextLectureId,nextIndex+1,'lec')">
+                    <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z"></path>
                 </svg>
-
             </mat-card>
-         
+            </ng-template>
 
         </mat-sidenav-container>
 
     </mat-sidenav-container>
 </mat-sidenav-container>
+
+
+  <!-- Modal -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+  <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen" >
+      <div  class="modal-content">
+        <div class="modal-body homeSearch" >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style=" padding: 30px 40px 0px 0px;">
+                <span aria-hidden="false">&times;</span>
+              </button>
+              <div class="content">
+              <h2 class="searchTitel"> {{courseList?.name}} </h2>
+            <input type="text" class="inputSearch">
+            <button type="button" class="btn btn-primary btnSearch">Search</button>
+        </div>
+            <hr>
+        <div class="result">
+            <div class="content">
+                <p>Your recent searches</p>
+            <hr>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- <app-lesson-content hidden [courseSearch]="courseList?.name" ></app-lesson-content> -->

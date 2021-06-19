@@ -34,6 +34,7 @@ import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/p
 import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutASComponent } from './Component/about-as/about-as.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProgramHomeComponent,
     ResourcesComponent,
     LessonDataComponent,
+    AboutASComponent,
   ],
   imports: [
     BrowserModule,

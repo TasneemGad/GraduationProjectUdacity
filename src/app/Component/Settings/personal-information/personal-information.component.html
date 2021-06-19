@@ -63,7 +63,11 @@
   </mat-card>
 </div>
 <div style="float: right; margin: 10px 0px 10px 0px ; margin-bottom: 10%;">
-  <button mat-raised-button class="btnCancel">CANCEL</button>    
+  <button mat-raised-button class="btnCancel">CANCEL</button>
+  <!-- <span>Here  {{userName.value}}  </span> -->
+  <input  name="stdID" id="stdID" #stdID [value]="userInfo.id" hidden formControlName="id">
+  <!-- <button mat-raised-button  color="primary" class="btnSave" type="submit">SAVE</button>
+<br> -->
   <button mat-raised-button  color="primary" class="btnSave"
     (click)="UpdateUserInfo(userName.value,email.value,tel.value)">SAVE</button>
   <br>
