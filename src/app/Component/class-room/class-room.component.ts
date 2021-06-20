@@ -18,12 +18,18 @@ import { CourseComponent } from '../course/course.component';
 export class ClassRoomComponent implements OnInit {
 freeCoures:ICourse[]=[]
 paidCourses:ICourse[]=[]
+gratuatedCourses:ICourse[]=[]
   constructor(private Enrollservices:EnrollService,private courseServices:CoursesService,
-    private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService,private lessonContent:LessonContentService,private progress:ProgressService) { }
+    private router:Router, private activeRouter:ActivatedRoute,private Authservices:AuthenticationService,
+    private lessonContent:LessonContentService,private progress:ProgressService,
+    private progressService:ProgressService) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
+  GraduatedCoursesList:ICourse[]=[];
+
   isFree=false
   isPaid=false
+  isQratuate=false
   flag=false
   lastCourseId:any
   lastCourse:ICourse
@@ -44,20 +50,28 @@ paidCourses:ICourse[]=[]
         for (let enrollCrs of data) {
             console.log(enrollCrs.courseId)
           this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
-            crsData => {
+            crsData => {              
               this.CourseList.push(crsData);
-              if(crsData.price==0){
-                this.isFree = true
-                this.freeCoures.push(crsData);
-              }
-              else if(crsData.price>0){
-                this.isPaid = true
-                this.paidCourses.push(crsData);
-              }
-          
-                }    )
-              }
-            })
+              this.progress.getLessonContentProgress(crsData.id).subscribe(
+                dataProgress=>{
+                  if(dataProgress.numOfLesson==dataProgress.numOfLessonFinshed)
+                  {
+                  this.GraduatedCoursesList.push(crsData)
+                  }
+
+                }
+              )
+                if(crsData.price==0){
+                  this.isFree = true
+                  this.freeCoures.push(crsData);
+                }
+                else if(crsData.price>0){
+                  this.isPaid = true
+                  this.paidCourses.push(crsData);
+                }
+                })
+            }
+      })
       }
 routToSetting(){
 // this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])

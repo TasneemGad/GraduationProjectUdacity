@@ -36,6 +36,9 @@ import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/les
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CatalogComponent } from './Component/catalog/catalog.component';
+import { FormsModule } from '@angular/forms';
+import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ResourcesComponent,
     LessonDataComponent,
     AboutASComponent,
+    CatalogComponent,
+    CoursesFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
+    FormsModule
     // NgbModule
   ],
   providers: [],

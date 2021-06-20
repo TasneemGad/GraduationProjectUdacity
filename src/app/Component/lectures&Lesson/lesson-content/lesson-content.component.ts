@@ -39,12 +39,21 @@ export class LessonContentComponent implements OnInit {
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
+<<<<<<< HEAD
   allQuestion:Question
   StudentAnswerByLesson:StudentAnswer[]
   StudentAnswer:StudentAnswer
 
   CoursesVideos:CourseVideos
   correctAn:any
+=======
+  trueAndFalseQuestion:Question[]
+  dragAndDropQuestion:Question[]
+  optionalQuestion:Question[]
+  StudentAnswer:StudentAnswer[]
+  CoursesVideos:CourseVideos
+
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
 @Input() CourseId:any
 
 ngOnChanges():void{
@@ -58,7 +67,12 @@ ngOnChanges():void{
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
     private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
+<<<<<<< HEAD
   private  StudentASService:StudentAnswerService,private accountService:AccountService    ) { }
+=======
+    private  StudentASService:StudentAnswerService
+    ) { }
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -91,7 +105,7 @@ ngOnChanges():void{
   }
   getLessonContentById(id:number){
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
-      this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
+      this.allContentCurrentLesson=sucess,console.log("contentForLesson",this.allContentCurrentLesson)
       this.getLessonOneById(id)
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
@@ -125,7 +139,6 @@ ngOnChanges():void{
      
   }
   goBack(){
-    
     this.location.back();
   }
   controlSidenav(){
@@ -176,8 +189,31 @@ ngOnChanges():void{
   getQuestionsByLessonContent(id:number){
     console.log("first")
     this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
-      this.QByLessonContent=sucess,console.log("currentQGL",this.QByLessonContent)
+      this.QByLessonContent=sucess,
+      console.log("currentQGL",this.QByLessonContent)
+      for(let question of sucess) {
+        if(question.type == "t,f"){
+          this.trueAndFalseQuestion?.push(question)
+          console.log("t,f",question)
+        } 
+        else if(question.type == "options") {
+          this.optionalQuestion?.push(question)
+          console.log("options",question)
+        } 
+        else if(question.type == "Drag and Drop"){
+          this.dragAndDropQuestion?.push(question)
+          console.log("dragAndDrop",question)
+        }
+      }
+      })
+  }
+
+  getStudentAnswerByLessonContent(id:number){
+    console.log("first")
+    this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+      this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
   })
+<<<<<<< HEAD
 }
  getStudentAnswerByLessonContent(id:number){
   console.log("first")
@@ -226,5 +262,7 @@ postStudentAnswer(user:StudentAnswer){
       sucess=>
       {console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
     })
+=======
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
   }
 }

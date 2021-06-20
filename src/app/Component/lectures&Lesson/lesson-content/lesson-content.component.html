@@ -1,9 +1,15 @@
 <mat-sidenav-container>
     <mat-sidenav mode="side" [(opened)]="IsOpened" class="lectNav">
+<<<<<<< HEAD
         <!-- <img src="assets/Screenshot 2021-06-16 224348.png" (click)="goBack()" class="goNext"> -->
         <svg viewBox=" 0 0 32 32" stroke="currentColor" fill="currentColor" class="goNext" (click)="goBack()">
             <path d="M12 11.902v8.196a.5.5 0 00.765.424l6.557-4.098a.5.5 0 000-.848l-6.557-4.098a.5.5 0 00-.765.424z">
             </path>
+=======
+        <!-- <img src="assets/Screenshot 2021-06-16 224348.png" (click)="goBack()" class="goBack"> -->
+        <svg viewBox=" 0 0 32 32" stroke = "currentColor" fill ="currentColor" class="goBack" (click)="goBack()">
+            <path d="M20 11.902v8.196a.5.5 0 01-.765.424l-6.557-4.098a.5.5 0 010-.848l6.557-4.098a.5.5 0 01.765.424z"></path>
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
         </svg>
         <h1 class="title">{{currentLesson.title}}</h1>
         <hr>
@@ -46,6 +52,7 @@
         </ng-template>
         <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
+<<<<<<< HEAD
 
     <div class="nav">
         <div>
@@ -61,10 +68,21 @@
 <div style="width: 100%;height: auto;">
     <mat-sidenav-container>
         <div class="Ques">
+=======
+    
+    <div class="nav">
+        <div><mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon></div>
+        <div class="contentName"> <mat-label>{{CurrentLesson?.title}}</mat-label></div>
+        <div class="feedback"> <mat-label>SEND FEEDBAK</mat-label> </div>
+    </div> 
+
+    <mat-sidenav-container style="height: 100%;">
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
         <div style="margin-left: 60px;margin-top: 20px;">
             <video controls width="90%">
                 <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
             </video>
+<<<<<<< HEAD
         </div>
      
         <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
@@ -90,6 +108,27 @@
         </div>
     </div>
 
+=======
+        </div><br><br>
+
+        <div class="questionPart">
+            <div *ngFor="let question of trueAndFalseQuestion" >
+                <div>
+                <mat-card class="questionCard ">
+                    <div class="question">
+                        <mat-label class="numberOfQuestion">Question {{question.id}}</mat-label><br>
+                        <mat-label>{{question.title}}</mat-label><br>
+                    </div>
+                    <hr>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button class="trueOrFalse" value="1">True</mat-radio-button><hr>
+                        <mat-radio-button class="trueOrFalse" value="2">False</mat-radio-button>
+                    </mat-radio-group>
+                </mat-card> </div>
+            <button type="submit" class="btnSubmit" mat-raised-button color="primary" >SUBMIT</button><br> <br><br><br>            
+            </div>
+        </div>
+>>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
     </mat-sidenav-container>
 
 </div>

@@ -25,6 +25,7 @@ import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 import { AboutASComponent } from './Component/about-as/about-as.component';
+import { CatalogComponent } from './Component/catalog/catalog.component';
 
 const routes: Routes = [
   // Routing
@@ -36,17 +37,22 @@ const routes: Routes = [
   //User Login
   { path: 'SignUP', component: SigINComponent },
   { path: 'SignIn', component: SigINComponent },
-  { path: 'ClassRoom', component: ClassRoomComponent },
-    //Category && Course
+
+  //Category && Course
   { path: 'school-of/:name', component: CategoryComponent, data: { footer: true, header: true } },
   { path: 'Course/:id', component: CourseComponent, data: { footer: true, header: true } },
-{path: 'Resources', component:ResourcesComponent, data: { footer: true, header: true }},
+  { path: 'Resources', component:ResourcesComponent, data: { footer: true, header: true }},
 
-{path: 'AboutAs', component:AboutASComponent, data: { footer: true, header: true }},
+  { path: 'AboutAs', component:AboutASComponent, data: { footer: true, header: true }},
 
-// Payment 
+  // Payment 
   { path: 'orderDetails', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
+
+  //ClassRoom
+  { path: 'ClassRoom', component: ClassRoomComponent },
+  { path:'course/all', component:CatalogComponent, data: { footer: true, header: true }},
+
   // Setting
   {
     path: 'Setting',
@@ -76,14 +82,13 @@ const routes: Routes = [
     ],
   },
 
-  {
-    path: 'lessonContent/:id',component: LessonContentComponent,
+  { path: 'lessonContent/:id',component: LessonContentComponent,
     children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
   },
 
   //Nothing
-  { path: '**', redirectTo: '/Home', pathMatch: 'full' },
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/Home', pathMatch: 'full' },
 
 ];
 
