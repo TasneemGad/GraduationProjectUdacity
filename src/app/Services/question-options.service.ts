@@ -17,6 +17,11 @@ export class QuestionOptionsService {
   getQuestionsOptionById(id:number):Observable<QOptions>{
     return this.http.get<QOptions>(this.QuestionsOptionUrls+"/"+id).pipe()
    }
+
+   getQuestionsOptionByQuestionId(QID:number):Observable<QOptions>{
+    return this.http.get<QOptions>(this.QuestionsOptionUrls+"/GetQuestionOptByQuestionID/"+QID).pipe()
+   }
+
    PostQuestionsOption(options:QOptions):Observable<QOptions>{
     return this.http.post<QOptions>(this.QuestionsOptionUrls,options).pipe()
    }
