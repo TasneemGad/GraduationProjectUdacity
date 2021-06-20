@@ -35,7 +35,7 @@ import {MatIconModule} from '@angular/material/icon';
     OrderDetailsComponent,
     PaymentComponent,
     NavComponent,
-    CareerPrepComponent
+    CareerPrepComponent,
   ],
   imports: [
     BrowserModule,
