@@ -1,8 +1,10 @@
+
+
 <div class="home">
 
     <h1 class="titel">Program Catalog</h1><br>
     <div class="inputSearchDiv">
-        <input type="text" placeholder="Search" class="inputSearch">
+        <input type="text" placeholder="Search" class="inputSearch" [(ngModel)]="searchItem" >
     </div><br><br><br>
 
 <div style="display: flex; margin-top: 10px; margin: 0 auto;">
@@ -15,7 +17,7 @@
         </div>
     </div>
     <div style="width: 60%; margin-left: 8%;">
-        <div *ngFor="let course of courses">
+        <div *ngFor="let course of courses | courseFilter:searchItem">
             <mat-card class="courseCard">
                 <div style="display: flex;">
                     <div class="cardPartLeft">

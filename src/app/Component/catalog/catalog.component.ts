@@ -14,6 +14,7 @@ export class CatalogComponent implements OnInit {
 
   categories:ICategory[]
   courses:ICourse[]
+  searchItem: string; 
 
   constructor(private categoryService:CategoryService, private courseService: CoursesService) { }
 
