@@ -19,6 +19,8 @@ import { QuestionsService } from 'src/app/Services/questions.service';
 import { StudentAnswerService } from 'src/app/Services/student-answer.service';
 import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
 import { AccountService } from 'src/app/Services/account.service';
+import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
+import { QuestionOptionsService } from 'src/app/Services/question-options.service';
 
 
 @Component({
@@ -39,21 +41,16 @@ export class LessonContentComponent implements OnInit {
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
-<<<<<<< HEAD
   allQuestion:Question
   StudentAnswerByLesson:StudentAnswer[]
   StudentAnswer:StudentAnswer
-
+  QOptionsList:QOptions
   CoursesVideos:CourseVideos
   correctAn:any
-=======
   trueAndFalseQuestion:Question[]
   dragAndDropQuestion:Question[]
   optionalQuestion:Question[]
-  StudentAnswer:StudentAnswer[]
-  CoursesVideos:CourseVideos
 
->>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
 @Input() CourseId:any
 
 ngOnChanges():void{
@@ -67,12 +64,9 @@ ngOnChanges():void{
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
     private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
-<<<<<<< HEAD
-  private  StudentASService:StudentAnswerService,private accountService:AccountService    ) { }
-=======
-    private  StudentASService:StudentAnswerService
-    ) { }
->>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
+  private  StudentASService:StudentAnswerService,private accountService:AccountService   ,
+  private OptionServices:QuestionOptionsService
+  ) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -109,7 +103,8 @@ ngOnChanges():void{
       this.getLessonOneById(id)
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
-      this.getAllQuestions(id)
+      this.getAllQuestions(id);
+      this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
@@ -121,7 +116,8 @@ ngOnChanges():void{
     this.getLessonOneById(id);
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
-    this.getAllQuestions(id)
+    this.getAllQuestions(id);
+    this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -208,13 +204,12 @@ ngOnChanges():void{
       })
   }
 
-  getStudentAnswerByLessonContent(id:number){
-    console.log("first")
-    this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-      this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
-  })
-<<<<<<< HEAD
-}
+//   getStudentAnswerByLessonContent(id:number){
+//     console.log("first")
+//     this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+//       this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+//   })
+// }
  getStudentAnswerByLessonContent(id:number){
   console.log("first")
   this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
@@ -262,7 +257,12 @@ postStudentAnswer(user:StudentAnswer){
       sucess=>
       {console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
     })
-=======
->>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
   }
+getOptions(id:number){
+   
+      this.OptionServices.getQuestionsOptionById(id).subscribe(
+        sucess=>
+        
+        {this.QOptionsList=sucess,console.log("ccoopp",this.QOptionsList)})  
+    }
 }

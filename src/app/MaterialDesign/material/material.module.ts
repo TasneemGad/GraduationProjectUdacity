@@ -14,10 +14,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
-<<<<<<< HEAD
-=======
 
->>>>>>> 0040a6740fc2999bbe78ece01e6577da550225d8
+
 const materials:any =[
   MatButtonModule,MatToolbarModule,MatSidenavModule,
   MatIconModule,
