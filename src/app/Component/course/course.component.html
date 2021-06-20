@@ -642,9 +642,10 @@
               <mat-label class="reviewName">{{review.fullName}} 
                 <br>
                 <span>
-                  <p>{{(review.rate)}}</p>
+                  <mat-icon style="fill: currentColor;color: orange;padding: 10px;" >star {{review.rate}}</mat-icon>
+                  <p> </p>
                   <!-- <star-rating-comp ></star-rating-comp> -->
-                  <img src="/assets/Filled_star.png">
+                  <!-- <img src="/assets/Filled_star.png"> -->
                 </span> 
              </mat-label><br><br>
               <mat-card-content>{{review.stdReviews}}</mat-card-content>

@@ -19,6 +19,8 @@ import { OrderDetailsComponent } from './Component/order-details/order-details.c
 import { PaymentComponent } from './Component/payment/payment.component';
 import { NavComponent } from './nav/nav.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { CareerPrepComponent } from './Component/career-prep/career-prep.compone
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
