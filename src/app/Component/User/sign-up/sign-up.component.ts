@@ -28,8 +28,8 @@ export class SignUpComponent implements OnInit {
 
     this.RegisterForm = this.fb.group({
       UserName: ['', [Validators.required, Validators.maxLength(15)]],
-      Email:['', [Validators.required, Validators.maxLength(15)]],
-      PasswordHash: ['', [Validators.required, Validators.minLength(6)]],  
+      Email:['', [Validators.required, Validators.email]],
+      PasswordHash: ['', [Validators.required, Validators.minLength(10),Validators.pattern('[A-z]')]],  
     })
   }
   get formFields() { return this.RegisterForm.controls; }
@@ -69,28 +69,55 @@ export class SignUpComponent implements OnInit {
        
      
   }
-
+  
 
   getErrorMessage() {
     if (this.RegisterForm.get('Email')?.hasError('required')) {
 
-      return 'You must enter a value';
+      return 'Must be specified';
     }
-
-    return this.RegisterForm.get('Email')?.hasError('Email') ? 'Not a valid Email' : '';
+  else{
+    return this.RegisterForm.get('Email')?.hasError('email') ? 'Not a valid Email' : '';
+  }
   }
 
   getErrorMessage2() {
-    if (this.RegisterForm.get('ConfirmPassword')?.hasError('required')) {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password must have at least 8 unique characters  ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  getErrorMessage3() {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password must be 10 characters or more  ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  getErrorMessage4() {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password cannot be your name or email address ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  
+  getErrorMessageName() {
+    if (this.RegisterForm.get('UserName')?.hasError('required')) {
 
-      return 'You must enter a value';
+      return 'Must be specified';
     }
 
-    return this.RegisterForm.get('ConfirmPassword')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
+    return this.RegisterForm.get('UserName')?.hasError('UserName') ? 'Not a valid UserName' : '';
   }
-
   
-
   get UserName() {
     return this.RegisterForm.get('UserName');
   }

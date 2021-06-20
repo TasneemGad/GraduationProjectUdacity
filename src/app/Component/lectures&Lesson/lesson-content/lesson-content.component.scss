@@ -1,3 +1,7 @@
+mat-sidenav-container{
+    height: 100%;
+    bottom: 0;
+}
 .nav{
     background-color: #042e38;;
     box-shadow:2px 4px 15px rgb(185, 184, 184);
@@ -111,6 +115,11 @@ hr{
     font-size: 25px;
     font-weight: 300;
 }
+.correct{
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
 .inputSearch{
     width: 90%;
     height: 45px;
@@ -127,6 +136,29 @@ hr{
 .result{
     background-color: rgb(244, 248, 248);
     height: 100%;
+}
+.questionMcq{
+    padding: 20px;
+    font-size: 17px;
+    width: 70%;
+    font-weight: 400;
+}
+.btnSave{
+    background-color: #017a9b;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 50px;
+    border-radius: 10px;
+    float: right;
+}
+.Ques{
+width: 90%;
+margin: 0 auto;
+}
+.btnContinue{
+    background-color: #017a9b;;
+    height: 45px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .questionPart{
     width: 70%;

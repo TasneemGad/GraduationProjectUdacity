@@ -26,6 +26,7 @@ import { LessonContentComponent } from './Component/lectures&Lesson/lesson-conte
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
+import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 
 const routes: Routes = [
   // Routing
@@ -85,7 +86,8 @@ const routes: Routes = [
   { path: 'lessonContent/:id',component: LessonContentComponent,
     children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
   },
-
+//Admin
+   {path:"DashBoard" ,component:AdminDashBoardComponent},
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', redirectTo: '/Home', pathMatch: 'full' },
