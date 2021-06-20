@@ -18,6 +18,7 @@ import { Question } from 'src/app/SharedModels/Interface/IQestions';
 import { QuestionsService } from 'src/app/Services/questions.service';
 import { StudentAnswerService } from 'src/app/Services/student-answer.service';
 import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
+import { AccountService } from 'src/app/Services/account.service';
 
 
 @Component({
@@ -38,8 +39,12 @@ export class LessonContentComponent implements OnInit {
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
-  StudentAnswer:StudentAnswer[]
+  allQuestion:Question
+  StudentAnswerByLesson:StudentAnswer[]
+  StudentAnswer:StudentAnswer
+
   CoursesVideos:CourseVideos
+  correctAn:any
 @Input() CourseId:any
 
 ngOnChanges():void{
@@ -53,8 +58,7 @@ ngOnChanges():void{
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
     private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
-  private  StudentASService:StudentAnswerService
-    ) { }
+  private  StudentASService:StudentAnswerService,private accountService:AccountService    ) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -91,6 +95,7 @@ ngOnChanges():void{
       this.getLessonOneById(id)
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
+      this.getAllQuestions(id)
     })
   }
   getLessonOneById(id:number){
@@ -102,6 +107,7 @@ ngOnChanges():void{
     this.getLessonOneById(id);
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
+    this.getAllQuestions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -176,7 +182,49 @@ ngOnChanges():void{
  getStudentAnswerByLessonContent(id:number){
   console.log("first")
   this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-    this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+    // this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
 })
 }
+// getAllQuestions(){
+//   console.log("first")
+//   this.QuestionsServices.getAllQuestions().subscribe(sucess=>{
+//     this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
+// })
+// }
+getAllQuestions(id:number){
+  console.log("first")
+  this.QuestionsServices.getQuestionsById(id).subscribe(sucess=>{
+    this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
+})
+}
+SubmitAnswer(id:number){
+  this.getStudentAnswer(id)
+  // this.postStudentAnswer()
+}
+getStudentAnswer(id:any){
+this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+  data=>
+  {    
+  console.log("enter1") 
+  // data.id=id
+  console.log("id",id,data)
+
+  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(
+    sucess=>
+    {console.log("cc",id,this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
+  })
+}
+postStudentAnswer(user:StudentAnswer){
+  this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+    data=>
+    {    
+    console.log("enter1") 
+    // data.id=id
+    console.log("id",user,data)
+  
+    this.StudentASService.PostStudentAnswer(user).subscribe(
+      sucess=>
+      {console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
+    })
+  }
 }
