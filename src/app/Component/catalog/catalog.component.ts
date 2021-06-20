@@ -14,23 +14,58 @@ export class CatalogComponent implements OnInit {
 
   categories:ICategory[]
   courses:ICourse[]
+  coursesByCategory:ICourse[]
   searchItem: string; 
+
 
   constructor(private categoryService:CategoryService, private courseService: CoursesService) { }
 
   ngOnInit(): void {
     this.getCategories()
     this.getCourses()
+    this.getCoursesByCategories()
   }
 
-  getCategories(){
-    this.categoryService.getCategories().subscribe(data=>{
+
+  getCategories() {
+    this.categoryService.getCategories().subscribe(data => {
       this.categories = data
+      
+    })
+  }
+
+
+
+  getCoursesByCategories(){
+    this.courseService.getCourses().subscribe(data=>{
+      this.coursesByCategory = data
     })
   }
   getCourses(){
     this.courseService.getCourses().subscribe(data=>{
       this.courses = data
     })
+  }
+  onFocusEvent(event: any){
+    this.getCourses()
+  }
+  showCoursesByCategory(catId:number){
+
+    this.courseService.getCoursesByCatID(catId).subscribe(
+      courses=>{
+        this.courses=[];
+        this.courses=courses
+      }
+    )
+                  
+  }
+  showCourse(crsId:number){
+    
+    this.courseService.getCoursesByID(crsId).subscribe(
+      course=>{
+        this.courses=[];
+        this.courses.push(course)
+      }
+    )
   }
 }

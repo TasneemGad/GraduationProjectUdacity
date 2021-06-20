@@ -34,9 +34,10 @@ export class LessonContentComponent implements OnInit {
   idUrl:any
   IsOpened = true
   checkExist:boolean=false;
+  SearchFlagLesson=false;
   currentCourseToSearch:any =""
   watchObj:IwatchContent={id:0,whatchedOrNot:0,crsID:0,stID:"",lessonContentID:0}
-  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
+  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
   allContentCurrentLesson:LessonContent[]=[];
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
@@ -50,6 +51,8 @@ export class LessonContentComponent implements OnInit {
   trueAndFalseQuestion:Question[]
   dragAndDropQuestion:Question[]
   optionalQuestion:Question[]
+  progressId:number=0;
+  LessonSearchList:Lesson[]=[]
 
 @Input() CourseId:any
 
@@ -87,7 +90,7 @@ ngOnChanges():void{
           this.courseServices.getCoursesByID(sucess.courseId).subscribe(
             data => {
 
-              this.currentCourseToSearch = data.name              
+              this.currentCourseToSearch = data              
               console.log("sc",this.currentCourseToSearch)              
               return data.id
             })
@@ -104,7 +107,7 @@ ngOnChanges():void{
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
       this.getAllQuestions(id);
-      this.getOptions(id)
+      // this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
@@ -117,7 +120,7 @@ ngOnChanges():void{
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
     this.getAllQuestions(id);
-    this.getOptions(id)
+    // this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -255,14 +258,22 @@ postStudentAnswer(user:StudentAnswer){
   
     this.StudentASService.PostStudentAnswer(user).subscribe(
       sucess=>
-      {console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
+      {
+        console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
+      })  
     })
+
   }
-getOptions(id:number){
-   
-      this.OptionServices.getQuestionsOptionById(id).subscribe(
-        sucess=>
-        
-        {this.QOptionsList=sucess,console.log("ccoopp",this.QOptionsList)})  
-    }
+
+  searchLesson(crsId:number,SearchLessonItem:string){  
+    this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+      lessonsdata=>{
+        this.SearchFlagLesson=true;
+        this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
+      }
+    )
+    console.log("oooooooooooooooo",crsId,SearchLessonItem)
+    console.log("oooooooooooooooo",this.LessonSearchList)
+
+  }
 }

@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   private _registerService: any;
   userNaa: { User: string; pass: string; };
   isLoggedIn: any;
+  Role: string;
   constructor( private fb: FormBuilder, private signUpService:RegistrationService, private router:Router,private _router: Router,
     private auth:AuthenticationService,) { }
   RegisterForm:FormGroup
@@ -49,6 +50,18 @@ export class SignUpComponent implements OnInit {
              
              this.isLoggedIn= this.auth.isLoggedIn();
               console.log("llllllllllllllllllllllllllllll");
+              this.Role=this.auth.getRole();        
+          console.log("Roleeeeeeeeeeeeeeee",this.Role);
+
+              if(this.Role==='Student')
+              {
+               this.StudentPage();
+              }
+              else
+              {
+                this.AdminPage();
+              }
+
 
           },
           error => {
@@ -56,7 +69,7 @@ export class SignUpComponent implements OnInit {
               this.error = error.message;
              
           });
-      this.router.navigate(['/ClassRoom']);
+    //  this.router.navigate(['/ClassRoom']);
       this.isSuccessful = true;
       this.isSignUpFailed = false;
       },err=>{
@@ -69,7 +82,18 @@ export class SignUpComponent implements OnInit {
        
      
   }
+<<<<<<< HEAD
+  AdminPage() {
+    window.location.href='/AboutAs';
+  }
+  StudentPage() {
+    window.location.href='/ClassRoom';
+
+  }
+
+=======
   
+>>>>>>> 9641ca1c117d5604267ad78d314c8b9a3bba08df
 
   getErrorMessage() {
     if (this.RegisterForm.get('Email')?.hasError('required')) {

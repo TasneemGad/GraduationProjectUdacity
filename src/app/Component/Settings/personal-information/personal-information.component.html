@@ -14,10 +14,11 @@
     <div class="example-container" #form>
       <div style="display: flex;">
         <div>
-          <img src="assets/i.png"><br>
-          <!-- <div class="form-group my-3">
+         <img  [src]="createImgPath(userInfo.image)">
+         <br>
+         <div class="form-group my-3">
             <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
-          </div> -->
+          </div>
         </div>
         <div>
           <mat-form-field class="contain">

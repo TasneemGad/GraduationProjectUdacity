@@ -35,12 +35,13 @@ import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
+import { UploadComponent } from './reusableComponents/upload/upload.component';
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+
 
 @NgModule({
   declarations: [
@@ -73,6 +74,10 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
     AboutASComponent,
     CatalogComponent,
     CoursesFilterPipe,
+    UploadComponent,
+    
+    CatalogComponent,    
+    CoursesFilterPipe,
     AdminDashBoardComponent,
     SubCategoryComponent
   ],
@@ -89,5 +94,6 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

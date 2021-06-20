@@ -23,6 +23,7 @@ export class SigINComponent implements OnInit {
   isLoggedIn=false
   isLoginFailed: boolean;
   errorMessage: any;
+  Role: string;
   constructor(private gruad:AuthGuard,private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
     private router: Router,) { }
     ngOnInit(): void {
@@ -58,18 +59,28 @@ export class SigINComponent implements OnInit {
           .pipe(first())
           .subscribe(
               AData => {
-                  this.router.navigate(['/ClassRoom']);
+                 // this.router.navigate(['/ClassRoom']);
                  this.isLoginFailed = false;
                  this.isLoggedIn= this.authenticationService.isLoggedIn();
-              },
+                 this.Role=this.authenticationService.getRole();
+                 console.log("Roleeeeeeeeeeeeeeee",this.authenticationService.getRole());
+                 if(this.Role==='Student')
+                 {
+                  this.StudentPage();
+                 }
+                 else
+                 {
+                   this.AdminPage();
+                 }
+                },
               error => {
                   this.loading = false;
                   this.errorMessage = error.message;
                   this.isLoginFailed = true;
               });
 
-           console.log(this.authenticationService.getRole());
-           console.log(this.authenticationService.getUserId());
+           
+           
 
   }
 
@@ -88,7 +99,13 @@ export class SigINComponent implements OnInit {
     return this.LoginForm.get('Password')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
   }
 
-  
+  AdminPage() {
+    window.location.href='/AboutAs';
+  }
+  StudentPage() {
+    window.location.href='/ClassRoom';
+
+  }
   get UserName() {
     return this.LoginForm.get('UserName');
   }

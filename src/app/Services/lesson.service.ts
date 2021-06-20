@@ -26,4 +26,8 @@ export class LessonService {
   GetAllLessonByLectureId(id:number){
     return this.http.get<Lesson[]>(this.lessonUrl2+id).pipe();
   }
+  GetAllLessonByCrsID(crsId:number): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(this.lessonUrl+"/LessonByCrsID/"+crsId).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")}))
+  }
 }

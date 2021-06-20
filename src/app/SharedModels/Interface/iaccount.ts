@@ -6,4 +6,6 @@ email:string
 phoneNumber:string
 country:string
 roleName:string
+image:string
+
 }

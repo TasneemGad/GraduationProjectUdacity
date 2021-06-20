@@ -4,15 +4,15 @@
 
     <h1 class="titel">Program Catalog</h1><br>
     <div class="inputSearchDiv">
-        <input type="text" placeholder="Search" class="inputSearch" [(ngModel)]="searchItem" >
+        <input type="text" placeholder="Search" class="inputSearch" id="inputSearch" [(ngModel)]="searchItem" (focus)="onFocusEvent($event)" >
     </div><br><br><br>
 
 <div style="display: flex; margin-top: 10px; margin: 0 auto;">
-    <div style="width: 30%;">
-        <div *ngFor="let category of categories">
-            <mat-label class="categoryName">{{category.catName}}</mat-label><br>
-            <div *ngFor="let course of courses">
-                <mat-label class="coursesName">{{course.name}}</mat-label>
+    <div style="width: 20%;">
+        <div *ngFor="let category of categories">            
+            <mat-label class="categoryName" (click)="showCoursesByCategory(category.id)" >{{category.catName}}</mat-label><br>
+            <div *ngFor="let course of coursesByCategory">                
+                <mat-label class="coursesName" *ngIf="course.categoryId == category.id"  (click)="showCourse(course.id)">{{course.name}}</mat-label>
             </div><br>
         </div>
     </div>
