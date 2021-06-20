@@ -91,7 +91,7 @@ ngOnChanges():void{
   }
   getLessonContentById(id:number){
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
-      this.allContentCurrentLesson=sucess,console.log("content",this.allContentCurrentLesson)
+      this.allContentCurrentLesson=sucess,console.log("contentForLesson",this.allContentCurrentLesson)
       this.getLessonOneById(id)
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
