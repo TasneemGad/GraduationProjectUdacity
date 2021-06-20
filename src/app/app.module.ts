@@ -36,6 +36,7 @@ import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/les
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CatalogComponent } from './Component/catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ResourcesComponent,
     LessonDataComponent,
     AboutASComponent,
+    CatalogComponent,
   ],
   imports: [
     BrowserModule,

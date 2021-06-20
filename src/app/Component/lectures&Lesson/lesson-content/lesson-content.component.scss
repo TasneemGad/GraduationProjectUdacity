@@ -90,14 +90,12 @@ hr{
 .iconComplet{
     font-size: 10px;
 }
-.goNext{
-    width: 40px;
-    height: 40px;
-    float:right;
-    // color:white;
+.goBack{
+    width: 60px;
+    height: 60px;
     color: #017a9b;
     position: absolute;
-    top:30px;
+    padding-top:10%;
 }
 
 .homeSearch{

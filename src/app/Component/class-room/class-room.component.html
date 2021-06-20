@@ -12,7 +12,7 @@
         <h1 routerLink="/Home" id="two">
             <mat-icon>support</mat-icon>Help
         </h1>
-        <h1 routerLink="/Home" id="three">
+        <h1 routerLink="/course/all" id="three">
             <mat-icon>explore</mat-icon>Catalog
         </h1>
 
@@ -38,7 +38,7 @@
                 <div *ngIf="isFree then free "></div>
                 <ng-template #free> <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label> </ng-template><br><br><br>
                 
-                <div *ngIf="isPaid then graduated "></div>
+                <div *ngIf="isQratuate then graduated "></div>
                 <ng-template #graduated><mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br></ng-template>
             </div>
         </section>
@@ -108,6 +108,7 @@
         </section>
    -->
        <section class="cardCourses">      
+
         <div style="font-size: 16px;font-weight: bold;">Paid Courses</div>
         <div style="line-height: 40px;">&nbsp;</div>
         
@@ -142,6 +143,26 @@
                     </div>
                     <div class="btnDiv">
                         <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
+                    </div>
+                </div>
+            </mat-card><br><br>
+        </div>
+
+        <div style="font-size: 16px;font-weight: bold;">Graduated Courses</div>
+        <div style="line-height: 40px;">&nbsp;</div>
+        
+        <div *ngFor="let course of gratuatedCourses">
+            <mat-card class="courses"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
+                <div style="display: flex;"   >
+                    <div>
+                        <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
+                            <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
+                        <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
+                        <mat-label > {{course.description}}</mat-label>
+                    </div>
+                    <div class="btnDiv">
+                        
+                        <button mat-raised-button color="primary" class="btnCourse" (click)="StdProgress(course.id)"  >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
                     </div>
                 </div>
             </mat-card><br><br>

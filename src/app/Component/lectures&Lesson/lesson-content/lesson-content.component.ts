@@ -123,7 +123,6 @@ ngOnChanges():void{
      
   }
   goBack(){
-    
     this.location.back();
   }
   controlSidenav(){
