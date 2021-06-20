@@ -1,9 +1,11 @@
 <mat-toolbar>
     <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg" >
     <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
+    
+    <button mat-button  class="menuData" style="margin-left: 210px;" routerLink="/DashBoard">Admin</button>
 
 
-    <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 210px;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
+    <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 10px;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
       strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
 

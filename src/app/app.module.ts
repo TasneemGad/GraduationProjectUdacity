@@ -39,6 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
+import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
     LessonDataComponent,
     AboutASComponent,
     CatalogComponent,
-    CoursesFilterPipe
+    CoursesFilterPipe,
+    AdminDashBoardComponent,
+    SubCategoryComponent
   ],
   imports: [
     BrowserModule,
