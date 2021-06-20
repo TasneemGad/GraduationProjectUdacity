@@ -40,6 +40,7 @@ import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,7 @@ import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
     LessonDataComponent,
     AboutASComponent,
     CatalogComponent,
-    CoursesFilterPipe
+    CoursesFilterPipe,    
   ],
   imports: [
     BrowserModule,

@@ -95,15 +95,22 @@
                  <span aria-hidden="false">&times;</span>
                </button>
                <div class="content">
-               <h2 class="searchTitel">{{currentCourseToSearch}} </h2>
-             <input type="text" class="inputSearch">
-             <button type="button" class="btn btn-primary btnSearch">Search</button>
+               <h2 class="searchTitel">{{currentCourseToSearch.name}} </h2>
+             <input type="text" class="inputSearch" #SearchLessonItem id="SearchLessonItem" name="SearchLessonItem" > 
+             <button type="button" class="btn btn-primary btnSearch" (click)="searchLesson(currentCourseToSearch.id,SearchLessonItem.value)" >Search</button>
          </div>
              <hr>
          <div class="result">
              <div class="content">
                  <p>Your recent searches</p>
              <hr>
+             
+             <div id="SearchResult" *ngIf="SearchFlagLesson">
+                <div *ngFor="let lesson of LessonSearchList" >                        
+                    <h1>{{lesson.title}}</h1>
+                    <h3>{{lesson.details}}</h3>    
+                <hr>
+            </div>
              </div>
          </div>
          </div>

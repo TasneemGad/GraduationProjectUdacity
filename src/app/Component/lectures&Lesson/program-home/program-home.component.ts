@@ -18,8 +18,7 @@ export class ProgramHomeComponent implements OnInit {
   constructor(private courseServices:CoursesService, private active:ActivatedRoute,private progress:ProgressService) {}
 
   ngOnInit() {
-    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
-    console.log("URL",this.idUrl)
+    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')    
     this.getCourseById(this.idUrl)
     this.getProgress(this.idUrl)  
   })

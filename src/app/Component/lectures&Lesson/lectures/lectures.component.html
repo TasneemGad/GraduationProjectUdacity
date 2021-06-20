@@ -123,14 +123,21 @@
               </button>
               <div class="content">
               <h2 class="searchTitel"> {{courseList?.name}} </h2>
-            <input type="text" class="inputSearch">
-            <button type="button" class="btn btn-primary btnSearch">Search</button>
+            <input type="text" class="inputSearch" id="searchLecture" name="searchLecture"  #searchLecture>
+            <button type="button" class="btn btn-primary btnSearch" (click)="SearchinLecture(courseList.id,searchLecture.value)"  >Search</button>
         </div>
             <hr>
         <div class="result">
             <div class="content">
                 <p>Your recent searches</p>
             <hr>
+
+                <div id="SearchResult" *ngIf="SearchFlag">
+                    <div *ngFor="let lecture of searchLectureList" >                        
+                            <h1>{{lecture.tilte}}</h1>
+                            <h3>{{lecture.lectureDescription}}</h3>                        
+                    <hr>
+                </div>
             </div>
         </div>
         </div>

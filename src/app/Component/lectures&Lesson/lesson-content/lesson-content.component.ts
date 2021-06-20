@@ -31,9 +31,10 @@ export class LessonContentComponent implements OnInit {
   idUrl:any
   IsOpened = true
   checkExist:boolean=false;
+  SearchFlagLesson=false;
   currentCourseToSearch:any =""
   watchObj:IwatchContent={id:0,whatchedOrNot:0,crsID:0,stID:"",lessonContentID:0}
-  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
+  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
   allContentCurrentLesson:LessonContent[]=[];
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
@@ -43,6 +44,8 @@ export class LessonContentComponent implements OnInit {
   optionalQuestion:Question[]
   StudentAnswer:StudentAnswer[]
   CoursesVideos:CourseVideos
+  progressId:number=0;
+  LessonSearchList:Lesson[]=[]
 
 @Input() CourseId:any
 
@@ -79,7 +82,7 @@ ngOnChanges():void{
           this.courseServices.getCoursesByID(sucess.courseId).subscribe(
             data => {
 
-              this.currentCourseToSearch = data.name              
+              this.currentCourseToSearch = data              
               console.log("sc",this.currentCourseToSearch)              
               return data.id
             })
@@ -197,5 +200,17 @@ ngOnChanges():void{
     this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
       this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
   })
+  }
+
+  searchLesson(crsId:number,SearchLessonItem:string){  
+    this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+      lessonsdata=>{
+        this.SearchFlagLesson=true;
+        this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
+      }
+    )
+    console.log("oooooooooooooooo",crsId,SearchLessonItem)
+    console.log("oooooooooooooooo",this.LessonSearchList)
+
   }
 }
