@@ -3,7 +3,8 @@
   background-color: white; 
   font-size: x-large;   
   border: 1px solid white;
-  padding: 40px;
+  padding: .2%;
+  height: auto;
   box-shadow: 0 4px 8px 0 rgba(161, 159, 159, 0.2), 0 6px 20px 0 rgba(173, 173, 173, 0.19);
 }
 .udacity:hover{
@@ -18,6 +19,7 @@
   
   .center-content {
     margin-top: 100px;
+    width: 100%;
     text-align: -webkit-center;
 }
 
@@ -28,7 +30,7 @@
   }
   
 .example-full-width {
-    width: 100%;
+    width: 90%;
   }
   input{
     padding: 8px;

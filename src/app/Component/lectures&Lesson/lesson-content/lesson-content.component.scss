@@ -27,9 +27,6 @@
 mat-sidenav-container{
     height: 100%;
  }
- mat-sidenav-container{
-    height: 100%;
-}
 mat-sidenav , mat-sidenav-content{
     padding: 16px;
 }
@@ -132,4 +129,28 @@ hr{
 .result{
     background-color: rgb(244, 248, 248);
     height: 100%;
+}
+.questionPart{
+    width: 70%;
+    margin: 0 auto;
+}
+.questionCard{
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.numberOfQuestion{
+    color: #017a9b;
+    padding-bottom: 5px;
+}
+.trueOrFalse{
+    padding: 2% 1% 1% 4%;
+}
+.question{
+    padding: 3% 2% 3% 4%;
+    font-size: 15px;
+}
+.btnSubmit{
+    margin: 20px; 
+    background-color: #017a9b;
+    float: right;
 }

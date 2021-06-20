@@ -38,8 +38,12 @@ export class LessonContentComponent implements OnInit {
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
+  trueAndFalseQuestion:Question[]
+  dragAndDropQuestion:Question[]
+  optionalQuestion:Question[]
   StudentAnswer:StudentAnswer[]
   CoursesVideos:CourseVideos
+
 @Input() CourseId:any
 
 ngOnChanges():void{
@@ -53,7 +57,7 @@ ngOnChanges():void{
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
     private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
-  private  StudentASService:StudentAnswerService
+    private  StudentASService:StudentAnswerService
     ) { }
 
   ngOnInit(): void {
@@ -170,13 +174,29 @@ ngOnChanges():void{
   getQuestionsByLessonContent(id:number){
     console.log("first")
     this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
-      this.QByLessonContent=sucess,console.log("currentQGL",this.QByLessonContent)
+      this.QByLessonContent=sucess,
+      console.log("currentQGL",this.QByLessonContent)
+      for(let question of sucess) {
+        if(question.type == "t,f"){
+          this.trueAndFalseQuestion?.push(question)
+          console.log("t,f",question)
+        } 
+        else if(question.type == "options") {
+          this.optionalQuestion?.push(question)
+          console.log("options",question)
+        } 
+        else if(question.type == "Drag and Drop"){
+          this.dragAndDropQuestion?.push(question)
+          console.log("dragAndDrop",question)
+        }
+      }
+      })
+  }
+
+  getStudentAnswerByLessonContent(id:number){
+    console.log("first")
+    this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+      this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
   })
-}
- getStudentAnswerByLessonContent(id:number){
-  console.log("first")
-  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-    this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
-})
-}
+  }
 }
