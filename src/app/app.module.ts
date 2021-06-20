@@ -72,14 +72,10 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
     ResourcesComponent,
     LessonDataComponent,
     AboutASComponent,
-    CatalogComponent,
-<<<<<<< HEAD
-    CoursesFilterPipe,    
-=======
+    CatalogComponent,    
     CoursesFilterPipe,
     AdminDashBoardComponent,
     SubCategoryComponent
->>>>>>> b2994e6463f47ac8f68765cbcda0f3011dfa5006
   ],
   imports: [
     BrowserModule,

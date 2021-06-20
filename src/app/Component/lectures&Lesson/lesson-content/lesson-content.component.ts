@@ -51,13 +51,8 @@ export class LessonContentComponent implements OnInit {
   trueAndFalseQuestion:Question[]
   dragAndDropQuestion:Question[]
   optionalQuestion:Question[]
-<<<<<<< HEAD
-  StudentAnswer:StudentAnswer[]
-  CoursesVideos:CourseVideos
   progressId:number=0;
   LessonSearchList:Lesson[]=[]
-=======
->>>>>>> b2994e6463f47ac8f68765cbcda0f3011dfa5006
 
 @Input() CourseId:any
 
@@ -112,7 +107,7 @@ ngOnChanges():void{
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
       this.getAllQuestions(id);
-      this.getOptions(id)
+      // this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
@@ -125,7 +120,7 @@ ngOnChanges():void{
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
     this.getAllQuestions(id);
-    this.getOptions(id)
+    // this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -263,8 +258,11 @@ postStudentAnswer(user:StudentAnswer){
   
     this.StudentASService.PostStudentAnswer(user).subscribe(
       sucess=>
-      {console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
+      {
+        console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
+      })  
     })
+
   }
 
   searchLesson(crsId:number,SearchLessonItem:string){  
