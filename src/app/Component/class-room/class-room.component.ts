@@ -25,6 +25,8 @@ gratuatedCourses:ICourse[]=[]
     private progressService:ProgressService) { }
   currentEnrollement:IEnrollCourse[]=[];
   CourseList:ICourse[]=[];
+  GraduatedCoursesList:ICourse[]=[];
+
   isFree=false
   isPaid=false
   isQratuate=false
@@ -48,8 +50,17 @@ gratuatedCourses:ICourse[]=[]
         for (let enrollCrs of data) {
             console.log(enrollCrs.courseId)
           this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
-            crsData => {
+            crsData => {              
               this.CourseList.push(crsData);
+              this.progress.getLessonContentProgress(crsData.id).subscribe(
+                dataProgress=>{
+                  if(dataProgress.numOfLesson==dataProgress.numOfLessonFinshed)
+                  {
+                  this.GraduatedCoursesList.push(crsData)
+                  }
+
+                }
+              )
                 if(crsData.price==0){
                   this.isFree = true
                   this.freeCoures.push(crsData);
