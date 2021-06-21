@@ -82,7 +82,6 @@ export class SignUpComponent implements OnInit {
        
      
   }
-<<<<<<< HEAD
   AdminPage() {
     window.location.href='/AboutAs';
   }
@@ -91,9 +90,7 @@ export class SignUpComponent implements OnInit {
 
   }
 
-=======
   
->>>>>>> 9641ca1c117d5604267ad78d314c8b9a3bba08df
 
   getErrorMessage() {
     if (this.RegisterForm.get('Email')?.hasError('required')) {
