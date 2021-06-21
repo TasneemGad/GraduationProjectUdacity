@@ -67,6 +67,7 @@
                             <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
                         </video>
                     </div>
+
                 <div class="questionMcq">
                     <div *ngFor="let i of optionalQuestion ;let e=index" class="questionMcq">
                         <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
@@ -104,7 +105,7 @@
 
 
                    <div class="questionPart"> 
-                        <div *ngFor="let question of trueAndFalseQuestion">
+                        <div *ngFor="let question of QByLessonContent">
                             <div>
                                 <mat-card class="questionCard ">
                                     <div class="question">
@@ -112,15 +113,37 @@
                                         <mat-label>{{question.title}}</mat-label><br>
                                     </div>
                                     <hr>
-                                    <mat-radio-group aria-label="Select an option">
-                                        <mat-radio-button class="trueOrFalse" value="1">True</mat-radio-button>
-                                        <hr>
-                                        <mat-radio-button class="trueOrFalse" value="2">False</mat-radio-button>
-                                    </mat-radio-group>
+                                    <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
+                                        <div *ngIf="alreadyAnsert.questionId==question.id then answered  else notAnswered"></div>
+                                            <ng-template #answered>
+                                                <div *ngIf="alreadyAnsert.studentanswer=='true'; then trueAns else falseAns "></div>
+                                                    <ng-template #trueAns>
+                                                        <mat-radio-group aria-label="Select an option">
+                                                            <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
+                                                            <hr>
+                                                            <mat-radio-button class="trueOrFalse" value="false">False</mat-radio-button>
+                                                        </mat-radio-group>
+                                                    </ng-template>
+                                                    <ng-template #falseAns>
+                                                        <mat-radio-group aria-label="Select an option">
+                                                            <mat-radio-button class="trueOrFalse" #answerTrue value="true" >True</mat-radio-button>
+                                                            <hr>
+                                                            <mat-radio-button class="trueOrFalse" value="false" checked>False</mat-radio-button>
+                                                        </mat-radio-group>
+                                                    </ng-template>
+                                            </ng-template>
+                                            <ng-template #notAnswered>
+                                                <mat-radio-group aria-label="Select an option">
+                                                    <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerTrue.value)" #answerTrue value="true">True</mat-radio-button>
+                                                    <hr>
+                                                    <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerFalse.value)" #answerFalse value="false">False</mat-radio-button>
+                                                </mat-radio-group>
+                                            </ng-template>
+                                        </div>
                                 </mat-card>
                             </div>
                             <button type="submit" class="btnSubmit" mat-raised-button
-                                color="primary">SUBMIT</button><br> <br><br><br>
+                                color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
                         </div>
                     </div>   
                  </mat-sidenav-container> 

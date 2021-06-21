@@ -35,8 +35,8 @@ mat-sidenav , mat-sidenav-content{
     position: absolute;
     bottom: 0;
 }
-mat-icon{
-    margin-right: 20px;
+.iconSideNav{
+    margin-right: 15%;
 }
 #nav{
     background-color: white;
@@ -55,8 +55,8 @@ mat-icon{
 .sectionCourses{
     font-size:17px; 
     opacity: .7;
-    color:#00485c;
-    font-weight:600;
+    color:#0b5369;
+    font-weight:550;
 }
 .cardCourses{
     width: 90%;
@@ -64,8 +64,8 @@ mat-icon{
 }
 .section{
     color: rgb(124, 124, 124);
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 550;
     letter-spacing: 1px;
 }
 .courses{
@@ -86,7 +86,8 @@ mat-icon{
     height: 50px;
     margin-top: 15%;
 }
-.mat-icon {
+mat-icon {
+    margin-right: 20px;
     padding-left: 5px;
     width: 5px;
 }

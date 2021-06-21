@@ -6,25 +6,26 @@
             U D A C I T Y</h1>
 
         <h1 routerLink="/ClassRoom" id="one">
-            <mat-icon>home</mat-icon>Home
+            <mat-icon class="iconSideNav">home</mat-icon>Home
         </h1>
 
         <h1 routerLink="/Home" id="two">
-            <mat-icon>support</mat-icon>Help
+            <mat-icon class="iconSideNav">support</mat-icon>Help
         </h1>
         <h1 routerLink="/course/all" id="three">
-            <mat-icon>explore</mat-icon>Catalog
+            <mat-icon class="iconSideNav">explore</mat-icon>Catalog
         </h1>
 
-    <div class="tabsBottom">    
-    <h1 routerLink="{{'/Setting/'+'/Personal_Information/'}}" style="font-size: 15px;">
-            <mat-icon>settings</mat-icon>Setting
-        </h1>
-        <h1 (click)="Logout()" style="font-size: 15px;">
-            <mat-icon>logout</mat-icon>Logout
-            
-        </h1>
-    </div>
+        <div class="tabsBottom">    
+            <div style="display: flex;">
+                <mat-icon>settings</mat-icon>
+                <h1 routerLink="{{'/Setting/'+'/Personal_Information/'}}" style="font-size: 15px; margin-left: 7px;"> Setting </h1>    
+            </div>
+            <div style="display: flex;">   
+              <mat-icon>logout</mat-icon> 
+              <h1 (click)="Logout()" style="font-size: 15px; margin-left: 7px;">Logout</h1>
+            </div>
+        </div>
 
     </mat-sidenav>
     
@@ -33,13 +34,13 @@
         <section class="content">
             <div style="display: flex;">
                 <div *ngIf="isPaid then paid "></div>
-                <ng-template #paid> <mat-label class="sectionCourses">PAID PROGRAM &nbsp; | </mat-label> </ng-template><br><br><br>
+                <ng-template #paid> <mat-label class="sectionCourses">PAID PROGRAM &nbsp; </mat-label> </ng-template><br><br><br>
                 
                 <div *ngIf="isFree then free "></div>
-                <ng-template #free> <mat-label class="sectionCourses"> &nbsp;&nbsp;  FREE COURSES &nbsp; | </mat-label> </ng-template><br><br><br>
+                <ng-template #free> <mat-label class="sectionCourses"> | &nbsp;&nbsp;  FREE COURSES &nbsp;  </mat-label> </ng-template><br><br><br>
                 
                 <div *ngIf="isQratuate then graduated "></div>
-                <ng-template #graduated><mat-label class="sectionCourses"> &nbsp;&nbsp; GRADUATED</mat-label><br><br><br></ng-template>
+                <ng-template #graduated><mat-label class="sectionCourses"> | &nbsp;&nbsp; GRADUATED</mat-label><br><br><br></ng-template>
             </div>
         </section>
 
@@ -63,53 +64,10 @@
         </ng-template>
         </section>
         
-      <!-- <section class="cardCourses">      
-        <div *ngIf="isFree then cardFree "></div>
-        <ng-template #cardFree>  
-            <mat-label class="section" >CURRENT FREE ENROLLMENTS</mat-label><br><br>
-            <div *ngFor="let course of freeCoures">
-                <mat-card class="courses" (click)="lastActiveCourse(course.id)"  routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
-                    <div style="display: flex;"   >
-                        <div>
-                            <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
-                            <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
-                            <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
-                            <mat-label > {{course.description}}</mat-label>
-                        </div>
-                        <div class="btnDiv">
-                            <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
-                        </div>
-                    </div>
-                </mat-card><br><br>
-            </div>
-        </ng-template>
-        </section>
+    <section class="cardCourses">      
 
-        <section class="cardCourses">      
-        <div *ngIf="isPaid then cardPaid "></div>
-        <ng-template #cardPaid>  
-            <mat-label class="section">CURRENT Paid ENROLLMENTS</mat-label><br><br>
-            <div *ngFor="let course of paidCourses">
-                <mat-card class="courses" (click)="lastActiveCourse(course.id)" routerLink="{{'/Lecture/'+course.id+'/ProgramHome/'+course.id}}">
-                    <div style="display: flex;"   >
-                        <div>
-                            <img src="../../assets/nameCourse.JPG" alt="error" width="30px" height="19px" style="margin-right: 10px;">
-                                <mat-label >NANODEGREE PROGRAM</mat-label><br><br>
-                            <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br><br>
-                            <mat-label > {{course.description}}</mat-label>
-                        </div>
-                        <div class="btnDiv">
-                            <button mat-raised-button color="primary" class="btnCourse" >PROGRAM HOME <mat-icon >arrow_forward</mat-icon></button>
-                        </div>
-                    </div>
-                </mat-card><br><br>
-            </div>
-        </ng-template>
-        </section>
-   -->
-       <section class="cardCourses">      
-
-        <div style="font-size: 16px;font-weight: bold;">Paid Courses</div>
+        <div *ngIf="isPaid then paidCourse "></div>
+        <ng-template #paidCourse> <div class="section">PAID COURSE</div></ng-template>
         <div style="line-height: 40px;">&nbsp;</div>
         
         <div *ngFor="let course of paidCourses">
@@ -129,7 +87,8 @@
             </mat-card><br><br>
         </div>
 
-        <div style="font-size: 16px;font-weight: bold;">Free Courses</div>
+        <div *ngIf="isFree then freeCourses "></div>
+        <ng-template #freeCourses><div class="section">FREE COURSES</div></ng-template>
         <div style="line-height: 40px;">&nbsp;</div>
 
         <div *ngFor="let course of freeCoures">
@@ -148,7 +107,8 @@
             </mat-card><br><br>
         </div>
 
-        <div style="font-size: 16px;font-weight: bold;">Graduated Courses</div>
+        <div *ngIf="isQratuate then graduatedCourses "></div>
+        <ng-template #graduatedCourses><div class="section">Graduated Courses</div></ng-template>
         <div style="line-height: 40px;">&nbsp;</div>
         
         <div *ngFor="let course of GraduatedCoursesList">
