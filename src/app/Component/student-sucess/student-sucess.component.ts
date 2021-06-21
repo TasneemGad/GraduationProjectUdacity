@@ -30,6 +30,8 @@ export class StudentSucessComponent implements OnInit {
     this.stdStories.getStudentStory().subscribe(
       dataStdStories=>{
         this.studentStoryListTopFive=dataStdStories.slice(5);
+        this.studentStoryList=dataStdStories
+        console.log(this.studentStoryListTopFive,"jjjjjjj")
         for (const story of dataStdStories) {
           this.account.getStudentName(story.studentId).subscribe(
             userInfo=>{
