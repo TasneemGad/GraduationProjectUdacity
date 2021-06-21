@@ -17,8 +17,7 @@ mat-label{
 }
 #btnitem{
     margin: 60px;
-    color: rgb(1, 59, 59);
-    
+    color: rgb(1, 59, 59);   
 }
 input, select{
     width: 100%;
@@ -33,4 +32,16 @@ input, select{
     padding: 4px 12px 4px 12px;
     float: right;
     border-radius: 10px;
+}
+thead{
+    background-color: rgb(1, 59, 59);
+    align-content: center;
+    color: white;
+}
+#all{
+    font-size: 15px; 
+    font-family: 100;
+}
+.titelTabel{
+    font-weight: 100;
 }

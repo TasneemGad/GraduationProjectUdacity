@@ -111,7 +111,7 @@
              </div>  
 
 
-                   <!-- <div class="questionPart"> 
+                   <div class="questionPart"> 
                         <div *ngFor="let question of QByLessonContent">
                             <div>
                                 <mat-card class="questionCard ">
@@ -141,9 +141,9 @@
                                                         </mat-radio-group>
                                                     </ng-template>
                                             
-                                            <!-- <ng-template #o></ng-template> -->
-                                        <!-- </div> -->
-                                    </div>
+                                            <ng-template #o></ng-template>
+                                        </div>
+                                    <!-- </div> -->
 
                                     <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
                                         <div *ngIf="alreadyAnsert.id == question.id">
@@ -164,7 +164,7 @@
                             <button type="submit" class="btnSubmit" mat-raised-button
                                 color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
                         </div>
-                    </div>     -->
+                    </div>    
                  </mat-sidenav-container> 
 
              </div>
