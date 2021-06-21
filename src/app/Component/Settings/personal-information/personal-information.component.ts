@@ -16,6 +16,8 @@ export class PersonalInformationComponent implements OnInit {
   stdID:string=this.tokenUser.getUserId();
   UserForm:FormGroup;
   alertFlag=false;
+  apiUrl="https://localhost:44326";
+
   public response: {dbPath: ''};
 
   constructor(private accountService:AccountService,private tokenUser:AuthenticationService,private fb: FormBuilder) { }
@@ -76,7 +78,24 @@ getNames(){
 }
   
   // upload image
-  // public uploadFinished = (event) => { 
-  //   this.response = event;
-  // }
+   public uploadFinished = (event:any) => { 
+     this.response = event;
+     this.accountService.getStudentInformation(this.tokenUser.getUserId()).subscribe(
+      data=>{
+        data.image=this.response.dbPath
+        console.log("Done",data)
+        this.accountService.UpdateStInfo(data).subscribe(
+          sucess=>{
+            console.log("Done")
+          }
+        )
+      }
+    )
+     console.log(this.response)
+   }
+
+   public createImgPath = (serverPath: string) => {
+        console.log(`${this.apiUrl}/${serverPath}`)
+     return `${this.apiUrl}/${serverPath}`;
+  }
 }

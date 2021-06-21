@@ -35,8 +35,11 @@ export class AccountService {
 
  UpdateStInfo(account:IAccount):Observable<any>{    
   this.stID=this.token.getUserId();  
+  console.log("acccccccccc",account)
   return this.http.put(URL_Update+this.stID, account ).pipe(catchError((err) => {
+    
     return throwError(err.message || "error")
+    
     }))
    }
 
