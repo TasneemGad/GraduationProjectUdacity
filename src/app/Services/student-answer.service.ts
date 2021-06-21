@@ -19,6 +19,7 @@ StudentAnswerLessonContentUrl="https://localhost:44326/api/StudentAnswer/GetAllS
      return this.http.get<StudentAnswer>(this.StudentAnswerUrl+"/"+id).pipe()
     }
     PostStudentAnswer(Answer:StudentAnswer):Observable<StudentAnswer[]>{
+      console.log("in answer",Answer)
       return this.http.post<StudentAnswer[]>(this.StudentAnswerUrl,Answer).pipe()
      }
     getStudentAnswerByLessonContent(id:number):Observable<StudentAnswer[]>{

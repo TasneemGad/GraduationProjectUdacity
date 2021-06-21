@@ -5,10 +5,11 @@
     <h1 routerLink="/Home" class="udacity" style="margin-top: -42px;margin-left: 50px;margin-bottom: 40px;cursor: pointer;">
         U D A C I T Y</h1>
 
-    <h1 routerLink="/ClassRoom" id="one">
-        <mat-icon>home</mat-icon>Home
+    <h1 (click)="GoToCategory()" id="one">
+        <mat-icon>receipt</mat-icon>Category
     </h1>
 
+<<<<<<< HEAD
     <h1 (click)="goTo()" id="two">
       <mat-icon style="fill: currentColor;color: cornsilk;"> add_box</mat-icon>  Add Lectures
     </h1>
@@ -30,5 +31,28 @@
 <router-outlet></router-outlet>
 
 <mat-sidenav-container>
+=======
+    <h1 (click)="GoToCourse()" id="two">
+        <mat-icon>receipt</mat-icon>Course
+    </h1>
+    <h1 (click)="GoToLesson()" id="three">
+        <mat-icon>receipt</mat-icon>Lesson
+    </h1>
+
+<div class="tabsBottom">    
+    <div style="display: flex;">
+        <mat-icon>settings</mat-icon>
+        <h1 routerLink="{{'/Setting/'+'/Personal_Information/'}}" style="font-size: 15px;"> Setting </h1>    
+    </div>
+    <div style="display: flex;">   
+      <mat-icon>logout</mat-icon> 
+      <h1 (click)="Logout()" style="font-size: 15px;">Logout</h1>
+    </div>
+</div>
+
+</mat-sidenav>
+<mat-sidenav-container>
+    <router-outlet></router-outlet>
+>>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
 </mat-sidenav-container>
 </mat-sidenav-container>

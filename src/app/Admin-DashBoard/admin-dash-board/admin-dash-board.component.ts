@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 })
 export class AdminDashBoardComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private Authservices:AuthenticationService,private router:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -16,6 +17,26 @@ export class AdminDashBoardComponent implements OnInit {
  
     goTo(){
        this.router.navigate(['Lectures'],{relativeTo:this.active})
+=======
+  constructor(private Authservices:AuthenticationService,private router:Router, private activatedRouter: ActivatedRoute) { }
+
+  ngOnInit(): void {
+  }
+  GoToCategory()
+  {
+    this.router.navigate(['Category'],{relativeTo:this.activatedRouter})
+  }
+  GoToCourse()
+  {
+    this.router.navigate(['Course'],{relativeTo:this.activatedRouter})
+  }
+  GoToLesson()
+  {
+    this.router.navigate(['Lesson'],{relativeTo:this.activatedRouter})
+  }
+  Logout(){
+    this.Authservices.logout();   
+>>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
     }
     goToSub(){
       this.router.navigate(['SubCategory'],{relativeTo:this.active})
