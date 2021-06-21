@@ -46,11 +46,13 @@
 <div *ngIf="isOpen then name"></div>
 <ng-template #name>
   <div class="formAdd">
+    <h1 class="titel">Lesson Content</h1>
+    <h4 class="description">Add New Lesson Content</h4><br><br>
     <form (ngSubmit)="onsubmit()" [formGroup]="addLessonContentForm">
       {{ addLessonContentForm.value | json }}
-      <div class="form-row">
+      <div class="mb-3">
         <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
-        <div class="col-lg-6">
+        <div class="col">
         <h1>  Add Lesson Content Title</h1>
           <input type="text" class="form-control" placeholder="tilte" formControlName="title" [value]="lessonContentById.title">
         </div>
@@ -71,18 +73,18 @@
             <input type="text" class="form-control" placeholder="Lesson Content videoLinkId" formControlName="videoLinkId" [value]="lessonContentById.videoLinkId">
           </div>
          
-        <div class="col-lg-6">
+        <div class="col">
           <h1>Choose Course</h1>
-          <div class="input-group " style="width: 350px;">
+          <div class="input-group ">
             <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
             <option selected>Choose Course</option>
               <option  *ngFor="let i of allCourese async" [value]="i.id">{{i.name}}</option>
             </select>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col">
             <h1>Choose Lecture</h1>
-            <div class="input-group " style="width: 350px;">
+            <div class="input-group ">
               <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
               <option selected>Choose Lecture</option>
                 <option  *ngFor="let i of allLectures async" [value]="i.id">{{i.tilte}}</option>
@@ -90,7 +92,7 @@
             </div>
           </div>
       </div>
-      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Sub Category</button>
+      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Lesson Content</button>
     </form>
     </div>
 </ng-template>

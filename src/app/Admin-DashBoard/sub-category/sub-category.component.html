@@ -44,20 +44,23 @@
 <div *ngIf="isOpen then name"></div>
 <ng-template #name>
   <div class="formAdd">
+    <h1 class="titel">Sub Category</h1>
+    <h4 class="description">Add New Sub Category</h4><br><br>
     <form (ngSubmit)="onsubmit()" [formGroup]="addSubCategoryForm">
       {{ addSubCategoryForm.value | json }}
-      <div class="form-row">
-        <div class="col-lg-6">
+      <div class="mb-3">
+        <div class="col">
         <h1>  Add Sub Category Title</h1>
           <input type="text" class="form-control" placeholder="tilte" formControlName="subCategoryTitle" [value]="SubCategoryByid.subCategoryTitle">
         </div>
+        <br>
         <div class="col">
           <h1>  Add Sub Category Description</h1>
           <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion"  [value]="SubCategoryByid.subCategoryDescribtion">
         </div>
-        <div class="col-lg-6">
+        <div class="col" style="margin-top: 20px;">
           <h1>Choose Category</h1>
-          <div class="input-group " style="width: 350px;">
+          <div class="input-grou " >
             <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
             <option selected>Choose Category</option>
               <option  *ngFor="let i of allCategory async" [value]="i.id">{{i.catName}}</option>

@@ -22,10 +22,18 @@ input, select{
     border-color: rgb(190, 190, 190);
     border-radius: 10px;
 }
-button{
+.btnSubmit{
     background-color: #107a9b;
     color: white;
     padding: 4px 12px 4px 12px;
     float: right;
     border-radius: 10px;
+}
+#btn{
+    margin: 60px;
+    color: rgb(1, 59, 59);
+    
+}
+#btn:hover{
+    color: white;
 }
