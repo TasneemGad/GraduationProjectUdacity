@@ -1,0 +1,71 @@
+<div class="home">
+    <h1 class="titel">Course</h1>
+    <h4 class="description">Add New Course</h4><br><br>
+    <form>
+        <div>
+            <mat-label>Name: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Image:</mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Description:</mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Price:</mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Discount:</mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Duration: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Type: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Lecture Number: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>Category: </mat-label><br>
+            <select>
+                    <option *ngFor="let course of allCourse" value="course.id">{{course.name}}</option>
+            </select>
+        </div><br>
+
+        <div>
+            <mat-label>PreRequest: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <div>
+            <mat-label>SubCategory: </mat-label><br>
+            <select>
+                    <option *ngFor="let subCategory of allSubcategory" value="subCategory.id">{{subCategory.subCategoryTitle}}</option>
+            </select>
+        </div><br>
+
+        <div>
+            <mat-label>Part Logo: </mat-label><br>
+            <input type="text">
+        </div><br>
+
+        <button mat-button type="submit">SUBMIT</button>
+    </form>
+</div>

@@ -9,7 +9,7 @@
         <hr>
         <div style="display: flex; height: 30px;">
             <div data-toggle="modal" data-target="#exampleModalCenter">
-                <h1 class="navContent" style="margin-top:-3px;">Search</h1>
+                <h1 class="navContent" style="margin-top:-3px;height: auto;">Search</h1>
             </div>
             <div>
                 <!-- <button mat-button (click)="openDialog()">Launch dialog</button> -->
@@ -47,12 +47,12 @@
         <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
 
-     <div class="nav">
+    <div class="nav">
         <div>
             <mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon>
         </div>
         <div class="contentName">
-            <mat-label>content Name : {{CurrentLesson?.title}}</mat-label>
+            <mat-label>{{CurrentLesson?.title}}</mat-label>
         </div>
         <div class="feedback">
             <mat-label>SEND FEEDBAK</mat-label>
@@ -102,8 +102,6 @@
                     </div>
              </div> 
 
-                    <!-- </div><br><br> -->
-                    {{QOptionsList.right}}
 
                    <div class="questionPart"> 
                         <div *ngFor="let question of trueAndFalseQuestion">
