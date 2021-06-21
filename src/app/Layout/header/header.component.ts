@@ -19,12 +19,14 @@ export class HeaderComponent implements OnInit {
   courseNameForCurrentCategory:any[]
   Error:string
   currentCategoryId:number
+ 
 
   constructor(private auth:AuthenticationService,private catService:CategoryService,private courseServise:CoursesService,private router:Router) { }
     ngOnInit(): void {
       this.getCatigoreis();
       this.getCourses();
       this.isLoggedIn();
+      this.role();
     }
    
     getCatigoreis()
@@ -80,6 +82,9 @@ export class HeaderComponent implements OnInit {
     }
     isLoggedIn(){
       return this.auth.isLoggedIn();
+     }
+     role(){
+     return this.auth.getRole();
      }
   }
 
