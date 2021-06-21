@@ -112,7 +112,7 @@ export class CategoryComponent implements OnInit {
   }
 
   getSubCategory() {
-    this.subCategoryService.getSubCategory().subscribe(
+    this.subCategoryService.getAllSubCategory().subscribe(
       data => {
         this.subCategory = data;
         console.log("subCat", this.subCategory)

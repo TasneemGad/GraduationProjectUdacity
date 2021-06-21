@@ -1,5 +1,5 @@
 export interface ISubCategory{
-    id:number
+    id?:number
     subCategoryTitle:string
     categoryID:number
     subCategoryDescribtion:string

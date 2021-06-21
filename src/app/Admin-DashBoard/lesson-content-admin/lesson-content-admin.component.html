@@ -1,5 +1,5 @@
    <!-- Links -->
-<div>
+   <div>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -13,9 +13,9 @@
     crossorigin="anonymous"></script> 
 
 </div>
-<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Sub Category </button>
-<div *ngIf="isOpen then tab"></div>
+<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Lesson Content </button>
 
+<div *ngIf="isOpen then tab"></div>
 <ng-template #tab>
   <table class="table table-hover" style="width: 900px;margin-left: 150px;align-content: center;margin-top: 80px;">
     <thead >
@@ -29,41 +29,66 @@
 
       </tr>
     </thead>
-    <tbody *ngFor="let item of allSubCategory , let i=index" >
+    <tbody *ngFor="let item of allLessonContent , let i=index" >
       <tr >
         <th scope="row"  >{{i+1}}</th>
-        <td>{{item.subCategoryTitle}}</td>
-        <td>{{item.categoryID}}</td>
-        <td  style="width: 600px;">{{item.subCategoryDescribtion}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td  style="width: 600px;">{{item.header}}</td>
         <td><button class="btn btn-outline-dark" (click)="updateElement(item.id)">Update</button></td>
         <td><button class="btn btn-outline-dark" (click)="DeleteItem(item.id)">Delete</button></td>    
       </tr>
     </tbody>
   </table>
 </ng-template>
+
+
 <div *ngIf="isOpen then name"></div>
 <ng-template #name>
   <div class="formAdd">
-    <form (ngSubmit)="onsubmit()" [formGroup]="addSubCategoryForm">
-      {{ addSubCategoryForm.value | json }}
+    <form (ngSubmit)="onsubmit()" [formGroup]="addLessonContentForm">
+      {{ addLessonContentForm.value | json }}
       <div class="form-row">
+        <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
         <div class="col-lg-6">
-        <h1>  Add Sub Category Title</h1>
-          <input type="text" class="form-control" placeholder="tilte" formControlName="subCategoryTitle" [value]="SubCategoryByid.subCategoryTitle">
+        <h1>  Add Lesson Content Title</h1>
+          <input type="text" class="form-control" placeholder="tilte" formControlName="title" [value]="lessonContentById.title">
         </div>
         <div class="col">
-          <h1>  Add Sub Category Description</h1>
-          <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion"  [value]="SubCategoryByid.subCategoryDescribtion">
+          <h1>  Add Lesson Content Description</h1>
+          <input type="text" class="form-control" placeholder="Lesson Content  Description" formControlName="description" [value]="lessonContentById.description">
         </div>
+        <div class="col">
+            <h1>  Add Lesson Content Header</h1>
+            <input type="text" class="form-control" placeholder="Lesson Content  Header" formControlName="header" [value]="lessonContentById.header">
+          </div>
+          <div class="col">
+            <h1>  Add Lesson Content Type</h1>
+            <input type="text" class="form-control" placeholder="Lesson Content Type" formControlName="type" [value]="lessonContentById.type">
+          </div>
+          <div class="col">
+            <h1>  Add Lesson Content videoLinkId</h1>
+            <input type="text" class="form-control" placeholder="Lesson Content videoLinkId" formControlName="videoLinkId" [value]="lessonContentById.videoLinkId">
+          </div>
+         
         <div class="col-lg-6">
-          <h1>Choose Category</h1>
+          <h1>Choose Course</h1>
           <div class="input-group " style="width: 350px;">
             <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
-            <option selected>Choose Category</option>
-              <option  *ngFor="let i of allCategory async" [value]="i.id">{{i.catName}}</option>
+            <option selected>Choose Course</option>
+              <option  *ngFor="let i of allCourese async" [value]="i.id">{{i.name}}</option>
             </select>
           </div>
         </div>
+        <div class="col-lg-6">
+            <h1>Choose Lecture</h1>
+            <div class="input-group " style="width: 350px;">
+              <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
+              <option selected>Choose Lecture</option>
+                <option  *ngFor="let i of allLectures async" [value]="i.id">{{i.tilte}}</option>
+              </select>
+            </div>
+          </div>
       </div>
       <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Sub Category</button>
     </form>

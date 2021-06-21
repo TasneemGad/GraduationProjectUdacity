@@ -10,11 +10,13 @@ import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
   styleUrls: ['./course-admin.component.scss']
 })
 export class CourseAdminComponent implements OnInit {
-
+  isOpen:boolean=false
   allCourse:ICourse[]=[]
   allSubcategory:ISubCategory[]=[]
   constructor( private courseService : CoursesService, private subCategoryService: SubCategoryService) { }
-
+  addNew(){
+    this.isOpen=!this.isOpen
+  }
   ngOnInit(): void {
     this.getAllCourses()
     this.getAllSubCategory()
@@ -28,7 +30,7 @@ export class CourseAdminComponent implements OnInit {
       })
   }
   getAllSubCategory(){
-    this.subCategoryService.getSubCategory().subscribe(data=>
+    this.subCategoryService.getAllSubCategory().subscribe(data=>
       {
         console.log("dataSub",data)
         this.allSubcategory = data

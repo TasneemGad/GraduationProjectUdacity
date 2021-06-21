@@ -9,24 +9,36 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 })
 export class AdminDashBoardComponent implements OnInit {
 
-  constructor(private Authservices:AuthenticationService,private router:Router, private activatedRouter: ActivatedRoute) { }
+  constructor(private Authservices:AuthenticationService,private router:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
+ 
+    goTo(){
+       this.router.navigate(['Lectures'],{relativeTo:this.active})
+    }
+ 
   GoToCategory()
   {
-    this.router.navigate(['Category'],{relativeTo:this.activatedRouter})
+    this.router.navigate(['Category'],{relativeTo:this.active})
   }
   GoToCourse()
   {
-    this.router.navigate(['Course'],{relativeTo:this.activatedRouter})
+    this.router.navigate(['Course'],{relativeTo:this.active})
   }
   GoToLesson()
   {
-    this.router.navigate(['Lesson'],{relativeTo:this.activatedRouter})
+    this.router.navigate(['Lesson'],{relativeTo:this.active})
   }
-  Logout(){
-    this.Authservices.logout();   
+ 
+    goToSub(){
+      this.router.navigate(['SubCategory'],{relativeTo:this.active})
     }
+    goToContent(){
+      this.router.navigate(['LessonContent'],{relativeTo:this.active})
+    }
+    Logout(){
+      this.Authservices.logout();   
+      }
 
 }

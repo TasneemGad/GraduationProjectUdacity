@@ -8,10 +8,12 @@ import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
   styleUrls: ['./lesson-admin.component.scss']
 })
 export class LessonAdminComponent implements OnInit {
-
+  isOpen:boolean=false
   allLecture:Lectures[]=[]
   constructor(private lectureService:LecturesService) { }
-
+  addNew(){
+    this.isOpen=!this.isOpen
+  }
   ngOnInit(): void {
     this.getAllLecture()
   }
