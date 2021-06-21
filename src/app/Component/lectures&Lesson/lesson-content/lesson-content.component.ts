@@ -45,7 +45,7 @@ export class LessonContentComponent implements OnInit {
   allQuestion:Question
   StudentAnswerByLesson:StudentAnswer[]
   StudentAnswer:StudentAnswer
-  QOptionsList:QOptions
+  QOptionsList:QOptions[]
   CoursesVideos:CourseVideos
   correctAn:any
   currentStudent:string
@@ -56,7 +56,7 @@ export class LessonContentComponent implements OnInit {
   mayBeAnswer:any
   lastAnswerOfTrueAndFalse:string
   AnswerOfTrueAndFalse:StudentAnswer
-
+   id:any
   progressId:number=0;
   LessonSearchList:Lesson[]=[]
 
@@ -78,6 +78,8 @@ ngOnChanges():void{
   ) { }
 
   ngOnInit(): void {
+    // this.QOptionsList={opt1:"",opt2:"",opt3:"",opt4:"",right:"",qustionId:1,id:1}
+
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
     console.log("iiiiiiiiiid",this.idUrl)
     this.getLessonById(this.idUrl)
@@ -190,6 +192,7 @@ ngOnChanges():void{
     })
   }
   getQuestionsByLessonContent(id:number){
+    this.getOptions(id)
     console.log("first")
     this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
       this.QByLessonContent=sucess,
@@ -210,34 +213,21 @@ ngOnChanges():void{
       }
       })
   }
-//   getStudentAnswerByLessonContent(id:number){
-//     console.log("first")
-//     this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-//       this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
-//   })
-// }
+
  getStudentAnswerByLessonContent(id:number){
   console.log("first")
   this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
     // this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
 })
 }
-// getAllQuestions(){
-//   console.log("first")
-//   this.QuestionsServices.getAllQuestions().subscribe(sucess=>{
-//     this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
-// })
-// }
+
 getAllQuestions(id:number){
   console.log("first")
   this.QuestionsServices.getQuestionsById(id).subscribe(sucess=>{
     this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
 })
 }
-SubmitAnswer(id:number){
-  this.getStudentAnswer(id)
-  // this.postStudentAnswer()
-}
+
 getStudentAnswer(id:any){
 this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
   data=>
@@ -252,57 +242,56 @@ this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
   })
   
 }
-postStudentAnswer(user:StudentAnswer){
+postAnswer(user:number){
+  
   this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
     data=>
     {    
     console.log("enter1") 
-    // data.id=id
-    console.log("id",user,data)
+    this.id=data.id;
+   
   
-    this.StudentASService.PostStudentAnswer(user).subscribe(
+    this.StudentASService.PostStudentAnswer(this.id).subscribe(
       sucess=>
       {
         console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
       })  
     })
 
-<<<<<<< HEAD
   }
-  getOptions(id:number){
-    
+getOptions(id:number){
       this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(
         sucess=>
         {
           this.QOptionsList=sucess
-          console.log("ccoop",this.QOptionsList)
-        })  
-    
-  
-    }
-  searchLesson(crsId:number,SearchLessonItem:string){  
-    this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
-      lessonsdata=>{
-        this.SearchFlagLesson=true;
-        this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
-      }
-    )
-    console.log("oooooooooooooooo",crsId,SearchLessonItem)
-    console.log("oooooooooooooooo",this.LessonSearchList)
-=======
-}
-searchLesson(crsId:number,SearchLessonItem:string){  
-  this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
-    lessonsdata=>{
-      this.SearchFlagLesson=true;
-      this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
-    }
-  )
-  console.log("oooooooooooooooo",crsId,SearchLessonItem)
-  console.log("oooooooooooooooo",this.LessonSearchList)
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
+          console.log("ccoop",this.QOptionsList,this.QOptionsList)
+        })
 
-}
+    }
+    check(value:string,index:number){
+      // this.QOptionsList=value
+    }
+//   searchLesson(crsId:number,SearchLessonItem:string){  
+//     this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+//       lessonsdata=>{
+//         this.SearchFlagLesson=true;
+//         this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
+//       }
+//     )
+//     console.log("oooooooooooooooo",crsId,SearchLessonItem)
+//     console.log("oooooooooooooooo",this.LessonSearchList)
+// }
+// searchLesson(crsId:number,SearchLessonItem:string){  
+//   this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+//     lessonsdata=>{
+//       this.SearchFlagLesson=true;
+//       this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
+//     }
+//   )
+//   console.log("oooooooooooooooo",crsId,SearchLessonItem)
+//   console.log("oooooooooooooooo",this.LessonSearchList)
+
+// }
 answerMayOfTrueAndFalse(answer:any){
   console.log("ans",answer)
   this.mayBeAnswer = answer

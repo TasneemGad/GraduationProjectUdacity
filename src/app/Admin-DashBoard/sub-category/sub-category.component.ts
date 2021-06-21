@@ -75,10 +75,11 @@ export class SubCategoryComponent implements OnInit {
       console.log("delete",sucess,id)
     })
   }
-  updateItem(id:number , update:ISubCategory){
-    this.SubCategoryServices.UpdateSubCategory(id ,update).subscribe(sucess=>{
-      console.log("ee",sucess)
-    })
+ updateItem(){
+  //   this.AddSubCategory();
+  //   this.SubCategoryServices.UpdateSubCategory(this.addSubCategory.id).subscribe(sucess=>{
+  //     console.log("ee",sucess)
+  //   })
   }
   updateElement(id:number){
     this.isUpdate=!this.isUpdate

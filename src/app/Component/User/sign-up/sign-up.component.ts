@@ -90,10 +90,7 @@ export class SignUpComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
-=======
   
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
 
   getErrorMessage() {
     if (this.RegisterForm.get('Email')?.hasError('required')) {

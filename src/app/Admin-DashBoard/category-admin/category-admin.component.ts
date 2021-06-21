@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryAdminComponent implements OnInit {
 
   constructor() { }
-
+  isOpen:boolean=false
+  addNew(){
+    this.isOpen=!this.isOpen
+  }
   ngOnInit(): void {
   }
 

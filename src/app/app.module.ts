@@ -41,14 +41,11 @@ import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
 import { UploadComponent } from './reusableComponents/upload/upload.component';
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
-<<<<<<< HEAD
 import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
 import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
-=======
-import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 
 
 @NgModule({
@@ -88,14 +85,11 @@ import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admi
     CoursesFilterPipe,
     AdminDashBoardComponent,
     SubCategoryComponent,
-<<<<<<< HEAD
     LecturesAdminComponent,
-    LessonContentAdminComponent
-=======
+    LessonContentAdminComponent,
     CategoryAdminComponent,
     CourseAdminComponent,
     LessonAdminComponent
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
   ],
   imports: [
     BrowserModule,

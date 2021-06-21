@@ -14,36 +14,8 @@
 
 </div>
 <button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Sub Category </button>
-<div *ngIf="isOpen then name"></div>
-<ng-template #name>
-  <div class="formAdd">
-    <form (ngSubmit)="onsubmit()" [formGroup]="addSubCategoryForm">
-      {{ addSubCategoryForm.value | json }}
-      <div class="form-row">
-        <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
-        <div class="col-lg-6">
-        <h1>  Add Sub Category Title</h1>
-          <input type="text" class="form-control" placeholder="tilte" formControlName="subCategoryTitle">
-        </div>
-        <div class="col">
-          <h1>  Add Sub Category Description</h1>
-          <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion">
-        </div>
-        <div class="col-lg-6">
-          <h1>Choose Category</h1>
-          <div class="input-group " style="width: 350px;">
-            <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
-            <option selected>Choose Category</option>
-              <option  *ngFor="let i of allCategory async" [value]="i.id">{{i.catName}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Sub Category</button>
-    </form>
-    </div>
-</ng-template>
 <div *ngIf="isOpen then tab"></div>
+
 <ng-template #tab>
   <table class="table table-hover" style="width: 900px;margin-left: 150px;align-content: center;margin-top: 80px;">
     <thead >
@@ -69,33 +41,34 @@
     </tbody>
   </table>
 </ng-template>
-
-
-<div *ngIf="isUpdate then item"></div>
-<ng-template #item>
+<div *ngIf="isOpen then name"></div>
+<ng-template #name>
   <div class="formAdd">
-    <!-- <form (ngSubmit)="onsubmit()" [formGroup]="addSubCategoryForm"> -->
+    <form (ngSubmit)="onsubmit()" [formGroup]="addSubCategoryForm">
       {{ addSubCategoryForm.value | json }}
       <div class="form-row">
-        <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
-        <div class="col-lg-6"   >
+        <div class="col-lg-6">
         <h1>  Add Sub Category Title</h1>
           <input type="text" class="form-control" placeholder="tilte" formControlName="subCategoryTitle" [value]="SubCategoryByid.subCategoryTitle">
         </div>
         <div class="col">
           <h1>  Add Sub Category Description</h1>
-          <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion" [value]="SubCategoryByid.subCategoryDescribtion">
+          <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion"  [value]="SubCategoryByid.subCategoryDescribtion">
         </div>
         <div class="col-lg-6">
           <h1>Choose Category</h1>
-          
           <div class="input-group " style="width: 350px;">
-          <input type="text" class="form-control"  formControlName="categoryID" [value]="SubCategoryByid.categoryID">
+            <select class="custom-select-sm btn btn-block  btn-outline-dark" id="inputGroupSelect01" formControlName="categoryID">
+            <option selected>Choose Category</option>
+              <option  *ngFor="let i of allCategory async" [value]="i.id">{{i.catName}}</option>
+            </select>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-outline-light " id="btnAdd">Update  Sub Category</button>
-    <!-- </form> -->
+      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Sub Category</button>
+    </form>
     </div>
 </ng-template>
+
+
 

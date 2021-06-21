@@ -1,22 +1,26 @@
-<div class="home">
-    <h1 class="titel">Category</h1>
-    <h4 class="description">Add New Category</h4><br><br>
-    <form>
-        <div>
-            <mat-label>Name: &nbsp;</mat-label><br>
-            <input type="text">
-        </div><br>
-
-        <div>
-            <mat-label>Image: &nbsp;</mat-label><br>
-            <input type="text">
-        </div><br>
-
-        <div>
-            <mat-label>Description: &nbsp;</mat-label><br>
-            <input type="text">
-        </div><br>
-
-        <button mat-button type="submit">SUBMIT</button>
-    </form>
-</div>
+<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Category </button>
+<div *ngIf="isOpen then tab"></div>
+<ng-template #tab>
+    <div class="home">
+        <h1 class="titel">Category</h1>
+        <h4 class="description">Add New Category</h4><br><br>
+        <form>
+            <div>
+                <mat-label>Name: &nbsp;</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Image: &nbsp;</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Description: &nbsp;</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <button mat-button type="submit">SUBMIT</button>
+        </form>
+    </div>
+</ng-template>

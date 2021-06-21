@@ -47,11 +47,7 @@
         <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
 
-<<<<<<< HEAD
      <!-- <div class="nav">
-=======
-    <div class="nav">
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
         <div>
             <mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon>
         </div>
@@ -70,15 +66,9 @@
                         <video controls width="90%">
                             <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
                         </video>
-<<<<<<< HEAD
                     </div> 
-                <!-- <div class="questionMcq">
-=======
-                    </div>
-
-                <div class="questionMcq">
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
-                    <div *ngFor="let i of optionalQuestion ;let e=index" class="questionMcq">
+                 <div class="questionMcq">
+                    <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
                         <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
                         <div class="container" style="border-radius: 25px ;padding: 30px;margin-left: 40px;">
                             <mat-card style="height: auto;">
@@ -88,38 +78,41 @@
                                         <td>{{i.title}}</td>
                                     </div>
                                     <hr>
-                                    <div class="questionMcq">
+                                    <div class="questionMcq" *ngFor="let item of QOptionsList">
+                                        <div *ngIf="item.qustionId==i.id">
+
                                         <mat-radio-group aria-label="Select an option">
-                                            <mat-radio-button color="primary" value="1"
-                                                class="questionMcq" >{{QOptionsList.Opt1}}
+                                            <mat-radio-button color="primary"  [value]="1" #h (click)="check(h.value,e)"
+                                                class="questionMcq" >
+                                                {{item.opt1}}
                                             </mat-radio-button>
-                                           <mat-radio-button color="primary" value="2"
-                                            class="questionMcq" >{{QOptionsList.Opt2}}
+                                            <mat-radio-button color="primary" value="2"
+                                            class="questionMcq" >
+                                            {{item.opt2}}
                                         </mat-radio-button>
-                                         <mat-radio-button color="primary" value="3"
-                                        class="questionMcq" >{{QOptionsList.Opt3}}
+                                        <mat-radio-button color="primary" value="3"
+                                        class="questionMcq" >
+                                        {{item.opt3}}
                                     </mat-radio-button>
                                     <mat-radio-button color="primary" value="4"
-                                    class="questionMcq" >{{QOptionsList.Opt4}}
+                                    class="questionMcq" >
+                                    {{item.opt4}}
                                 </mat-radio-button>
                                         </mat-radio-group>
+                            </div>
+
                                     </div>
                                 </mat-card-title>
                             </mat-card>
                         </div>
-                        <button mat-raised-button class="btnSave" (click)="SubmitAnswer(i.id)">Submit</button>
+                        <button mat-raised-button class="btnSave" (click)="postAnswer(i.id)">Submit</button>
 
                     </div>
-             </div>  -->
+             </div>  
 
 
-<<<<<<< HEAD
-                    <div class="questionPart"> 
-                        <div *ngFor="let question of trueAndFalseQuestion">
-=======
-                   <div class="questionPart"> 
+                   <!-- <div class="questionPart"> 
                         <div *ngFor="let question of QByLessonContent">
->>>>>>> 15332c870a34b9011799ce8eec948897d5a8bcf9
                             <div>
                                 <mat-card class="questionCard ">
                                     <div class="question">
@@ -159,7 +152,7 @@
                             <button type="submit" class="btnSubmit" mat-raised-button
                                 color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
                         </div>
-                    </div>    
+                    </div>     -->
                  </mat-sidenav-container> 
 
              </div>

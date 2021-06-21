@@ -15,39 +15,7 @@
  
    </div>
 <button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Lectures </button>
-<div *ngIf="isOpen then name"></div>
-<ng-template #name>
-  <div class="formAdd">
-    <form (ngSubmit)="onsubmit()" [formGroup]="addLecturesForm">
-      {{ addLecturesForm.value | json }}
-      <div class="form-row">
-        <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
-        <div class="col-lg-6">
-        <h1>  Add Course title</h1>
-          <input type="text" class="form-control" placeholder="tilte" formControlName="tilte">
-        </div>
-        <div class="col-6">
-          <h1>  Add lesson Number</h1>
-            <input type="number" class="form-control" placeholder="lessoneNumber" formControlName="lessoneNumber">
-          </div>
-        <div class="col">
-          <h1>  Add lecture Description</h1>
-          <input type="text" class="form-control" placeholder="lecture Description" formControlName="lectureDescription">
-        </div>
-        <div class="col-lg-6" >
-          <h1>Choose Course</h1>
-          <div class="input-group"  style="width: 350px;" >
-            <select   class="custom-select-sm btn btn-block  btn-outline-dark"  id="inputGroupSelect01" formControlName="courseId">
-              <option selected >Choose</option>
-              <option  *ngFor="let i of allCourses" [value]="i.id">{{i.name}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Lectures</button>
-    </form>
-    </div>
-</ng-template>
+
 <div *ngIf="isOpen then tab"></div>
 <ng-template #tab>
   <table class="table table-hover" style="width: 900px;margin-left: 150px;align-content: center;margin-top: 80px;">
@@ -70,9 +38,45 @@
         <td>{{item.courseId}}</td>
         <td>{{item.lessoneNumber}}</td>
         <td  style="width: 600px;">{{item.lectureDescription}}</td>
-        <td><button class="btn btn-outline-dark" (click)="updateItem(item.id,item)">Update</button></td>
+        <td><button class="btn btn-outline-dark" (click)="updateElement(item.id)">Update</button></td>
         <td><button class="btn btn-outline-dark" (click)="DeleteItem(item.id)">Delete</button></td>    
       </tr>
     </tbody>
   </table>
 </ng-template>
+
+
+<div *ngIf="isOpen then name"></div>
+<ng-template #name>
+  <div class="formAdd">
+    <form (ngSubmit)="onsubmit()" [formGroup]="addLecturesForm">
+      {{ addLecturesForm.value | json }}
+      <div class="form-row">
+        <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
+        <div class="col-lg-6">
+        <h1>  Add Course title</h1>
+          <input type="text" class="form-control" placeholder="tilte" formControlName="tilte" [value]="LectureByid.tilte">
+        </div>
+        <div class="col-6">
+          <h1>  Add lesson Number</h1>
+            <input type="number" class="form-control" placeholder="lessoneNumber" formControlName="lessoneNumber" [value]="LectureByid.lessoneNumber">
+          </div>
+        <div class="col">
+          <h1>  Add lecture Description</h1>
+          <input type="text" class="form-control" placeholder="lecture Description" formControlName="lectureDescription" [value]="LectureByid.lectureDescription">
+        </div>
+        <div class="col-lg-6" >
+          <h1>Choose Course</h1>
+          <div class="input-group"  style="width: 350px;" >
+            <select   class="custom-select-sm btn btn-block  btn-outline-dark"  id="inputGroupSelect01" formControlName="courseId">
+              <option selected >Choose</option>
+              <option  *ngFor="let i of allCourses" [value]="i.id">{{i.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-light " id="btnAdd">Add Lectures</button>
+    </form>
+    </div>
+</ng-template>
+

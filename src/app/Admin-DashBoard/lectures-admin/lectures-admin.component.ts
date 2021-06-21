@@ -19,6 +19,7 @@ export class LecturesAdminComponent implements OnInit {
   addLectures:Lectures
   allLecture:Lectures[]
   allCourses:ICourse[]
+  LectureByid:Lectures
   constructor(private fb:FormBuilder , private lectureServices:LecturesService ,
     private CoursesService :CoursesService, private router :Router
     ) {}
@@ -67,7 +68,7 @@ this.addLecturesForm=this.fb.group({
      console.log("lec",this.allCourses)
    })
   }
-  DeleteItem(id:number){
+  DeleteItem(id:any){
     this.lectureServices.deleteLectures(id).subscribe(sucess=>{
       console.log("enter",sucess)
     })
@@ -77,4 +78,10 @@ this.addLecturesForm=this.fb.group({
       console.log("ee",sucess)
     })
   }
+  updateElement(id:any){
+    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+      this.LectureByid=sucess 
+      console.log("enter",id)
+  })
+}
 }
