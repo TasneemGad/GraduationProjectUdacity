@@ -23,6 +23,7 @@ import { BecomeAnInstractorComponent } from './Component/become-an-instractor/be
 import { OverViewComponent } from './Component/over-view/over-view.component';
 import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     GovernmentComponent,
     BecomeAnInstractorComponent,
     OverViewComponent,
-    StudentSucessComponent
+    StudentSucessComponent,
+    BecomeAMentorComponent
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,9 @@ export class MentorOrInstractorService {
 
  
  getAllMentor():Observable<IMentorOrInstractor[]> {
-  return this.http.get<IMentorOrInstractor[]>(API_URL+"/MentorStories")    
+  return this.http.get<IMentorOrInstractor[]>(API_URL+"/MentorStories/").pipe(catchError((err)=>{
+    return throwError(err.massage || "Error")
+}))  
 }
  
 }
