@@ -30,13 +30,13 @@
                 <div>
                     <mat-form-field class="example-full-width">
                         <input type="text" matInput placeholder="Your Name" formControlName="UserName" required>
-                        <!-- <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error> -->
+                        <mat-error *ngIf="UserName.invalid  && UserName.touched">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
 
                     <mat-form-field class="example-full-width">
                         <input class="example-full-width" placeholder="Password" matInput [type]="hide ? 'password' : 'text'" formControlName="PasswordHash" required>
-                        <!-- <mat-error *ngIf="PasswordHash.invalid  && PasswordHash.touched">{{getErrorMessage()}}</mat-error> -->
+                        <mat-error *ngIf="PasswordHash.invalid  && PasswordHash.touched">{{getErrorMessage2()}}</mat-error>
     
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">

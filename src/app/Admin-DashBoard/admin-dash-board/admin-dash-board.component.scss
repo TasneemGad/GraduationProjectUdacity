@@ -1,0 +1,92 @@
+mat-sidenav-container{
+    height: 100%;
+}
+mat-sidenav{
+    background-color:#001d25;
+    width: 18%;
+    color: white;
+    height: 100%;
+    position: fixed;
+}
+mat-sidenav , mat-sidenav-content{
+    padding: 16px;
+}
+#one{
+    line-height: 50px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+#two{
+    line-height: 50px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+#three{
+    line-height: 50px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+.tabsBottom{
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+}
+mat-icon{
+    margin-right: 20px;
+}
+#nav{
+    background-color: white;
+    box-shadow:2px 4px 15px rgb(185, 184, 184);
+    width: 100%;
+    height: auto;
+    padding: 20px 0px 20px 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    font-size: 20px;
+}
+.content{
+    padding: 20px 0px 10px 60px;
+    font-size: 15px;
+}
+.sectionCourses{
+    font-size:17px; 
+    opacity: .7;
+    color:#00485c;
+    font-weight:600;
+}
+.cardCourses{
+    width: 90%;
+    margin: 0 auto;
+}
+.section{
+    color: rgb(124, 124, 124);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.courses{
+    width: 90%;
+    height: auto;
+    padding: 30px;
+    background-color: rgb(241, 250, 250);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+}
+.btnDiv{
+    position: absolute;
+    right: 15px;
+}
+.btnCourse{
+    background-color: #017a9b;
+    height: 50px;
+    margin-top: 15%;
+}
+.mat-icon {
+    padding-left: 5px;
+    width: 5px;
+}

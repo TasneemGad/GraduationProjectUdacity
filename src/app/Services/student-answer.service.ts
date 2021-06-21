@@ -8,7 +8,7 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root'
 })
 export class StudentAnswerService {
-StudentAnswerUrl="https://localhost:44326/api/StudentAnswer/GetAllStudentAnswersByLessonContent"
+StudentAnswerUrl="https://localhost:44326/api/StudentAnswer"
 StudentAnswerLessonContentUrl="https://localhost:44326/api/StudentAnswer/GetAllStudentAnswersByLessonContent/"
 
   constructor(private http:HttpClient,private token:AuthenticationService) { }
@@ -18,6 +18,9 @@ StudentAnswerLessonContentUrl="https://localhost:44326/api/StudentAnswer/GetAllS
    getStudentAnswerById(id:number):Observable<StudentAnswer>{
      return this.http.get<StudentAnswer>(this.StudentAnswerUrl+"/"+id).pipe()
     }
+    PostStudentAnswer(Answer:StudentAnswer):Observable<StudentAnswer[]>{
+      return this.http.post<StudentAnswer[]>(this.StudentAnswerUrl,Answer).pipe()
+     }
     getStudentAnswerByLessonContent(id:number):Observable<StudentAnswer[]>{
      console.log("second")
      return this.http.get<StudentAnswer[]>(this.StudentAnswerLessonContentUrl+id+"/"+this.token.getUserId()).pipe()

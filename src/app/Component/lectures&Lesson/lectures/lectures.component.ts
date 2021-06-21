@@ -22,9 +22,10 @@ export class LecturesComponent implements OnInit {
   Isdetails:boolean=true
   indexLecture:number
   NextLecture:Lectures={id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}
-  
   LessonByLectureID: Lesson[];
   clickedLecture: Lectures;
+  searchLectureList:Lectures[]=[{id:1,courseId:3,lectureDescription:"",lessoneNumber:3,tilte:"mm"}];
+  SearchFlag=false;
   // NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
     private courseServices:CoursesService,private router:Router, 
@@ -179,6 +180,17 @@ goto(id:any,text:any){
       this.showNext = true
     }
 
+  }
+
+  SearchinLecture(crsID:number,searchLectureItem:string):any{
+
+    this.lectureServices.getLecturesByCoursID(crsID).subscribe(
+      lectureList=>{
+          this.searchLectureList=lectureList.filter(Lecture =>Lecture.tilte.toLocaleLowerCase().includes(searchLectureItem) ||  Lecture.lectureDescription.toLocaleLowerCase().includes(searchLectureItem) )
+          this.SearchFlag=true;
+          console.log("kkkkkkkkkkkkkkkkkkkkkkkkkk",this.searchLectureList)
+      }
+    )  
   }
  
 }

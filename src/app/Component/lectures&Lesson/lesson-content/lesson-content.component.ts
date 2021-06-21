@@ -18,6 +18,9 @@ import { Question } from 'src/app/SharedModels/Interface/IQestions';
 import { QuestionsService } from 'src/app/Services/questions.service';
 import { StudentAnswerService } from 'src/app/Services/student-answer.service';
 import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
+import { AccountService } from 'src/app/Services/account.service';
+import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
+import { QuestionOptionsService } from 'src/app/Services/question-options.service';
 
 
 @Component({
@@ -31,18 +34,25 @@ export class LessonContentComponent implements OnInit {
   idUrl:any
   IsOpened = true
   checkExist:boolean=false;
+  SearchFlagLesson=false;
   currentCourseToSearch:any =""
   watchObj:IwatchContent={id:0,whatchedOrNot:0,crsID:0,stID:"",lessonContentID:0}
-  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd"}
+  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
   allContentCurrentLesson:LessonContent[]=[];
   CurrentLesson:LessonContent
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
+  allQuestion:Question
+  StudentAnswerByLesson:StudentAnswer[]
+  StudentAnswer:StudentAnswer
+  QOptionsList:QOptions
+  CoursesVideos:CourseVideos
+  correctAn:any
   trueAndFalseQuestion:Question[]
   dragAndDropQuestion:Question[]
   optionalQuestion:Question[]
-  StudentAnswer:StudentAnswer[]
-  CoursesVideos:CourseVideos
+  progressId:number=0;
+  LessonSearchList:Lesson[]=[]
 
 @Input() CourseId:any
 
@@ -57,8 +67,9 @@ ngOnChanges():void{
     private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
     private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
     private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
-    private  StudentASService:StudentAnswerService
-    ) { }
+  private  StudentASService:StudentAnswerService,private accountService:AccountService   ,
+  private OptionServices:QuestionOptionsService
+  ) { }
 
   ngOnInit(): void {
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
@@ -79,7 +90,7 @@ ngOnChanges():void{
           this.courseServices.getCoursesByID(sucess.courseId).subscribe(
             data => {
 
-              this.currentCourseToSearch = data.name              
+              this.currentCourseToSearch = data              
               console.log("sc",this.currentCourseToSearch)              
               return data.id
             })
@@ -95,6 +106,8 @@ ngOnChanges():void{
       this.getLessonOneById(id)
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
+      this.getAllQuestions(id);
+      // this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
@@ -106,6 +119,8 @@ ngOnChanges():void{
     this.getLessonOneById(id);
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
+    this.getAllQuestions(id);
+    // this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -192,10 +207,73 @@ ngOnChanges():void{
       })
   }
 
-  getStudentAnswerByLessonContent(id:number){
-    console.log("first")
-    this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-      this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+//   getStudentAnswerByLessonContent(id:number){
+//     console.log("first")
+//     this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+//       this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+//   })
+// }
+ getStudentAnswerByLessonContent(id:number){
+  console.log("first")
+  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
+    // this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+})
+}
+// getAllQuestions(){
+//   console.log("first")
+//   this.QuestionsServices.getAllQuestions().subscribe(sucess=>{
+//     this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
+// })
+// }
+getAllQuestions(id:number){
+  console.log("first")
+  this.QuestionsServices.getQuestionsById(id).subscribe(sucess=>{
+    this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
+})
+}
+SubmitAnswer(id:number){
+  this.getStudentAnswer(id)
+  // this.postStudentAnswer()
+}
+getStudentAnswer(id:any){
+this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+  data=>
+  {    
+  console.log("enter1") 
+  // data.id=id
+  console.log("id",id,data)
+
+  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(
+    sucess=>
+    {console.log("cc",id,this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
   })
+}
+postStudentAnswer(user:StudentAnswer){
+  this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+    data=>
+    {    
+    console.log("enter1") 
+    // data.id=id
+    console.log("id",user,data)
+  
+    this.StudentASService.PostStudentAnswer(user).subscribe(
+      sucess=>
+      {
+        console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
+      })  
+    })
+
+  }
+
+  searchLesson(crsId:number,SearchLessonItem:string){  
+    this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+      lessonsdata=>{
+        this.SearchFlagLesson=true;
+        this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
+      }
+    )
+    console.log("oooooooooooooooo",crsId,SearchLessonItem)
+    console.log("oooooooooooooooo",this.LessonSearchList)
+
   }
 }

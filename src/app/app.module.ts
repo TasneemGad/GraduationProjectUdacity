@@ -38,7 +38,13 @@ import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
+<<<<<<< HEAD
 import { UploadComponent } from './reusableComponents/upload/upload.component';
+=======
+import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+
+>>>>>>> 9641ca1c117d5604267ad78d314c8b9a3bba08df
 
 @NgModule({
   declarations: [
@@ -69,10 +75,17 @@ import { UploadComponent } from './reusableComponents/upload/upload.component';
     ResourcesComponent,
     LessonDataComponent,
     AboutASComponent,
+<<<<<<< HEAD
     CatalogComponent,
     CoursesFilterPipe,
     UploadComponent,
     
+=======
+    CatalogComponent,    
+    CoursesFilterPipe,
+    AdminDashBoardComponent,
+    SubCategoryComponent
+>>>>>>> 9641ca1c117d5604267ad78d314c8b9a3bba08df
   ],
   imports: [
     BrowserModule,

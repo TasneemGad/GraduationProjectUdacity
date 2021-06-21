@@ -1,7 +1,7 @@
 export interface StudentAnswer{
-     id :number
-     Studentanswer :string
-     QuestionId :number
+     id? :number
+     studentanswer :string
+     questionId :number
      lessonContentId:number
-     StudentId:number
+     studentId:number
 }
