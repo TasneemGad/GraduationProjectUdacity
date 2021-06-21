@@ -1,9 +1,13 @@
 <mat-toolbar>
     <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg" >
     <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
-    
-    <button mat-button  class="menuData" style="margin-left: 210px;" routerLink="/DashBoard">Admin</button>
-
+    <div *ngIf="isLoggedIn()&& role()==='Admin';then Admin else NotAdmin"></div>
+      <ng-template #Admin >
+      <button mat-button  class="menuData" style="margin-left: 210px;" routerLink="/DashBoard">Admin</button>
+     </ng-template>
+     <ng-template #NotAdmin >
+       <p style="margin-left: 210px;"></p>
+     </ng-template>
 
     <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 10px;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 

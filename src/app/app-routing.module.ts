@@ -29,6 +29,9 @@ import { CatalogComponent } from './Component/catalog/catalog.component';
 import {UploadComponent} from './reusableComponents/upload/upload.component';
 
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
+import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 
 const routes: Routes = [
   // Routing
@@ -91,7 +94,12 @@ const routes: Routes = [
     children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
   },
 //Admin
-   {path:"DashBoard" ,component:AdminDashBoardComponent},
+   {path:"DashBoard" ,component:AdminDashBoardComponent,
+   children:[
+            {path:"Category" ,component:CategoryAdminComponent},
+            {path:"Course" ,component:CourseAdminComponent},
+            {path:"Lesson" ,component:LessonAdminComponent},
+   ]},
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', redirectTo: '/Home', pathMatch: 'full' },
