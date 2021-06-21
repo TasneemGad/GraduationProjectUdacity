@@ -49,15 +49,17 @@
 <div *ngIf="isOpen then name"></div>
 <ng-template #name>
   <div class="formAdd">
+    <h1 class="titel">Lectures</h1>
+    <h4 class="description">Add Lectures</h4><br><br>
     <form (ngSubmit)="onsubmit()" [formGroup]="addLecturesForm">
       {{ addLecturesForm.value | json }}
-      <div class="form-row">
+      <div class="mb-3">
         <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
-        <div class="col-lg-6">
+        <div class="col">
         <h1>  Add Course title</h1>
           <input type="text" class="form-control" placeholder="tilte" formControlName="tilte" [value]="LectureByid.tilte">
         </div>
-        <div class="col-6">
+        <div class="col">
           <h1>  Add lesson Number</h1>
             <input type="number" class="form-control" placeholder="lessoneNumber" formControlName="lessoneNumber" [value]="LectureByid.lessoneNumber">
           </div>
@@ -65,7 +67,7 @@
           <h1>  Add lecture Description</h1>
           <input type="text" class="form-control" placeholder="lecture Description" formControlName="lectureDescription" [value]="LectureByid.lectureDescription">
         </div>
-        <div class="col-lg-6" >
+        <div class="col" >
           <h1>Choose Course</h1>
           <div class="input-group"  style="width: 350px;" >
             <select   class="custom-select-sm btn btn-block  btn-outline-dark"  id="inputGroupSelect01" formControlName="courseId">
