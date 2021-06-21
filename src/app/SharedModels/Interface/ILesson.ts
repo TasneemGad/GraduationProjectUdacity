@@ -5,7 +5,7 @@ export interface Lesson {
     type: string
     contentNumber: number
     duration:number
-    lectureId :number
-    crsId:number
+    lectureId? :number
+    crsId?:number
 
 }

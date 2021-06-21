@@ -107,7 +107,7 @@ ngOnChanges():void{
       this.getVideosById(id);
       this.getQuestionsByLessonContent(id)
       this.getAllQuestions(id);
-      // this.getOptions(id)
+      this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
@@ -120,7 +120,7 @@ ngOnChanges():void{
     this.getVideosById(id)
     this.getQuestionsByLessonContent(id)
     this.getAllQuestions(id);
-    // this.getOptions(id)
+    this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
@@ -264,7 +264,17 @@ postStudentAnswer(user:StudentAnswer){
     })
 
   }
-
+  getOptions(id:number){
+    
+      this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(
+        sucess=>
+        {
+          this.QOptionsList=sucess
+          console.log("ccoop",this.QOptionsList)
+        })  
+    
+  
+    }
   searchLesson(crsId:number,SearchLessonItem:string){  
     this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
       lessonsdata=>{
