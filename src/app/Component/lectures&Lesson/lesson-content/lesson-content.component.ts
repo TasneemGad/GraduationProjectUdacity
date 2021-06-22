@@ -50,6 +50,9 @@ export class LessonContentComponent implements OnInit {
   correctAn:any
   currentStudent:string
   
+  x:boolean
+  isAnswered:string="true"
+  notAnswered : any="false"
   trueAndFalseQuestion:Question[]
   dragAndDropQuestion:Question[]
   optionalQuestion:Question[]
@@ -200,7 +203,7 @@ ngOnChanges():void{
       for(let question of sucess) {
         if(question.type == "t,f"){
           this.trueAndFalseQuestion?.push(question)
-          console.log("t,f",question)
+          console.log("t,f",question.title)
         } 
         else if(question.type == "options") {
           this.optionalQuestion?.push(question)
@@ -299,10 +302,10 @@ answerMayOfTrueAndFalse(answer:any){
 finalAnswerOfTrueAndFalse(id:number,idContent:any){
   this.lastAnswerOfTrueAndFalse = this.mayBeAnswer
   console.log("lastAns",this.lastAnswerOfTrueAndFalse)
-  this.accountService.getStudentInformation(this.token.getUserId()).subscribe(data=>{
-    this.currentStudent = data.id
-  })
-  this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.currentStudent ,studentanswer:this.lastAnswerOfTrueAndFalse}
+  // this.accountService.getStudentInformation(this.token.getUserId()).subscribe(data=>{
+  //   this.currentStudent = data.id
+  // })
+  this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
   console.log("testannnnnnnnnnnnnnn",this.AnswerOfTrueAndFalse)
   this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
     console.log("testand",data)

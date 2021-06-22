@@ -29,10 +29,21 @@ input, select{
     float: right;
     border-radius: 10px;
 }
+thead{
+    background-color: rgb(1, 59, 59);
+    align-content: center;
+    color: white;
+}
+#all{
+    font-size: 15px; 
+    font-family: 100;
+}
+.titelTabel{
+    font-weight: 100;
+}
 #btn{
     margin: 60px;
     color: rgb(1, 59, 59);
-    
 }
 #btn:hover{
     color: white;

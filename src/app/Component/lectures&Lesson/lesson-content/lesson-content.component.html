@@ -111,7 +111,7 @@
              </div>  
 
 
-                   <!-- <div class="questionPart"> 
+                   <div class="questionPart"> 
                         <div *ngFor="let question of QByLessonContent">
                             <div>
                                 <mat-card class="questionCard ">
@@ -121,16 +121,18 @@
                                     </div>
                                     <hr>
                                     <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
-                                        <div *ngIf="alreadyAnsert.questionId==question.id then answered  else notAnswered"></div>
-                                            <ng-template #answered>
-                                                <div *ngIf="alreadyAnsert.studentanswer=='true'; then trueAns else falseAns "></div>
-                                                    <ng-template #trueAns>
-                                                        <mat-radio-group aria-label="Select an option">
-                                                            <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
-                                                            <hr>
-                                                            <mat-radio-button class="trueOrFalse" value="false">False</mat-radio-button>
-                                                        </mat-radio-group>
-                                                    </ng-template>
+
+                                        <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer==isAnswered; then trueAns"></div>
+                                                        <ng-template #trueAns>
+                                                            1
+                                                            <mat-radio-group aria-label="Select an option">
+                                                                <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
+                                                                <hr>
+                                                                <mat-radio-button class="trueOrFalse" value="false">False</mat-radio-button>
+                                                            </mat-radio-group>
+                                                        </ng-template>
+                                                    <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer == notAnswered then falseAns"></div>
+                                                  t{{alreadyAnsert.studentanswer == notAnswered}}
                                                     <ng-template #falseAns>
                                                         <mat-radio-group aria-label="Select an option">
                                                             <mat-radio-button class="trueOrFalse" #answerTrue value="true" >True</mat-radio-button>
@@ -138,21 +140,31 @@
                                                             <mat-radio-button class="trueOrFalse" value="false" checked>False</mat-radio-button>
                                                         </mat-radio-group>
                                                     </ng-template>
-                                            </ng-template>
-                                            <ng-template #notAnswered>
-                                                <mat-radio-group aria-label="Select an option">
-                                                    <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerTrue.value)" #answerTrue value="true">True</mat-radio-button>
-                                                    <hr>
-                                                    <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerFalse.value)" #answerFalse value="false">False</mat-radio-button>
-                                                </mat-radio-group>
-                                            </ng-template>
+                                            
+                                            <ng-template #o></ng-template>
                                         </div>
+                                    <!-- </div> -->
+
+                                    <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
+                                        <div *ngIf="alreadyAnsert.id == question.id">
+                                        </div>
+                                    </div>
+
+                                        <div *nIf="StudentAnswerByLesson.id.includes(question.id); else g"></div>
+                                        <ng-template #g>2
+                                            <mat-radio-group aria-label="Select an option">
+                                                <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerTrue.value)" #answerTrue value="true">True</mat-radio-button>
+                                                <hr>
+                                                <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerFalse.value)" #answerFalse value="false">False</mat-radio-button>
+                                            </mat-radio-group>
+                                        </ng-template>
+
                                 </mat-card>
                             </div>
                             <button type="submit" class="btnSubmit" mat-raised-button
                                 color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
                         </div>
-                    </div>     -->
+                    </div>    
                  </mat-sidenav-container> 
 
              </div>
