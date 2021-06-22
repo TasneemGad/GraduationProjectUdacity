@@ -21,9 +21,16 @@
     <thead >
       <tr >
         <th scope="col"class="all" >#</th>
-        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Sub category Title</th>
-        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">categoryID</th>
-        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Sub category Description</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content title</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content description</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content header</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content type</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content lectureId</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content lessonId</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Lesson Content videoLinkId</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;width: 100%;">Lesson Content questionGroupId</th>
+
+
         <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Update</th>
         <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Delete</th>
 
@@ -35,6 +42,12 @@
         <td>{{item.title}}</td>
         <td>{{item.description}}</td>
         <td  style="width: 600px;">{{item.header}}</td>
+        <td  style="width: 600px;">{{item.type}}</td>
+        <td  style="width: 600px;">{{item.lectureId}}</td>
+        <td  style="width: 600px;">{{item.lessonId}}</td>
+        <td  style="width: 600px;">{{item.videoLinkId}}</td>
+        <td  style="width: 600px;">{{item.questionGroupId}}</td>
+
         <td><button class="btn btn-outline-dark" (click)="updateElement(item.id)">Update</button></td>
         <td><button class="btn btn-outline-dark" (click)="DeleteItem(item.id)">Delete</button></td>    
       </tr>

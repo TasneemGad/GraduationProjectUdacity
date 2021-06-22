@@ -103,6 +103,7 @@ export class LessonContentAdminComponent implements OnInit {
   updateElement(id:number){
     this.isUpdate=!this.isUpdate
     this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
+      this.lessonContentById=sucess
       
     })
   }
