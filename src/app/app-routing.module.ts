@@ -14,6 +14,8 @@ import {GovernmentComponent  } from './Component/government/government.component
 import{BecomeAnInstractorComponent } from'./Component/become-an-instractor/become-an-instractor.component';
 import {OverViewComponent  } from './Component/over-view/over-view.component';
 import {ApproachComponent  } from './Component/approach/approach.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
 const routes: Routes = [
   {path:'Home', component: HomePageComponent},
   {path:'SignUP', component: SigINComponent},
@@ -29,6 +31,10 @@ const routes: Routes = [
   {path:'OverView',component: OverViewComponent},
   {path:'Approach',component: ApproachComponent},
   {path:'career-prep',component:CareerPrepComponent},
+  {path:'success',component:StudentSucessComponent},
+  {path:'start-mentoring',component:BecomeAMentorComponent},
+
+
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
 

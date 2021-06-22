@@ -1,0 +1,169 @@
+.corsalImgs
+{
+    width: fit-content;
+    height: 250px;
+}
+
+ngb-carousel .wrapper {
+    position: relative;
+    height: 0;
+    padding-top: 20%; /* Keep ratio for 900x500 images */
+  }
+  
+  ngb-carousel .wrapper>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+
+  .first
+  {
+      background-color:white;
+      width: 380px;
+      height: 300px;         
+      text-align: center;      
+      border-top: #02ccba 2px solid;     
+      border-radius: 10px; 
+      margin-top: 60px;      
+  }
+
+
+
+  .bg {    
+    background-image: linear-gradient(-60deg, #fff 30%, #9ddfd379 100%);
+}
+
+
+
+@keyframes slide {
+0% {transform:translateX(-25%);}
+100% {transform:translateX(25%);}
+}
+
+.divImagine{
+  margin-top: 20px;
+  width: 100%;
+  background-color: rgb(38, 185, 211);
+  height: 400px;
+}
+.bg-white {
+  background-color: #fff !important;
+  height: 50%;
+}
+div.container3 {
+  height: 10em;
+  position: relative }              /* 1 */
+div.container3 img {
+  margin: 0;
+  position: absolute;               /* 2 */
+  top: 50%;                         /* 3 */
+  transform: translate(0, -50%) }   /* 4 */
+
+  .contain {
+    max-width: 73.75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+.module-pathfinder .contain {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+
+.module-pathfinder__card--cta:last-child {
+  margin-right: 0;
+}
+
+.light {
+  font-weight: 300 !important;
+}
+
+.blue {
+  color: #02b3e4 !important;
+}
+.mb-half {
+  margin-bottom: 0.75rem !important;
+}
+h3, .h3 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+.cardImage {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  position: relative;
+  background: #fff;
+  box-shadow: 5px 5px 25px 0px rgb(46 61 73 / 20%);
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+.module-pathfinder__card {
+  margin-right: 1.6949152542%;
+  width: 100%;
+  height: 15rem;
+  margin-left: 0%;
+  padding: 3rem;
+}
+.module-pathfinder__card--cta {
+  float: left;
+  display: block;
+  margin-right: 1.6949152542%;
+  width: 100%;
+}
+
+.module-pathfinder__card--icon {
+  text-align: left;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  float: left;
+  display: block;
+  margin-right: 2.0408163265%;
+  width: 8.1632653061%;
+}
+
+
+.module-pathfinder__card--copy {
+  float: left;
+  display: block;
+  margin-right: 2.0408163265%;
+  width: 48.9795918367%;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: left;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.module-pathfinder__card--copy {
+  margin-bottom: 3rem;
+}
+
+.module-pathfinder .contain {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.button--white {
+  width: 13.75rem;
+  padding: 20px;
+  background-color: #02b3e4;
+  color: #fff;
+  border: .125rem solid transparent;
+}

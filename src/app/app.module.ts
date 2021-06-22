@@ -22,6 +22,9 @@ import { GovernmentComponent } from './Component/government/government.component
 import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
 import { OverViewComponent } from './Component/over-view/over-view.component';
 import { ApproachComponent } from './Component/approach/approach.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { ApproachComponent } from './Component/approach/approach.component';
     GovernmentComponent,
     BecomeAnInstractorComponent,
     OverViewComponent,
-    ApproachComponent
+    ApproachComponent,
+    StudentSucessComponent,
+    BecomeAMentorComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ import { ApproachComponent } from './Component/approach/approach.component';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CarouselModule    
+    CarouselModule,
+    NgbModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

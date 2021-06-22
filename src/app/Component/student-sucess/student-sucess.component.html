@@ -1,0 +1,119 @@
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<div class="container-fluid">
+
+<section #SectionOneQuats class="bg">
+  <div style="line-height: 50px;"> &nbsp;</div>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center;">
+      <h1 style="    font-size: 3.5em;            ">Success Stories from Our Students</h1>
+    </div>
+  </div>
+  <div style="line-height: 100px;">&nbsp;</div>
+  <div class="container-fluid">
+    <div>
+      <ngb-carousel *ngIf="studentStoryListTopFive">
+        <ng-template ngbSlide *ngFor="let studentStory of studentStoryListTopFive;index as i">
+          <div class="wrapper">
+            <div style="text-align:center;font-weight: bolder;color: lightseagreen;" class="">
+              <h1 style="font-size: xx-large;margin: 10px;padding: 10px;">"{{studentStory.story}}."</h1>
+              <h3>{{names[i]}}</h3>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</section>
+<section #SectionTwoStories>
+  <div class="row">    
+
+    <div *ngFor="let story of studentStoryList;index as i">
+      <div class="row">
+      <div class="col-md-1">&nbsp;</div>
+
+      <div class="col-md-5">
+        <div class="card first" style="box-shadow: 5px 10px  lightslategrey;">
+          <div class="imgs">
+            <img src="assets/Jesse.webp" style="width: 70px" />
+          </div>
+          <div id="remain">
+            <h1 style="
+          text-align: center;
+          font-size: 30px;
+          font-weight: 100;
+          color: black;
+        ">
+              {{names[i]}}
+            </h1>
+            <p style="color: rgb(128, 128, 128);">{{story.specialzation}}</p>
+            <h6 style="font-weight: 400; font-size: 15px">
+              {{story.story}}
+
+            </h6>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-1">&nbsp;</div>
+    </div>
+    </div>  
+
+  </div>
+
+
+</section>
+<section #blank style="line-height: 20px;"></section>
+<!-- <section #SectionThreeImagine>
+  <div class="divImagine">
+    <div class="row">
+      <div class="col-md-2">&nbsp;</div>
+      <div class="col-md-4">      
+          <div class="card container4" style="border-color: lightyellow;width: 100%;" >
+            <div class="row" >
+              <div class="col-md-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="color: lightskyblue;">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>                
+              </div>  
+              <div>
+
+              </div>          
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">&nbsp;</div>
+
+    </div>
+  </div>
+</section> -->
+
+<section class="module-pathfinder bg-gradient-secondary" style="background-color: #02b3e4;margin-top: 30px;">
+  <div class="contain">
+    <div class="cardImage module-pathfinder__card bg-white row" >  
+      <div class="col-md-2 container3 ">
+            <img alt="magnify" src="https://d125fmws0bore1.cloudfront.net/assets/svgs/icon_magnify_blue-ff7bcf6f4d2aa732141e49e2058aa844810ba446dc5ccd6243da24839faac959.svg">
+      </div>
+      <div class="col-md-4">
+        <h1 style="color: #02b3e4" >Imagine your future!</h1>
+        <br>
+        <h4>
+          What do you want to learn today? What's your dream job? Discover the program that's right for you!
+        </h4>
+      </div>
+      <div class="col-md-4" style="margin:30px;align-items: center;">
+        <button class="btn button--white" >Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
