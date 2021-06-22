@@ -25,7 +25,7 @@ export class LecturesAdminComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.addLectures={lectureDescription:"",tilte:"",lessoneNumber:1,courseId:1}
+    this.addLectures={lectureDescription:"",tilte:"",lessoneNumber:1,courseId:1,id:1}
 this.addLecturesForm=this.fb.group({
   id: [''],
   tilte:[''],
@@ -68,10 +68,15 @@ this.addLecturesForm=this.fb.group({
      console.log("lec",this.allCourses)
    })
   }
-  DeleteItem(id:any){
-    this.lectureServices.deleteLectures(id).subscribe(sucess=>{
-      console.log("enter",sucess)
-    })
+  DeleteItem(id:number){
+    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+      this.LectureByid=sucess 
+      console.log("enter",id)
+      this.lectureServices.deleteLectures(this.LectureByid.id).subscribe(sucess=>{
+        console.log("enter",sucess)
+      })
+  })
+   
   }
   updateItem(id:number , update:Lectures){
     this.lectureServices.UpdateLectures(id ,update).subscribe(sucess=>{

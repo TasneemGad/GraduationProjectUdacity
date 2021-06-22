@@ -70,10 +70,13 @@ export class SubCategoryComponent implements OnInit {
      console.log("lec",this.allCategory)
    })
   }
-  DeleteItem(id:number){
-    this.SubCategoryServices.deleteSubCategory(id).subscribe(sucess=>{
+  DeleteItem(id:any){
+    this.SubCategoryServices.getSubCategoryById(id).subscribe(sucess=>{this.SubCategoryByid=sucess,console.log("enter",id)
+ 
+    this.SubCategoryServices.deleteSubCategory(this.SubCategoryByid.id).subscribe(sucess=>{
       console.log("delete",sucess,id)
     })
+  })
   }
  updateItem(){
   //   this.AddSubCategory();

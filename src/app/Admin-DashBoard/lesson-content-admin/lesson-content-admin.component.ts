@@ -87,9 +87,13 @@ export class LessonContentAdminComponent implements OnInit {
    })
   }
   DeleteItem(id:number){
-    this.LessonContentServices.deleteLessonContent(id).subscribe(sucess=>{
-      console.log("enter",sucess)
+    this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
+      this.lessonContentById=sucess
+      this.LessonContentServices.deleteLessonContent(this.lessonContentById.id).subscribe(sucess=>{
+        console.log("enter",sucess)
+      })
     })
+   
   }
   updateItem(id:number , update:LessonContent){
     this.LessonContentServices.UpdateLessonContent(id ,update).subscribe(sucess=>{
@@ -99,7 +103,7 @@ export class LessonContentAdminComponent implements OnInit {
   updateElement(id:number){
     this.isUpdate=!this.isUpdate
     this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
-      this.lessonContentById=sucess
+      
     })
   }
 }

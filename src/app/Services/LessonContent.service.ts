@@ -10,7 +10,7 @@ import { LessonContent} from '../SharedModels/Interface/ILessonContent';
 })
 export class LessonContentService {
     lessonContentUrl="https://localhost:44326/api/lessonContent"    
-    lessonContentUrlId="https://localhost:44326/api/lessonContent"  
+    lessonContentUrlId="https://localhost:44326/api/lessonContent/"  
     lessonContentByLesson="https://localhost:44326/api/lessonContent/LessonContentByLes/"
     
     constructor(private http: HttpClient) { }
