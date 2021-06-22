@@ -47,6 +47,7 @@ import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-ad
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/categor
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    NgbModule
     // NgbModule
   ],
   providers: [],
