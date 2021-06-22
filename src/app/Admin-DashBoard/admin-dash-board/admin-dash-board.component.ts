@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
@@ -8,12 +9,36 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 })
 export class AdminDashBoardComponent implements OnInit {
 
-  constructor(private Authservices:AuthenticationService) { }
+  constructor(private Authservices:AuthenticationService,private router:Router,private active:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
-  Logout(){
-    this.Authservices.logout();   
+ 
+    goTo(){
+       this.router.navigate(['Lectures'],{relativeTo:this.active})
     }
+ 
+  GoToCategory()
+  {
+    this.router.navigate(['Category'],{relativeTo:this.active})
+  }
+  GoToCourse()
+  {
+    this.router.navigate(['Course'],{relativeTo:this.active})
+  }
+  GoToLesson()
+  {
+    this.router.navigate(['Lesson'],{relativeTo:this.active})
+  }
+ 
+    goToSub(){
+      this.router.navigate(['SubCategory'],{relativeTo:this.active})
+    }
+    goToContent(){
+      this.router.navigate(['LessonContent'],{relativeTo:this.active})
+    }
+    Logout(){
+      this.Authservices.logout();   
+      }
 
 }

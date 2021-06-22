@@ -1,0 +1,50 @@
+.home{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10% 0% 10% 0%;
+    text-align: center;
+}
+.titel{
+    color: #107a9b;
+    font-size: 35px;
+}
+.description{
+    font-size: 20px;
+}
+mat-label{
+    font-size: 18px;
+    float: left;
+}
+input, select{
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    border-color: rgb(190, 190, 190);
+    border-radius: 10px;
+}
+.btnSubmit{
+    background-color: #107a9b;
+    color: white;
+    padding: 4px 12px 4px 12px;
+    float: right;
+    border-radius: 10px;
+}
+thead{
+    background-color: rgb(1, 59, 59);
+    align-content: center;
+    color: white;
+}
+#all{
+    font-size: 15px; 
+    font-family: 100;
+}
+.titelTabel{
+    font-weight: 100;
+}
+#btn{
+    margin: 60px;
+    color: rgb(1, 59, 59);
+}
+#btn:hover{
+    color: white;
+}

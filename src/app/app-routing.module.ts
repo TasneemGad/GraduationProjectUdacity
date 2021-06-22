@@ -30,6 +30,12 @@ import {UploadComponent} from './reusableComponents/upload/upload.component';
 import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
 
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
+import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
+import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 
 const routes: Routes = [
   // Routing
@@ -92,7 +98,16 @@ const routes: Routes = [
     children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
   },
 //Admin
-   {path:"DashBoard" ,component:AdminDashBoardComponent},
+   {path:"DashBoard" ,component:AdminDashBoardComponent,children:[
+     {path:"Lectures",component:LecturesAdminComponent},
+     {path:"LessonContent",component:LessonContentAdminComponent},
+     {path:"SubCategory",component:SubCategoryComponent},
+     {path:"Category" ,component:CategoryAdminComponent},
+     {path:"Course" ,component:CourseAdminComponent},
+     {path:"Lesson" ,component:LessonAdminComponent},
+
+
+   ]},
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', redirectTo: '/Home', pathMatch: 'full' },

@@ -3,7 +3,7 @@ mat-sidenav-container{
 }
 mat-sidenav{
     background-color:#001d25;
-    width: 18%;
+    width: 15%;
     color: white;
     height: 100%;
     position: fixed;
@@ -22,6 +22,7 @@ mat-sidenav , mat-sidenav-content{
     color: white;
     font-size: 15px;
     cursor: pointer;
+    
 }
 #three{
     line-height: 50px;
@@ -36,7 +37,9 @@ mat-sidenav , mat-sidenav-content{
     bottom: 0;
 }
 mat-icon{
-    margin-right: 20px;
+    margin-right: 40px;
+    
+    margin-right: 5%;
 }
 #nav{
     background-color: white;
@@ -86,7 +89,4 @@ mat-icon{
     height: 50px;
     margin-top: 15%;
 }
-.mat-icon {
-    padding-left: 5px;
-    width: 5px;
-}
+

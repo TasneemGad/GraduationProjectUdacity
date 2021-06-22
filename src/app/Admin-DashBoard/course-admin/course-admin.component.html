@@ -1,0 +1,124 @@
+<button class="btn btn-outline-dark" (click)="addNew()" id="btnitem" >Add New Course </button>
+<div *ngIf="isOpen then tab"></div>
+<ng-template #tab>
+    <table class="table table-hover" style="align-content: center; border-bottom: 2px solid #dee2e6;">
+        <thead >
+          <tr >
+            <!-- <th scope="col"class="all" >#</th> -->
+            <th scope="col" class="titelTabel">Name</th>
+            <th scope="col" class="titelTabel">Description</th>
+            <th scope="col" class="titelTabel">Type</th>   
+            <th scope="col" class="titelTabel">Price</th>
+            <th scope="col" class="titelTabel">Discount</th>    
+            <th scope="col" class="titelTabel">Duration</th>
+            <th scope="col" class="titelTabel">Lecture Number</th>    
+            <th scope="col" class="titelTabel">Category</th>    
+            <th scope="col" class="titelTabel">PreRequest</th>    
+            <th scope="col" class="titelTabel">SubCat</th>    
+            <th scope="col" class="titelTabel">Part Logo</th>    
+            <th scope="col" class="titelTabel">Course Logo</th>    
+            <th scope="col" class="titelTabel">Update</th>
+            <th scope="col" class="titelTabel">Delete</th>    
+          </tr>
+        </thead>
+        <tbody *ngFor="let course of allCourse , let i=index" >
+          <tr >
+            <!-- <th scope="row"  > -->
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.type}}</td>
+            <td>{{course.price}}</td>
+            <td>{{course.discount}}</td>
+            <td>{{course.duration}}</td>
+            <td>{{course.lectureNumber}}</td>
+            <div *ngFor="let category of allCategory">
+                <div *ngIf="category.id==course.categoryId">
+                    <td>{{category.catName}}</td> 
+                </div>
+            </div>
+            <td>{{course.preRequest}}</td>
+            <div *ngFor="let subcategory of allSubcategory">
+                <div *ngIf="subcategory.id==course.subCategoryId">
+                    <td>{{subcategory.subCategoryTitle}}</td> 
+                </div>
+            </div>
+            <td><img src="{{course.partLogo}}" width="70" height="70" alt="error"></td>
+            <td><img src="{{course.crsLogo}}" width="70" height="70" alt="error"></td>
+            <td><button class="btn btn-outline-dark" style="padding: 5px;" >Update</button></td>
+            <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>    
+          </tr>
+        </tbody>
+      </table>
+
+    <div class="home">
+        <h1 class="titel">Course</h1>
+        <h4 class="description">Add New Course</h4><br><br>
+        <form>
+            <div>
+                <mat-label>Name: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Image:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Description:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Price:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Discount:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Duration: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Type: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Lecture Number: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Category: </mat-label><br>
+                <select>
+                        <option *ngFor="let cat of allCategory" value="course.id">{{cat.catName}}</option>
+                </select>
+            </div><br>
+    
+            <div>
+                <mat-label>PreRequest: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>SubCategory: </mat-label><br>
+                <select>
+                        <option *ngFor="let subCategory of allSubcategory" value="subCategory.id">{{subCategory.subCategoryTitle}}</option>
+                </select>
+            </div><br>
+    
+            <div>
+                <mat-label>Part Logo: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <button mat-button type="submit" class="btnSubmit">SUBMIT</button>
+        </form>
+    </div>  
+</ng-template>

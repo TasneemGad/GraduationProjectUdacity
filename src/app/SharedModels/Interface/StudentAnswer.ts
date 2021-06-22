@@ -3,5 +3,5 @@ export interface StudentAnswer{
      studentanswer :string
      questionId :number
      lessonContentId:number
-     studentId:number
+     studentId:string
 }

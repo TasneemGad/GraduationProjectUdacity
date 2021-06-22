@@ -10,25 +10,44 @@ import { LessonContent} from '../SharedModels/Interface/ILessonContent';
 })
 export class LessonContentService {
     lessonContentUrl="https://localhost:44326/api/lessonContent"    
+    lessonContentUrlId="https://localhost:44326/api/lessonContent/"  
     lessonContentByLesson="https://localhost:44326/api/lessonContent/LessonContentByLes/"
+    
     constructor(private http: HttpClient) { }
 
     GetAllLessonContent(): Observable<LessonContent[]> {
         return this.http.get<LessonContent[]>(this.lessonContentUrl).pipe(catchError((err)=>{
           return throwError(err.massage || "Error")}))
       }
-    
-      GetLessonContentById(id:number): Observable<LessonContent>{
+    GetLessonContentById(id:number): Observable<LessonContent>{
         console.log("d")
         return this.http.get<LessonContent>(this.lessonContentUrl+"/" + id).pipe();
       }
-      GetLessonContentByLesson(id:number){
+    GetLessonContentByLesson(id:number){
         return this.http.get<LessonContent[]>(this.lessonContentByLesson+id).pipe();
       }
-      getLessonContentCount(crsid:number):Observable<any>{
+    getLessonContentCount(crsid:number):Observable<any>{
         return this.http.get(this.lessonContentUrl+"/CrsLessonContentCount/"+crsid).pipe(catchError((err)=>{
           return throwError(err.massage || "Error")
         }))
+      }  
+    postLessonContent(lessonContent:LessonContent): Observable<LessonContent> {
+    console.log("ser1")
+    return this.http.post<LessonContent>(this.lessonContentUrl,lessonContent)
+    .pipe(catchError((err)=>{
+      return throwError(err.message || "error")
+    }))
       }
+    UpdateLessonContent(id:number ,update:LessonContent): Observable<LessonContent> {
+    return this.http.put<LessonContent>(this.lessonContentUrlId+id,update ).pipe();
+      }
+    deleteLessonContent(id:number): Observable<LessonContent> {
+    console.log("ser1")
+    return this.http.delete<LessonContent>(this.lessonContentUrlId+id)
+    .pipe(catchError((err)=>{
+      return throwError(err.message || "error")
+    }))
+      }
+
 
 }

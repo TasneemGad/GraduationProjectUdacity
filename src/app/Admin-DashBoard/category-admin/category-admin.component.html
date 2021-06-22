@@ -1,0 +1,51 @@
+<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Category </button>
+<div *ngIf="isOpen then tab"></div>
+<ng-template #tab>
+  <table class="table table-hover" class="home" style="align-content: center;margin-top: 80px;  border-bottom: 2px solid #dee2e6;">
+    <thead >
+      <tr >
+        <th scope="col"class="all" >#</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Name</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Image</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Description</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Update</th>
+        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Delete</th>    
+      </tr>
+    </thead>
+    <tbody *ngFor="let category of allCategory , let i=index" >
+      <tr style="border-bottom: 2px solid #dee2e6;">
+        <th scope="row"  >
+        <td>{{category.catName}}</td>
+        <td><img src="../../../assets/i1.png" width="100" height="100" alt="error"></td>
+        <td>{{category.catDescription}}</td>
+        <td><button class="btn btn-outline-dark" >Update</button></td>
+        <td><button class="btn btn-outline-dark" >Delete</button></td>    
+      </tr>
+    </tbody>
+  </table>
+  
+    <div class="home">
+        <h1 class="titel">Category</h1>
+        <h4 class="description">Add New Category</h4><br><br>
+        <form>
+            <div>
+                <mat-label>Name:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Image:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Description:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <button mat-button type="submit" class="btnSubmit">SUBMIT</button>
+        </form>
+    </div>
+
+    
+  </ng-template>
