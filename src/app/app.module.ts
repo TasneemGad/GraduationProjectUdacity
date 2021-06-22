@@ -21,6 +21,7 @@ import { CareerPrepComponent } from './Component/career-prep/career-prep.compone
 import { GovernmentComponent } from './Component/government/government.component';
 import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
 import { OverViewComponent } from './Component/over-view/over-view.component';
+import { ApproachComponent } from './Component/approach/approach.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { OverViewComponent } from './Component/over-view/over-view.component';
     CareerPrepComponent,
     GovernmentComponent,
     BecomeAnInstractorComponent,
-    OverViewComponent
+    OverViewComponent,
+    ApproachComponent
   ],
   imports: [
     BrowserModule,
