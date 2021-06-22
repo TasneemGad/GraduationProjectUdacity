@@ -34,7 +34,12 @@ export class CoursesService {
       return throwError(err.message || "error")
     }))
   }
-
+//UpdateCrs
+  updateCourses(crsid: number,course:ICourse): Observable<ICourse[]> {
+    return this._http.put<ICourse[]>(this.Url + "/" + crsid,course).pipe(catchError((err) => {
+      return throwError(err.message || "error")
+    }))
+  }
  
 
 }

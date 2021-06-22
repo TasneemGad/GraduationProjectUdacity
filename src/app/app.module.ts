@@ -88,6 +88,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminDashBoardComponent,
     SubCategoryComponent,
     CorporateSocialResponsibilityComponent ,
+    CorporateSocialResponsibilityComponent,
+    LecturesAdminComponent,
     LessonContentAdminComponent,
     CategoryAdminComponent,
     CourseAdminComponent,
