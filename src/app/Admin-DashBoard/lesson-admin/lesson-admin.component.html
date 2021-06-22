@@ -1,41 +1,86 @@
-<div class="home">
-    <h1 class="titel">Lecture</h1>
-    <h4 class="description">Add New Lecture</h4><br><br>
-    <form>
-        <div>
-            <mat-label>Name:</mat-label><br>
-            <input type="text">
-        </div><br>
+<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Lesson </button>
+<div *ngIf="isOpen then tab"></div>
+<ng-template #tab>
 
-        <div>
-            <mat-label>Description:</mat-label><br>
-            <input type="text">
-        </div><br>
+    <table class="table table-hover" style="align-content: center; border-bottom: 2px solid #dee2e6;">
+        <thead >
+          <tr >
+            <!-- <th scope="col"class="all" >#</th> -->
+            <th scope="col" class="titelTabel">Name</th>
+            <th scope="col" class="titelTabel">Description</th>
+            <th scope="col" class="titelTabel">Type</th>   
+            <th scope="col" class="titelTabel">Content Number</th>
+            <th scope="col" class="titelTabel">Duration</th>
+            <th scope="col" class="titelTabel">Course</th>    
+            <th scope="col" class="titelTabel">Lecture</th>    
+            <th scope="col" class="titelTabel">Update</th>
+            <th scope="col" class="titelTabel">Delete</th>    
+          </tr>
+        </thead>
+        <tbody *ngFor="let lesson of allLesson , let i=index" >
+          <tr >
+            <!-- <th scope="row"  > -->
+            <td>{{lesson.title}}</td>
+            <td>{{lesson.details}}</td>
+            <td>{{lesson.type}}</td>
+            <td>{{lesson.contentNumber}}</td>
+            <td>{{lesson.duration}}</td>
+            <div *ngFor="let c of allCourse">
+                <div *ngIf="c.id==lesson.crsId">
+                    <td>{{c.name}}</td> 
+                </div>
+            </div>
+            <div *ngFor="let lecture of allLecture">
+                <div *ngIf="lecture.id==lesson.lectureId">
+                    <td>{{lecture.tilte}}</td> 
+                </div>
+            </div>
+            <td><button class="btn btn-outline-dark" style="padding: 5px;" >Update</button></td>
+            <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>    
+          </tr>
+        </tbody>
+      </table>
 
-        <div>
-            <mat-label>Type: </mat-label><br>
-            <input type="text">
-        </div><br>
 
-        <div>
-            <mat-label>Lessone Number: </mat-label><br>
-            <input type="text">
-        </div><br>
-
-        <div>
-            <mat-label>Duration: </mat-label><br>
-            <input type="text">
-        </div><br>
-
-        <div>
-            <mat-label>Lecture: </mat-label><br>
-            <select>
-                    <option *ngFor="let lecture of allLecture" value="lecture.id">{{lecture.tilte}}</option>
-            </select>
-        </div><br>
-
-
-
-        <button mat-button type="submit">SUBMIT</button>
-    </form>
-</div>
+    <div class="home">
+        <h1 class="titel">Lecture</h1>
+        <h4 class="description">Add New Lecture</h4><br><br>
+        <form>
+            <div>
+                <mat-label>Name:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Description:</mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Type: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Lessone Number: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Duration: </mat-label><br>
+                <input type="text">
+            </div><br>
+    
+            <div>
+                <mat-label>Lecture: </mat-label><br>
+                <select>
+                        <option *ngFor="let lecture of allLecture" value="lecture.id">{{lecture.tilte}}</option>
+                </select>
+            </div><br>
+    
+    
+    
+            <button mat-button type="submit" class="btnSubmit">SUBMIT</button>
+        </form>
+    </div>
+</ng-template>

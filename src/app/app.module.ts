@@ -41,9 +41,11 @@ import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
 import { UploadComponent } from './reusableComponents/upload/upload.component';
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
-import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
+import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 
 
 @NgModule({
@@ -83,6 +85,8 @@ import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admi
     CoursesFilterPipe,
     AdminDashBoardComponent,
     SubCategoryComponent,
+    LecturesAdminComponent,
+    LessonContentAdminComponent,
     CategoryAdminComponent,
     CourseAdminComponent,
     LessonAdminComponent

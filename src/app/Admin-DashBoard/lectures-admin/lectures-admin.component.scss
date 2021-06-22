@@ -15,6 +15,16 @@ thead{
     color: rgb(1, 59, 59);
     
 }
+.formAdd{
+    width: 900px;
+    margin-left: 90px;
+    margin-top: 40px;
+}
+.form-row{
+    margin-left: 50px;
+    margin-right: 70px;
+    margin-top: 60px;
+}
 #btnAdd{
     margin-top: 30px;
     background-color: #107a9b;
@@ -28,25 +38,6 @@ thead{
 #btn:hover{
     color: white;
 }
-
-.formAdd{
-    width: 900px;
-    margin-left: 90px;
-    margin-top: 40px;
-}
-.form-row{
-    margin-left: 50px;
-    margin-right: 70px;
-    margin-top: 60px;
-}
-#btnAdd{
-    margin-top: 30px;
-    background-color: rgb(1, 59, 59);
-    text-align: center;
-    margin: 90px;
-    margin-bottom: 40px;
-    margin-left: 90px;
-}
 .titel{
     color: #107a9b;
     font-size: 35px;
@@ -55,5 +46,4 @@ thead{
 .description{
     font-size: 20px;
     text-align: center;
-    
 }

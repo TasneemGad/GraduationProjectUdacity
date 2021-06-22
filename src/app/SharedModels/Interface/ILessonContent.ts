@@ -1,5 +1,5 @@
 export interface LessonContent {
-    id?: number
+    id?: any
     videoLinkId: number
     questionGroupId:number
     description : string

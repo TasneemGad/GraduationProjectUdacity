@@ -1,34 +1,45 @@
 <mat-sidenav-container>
 <mat-sidenav mode="side" opened>
     <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg"
-        style="width: 40px;height: 50px;cursor: pointer;">
-    <h1 routerLink="/Home" class="udacity" style="margin-top: -42px;margin-left: 50px;margin-bottom: 40px;cursor: pointer;">
+        style="width: 35px;height: 50px;cursor: pointer;">
+    <h1 routerLink="/Home" class="udacity" style="margin-top: -42px;margin-left: 39px;margin-bottom: 40px;cursor: pointer;">
         U D A C I T Y</h1>
 
     <h1 (click)="GoToCategory()" id="one">
-        <mat-icon>receipt</mat-icon>Category
+        <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Category
     </h1>
-
+    <h1 (click)="goToSub()" id="three">
+        <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon>  Sub Category
+    </h1>
     <h1 (click)="GoToCourse()" id="two">
-        <mat-icon>receipt</mat-icon>Course
+        <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Course
+    </h1>
+    <h1 (click)="goTo()" id="two">
+      <mat-icon style="fill: currentColor;color: cornsilk;"> add_box</mat-icon>   Lectures
     </h1>
     <h1 (click)="GoToLesson()" id="three">
-        <mat-icon>receipt</mat-icon>Lesson
+        <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Lesson
     </h1>
+    <h1 (click)=" goToContent()" id="three">
+        <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Lesson Content
+    </h1>
+    
+   
 
 <div class="tabsBottom">    
-    <div style="display: flex;">
-        <mat-icon>settings</mat-icon>
-        <h1 routerLink="{{'/Setting/'+'/Personal_Information/'}}" style="font-size: 15px;"> Setting </h1>    
-    </div>
-    <div style="display: flex;">   
-      <mat-icon>logout</mat-icon> 
-      <h1 (click)="Logout()" style="font-size: 15px;">Logout</h1>
-    </div>
+    <h1 (click)="Logout()" style="font-size: 15px;">
+        <mat-icon>logout</mat-icon>Logout
+        
+    </h1>
 </div>
 
 </mat-sidenav>
 <mat-sidenav-container>
     <router-outlet></router-outlet>
+    
 </mat-sidenav-container>
 </mat-sidenav-container>
+
+
+
+
