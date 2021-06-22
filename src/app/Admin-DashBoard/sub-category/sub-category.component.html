@@ -50,13 +50,18 @@
       {{ addSubCategoryForm.value | json }}
       <div class="mb-3">
         <div class="col">
+          <h1>  id</h1>
+          <input [hidden] type="text" class="form-control" placeholder="id" formControlName="id" [value]="SubCategoryByid.id" >
+          </div>
+
+        <div class="col">
         <h1>  Add Sub Category Title</h1>
-          <input type="text" class="form-control" placeholder="tilte" formControlName="subCategoryTitle" [value]="SubCategoryByid.subCategoryTitle">
+          <input type="text" class="form-control" placeholder="tilte" [value]="SubCategoryByid.subCategoryTitle"  formControlName="subCategoryTitle" >
         </div>
         <br>
         <div class="col">
           <h1>  Add Sub Category Description</h1>
-          <input type="text" class="form-control" placeholder="lecture Description" formControlName="subCategoryDescribtion"  [value]="SubCategoryByid.subCategoryDescribtion">
+          <input type="text" class="form-control" placeholder="lecture Description"   [value]="SubCategoryByid.subCategoryDescribtion" formControlName="subCategoryDescribtion">
         </div>
         <div class="col" style="margin-top: 20px;">
           <h1>Choose Category</h1>

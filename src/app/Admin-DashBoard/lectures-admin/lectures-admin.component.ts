@@ -69,6 +69,8 @@ this.addLecturesForm=this.fb.group({
    })
   }
   DeleteItem(id:number){
+    if(confirm("Are you sure You Want To delete"))
+    {
     this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
       this.LectureByid=sucess 
       console.log("enter",id)
@@ -76,6 +78,7 @@ this.addLecturesForm=this.fb.group({
         console.log("enter",sucess)
       })
   })
+}
    
   }
   updateItem(id:number , update:Lectures){

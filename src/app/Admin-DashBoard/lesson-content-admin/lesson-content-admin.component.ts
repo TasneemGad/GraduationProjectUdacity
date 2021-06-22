@@ -87,13 +87,15 @@ export class LessonContentAdminComponent implements OnInit {
    })
   }
   DeleteItem(id:number){
+    if(confirm("Are you sure You Want To delete"))
+    {
     this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
       this.lessonContentById=sucess
       this.LessonContentServices.deleteLessonContent(this.lessonContentById.id).subscribe(sucess=>{
         console.log("enter",sucess)
       })
     })
-   
+  }
   }
   updateItem(id:number , update:LessonContent){
     this.LessonContentServices.UpdateLessonContent(id ,update).subscribe(sucess=>{
