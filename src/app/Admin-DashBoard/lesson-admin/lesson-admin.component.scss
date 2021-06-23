@@ -23,14 +23,14 @@ input, select{
     border-radius: 10px;
 }
 .btnSubmit{
-    background-color: #107a9b;
+    background-color: #1495bd;
     color: white;
     padding: 4px 12px 4px 12px;
-    float: right;
+    text-align: center;
     border-radius: 10px;
 }
 thead{
-    background-color: rgb(1, 59, 59);
+    background-color:#6183a5;
     align-content: center;
     color: white;
 }
@@ -44,7 +44,44 @@ thead{
 #btn{
     margin: 60px;
     color: rgb(1, 59, 59);
+    
 }
 #btn:hover{
     color: white;
 }
+
+.btn-block{
+    background-color: rgb(207, 63, 63);
+    border: none;
+    
+}
+.btn-outline-dark{
+    background-color: rgb(119, 200, 126);
+    border: none;
+    border-radius:70%;
+}
+
+
+.btn-outline-dark2{
+    background-color:#6183a5;
+
+    border: none;
+}
+
+.btn-block2{
+    background-color: rgb(119, 200, 126);
+    border: none;
+    
+}
+
+
+body {
+    background-color: #eecda3;
+    background-color: -webkit-linear-gradient(to right, #eecda3, #6183a5);
+    background-color: linear-gradient(to right, #eecda3, #6183a5);
+  width: auto;
+  height: auto;
+  }
+
+
+

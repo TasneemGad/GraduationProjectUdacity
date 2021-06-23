@@ -30,7 +30,13 @@ export class LessonContentService {
         return this.http.get(this.lessonContentUrl+"/CrsLessonContentCount/"+crsid).pipe(catchError((err)=>{
           return throwError(err.massage || "Error")
         }))
-      }  
+      } 
+      
+      AddNewLessonContent(newLessonContent: LessonContent): Observable<LessonContent> {
+        return this.http.post<LessonContent>(this.lessonContentUrl,newLessonContent).pipe(catchError((err)=>{
+          return throwError(err.message || "Invaled Registration")
+        }))
+      }
     postLessonContent(lessonContent:LessonContent): Observable<LessonContent> {
     console.log("ser1")
     return this.http.post<LessonContent>(this.lessonContentUrl,lessonContent)

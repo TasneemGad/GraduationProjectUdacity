@@ -1,86 +1,161 @@
-<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Lesson </button>
-<div *ngIf="isOpen then tab"></div>
-<ng-template #tab>
+<body>
+<button class="btn btn-outline-dark rounded-pill py-2  " (click)="addNewLesson()" id="btn" >Add New Lesson </button>
 
-    <table class="table table-hover" style="align-content: center; border-bottom: 2px solid #dee2e6;">
-        <thead >
-          <tr >
-            <!-- <th scope="col"class="all" >#</th> -->
-            <th scope="col" class="titelTabel">Name</th>
-            <th scope="col" class="titelTabel">Description</th>
-            <th scope="col" class="titelTabel">Type</th>   
-            <th scope="col" class="titelTabel">Content Number</th>
-            <th scope="col" class="titelTabel">Duration</th>
-            <th scope="col" class="titelTabel">Course</th>    
-            <th scope="col" class="titelTabel">Lecture</th>    
-            <th scope="col" class="titelTabel">Update</th>
-            <th scope="col" class="titelTabel">Delete</th>    
-          </tr>
-        </thead>
-        <tbody *ngFor="let lesson of allLesson , let i=index" >
-          <tr >
-            <!-- <th scope="row"  > -->
-            <td>{{lesson.title}}</td>
-            <td>{{lesson.details}}</td>
-            <td>{{lesson.type}}</td>
-            <td>{{lesson.contentNumber}}</td>
-            <td>{{lesson.duration}}</td>
-            <div *ngFor="let c of allCourse">
-                <div *ngIf="c.id==lesson.crsId">
-                    <td>{{c.name}}</td> 
-                </div>
-            </div>
-            <div *ngFor="let lecture of allLecture">
-                <div *ngIf="lecture.id==lesson.lectureId">
-                    <td>{{lecture.tilte}}</td> 
-                </div>
-            </div>
-            <td><button class="btn btn-outline-dark" style="padding: 5px;" >Update</button></td>
-            <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>    
-          </tr>
-        </tbody>
-      </table>
+<button class="btn btn-outline-dark2 rounded-pill py-2" (click)="addNew()" id="btn" >Show All Lessones </button>
 
 
+<div *ngIf="isOpen then add else table "></div>
+
+<ng-template #add>
+  <div class="formAdd">
     <div class="home">
-        <h1 class="titel">Lecture</h1>
-        <h4 class="description">Add New Lecture</h4><br><br>
-        <form>
+        <h1 class="titel">Lesson</h1>
+        <h4 class="description">{{addORupdate}}</h4><br><br>
+        <form  >
             <div>
-                <mat-label>Name:</mat-label><br>
-                <input type="text">
-            </div><br>
+                <mat-label>Name:</mat-label>
+                <br>
+                <input matInput type="text" [(ngModel)]="Lesson.title" id="title" #title name="title" [value]="Lesson.title" >
+            </div>
+            <mat-error *ngIf="title.oninvalid  && title.ontouchend">
+                <div class="alert alert-danger" >
+                Name Must Be required and Max Length 10 Letter</div>
+            </mat-error>
+            <br>
     
             <div>
                 <mat-label>Description:</mat-label><br>
-                <input type="text">
-            </div><br>
+                <input matInput type="text" id="details" name="details" [(ngModel)]="Lesson.details" #details [value]="Lesson.details">
+            </div>
+            <mat-error *ngIf=" details.oninvalid  &&  details.ontouchend">
+                <div class="alert alert-danger" >
+                    Description Must Be required and Max Length 15 Letter</div>
+            </mat-error>
+            <br>
     
             <div>
                 <mat-label>Type: </mat-label><br>
-                <input type="text">
-            </div><br>
+                <input matInput type="text" id="type" name="type" #type [(ngModel)]="Lesson.type" [value]="Lesson.type">
+            </div>
+            <mat-error *ngIf="type.oninvalid  && type.ontouchend">
+                <div class="alert alert-danger" >
+                    type Must Be required and Number</div>
+            </mat-error><br>
     
             <div>
                 <mat-label>Lessone Number: </mat-label><br>
-                <input type="text">
-            </div><br>
+                <input  matInput type="text" id="contentNumber"  name="contentNumber" #contentNumber [(ngModel)]="Lesson.contentNumber" [value]="Lesson.contentNumber" >
+            </div>
+            <mat-error *ngIf="contentNumber.oninvalid  && contentNumber.ontouchend">
+                <div class="alert alert-danger" >
+                    LessoneNumber Must Be required and Number</div>
+            </mat-error>
+            <br>
     
             <div>
                 <mat-label>Duration: </mat-label><br>
-                <input type="text">
-            </div><br>
+                <input matInput type="text" id="duration" name="duration"  #duration [(ngModel)]="Lesson.duration" [value]="Lesson.duration">
+            </div>
+            <mat-error *ngIf="duration.oninvalid  && duration.ontouchend">
+                <div class="alert alert-danger" >
+                    Duration Must Be required and Number</div>
+            </mat-error>
+            
+            <br>
     
             <div>
                 <mat-label>Lecture: </mat-label><br>
-                <select>
-                        <option *ngFor="let lecture of allLecture" value="lecture.id">{{lecture.tilte}}</option>
+                <select  #lectureId id="lectureId" name="lectureId" [(ngModel)]="Lesson.lectureId" [value]="Lesson.lectureId" >
+                        <option *ngFor="let lecture of allLecture" value="{{lecture.id}}">{{lecture.tilte}}</option>
+                </select>
+            </div><br>
+
+            <div>
+                <mat-label>Course: </mat-label><br>
+                <select  #crsId [(ngModel)]="Lesson.crsId" [value]="Lesson.crsId" id="crsId" name="crsId">
+                        <option *ngFor="let Course of allCourse" value="{{Course.id}}">{{Course.name}}</option>
                 </select>
             </div><br>
     
-    
-    
-            <button mat-button type="submit" class="btnSubmit">SUBMIT</button>
-        </form>
-    </div>
+
+    <br>
+<div *ngIf="Lesson.id!=CheckId then update else addN ">
+</div>
+
+
+<ng-template #update>
+<button mat-button type="submit" class="btnSubmit" (click)="onUpdateLessonSubmit()" style="padding: 5px;">{{addORupdate}}</button>
 </ng-template>
+<ng-template #addN>
+
+    <button mat-button type="submit" class="btnSubmit" (click)="addNewL(Lesson)" style="padding: 5px;">{{addORupdate}}</button>
+    
+</ng-template>
+<div class="alert alert-warning" *ngIf="AddLessonFailed">
+    Add Lesson failed!<br />{{ error }}
+</div>
+</form>
+    </div>
+    </div>
+    </ng-template>
+
+<ng-template #table>
+
+
+<div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+          <!-- Shopping cart table -->
+          <div class="table-responsive" >
+            <table class="table table-hover" style="align-content: center; border-top: 2px solid #6183a5;border-bottom: 2px solid #6183a5;">
+              <thead>
+                <tr >
+                    <th scope="col" class="titelTabel">Name</th>
+                    <th scope="col" class="titelTabel">Description</th>
+                    <th scope="col" class="titelTabel">Type</th>   
+                    <th scope="col" class="titelTabel">Content Number</th>
+                    <th scope="col" class="titelTabel">Duration</th>
+                    <th scope="col" class="titelTabel">Course</th>    
+                    <th scope="col" class="titelTabel">Lecture</th>    
+                    <th scope="col" class="titelTabel">Update</th>
+                    <th scope="col" class="titelTabel">Delete</th>    
+                  </tr>
+              </thead>
+              <tbody *ngFor="let lesson of allLesson , let i=index" >
+                <tr >
+                  <!-- <th scope="row"  > -->
+                  <td>{{lesson.title}}</td>
+                  <td>{{lesson.details}}</td>
+                  <td>{{lesson.type}}</td>
+                  <td>{{lesson.contentNumber}}</td>
+                  <td>{{lesson.duration}}</td>
+                  <div *ngFor="let c of allCourse">
+                      <div *ngIf="c.id==lesson.crsId">
+                          <td>{{c.name}}</td> 
+                      </div>
+                  </div>
+                  <td>
+                  <div *ngFor="let lecture of allLecture">
+                      <div *ngIf="lecture.id==lesson.lectureId">
+                          {{lecture.tilte}}
+                      </div>
+                  </div>
+              </td>
+       
+                  <td><button class="btn btn-outline-dark"   class="btn btn-dark rounded-pill py-2 btn-block2" (click)="openUpdateLessonModal(lesson)" style="padding: 5px;" >update</button></td>
+        
+       
+                  <td><button class="btn btn-outline-dark"  class="btn btn-dark rounded-pill py-2 btn-block" (click)="openDeleteLessonModal(lesson.id)"  style="padding: 5px;">Delete</button></td>    
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+      </div>
+      </div>
+      </ng-template>
+</body>

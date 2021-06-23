@@ -2,10 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { LecturesService } from 'src/app/Services/lectures.service';
+import { LessonService } from 'src/app/Services/lesson.service';
+import {QuestionsGroupService } from 'src/app/Services/questions-group.service'
 import { LessonContentService } from 'src/app/Services/LessonContent.service';
+import { VideosService } from 'src/app/Services/videos.service';
 import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
+import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
 import { LessonContent } from 'src/app/SharedModels/Interface/ILessonContent';
+import { QuestionGroup } from 'src/app/SharedModels/Interface/IQuestionGroup';
+import { CourseVideos } from 'src/app/SharedModels/Interface/ICourseVideos';
+import { first } from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-lesson-content-admin',
@@ -15,98 +24,183 @@ import { LessonContent } from 'src/app/SharedModels/Interface/ILessonContent';
 export class LessonContentAdminComponent implements OnInit {
   isOpen: boolean = false
   isUpdate:boolean=false
-  addLessonContentForm: FormGroup
   addLessonContent: LessonContent
   allLessonContent: LessonContent[]
   allLectures:Lectures[]
   allCourese:ICourse[]
-  lessonContentById:LessonContent
-  constructor(private fb: FormBuilder, private LessonContentServices: LessonContentService,
+  allQuestionGroup:QuestionGroup[]
+  allLecture:Lectures[]=[]
+  allCourse:ICourse[]=[]
+  allLesson:Lesson[]=[]
+  lessonContent:LessonContent={
+    id:0,
+    videoLinkId:0,
+    questionGroupId:0,
+    description :"",
+    lessonId: 0,
+    crsID:0,
+    type:"",
+    lectureId :0,
+    header:"",
+    title:""}
+    loading = false;
+  error = '';
+  hide = true;  
+  AddLessonContentFailed = false;
+  isSuccessful=false;
+  CheckId:number=0;
+  submitted: boolean;
+  addORupdate: string;
+  allCourseViedos: CourseVideos[];
+  constructor(private VideosService:VideosService,private QuestionsGroupService :QuestionsGroupService, private LessonContentServices: LessonContentService,private LessonService:LessonService,
    private CourseServices:CoursesService,private LecturesServices:LecturesService,
     ) { }
 
   ngOnInit(): void {
-    this.addLessonContentForm = this.fb.group({
-      id: [''],
-      videoLinkId: [''],
-      questionGroupId: [''],
-      lessonId: [''],
-      lectureId: [''],
-      description: [''],
-      type: [''],
-      header: [''],
-      title: ['']
-    })
-    this.getLessonContent();
-    this.getAllCoures();
-    this.getLectures();
+    this.allLessoncontent()
+    this.getAllLecture()
+    this.getAllLesson()
+    this.getAllCourse()
+    this.getAllQuestion()
+    this.getAllVideos()
+    console.log(this.lessonContent.id)
 
   }
 
   addNew(){
     this.isOpen=!this.isOpen
   }
-  onsubmit(){
-    this.AddLessonContent();
-   this.LessonContentServices.postLessonContent(this.addLessonContent).subscribe(sucess=>{
-    console.log("add",sucess)
-  })
-   }
-   AddLessonContent(){
-    this.addLessonContent.id=this.addLessonContentForm.value.id
-     this.addLessonContent.videoLinkId=this.addLessonContentForm.value.videoLinkId
-     this.addLessonContent.type=this.addLessonContentForm.value.type
-     this.addLessonContent.title=this.addLessonContentForm.value.title
-     this.addLessonContent.questionGroupId=this.addLessonContentForm.value.questionGroupId
-     this.addLessonContent.lessonId=this.addLessonContentForm.value.lessonId
-     this.addLessonContent.lectureId=this.addLessonContentForm.value.lectureId
-     this.addLessonContent.header=this.addLessonContentForm.value.header
-     this.addLessonContent.description=this.addLessonContentForm.value.description
+  addNewLessonContent()
+  {
+  
+     this.isOpen=!this.isOpen 
+     this.lessonContent={
+      id:0,
+      videoLinkId:0,
+      questionGroupId:0,
+      description :"",
+      lessonId: 0,
+      crsID:0,
+      type:"",
+      lectureId :0,
+      header:"",
+      title:""}
+     if(this.CheckId==this.lessonContent.id)
+     {
+       this.addORupdate="Save New LessonContent"
+     }
+  }
+ 
 
-
-   }
-   getLessonContent(){
-    console.log("add")
-   this.LessonContentServices.GetAllLessonContent().subscribe(sucess=>{
-      this.allLessonContent=sucess
-     console.log("lec",sucess)
-   })
-  }
-  getAllCoures(){
-    console.log("add")
-   this.CourseServices.getCourses().subscribe(sucess=>{
-      this.allCourese=sucess
-     console.log("lec",sucess)
-   })
-  }
-  getLectures(){
-    console.log("add")
-   this.LecturesServices.getAllLectures().subscribe(sucess=>{
-      this.allLectures=sucess
-     console.log("lec",sucess)
-   })
-  }
-  DeleteItem(id:number){
-    if(confirm("Are you sure You Want To delete"))
-    {
-    this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
-      this.lessonContentById=sucess
-      this.LessonContentServices.deleteLessonContent(this.lessonContentById.id).subscribe(sucess=>{
-        console.log("enter",sucess)
+   getAllLecture(){
+    this.LecturesServices.getAllLectures().subscribe(data=>{
+        this.allLecture = data
       })
+  }
+  getAllLesson(){
+    this.LessonService.GetAllLesson().subscribe(data=>{
+        this.allLesson = data
+        console.log("less",data,this.allLesson)
+      })
+  }
+  getAllCourse(){
+    this.CourseServices.getCourses().subscribe(data=>{
+        this.allCourse = data
+        console.log("cou",data,this.allCourse)
+      })
+  }
+  getAllQuestion(){
+    this.QuestionsGroupService.getAllQuestionsGroup().subscribe(
+      data=>{
+        this.allQuestionGroup=data
+      }
+    )
+  }
+
+  getAllVideos(){
+    this.VideosService.getAllCourseViedos().subscribe(
+      data=>{
+        this.allCourseViedos=data
+      }
+    )
+  }
+  allLessoncontent()
+  {
+    this.LessonContentServices.GetAllLessonContent().subscribe(
+      data=>{
+        this.allLessonContent=data;
+      }
+    )
+  }
+  addNewL(LessonContent:LessonContent)
+  {
+  
+    this.LessonContentServices.AddNewLessonContent(LessonContent).subscribe(
+      data => {
+        console.log("success",data)
+        this.isSuccessful = true;
+        this.AddLessonContentFailed= false;   
+     window.location.href="/DashBoard/LessonContent";
+
+      }  
+    ,
+    err=>{
+      console.log("error")
+      this.error=err.message;
+      this.AddLessonContentFailed = true;
+    
     })
   }
+  onUpdateLessonContentSubmit(){
+    this.isOpen=true
+    this.submitted = true;
+   
+      console.log("dddddddLesson",this.lessonContent)
+      if( this.lessonContent.id==undefined)
+       return;
+    this.LessonContentServices.UpdateLessonContent(this.lessonContent.id, this.lessonContent)
+         .pipe(first())
+       .subscribe(
+            data => {
+             console.log(data)
+              window.location.href="/DashBoard/LessonContent"
+          
+            },
+             error => {
+                 this.error = error;
+                 this.loading = false;
+             });
   }
-  updateItem(id:number , update:LessonContent){
-    this.LessonContentServices.UpdateLessonContent(id ,update).subscribe(sucess=>{
-      console.log("ee",sucess)
-    })
-  }
-  updateElement(id:number){
-    this.isUpdate=!this.isUpdate
-    this.LessonContentServices.GetLessonContentById(id).subscribe(sucess=>{
-      this.lessonContentById=sucess
+
+  openUpdateLessonContentModal(lessoncontent:LessonContent){
+    this.isOpen=true;
+
+      this.lessonContent=lessoncontent;
       
-    })
+   if(this.lessonContent.id==undefined)
+   return;
+   if(this.CheckId!=lessoncontent.id)
+       {
+        this.addORupdate = "Update";
+       }
+      }
+
+
+
+  openDeleteLessonContentModal(LessonContentId:any){
+    console.log("llllllllllllll",LessonContentId);
+   this.LessonContentServices.deleteLessonContent(LessonContentId).subscribe(
+     data=>{
+      // console.log(data)
+    window.location.href="/DashBoard/LessonContent"
+   })
+  
   }
-}
+  }
+
+
+ 
+
+
+  
+

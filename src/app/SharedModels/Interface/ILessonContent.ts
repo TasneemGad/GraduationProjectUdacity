@@ -6,6 +6,7 @@ export interface LessonContent {
     lessonId: number
     type:string
     lectureId :number
+    crsID?:number
     header:string
     title:string
     
