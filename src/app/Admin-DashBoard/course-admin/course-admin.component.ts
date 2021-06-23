@@ -34,15 +34,14 @@ export class CourseAdminComponent implements OnInit {
   Course:ICourse={name:"",description:"",partLogo:"",preRequest:"",price:0,lectureNumber:0,crsLogo:"",discount:0,duration:0,type:"",subCategoryId:0,categoryId:0,id:0}
   constructor( private courseService : CoursesService, private subCategoryService: SubCategoryService,
                private categoryService : CategoryService,private Lecture:LecturesService) { }
-  addNew(){
-    this.isOpen=!this.isOpen
+  ShowList(){
+    this.isOpen=false
   }
-  AddNewCrs(){
-    this.isOpen=!this.isOpen
+  ShowAddNewCrs(){
+    this.isOpen=true
     this.PartImg=""
     this.crsImg=""
     this.Course={name:"",description:"",partLogo:"",preRequest:"",price:0,lectureNumber:0,crsLogo:"",discount:0,duration:0,type:"",subCategoryId:0,categoryId:0,id:0};
-
   }
   ngOnInit(): void {
     this.getAllCourses()
@@ -83,7 +82,6 @@ export class CourseAdminComponent implements OnInit {
     this.PartImg="https://localhost:44326/"+Crs.partLogo
     if(Crs.id!=this.check){
       this.AddOrUpdate="Update"
-
     }
     console.log(Crs,"Crrrrrrrrrrrrrrrrrrs")
   }
@@ -96,9 +94,8 @@ export class CourseAdminComponent implements OnInit {
          console.log(data)
        }
      )
-
-
   }
+
   public uploadCrsPartFinished = (event:any,Crsid:number,Course:ICourse) => { 
     this.response = event;    
     Course.partLogo=this.response.dbPath
@@ -113,6 +110,7 @@ export class CourseAdminComponent implements OnInit {
     console.log(this.response.dbPath) 
     this.Course.crsLogo=this.response.dbPath
   }
+  
   public uploadCrsPartLogoFinished = (event:any) => { 
     this.response = event;      
     console.log(this.response.dbPath) 
@@ -126,6 +124,8 @@ export class CourseAdminComponent implements OnInit {
       addesCrs=>{
         console.log("Done")
         // this.AddCrs=true
+        this.isOpen=false
+        this.getAllCourses();
       }
     )
   }
@@ -133,6 +133,8 @@ export class CourseAdminComponent implements OnInit {
     this.courseService.updateCourses(this.Course.id,this.Course).subscribe(
       sucess=>{
         console.log(sucess,"sucess")
+        this.isOpen=false
+        this.getAllCourses();
         // this.UpdateCrs=true
       }
     )
@@ -143,6 +145,8 @@ export class CourseAdminComponent implements OnInit {
     this.courseService.deleteCourses (CrsId).subscribe(
       data=>{
         console.log("Deleted")
+        this.getAllCourses();
+
         // this.deleted=true
       }
     )

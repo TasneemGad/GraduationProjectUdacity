@@ -1,6 +1,63 @@
-<button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Add New Category </button>
-<div *ngIf="isOpen then tab"></div>
-<ng-template #tab>
+<div class="container-fluid">
+  <div style="text-align: center;">
+  <button class="btn btn-outline-dark" (click)="ShowAddNewCategory()" id="btnitem">Add Category </button>
+  <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Categories </button>
+</div>
+<hr>
+<div *ngIf="isOpen then add else table"></div>
+<ng-template #add>
+  <div class="home">
+    <div style="text-align: left;">  
+    <h1 class="titel">Category</h1>
+    <h4 class="description">{{AddOrUpdate}} Category</h4><br><br>
+   </div>
+    <form style="margin-bottom: 10%;">
+        <div>
+            <mat-label>Name:</mat-label><br>
+            <input type="text" id="txtNameCategory" name="txtNameCategory" #txtNameCategory [value]="Category.catName" [(ngModel)]="Category.catName">
+        </div><br>
+
+        <div>
+            <mat-label>Image:</mat-label><br>
+            <!-- <input type="text"> -->
+            <img *ngIf="catImg" [src]="createImgPath(Category.catImage)" #CatLogo id="CatLogo" name="CatLogo" 
+                        style="width: 50%;height: 50%;">
+                    <br>                    
+                    <br>
+                    <div *ngIf="Category.id!=check; then updatelogoImg else addlogoImg"></div>
+                    <ng-template #updatelogoImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadUpdateCatLogoFinished($event,Category.id,Category)">
+                            </app-upload>
+                        </div>
+                    </ng-template>
+                    <ng-template #addlogoImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadCatImgLogoFinished($event)"></app-upload>
+                        </div>
+                    </ng-template>
+                
+        </div><br>
+
+        <div>
+            <mat-label>Description:</mat-label><br>
+            <input type="text" id="txtDescriptionCategory" name="txtDescriptionCategory" #txtDescriptionCategory [value]="Category.catDescription" [(ngModel)]="Category.catDescription">
+
+        </div><br>
+        <div *ngIf="Category.id!=check; then update else add"></div>
+        <ng-template #update>
+            <button mat-button type="submit" class="btnSubmit" (click)="UpdateCatData()">Update</button>
+        </ng-template>
+        <ng-template #add>
+            <button mat-button type="submit" class="btnSubmit" (click)="AddNewCategory()">ADD</button>
+        </ng-template>
+
+        <!-- <button mat-button type="submit" class="btnSubmit">SUBMIT</button> -->
+    </form>
+</div>
+</ng-template>
+
+<ng-template #table>
   <table class="table table-hover" class="home" style="align-content: center;margin-top: 80px;  border-bottom: 2px solid #dee2e6;">
     <thead >
       <tr >
@@ -16,36 +73,20 @@
       <tr style="border-bottom: 2px solid #dee2e6;">
         <th scope="row"  >
         <td>{{category.catName}}</td>
-        <td><img src="../../../assets/i1.png" width="100" height="100" alt="error"></td>
+        <td>
+          <img  [src]="createImgPath(category.catImage)" #CatLogo id="CatLogo" name="CatLogo" 
+          width="100" height="100" style="margin:20px ;" alt="error">
+          <!-- <img src="../../../assets/i1.png" width="100" height="100" alt="error"></td> -->
         <td>{{category.catDescription}}</td>
-        <td><button class="btn btn-outline-dark" >Update</button></td>
-        <td><button class="btn btn-outline-dark" >Delete</button></td>    
+        <td><button class="btn btn-outline-primary" (click)="updateCatbtnClick(category)" >Update</button></td>
+        <td><button class="btn btn-outline-danger" (click)="deleteCatbtnClick(category.id)" >Delete</button></td>    
       </tr>
     </tbody>
   </table>
   
-    <div class="home">
-        <h1 class="titel">Category</h1>
-        <h4 class="description">Add New Category</h4><br><br>
-        <form>
-            <div>
-                <mat-label>Name:</mat-label><br>
-                <input type="text">
-            </div><br>
-    
-            <div>
-                <mat-label>Image:</mat-label><br>
-                <input type="text">
-            </div><br>
-    
-            <div>
-                <mat-label>Description:</mat-label><br>
-                <input type="text">
-            </div><br>
-    
-            <button mat-button type="submit" class="btnSubmit">SUBMIT</button>
-        </form>
-    </div>
+  
 
     
   </ng-template>
+
+</div>

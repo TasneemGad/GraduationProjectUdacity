@@ -1,246 +1,205 @@
-
 <div class="container-fluid">
 
-<div style="text-align: center;">
-    <button class="btn btn-outline-dark" (click)="AddNewCrs()" id="btnitem">Add Course </button>
-    <button class="btn btn-outline-dark" (click)="addNew()" id="btnitem">Show Courses </button>
-</div>
-<div *ngIf="isOpen then add else table "></div>
-<ng-template #add>
-    <div class="home">
-        <div style="text-align: left;">
-            <h1 class="titel">Course</h1>
-            <h4 class="description">{{AddOrUpdate}} Course</h4>
-        </div>
-        <hr>
-        <form style="padding: 10px; margin-bottom: 10%">
-            <div>
-                <mat-label>Name: </mat-label><br>
-                <input type="text" id="txtCrsName" name="txtCrsName" #txtCrsName [value]="Course.name"
-                    [(ngModel)]="Course.name">
-            </div><br>
-
-            <div>
-                <mat-label>Description:</mat-label><br>
-                <textarea id="txtCrsDescription" style name="txtCrsDescription" #txtCrsdescription
-                    [(ngModel)]="Course.description">{{Course.description}}</textarea>
-            </div>
-
-            <div>
-                <mat-label>Course Logo:</mat-label><br>
-                <img *ngIf="crsImg" [src]="crsImg" #CrsLogo id="CrsLogo" name="CrsLogo" style="width: 50%;height: 50%;">
-                <br>
-                <div *ngIf="Course.id!=check; then updatelogoImg else addlogoImg"></div>
-                <ng-template #updatelogoImg>
-                <div class="form-group my-3">
-                    <app-upload (onUploadFinished)="uploadCrsLogoFinished($event,Course.id,Course)"></app-upload>
-                </div>
-            </ng-template>
-            <ng-template #addlogoImg>
-                <div class="form-group my-3">
-                    <app-upload (onUploadFinished)="uploadCrsImgLogoFinished($event)"></app-upload>
-                </div>
-            </ng-template>
-            </div><br>
-
-            <div>
-                <mat-label>Price:</mat-label><br>
-                <input type="number" #txtCrsPrice id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price" [(ngModel)]="Course.price">
-            </div><br>
-
-            <div>
-                <mat-label>Discount:</mat-label><br>
-                <input type="number" #txtCrsDiscount id="txtCrsDiscount" name="txtCrsDiscount" [(ngModel)]="Course.discount"
-                    [value]="Course.discount">
-            </div><br>
-
-            <div>
-                <mat-label>Duration: </mat-label><br>
-                <input type="number" #txtCrsDuration id="txtCrsDuration" name="txtCrsDuration" [(ngModel)]="Course.duration"
-                    [value]="Course.duration">
-            </div><br>
-
-            <div>
-                <mat-label>Type: </mat-label><br>
-                <input type="text" #txtCrsType id="txtCrsType" name="txtCrsType" [(ngModel)]="Course.type"
-                    [value]="Course.type">
-            </div><br>
-
-            <div>
-                <mat-label>Lecture Number: </mat-label><br>
-                <input type="number" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
-                    [value]="Course.lectureNumber" [(ngModel)]="Course.lectureNumber">
-            </div><br>
-
-            <div>
-                <mat-label>Category: </mat-label><br>
-                <select [(ngModel)]="Course.categoryId" #categoryId id="categoryId" name="categoryId">
-                    <option *ngFor="let cat of allCategory" [value]="cat.id">{{cat.catName}}</option>
-                </select>
-            </div><br>
-
-            <div>
-                <mat-label>PreRequest: </mat-label><br>
-                <textarea id="txtCrsPreRequest" style name="txtCrsPreRequest" #txtCrsPreRequest
-                    [(ngModel)]="Course.preRequest">{{Course.preRequest}}</textarea>
-            </div><br>
-
-            <div>
-                <mat-label>SubCategory:</mat-label><br>
-                <select [(ngModel)]="Course.subCategoryId" #subCategoryId id="subCategoryId" name="subCategoryId">
-                    <option *ngFor="let subCategory of allSubcategory" [value]="subCategory.id">
-                        {{subCategory.subCategoryTitle}}</option>
-                </select>
-            </div><br>
-
-            <div>
-                <mat-label>Part Logo: </mat-label><br>
-                <img *ngIf="PartImg" [src]="PartImg" #CrsPartLogo id="CrsPartLogo" name="CrsPartLogo"
-                    style="width: 50%;height: 50%;">
-                <br>
-                <div *ngIf="Course.id!=check; then updatepartImg else addpartImg"></div>
-                <ng-template #updatepartImg>
-                <div class="form-group my-3">
-                    <app-upload (onUploadFinished)="uploadCrsPartFinished($event,Course.id,Course)"></app-upload>
-                </div>
-                </ng-template>
-                <ng-template #addpartImg>
-                    <div class="form-group my-3">
-                        <app-upload (onUploadFinished)="uploadCrsPartLogoFinished($event)"></app-upload>
-                    </div>
-                    </ng-template>
-            </div><br>
-            <div *ngIf="Course.id!=check; then update else add"></div>
-            <ng-template #update>
-                <button mat-button type="submit" class="btnSubmit" (click)="UpdateCrsData()">Update</button>
-            </ng-template>
-            <ng-template #add>
-                <button mat-button type="submit" class="btnSubmit" (click)="AddNewCourse()">ADD</button>
-            </ng-template>
-
-        </form>
+    <div style="text-align: center;">
+        <button class="btn btn-outline-dark" (click)="ShowAddNewCrs()" id="btnitem">Add Course </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Courses </button>
     </div>
-</ng-template>
-<ng-template #table>
-    <!-- <table class="table table-hover" style="align-content: center; border-bottom: 2px solid #dee2e6;"> -->
-        <!-- <thead> -->
-            <!-- <tr> -->
-                <!-- <th scope="col"class="all" >#</th> -->
-                <!-- <th scope="col" class="titelTabel">Name</th>
-                <th scope="col" class="titelTabel">Description</th>
-                <th scope="col" class="titelTabel">Type</th>
-                <th scope="col" class="titelTabel">Price</th>
-                <th scope="col" class="titelTabel">Discount</th>
-                <th scope="col" class="titelTabel">Duration</th>
-                <th scope="col" class="titelTabel">Lecture Number</th>
-                <th scope="col" class="titelTabel">Category</th>
-                <th scope="col" class="titelTabel">PreRequest</th>
-                <th scope="col" class="titelTabel">SubCat</th>
-                <th scope="col" class="titelTabel">Part Logo</th>
-                <th scope="col" class="titelTabel">Course Logo</th>
-                <th scope="col" class="titelTabel">Update</th>
-                <th scope="col" class="titelTabel">Delete</th>
-            </tr> -->
-        <!-- </thead> -->
+<hr>
+
+    <div *ngIf="isOpen then add else table "></div>
+    <ng-template #add>
+        <div class="home">
+            <div style="text-align: left;">
+                <h1 class="titel">Course</h1>
+                <h4 class="description">{{AddOrUpdate}} Course</h4>
+            </div>
+            <hr>
+            <form style="padding: 10px; margin-bottom: 10%">
+                <div>
+                    <mat-label>Name: </mat-label><br>
+                    <input type="text" id="txtCrsName" name="txtCrsName" #txtCrsName [value]="Course.name"
+                        [(ngModel)]="Course.name">
+                </div><br>
+
+                <div>
+                    <mat-label>Description:</mat-label><br>
+                    <textarea id="txtCrsDescription" style name="txtCrsDescription" #txtCrsdescription
+                        [(ngModel)]="Course.description">{{Course.description}}</textarea>
+                </div>
+
+                <div>
+                    <mat-label>Course Logo:</mat-label><br>
+                    <img *ngIf="crsImg" [src]="crsImg" #CrsLogo id="CrsLogo" name="CrsLogo"
+                        style="width: 50%;height: 50%;">
+                    <br>
+                    <div *ngIf="Course.id!=check; then updatelogoImg else addlogoImg"></div>
+                    <ng-template #updatelogoImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadCrsLogoFinished($event,Course.id,Course)">
+                            </app-upload>
+                        </div>
+                    </ng-template>
+                    <ng-template #addlogoImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadCrsImgLogoFinished($event)"></app-upload>
+                        </div>
+                    </ng-template>
+                </div><br>
+
+                <div>
+                    <mat-label>Price:</mat-label><br>
+                    <input type="number" #txtCrsPrice id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
+                        [(ngModel)]="Course.price">
+                </div><br>
+
+                <div>
+                    <mat-label>Discount:</mat-label><br>
+                    <input type="number" #txtCrsDiscount id="txtCrsDiscount" name="txtCrsDiscount"
+                        [(ngModel)]="Course.discount" [value]="Course.discount">
+                </div><br>
+
+                <div>
+                    <mat-label>Duration: </mat-label><br>
+                    <input type="number" #txtCrsDuration id="txtCrsDuration" name="txtCrsDuration"
+                        [(ngModel)]="Course.duration" [value]="Course.duration">
+                </div><br>
+
+                <div>
+                    <mat-label>Type: </mat-label><br>
+                    <input type="text" #txtCrsType id="txtCrsType" name="txtCrsType" [(ngModel)]="Course.type"
+                        [value]="Course.type">
+                </div><br>
+
+                <div>
+                    <mat-label>Lecture Number: </mat-label><br>
+                    <input type="number" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
+                        [value]="Course.lectureNumber" [(ngModel)]="Course.lectureNumber">
+                </div><br>
+
+                <div>
+                    <mat-label>Category: </mat-label><br>
+                    <select [(ngModel)]="Course.categoryId" #categoryId id="categoryId" name="categoryId">
+                        <option *ngFor="let cat of allCategory" [value]="cat.id">{{cat.catName}}</option>
+                    </select>
+                </div><br>
+
+                <div>
+                    <mat-label>PreRequest: </mat-label><br>
+                    <textarea id="txtCrsPreRequest" style name="txtCrsPreRequest" #txtCrsPreRequest
+                        [(ngModel)]="Course.preRequest">{{Course.preRequest}}</textarea>
+                </div><br>
+
+                <div>
+                    <mat-label>SubCategory:</mat-label><br>
+                    <select [(ngModel)]="Course.subCategoryId" #subCategoryId id="subCategoryId" name="subCategoryId">
+                        <option *ngFor="let subCategory of allSubcategory" [value]="subCategory.id">
+                            {{subCategory.subCategoryTitle}}</option>
+                    </select>
+                </div><br>
+
+                <div>
+                    <mat-label>Part Logo: </mat-label><br>
+                    <img *ngIf="PartImg" [src]="PartImg" #CrsPartLogo id="CrsPartLogo" name="CrsPartLogo"
+                        style="width: 50%;height: 50%;">
+                    <br>
+                    <div *ngIf="Course.id!=check; then updatepartImg else addpartImg"></div>
+                    <ng-template #updatepartImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadCrsPartFinished($event,Course.id,Course)">
+                            </app-upload>
+                        </div>
+                    </ng-template>
+                    <ng-template #addpartImg>
+                        <div class="form-group my-3">
+                            <app-upload (onUploadFinished)="uploadCrsPartLogoFinished($event)"></app-upload>
+                        </div>
+                    </ng-template>
+                </div><br>
+                <div *ngIf="Course.id!=check; then update else add"></div>
+                <ng-template #update>
+                    <button mat-button type="submit" class="btnSubmit" (click)="UpdateCrsData()">Update</button>
+                </ng-template>
+                <ng-template #add>
+                    <button mat-button type="submit" class="btnSubmit" (click)="AddNewCourse()">ADD</button>
+                </ng-template>
+
+            </form>
+        </div>
+    </ng-template>
+    <ng-template #table>
 
         <div *ngFor="let Cat of allCategory , let i=index">
-<div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
-    <div class="col-md-12 centerText">
-        <h1 style="font-size: xx-large;text-align: center;">{{Cat.catName}}</h1>
-    </div>
-
-</div> 
-<div class="row">
-    <div *ngFor="let course of allCourse , let i=index">
-
-        <div class="row">
-            <div *ngIf="course.categoryId == Cat.id">
-                    <div class="col-md-1">&nbsp;</div>
-                    <div class="col-md-4">
-                        <mat-card class="dataOfObjective" style="border-top-color: #0094f7">
-                            <img [src]="createImgPath(course.crsLogo)" alt="error" width="100%" height="150px" /><br />
-                            <mat-label class="titleData" style="text-align: center;">{{course.name}}</mat-label>
-                            <br>
-                            <table style="width: 60%;text-align: center;">
-                                <tr>
-                                    <th>Price</th>
-                                    <div *ngIf="course.price==0; then Free else Price"></div>
-                                    <ng-template #Free>
-                                        <td style="color: red;">Free</td>
-                                    </ng-template>
-                                    <ng-template #Price>
-                                    <td>{{course.price}} $</td>
-                                </ng-template>
-                                </tr>
-                                <tr>
-                                    <th>Duration</th>
-                                    <td>{{course.duration}} months</td>
-                                </tr>
-                                <tr>
-                                    <th>Discount</th>
-                                    <td>{{course.discount}} %</td>
-                                </tr>                            
-                            </table>
-                            <br>
-                            <mat-label class="titleData" style="text-align: center;">
-                                Pre-Request :                           
-                            </mat-label>
-                            <br>
-                            <mat-label style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                                {{course.preRequest}}
-                            </mat-label>
-                            <br>
-                            <mat-label class="titleData" style="text-align: center;">
-                                Description :                           
-                            </mat-label>
-                            <br>
-                            <mat-label style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                                {{course.description}}
-                            </mat-label>
-                            <br /><br />
-                            <button class="btn btn-outline-danger" style="margin: 10px;width: 250px;"(click)="deleteCourse(course.id)" >Delete</button>
-                            <button class="btn btn-outline-primary" style="margin: 10px;width: 250px;"
-                        (click)="updateCrsbtnClick(course)">Update</button>
-                        </mat-card>
-                    </div>
-                    <div class="col-md-1">&nbsp;</div>
-
+            <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
+                <div class="col-md-12 centerText">
+                    <h1 style="font-size: xx-large;text-align: center;">{{Cat.catName}}</h1>
                 </div>
-            </div>
-            </div>
-        </div>   
-               
 
             </div>
+            <div class="row">
+                <div *ngFor="let course of allCourse , let i=index">
 
+                    <div class="row">
+                        <div *ngIf="course.categoryId == Cat.id">
+                            <div class="col-md-1">&nbsp;</div>
+                            <div class="col-md-4">
+                                <mat-card class="dataOfObjective" style="border-top-color: #0094f7">
+                                    <img [src]="createImgPath(course.crsLogo)" alt="error" width="100%"
+                                        height="150px" /><br />
+                                    <mat-label class="titleData" style="text-align: center;">{{course.name}}</mat-label>
+                                    <br>
+                                    <table style="width: 60%;text-align: center;">
+                                        <tr>
+                                            <th>Price</th>
+                                            <div *ngIf="course.price==0; then Free else Price"></div>
+                                            <ng-template #Free>
+                                                <td style="color: red;">Free</td>
+                                            </ng-template>
+                                            <ng-template #Price>
+                                                <td>{{course.price}} $</td>
+                                            </ng-template>
+                                        </tr>
+                                        <tr>
+                                            <th>Duration</th>
+                                            <td>{{course.duration}} months</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Discount</th>
+                                            <td>{{course.discount}} %</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <mat-label class="titleData" style="text-align: center;">
+                                        Pre-Request :
+                                    </mat-label>
+                                    <br>
+                                    <mat-label
+                                        style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                        {{course.preRequest}}
+                                    </mat-label>
+                                    <br>
+                                    <mat-label class="titleData" style="text-align: center;">
+                                        Description :
+                                    </mat-label>
+                                    <br>
+                                    <mat-label
+                                        style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                        {{course.description}}
+                                    </mat-label>
+                                    <br /><br />
+                                    <button class="btn btn-outline-danger" style="margin: 10px;width: 250px;"
+                                        (click)="deleteCourse(course.id)">Delete</button>
+                                    <button class="btn btn-outline-primary" style="margin: 10px;width: 250px;"
+                                        (click)="updateCrsbtnClick(course)">Update</button>
+                                </mat-card>
+                            </div>
+                            <div class="col-md-1">&nbsp;</div>
 
-            <!-- <tr> -->
-                <!-- <th scope="row"  > -->
-                <!-- <td>{{course.name}}</td>
-                <td>{{course.description}}</td>
-                <td>{{course.type}}</td>
-                <td>{{course.price}}</td>
-                <td>{{course.discount}}</td>
-                <td>{{course.duration}}</td>
-                <td>{{course.lectureNumber}}</td>
-                <div *ngFor="let category of allCategory">
-                    <div *ngIf="category.id==course.categoryId">
-                        <td>{{category.catName}}</td>
+                        </div>
                     </div>
                 </div>
-                <td>{{course.preRequest}}</td>
-                <div *ngFor="let subcategory of allSubcategory">
-                    <div *ngIf="subcategory.id==course.subCategoryId">
-                        <td>{{subcategory.subCategoryTitle}}</td>
-                    </div>
-                </div>
-                <td><img src="{{course.partLogo}}" width="70" height="70" alt="error"></td>
-                <td><img src="{{course.crsLogo}}" width="70" height="70" alt="error"></td>
-                <td><button class="btn btn-outline-dark" style="padding: 5px;"
-                        (click)="updateCrsbtnClick(course)">Update</button></td>
-                <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>
-            </tr>
-        </tbody>
-    </table> -->
-</ng-template>
+            </div>
+        </div>
+
+
+    </ng-template>
 </div>
