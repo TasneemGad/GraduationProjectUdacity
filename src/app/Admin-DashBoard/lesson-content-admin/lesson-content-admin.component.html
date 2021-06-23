@@ -145,7 +145,7 @@
             <div class="input-group ">
             <select  class="custom-select-sm BtnG" #videoLink [(ngModel)]="lessonContent.videoLinkId" [value]="lessonContent.videoLinkId" id="videoLinkId" name="videoLinkId">
               <option selected>Choose videoLink</option>
-               <option *ngFor="let CrsV of allCourseViedos" value="{{CrsV.id}}">{{CrsV.videoURL}}</option>
+               <option *ngFor="let CrsV of allCourseViedos" value="{{CrsV.id}}">{{CrsV.videoName}}</option>
             </select>
           </div>
         </div>
