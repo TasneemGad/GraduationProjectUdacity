@@ -45,9 +45,11 @@ DeleteLesson(id:number):Observable<any>{
     return this.http.get<Lesson>(this.lessonUrl+"/" + id).pipe();
   }
 
-  GetAllLessonByLectureId(id:number){
-    return this.http.get<Lesson[]>(this.lessonUrl2+id).pipe();
+  GetAllLessonByLectureId(id:number): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(this.lessonUrl2+id).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")}))
   }
+
   GetAllLessonByCrsID(crsId:number): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(this.lessonUrl+"/LessonByCrsID/"+crsId).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")}))

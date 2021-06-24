@@ -49,6 +49,7 @@ import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admi
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-vi
     CourseAdminComponent,
     LecturesAdminComponent,
     LessonAdminComponent,
-    CourseVideosComponent
+    CourseVideosComponent,
+    QuestionGroupAdminComponent
   ],
   imports: [
     BrowserModule,

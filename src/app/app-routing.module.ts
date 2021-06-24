@@ -37,6 +37,7 @@ import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/categor
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
 
 const routes: Routes = [
   // Routing
@@ -107,8 +108,7 @@ const routes: Routes = [
      {path:"Course" ,component:CourseAdminComponent},
      {path:"Lesson" ,component:LessonAdminComponent},
      {path:"CourseVideos" ,component:CourseVideosComponent},
-
-
+     {path:"QuestionGroup" ,component:QuestionGroupAdminComponent},
 
    ]},
   //Nothing
