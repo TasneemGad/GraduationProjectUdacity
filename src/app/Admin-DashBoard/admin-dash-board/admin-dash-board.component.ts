@@ -44,8 +44,11 @@ export class AdminDashBoardComponent implements OnInit {
 
     goToQuestionGroup(){
       this.router.navigate(['QuestionGroup'],{relativeTo:this.active})
-
     }
+    goToQuestion(){
+      this.router.navigate(['Question'],{relativeTo:this.active})
+    }
+
     Logout(){
       this.Authservices.logout();   
       }

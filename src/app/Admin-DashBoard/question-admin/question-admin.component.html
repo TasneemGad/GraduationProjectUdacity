@@ -1,0 +1,27 @@
+<!-- <div class="container-fluid">
+    <div style="text-align: center;">
+        <button class="btn btn-outline-dark" (click)="ShowAddNewQuestion()" id="btnitem">Add Questions
+        </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Questions </button>
+    </div>
+    <hr>
+
+    <div>
+        <mat-label>Course:</mat-label><br>
+        <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLessonsByCrsID(Course.id)"
+            [(ngModel)]="Course.id" [value]="Course.id" name="crsId">
+            <option value="-1" selected="selected">Choose Course</option>
+            <option *ngFor="let Course of AllCourses" [value]="Course.id">{{Course.name}}</option>
+        </select>
+    </div>
+
+    <div>
+        <mat-label>Question Group:</mat-label><br>
+        <select class="custom-select-sm BtnG" id="questionGroupId" #questionGroupId (change)="getAllLEssonContentByLessonID(Course.Less)"
+            [(ngModel)]="Question.questionGroupId" [value]="Question.questionGroupId" name="questionGroupId">
+            <option value="-1" selected="selected">Choose Question Group</option>
+            <option *ngFor="let Coursee of AllCourses" [value]="Coursee.id">{{Coursee.name}}</option>
+        </select>
+    </div>
+
+</div> -->
