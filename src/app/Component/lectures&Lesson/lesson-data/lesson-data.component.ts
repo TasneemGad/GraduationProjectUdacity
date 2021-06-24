@@ -40,6 +40,8 @@ AllQuestionsGroups:QuestionGroup[]
     this.getContentById(this.idUrl);
     this.getAllQuestions();
     this.getAllQuestionsGroup();
+    this.getVideosById(this.idUrl);
+
   } 
   getContentById(id:number){
     this.Services.GetLessonContentById(id).subscribe(sucess=>{

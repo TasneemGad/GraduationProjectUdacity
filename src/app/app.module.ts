@@ -47,6 +47,7 @@ import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-ad
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/categor
     LessonContentAdminComponent,
     CategoryAdminComponent,
     CourseAdminComponent,
-    LessonAdminComponent
+    LessonAdminComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

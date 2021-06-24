@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LessonService } from 'src/app/Services/lesson.service';
 import { LessonContentService } from 'src/app/Services/LessonContent.service';
@@ -21,6 +21,7 @@ import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
 import { AccountService } from 'src/app/Services/account.service';
 import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
 import { QuestionOptionsService } from 'src/app/Services/question-options.service';
+import { LessonDataComponent } from '../lesson-data/lesson-data.component';
 
 
 @Component({
@@ -28,7 +29,7 @@ import { QuestionOptionsService } from 'src/app/Services/question-options.servic
   templateUrl: './lesson-content.component.html',
   styleUrls: ['./lesson-content.component.scss']
 })
-export class LessonContentComponent implements OnInit {
+export class LessonContentComponent implements OnInit ,AfterViewInit{
   Isdetails:boolean=true
   text="expand_less"
   idUrl:any
@@ -38,8 +39,9 @@ export class LessonContentComponent implements OnInit {
   currentCourseToSearch:any =""
   watchObj:IwatchContent={id:0,whatchedOrNot:0,crsID:0,stID:"",lessonContentID:0}
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
-  allContentCurrentLesson:LessonContent[]=[];
+  allContentCurrentLesson:LessonContent[];
   CurrentLesson:LessonContent
+  allLessonContent:LessonContent={id:1,lectureId:1,videoLinkId:1,description:"",questionGroupId:1,lessonId:1,title:"",type:"",header:""}
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   QByLessonContent:Question[]
   allQuestion:Question
@@ -49,7 +51,7 @@ export class LessonContentComponent implements OnInit {
   CoursesVideos:CourseVideos
   correctAn:any
   currentStudent:string
-  
+apiUrl="https://localhost:44326";
   x:boolean
   isAnswered:string="true"
   notAnswered : any="false"
@@ -70,6 +72,7 @@ ngOnChanges():void{
   // this.currentCourseToSearch = this.courseSearch
   // console.log("search?", this.currentCourseToSearch)
 }
+@ViewChild(LessonDataComponent) c:LessonDataComponent
 
 
   constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
@@ -79,18 +82,22 @@ ngOnChanges():void{
   private  StudentASService:StudentAnswerService,private accountService:AccountService   ,
   private OptionServices:QuestionOptionsService
   ) { }
+  ngAfterViewInit(): void {
+    
+    console.log("hhhh",)
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
     // this.QOptionsList={opt1:"",opt2:"",opt3:"",opt4:"",right:"",qustionId:1,id:1}
-
+  const us=this.allLessonContent.lessonId
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
     console.log("iiiiiiiiiid",this.idUrl)
     this.getLessonById(this.idUrl)
-    this.getLessonContentById(this.idUrl);
     this.getCurrentCourse(this.idUrl);
-    this.getVideosById(this.idUrl);
-
+    this.getLessonContentById(this.idUrl);
   })
+  // this.getLessonContentById(us);
 
   }
   getCurrentCourse(id:number):any{
@@ -116,7 +123,9 @@ ngOnChanges():void{
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
       this.allContentCurrentLesson=sucess,console.log("contentForLesson",this.allContentCurrentLesson)
       this.getLessonOneById(id)
-      this.getVideosById(id);
+      // this.getVideosById(id);
+    //  console.log("currentvideohhhhhhhhh",id,this.allContentCurrentLesson ,this.getVideosById(id))
+
       this.getQuestionsByLessonContent(id)
       this.getAllQuestions(id);
       this.getOptions(id)
@@ -125,11 +134,14 @@ ngOnChanges():void{
   getLessonOneById(id:number){
     this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
       this.CurrentLesson=sucess,console.log("content-------",this.CurrentLesson)
+      // this.getVideosById(id)
+
     })
   }
   goToLessonData(id:any){
     this.getLessonOneById(id);
-    this.getVideosById(id)
+    this.getVideosById(id);
+    console.log("currentvideo",id,)
     this.getQuestionsByLessonContent(id)
     this.getAllQuestions(id);
     this.getOptions(id)
@@ -138,8 +150,14 @@ ngOnChanges():void{
       this.CourseId=sessionStorage.getItem("CourseID")
       this.getProgress(this.CourseId,id)
     }
-    this.router.navigate(['lessonData/',id],{relativeTo:this.active})
+    // this.router.navigate(['lessonData/',id],{relativeTo:this.active})
     this.getStudentAnswer(id)
+  }
+  getVideosById(id:number){
+    this.videoServices.getAllCourseViedosById(id).subscribe(sucess=>{
+       this.CoursesVideos=sucess,console.log("currentvvff",this.CoursesVideos,this.CoursesVideos.videoURL ,id)
+    
+    })
   }
   hideList(){
     this.Isdetails = !this.Isdetails
@@ -152,11 +170,10 @@ ngOnChanges():void{
   controlSidenav(){
     this.IsOpened = !this.IsOpened
   }
-  getVideosById(id:number){
-    this.videoServices.getAllCourseViedosById(id).subscribe(sucess=>{
-      this.CoursesVideos=sucess,console.log("currentvv",this.CoursesVideos)
-    })
-  }
+  public createImgPath = (serverPath: string) => {
+    console.log(`${this.apiUrl}/${serverPath}`)
+     return `${this.apiUrl}/${serverPath}`;
+}
   insertWatch(lessonContentID:number,crsId:number){
     this.watchObj.whatchedOrNot=1;
     this.watchObj.stID=this.token.getUserId();
@@ -311,4 +328,5 @@ finalAnswerOfTrueAndFalse(id:number,idContent:any){
     console.log("testand",data)
   })
 }
+
 }

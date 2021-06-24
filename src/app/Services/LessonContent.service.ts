@@ -23,7 +23,7 @@ export class LessonContentService {
         console.log("d")
         return this.http.get<LessonContent>(this.lessonContentUrl+"/" + id).pipe();
       }
-    GetLessonContentByLesson(id:number){
+    GetLessonContentByLesson(id:number):Observable<LessonContent[]>{
         return this.http.get<LessonContent[]>(this.lessonContentByLesson+id).pipe();
       }
     getLessonContentCount(crsid:number):Observable<any>{

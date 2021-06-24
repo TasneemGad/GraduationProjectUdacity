@@ -47,7 +47,7 @@
         <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
 
-     <!-- <div class="nav">
+     <div class="nav">
         <div>
             <mat-icon class="iconMenu" (click)="controlSidenav()">menu</mat-icon>
         </div>
@@ -57,16 +57,26 @@
         <div class="feedback">
             <mat-label>SEND FEEDBAK</mat-label>
         </div>
-    </div>  -->
+    </div> 
     <div style="width: 100%;height: auto;">
         <mat-sidenav-container>
+
              <div class="Ques"> 
                 <mat-sidenav-container style="height: 100%;">
-                   <div style="margin-left: 60px;margin-top: 20px;">
-                        <video controls width="90%">
-                            <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
-                        </video>
-                    </div> 
+                    <mat-sidenav-container>
+                        <div style="margin-left: 60px;margin-top: 20px;" >
+                            <video controls width="90%"   [src]="createImgPath(CoursesVideos?.videoURL)" type="video/mp4">
+                                <source   >
+                                Browser not supported
+                            </video>
+                            <!-- <video controls width="90%"  src="{{CoursesVideos?.videoURL}}"  type="video/mp4" >
+                             <source  >
+                                 
+                                Browser not supported
+                            </video> -->
+                        </div> 
+                    </mat-sidenav-container>
+             
                  <div class="questionMcq">
                     <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
                         <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
@@ -168,9 +178,14 @@
                  </mat-sidenav-container> 
 
              </div>
+      
+    </mat-sidenav-container>
 
-        </mat-sidenav-container>
     </div>
+    <mat-sidenav-container>
+
+    </mat-sidenav-container>
+</mat-sidenav-container>
 
         <!-- Modal -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"

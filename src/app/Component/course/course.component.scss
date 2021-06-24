@@ -121,12 +121,42 @@ header .overlay {
   margin-left: -90px;
   top: -300px;
 }
-.vl2 {
+
+ul li::before {
+  content: "•";
+  color: teal;
+  font-weight: bold;
+  display: inline-block; 
+  // width: 900px;
+  // margin-left: -1em;
+  // margin-top: -20px;
+
+}
+ul {
+  list-style: none;
+}
+li { 
+  // color: blue; /* Or a color you prefer */
+
+  // padding-left: 16px; 
+  // list-style: red;
+}
+
+// li::before {
+//   content: "•"; /* Insert content that looks like bullets */
+//   // padding-right: 8px;
+//   width: 600px;
+//   color: blue; /* Or a color you prefer */
+// }
+#vl2 {
   // margin-top: 300px;
-  display: flex;
-  border-left: 3px solid rgb(223, 220, 220);
+  // display: flex;
+  // border-left: 3px solid rgb(36, 33, 33);
+  border-left: 1px solid teal;
+  // height: 500px;
+
   // height: 150px;
-  position: relative;
+  // position: relative;
   // left: 50%;
   // margin-right:150px;
   // padding-left: 150px;

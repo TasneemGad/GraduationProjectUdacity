@@ -100,7 +100,7 @@ export class SigINComponent implements OnInit {
   }
 
   AdminPage() {
-    window.location.href='/AboutAs';
+    window.location.href='/Home';
   }
   StudentPage() {
     window.location.href='/ClassRoom';

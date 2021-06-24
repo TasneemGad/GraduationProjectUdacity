@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/Services/account.service';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { ConfirmPasswordValidator } from '../../Validation/VerifyPassword.validator';
 
 @Component({
   selector: 'app-new-password',
@@ -14,6 +15,9 @@ export class NewPasswordComponent implements OnInit {
    newPasswordForm:FormGroup;
    password:string;
    alertFlag=false;
+   hide:boolean = true;
+   hidenewpass:boolean = true;
+   hideVerifypass:boolean = true;
 
   getErrorMessagecurrentPassword() {
     if (this.newPasswordForm.get('currentPassword')?.hasError('required')) {
@@ -42,7 +46,8 @@ export class NewPasswordComponent implements OnInit {
       currentPassword:['', [Validators.required, Validators.minLength(6)]],
       newPassword:['', [Validators.required, Validators.minLength(6)]],
       verifyPassword:['', [Validators.required, Validators.minLength(6)]]
-    })
+    }, { validators: [ConfirmPasswordValidator] });
+    
   }
   currentPassword(){
     return this.newPasswordForm.get('currentPassword')
