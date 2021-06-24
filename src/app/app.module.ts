@@ -47,7 +47,12 @@ import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-ad
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+<<<<<<< HEAD
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
+=======
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+>>>>>>> 302114003f7ebe6b5c3935847e8a8020e2333603
 
 
 @NgModule({
@@ -87,13 +92,20 @@ import { PageNotFoundComponent } from './Component/page-not-found/page-not-found
     CoursesFilterPipe,
     AdminDashBoardComponent,
     SubCategoryComponent,
+    CorporateSocialResponsibilityComponent ,
     CorporateSocialResponsibilityComponent,
     LecturesAdminComponent,
     LessonContentAdminComponent,
     CategoryAdminComponent,
     CourseAdminComponent,
+<<<<<<< HEAD
     LessonAdminComponent,
     PageNotFoundComponent,
+=======
+    LecturesAdminComponent,
+    LessonAdminComponent,
+    CourseVideosComponent
+>>>>>>> 302114003f7ebe6b5c3935847e8a8020e2333603
   ],
   imports: [
     BrowserModule,
@@ -103,7 +115,8 @@ import { PageNotFoundComponent } from './Component/page-not-found/page-not-found
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    NgbModule
     // NgbModule
   ],
   providers: [],

@@ -18,7 +18,29 @@ export class LessonService {
     return this.http.get<Lesson[]>(this.lessonUrl).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")}))
   }
+  
+  AddNewLesson(newLesson: Lesson): Observable<Lesson> {
+    return this.http.post<Lesson>(this.lessonUrl,newLesson).pipe(catchError((err)=>{
+      return throwError(err.message || "Invaled Registration")
+    }))
+  }
+DeleteLesson(id:number):Observable<any>{
+  let url = `${this.lessonUrl}/${id}`;
+  return this.http.delete<any>(url).pipe(catchError((err)=>
+  {
+    return throwError(err.message ||"Internal Server error contact site adminstarator");
+  }));
 
+}
+  PutLesson(id:number, LessonToUpdate:Lesson):Observable<Lesson>{
+    let url = `${this.lessonUrl}/${id}`;
+    return this.http.put<Lesson>(url, LessonToUpdate)
+            .pipe(catchError((err)=>{
+              return throwError(err.message ||"Internal Server error contact site adminstarator");
+                }
+              ));
+
+  }
   GetLessonById(id:number){
     return this.http.get<Lesson>(this.lessonUrl+"/" + id).pipe();
   }
@@ -30,4 +52,6 @@ export class LessonService {
     return this.http.get<Lesson[]>(this.lessonUrl+"/LessonByCrsID/"+crsId).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")}))
   }
+
+
 }

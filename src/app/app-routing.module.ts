@@ -36,7 +36,11 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+<<<<<<< HEAD
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
+=======
+import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+>>>>>>> 302114003f7ebe6b5c3935847e8a8020e2333603
 
 const routes: Routes = [
   // Routing
@@ -108,6 +112,8 @@ const routes: Routes = [
      {path:"Category" ,component:CategoryAdminComponent},
      {path:"Course" ,component:CourseAdminComponent},
      {path:"Lesson" ,component:LessonAdminComponent},
+     {path:"CourseVideos" ,component:CourseVideosComponent},
+
 
 
    ]},
