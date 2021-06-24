@@ -97,15 +97,11 @@ const routes: Routes = [
     ],
   },
 
-<<<<<<< HEAD
-  { path: 'lessonContent/:id',component: LessonContentComponent},
-=======
   { path: 'lessonContent/:id',component: LessonContentComponent,
     children: [
       // { path: 'lessonData/:id', component:LessonVideeoComponent }
   ],
   },
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
 //Admin
    {path:"DashBoard" ,component:AdminDashBoardComponent,children:[
      {path:"Lectures",component:LecturesAdminComponent},

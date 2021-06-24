@@ -21,11 +21,8 @@ import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
 import { AccountService } from 'src/app/Services/account.service';
 import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
 import { QuestionOptionsService } from 'src/app/Services/question-options.service';
-<<<<<<< HEAD
 import { identity } from 'rxjs';
-=======
 import { LessonDataComponent } from '../lesson-data/lesson-data.component';
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
 
 
 @Component({
@@ -45,7 +42,6 @@ export class LessonContentComponent implements OnInit ,AfterViewInit{
   currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
   allContentCurrentLesson:LessonContent[];
   CurrentLesson:LessonContent
-<<<<<<< HEAD
   // progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   CoursesVideos:CourseVideos
   idLessonContent:number
@@ -59,20 +55,12 @@ export class LessonContentComponent implements OnInit ,AfterViewInit{
   StudentAnswerByLesson:StudentAnswer[]
   StudentAnswer:StudentAnswer
   questionAnswered:StudentAnswer[]
-=======
   allLessonContent:LessonContent={id:1,lectureId:1,videoLinkId:1,description:"",questionGroupId:1,lessonId:1,title:"",type:"",header:""}
   progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
-  QByLessonContent:Question[]
-  allQuestion:Question
-  StudentAnswerByLesson:StudentAnswer[]
-  StudentAnswer:StudentAnswer
-  QOptionsList:QOptions[]
-  CoursesVideos:CourseVideos
   correctAn:any
   currentStudent:string
 apiUrl="https://localhost:44326";
   x:boolean
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
   isAnswered:string="true"
   notAnswered : any="false"
   trueAndFalseQuestion:Question[]
@@ -84,7 +72,6 @@ apiUrl="https://localhost:44326";
   questionTrueAndFalseNotAnswered:Question[]=[]
   flag:any=false
 
-<<<<<<< HEAD
   mayBeAnswerOptionQuestion:string
   AnswerOfOptions:StudentAnswer
   lastAnswerOptionQuestion:string
@@ -92,14 +79,8 @@ apiUrl="https://localhost:44326";
   notAnsweredYetForOptional:Question[]
   g:QOptions[]=[]
   j:StudentAnswer[]
-=======
-ngOnChanges():void{
-  console.log("isChange?", this.CourseId)
-  // this.currentCourseToSearch = this.courseSearch
-  // console.log("search?", this.currentCourseToSearch)
-}
+
 @ViewChild(LessonDataComponent) c:LessonDataComponent
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
 
   @Input() CourseId:any
   ngOnChanges():void{
@@ -123,20 +104,13 @@ ngOnChanges():void{
 
   ngOnInit(): void {
     // this.QOptionsList={opt1:"",opt2:"",opt3:"",opt4:"",right:"",qustionId:1,id:1}
-<<<<<<< HEAD
     // this.getNotAnsweredOFTrueAndFalse()
-=======
   const us=this.allLessonContent.lessonId
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
     console.log("iiiiiiiiiid",this.idUrl)
     this.getLessonById(this.idUrl)
     this.getCurrentCourse(this.idUrl);
-<<<<<<< HEAD
-    this.getVideosById(this.idUrl);
-=======
     this.getLessonContentById(this.idUrl);
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
   })
   // this.getLessonContentById(us);
 
@@ -164,19 +138,13 @@ ngOnChanges():void{
     this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
       this.allContentCurrentLesson=sucess,console.log("contentForLesson",this.allContentCurrentLesson)
       this.getLessonOneById(id)
-      // this.getVideosById(id);
-    //  console.log("currentvideohhhhhhhhh",id,this.allContentCurrentLesson ,this.getVideosById(id))
-
       this.getQuestionsByLessonContent(id)
       this.getAllQuestions(id);
-      // this.getOptions(id)
     })
   }
   getLessonOneById(id:number){
     this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
       this.CurrentLesson=sucess,console.log("content-------",this.CurrentLesson)
-      // this.getVideosById(id)
-
     })
   }
   goToLessonData(id:any){
@@ -186,23 +154,20 @@ ngOnChanges():void{
     console.log("currentvideo",id,)
     this.getQuestionsByLessonContent(id)
     this.getAllQuestions(id);
-    // this.getOptions(id)
     if(sessionStorage.getItem("CourseID")!=null)
     {
       this.CourseId=sessionStorage.getItem("CourseID")
       this.getProgress(this.CourseId,id)
     }
-<<<<<<< HEAD
-=======
     // this.router.navigate(['lessonData/',id],{relativeTo:this.active})
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
     this.getStudentAnswer(id)
     this.idLessonContent = id
   }
   getVideosById(id:number){
-    this.videoServices.getAllCourseViedosById(id).subscribe(sucess=>{
-       this.CoursesVideos=sucess,console.log("currentvvff",this.CoursesVideos,this.CoursesVideos.videoURL ,id)
-    
+    console.log("VID",id)
+    this.videoServices.getAllCourseViedosById(this.CurrentLesson.videoLinkId).subscribe(sucess=>{
+       this.CoursesVideos=sucess
+      console.log("currentvvff",this.CoursesVideos,this.CoursesVideos.videoURL ,id)
     })
   }
   hideList(){
@@ -457,26 +422,5 @@ ngOnChanges():void{
 //   console.log("oooooooooooooooo",this.LessonSearchList)
 
 // }
-<<<<<<< HEAD
 
 }
-=======
-answerMayOfTrueAndFalse(answer:any){
-  console.log("ans",answer)
-  this.mayBeAnswer = answer
-}
-finalAnswerOfTrueAndFalse(id:number,idContent:any){
-  this.lastAnswerOfTrueAndFalse = this.mayBeAnswer
-  console.log("lastAns",this.lastAnswerOfTrueAndFalse)
-  // this.accountService.getStudentInformation(this.token.getUserId()).subscribe(data=>{
-  //   this.currentStudent = data.id
-  // })
-  this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
-  console.log("testannnnnnnnnnnnnnn",this.AnswerOfTrueAndFalse)
-  this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
-    console.log("testand",data)
-  })
-}
-
-}
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee

@@ -20,14 +20,15 @@
         <hr>
         <h1 class="navContent">RESOURSES</h1>
         <hr>
-        <!-- <div style="display: flex;">
+        <div style="display: flex;">
             <div>
                 <h1 class="navContent">CONTENTS </h1>
             </div>
             <div style="margin: 0 auto;">
                 <mat-icon class="hideIcon" (click)="hideList()">{{text}}</mat-icon>
             </div>
-        </div> -->
+        </div>
+        <div *ngIf="Isdetails then list"></div>
         <ng-template #list>
             <div *ngFor="let i of allContentCurrentLesson ;let e=index ">
                 <hr>
@@ -44,7 +45,6 @@
             </div>
             <hr>
         </ng-template>
-        <div *ngIf="Isdetails then list"></div>
     </mat-sidenav>
 
      <div class="nav">
@@ -59,37 +59,20 @@
         </div>
     </div> 
     <div style="width: 100%;height: auto;">
-        <mat-sidenav-container>
-<<<<<<< HEAD
-            <div class="Ques"> 
-            <mat-sidenav-container style="height: 100%;">
-                <div style="margin: 0 auto;margin-top: 20px;">
-                    <video controls width="90%">
-                        <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
-                    </video>
-                </div> 
+        <!-- <mat-sidenav-container> -->
 
-                <div class="questionMcq" style="margin: 0 auto; width:70%">
-=======
-
-             <div class="Ques"> 
-                <mat-sidenav-container style="height: 100%;">
+             <!-- <div >  -->
+                <mat-sidenav-container style="height: 100%;" class="Ques">
                     <mat-sidenav-container>
                         <div style="margin-left: 60px;margin-top: 20px;" >
                             <video controls width="90%"   [src]="createImgPath(CoursesVideos?.videoURL)" type="video/mp4">
                                 <source   >
                                 Browser not supported
                             </video>
-                            <!-- <video controls width="90%"  src="{{CoursesVideos?.videoURL}}"  type="video/mp4" >
-                             <source  >
-                                 
-                                Browser not supported
-                            </video> -->
                         </div> 
                     </mat-sidenav-container>
              
-                 <div class="questionMcq">
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
+                 <div class="questionMcq" style="margin: 0 auto; width:70%">
                     <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
                         <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
                         <div style="border-radius: 25px ;">
@@ -210,34 +193,16 @@
                                 </div> -->
                             </mat-card>
                             </div>
-<<<<<<< HEAD
                         <button type="submit" class="btnSave" mat-raised-button
                             color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
                     </div>
                 </div>    
             </mat-sidenav-container> 
-            </div>
-        </mat-sidenav-container>
+            <!-- </div> -->
+        <!-- </mat-sidenav-container> -->
     </div>
 </mat-sidenav-container>
 
-=======
-                            <button type="submit" class="btnSubmit" mat-raised-button
-                                color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
-                        </div>
-                    </div>    
-                 </mat-sidenav-container> 
-
-             </div>
-      
-    </mat-sidenav-container>
-
-    </div>
-    <mat-sidenav-container>
-
-    </mat-sidenav-container>
-</mat-sidenav-container>
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
 
         <!-- Modal -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
