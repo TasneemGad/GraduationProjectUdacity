@@ -1,8 +1,7 @@
 <!-- <form (ngSubmit)="onSubmit()" #Form [formGroup]="UserForm"> -->
-  <!-- <ngb-alert  style="background-color: rgb(171, 221, 171);width: 100%;" *ngIf="alertFlag" >
-    <strong>Info Changed Successfully  </strong> 
-    </ngb-alert> -->
-
+    <div class="alert alert-success" style="background-color: rgb(171, 221, 171);width: 100%;" role="alert" *ngIf="alertFlag">
+      <strong style="margin-left: 30%;">Info Changed Successfully  </strong> 
+    </div>
   <div>
   <mat-card class="Allcard">
     <h1>Basic Information</h1>
@@ -40,9 +39,9 @@
 
       <br>
       <div style="display: flex;">
-        <div>
-          <mat-form-field class="contain">
-            <input type="tel" matInput formControlName="tel" placeholder="Phone Number" [value]="userInfo.phoneNumber" #tel>
+        <div class="contain">
+          <mat-form-field >
+            <input type="text" matInput [value]="userInfo.phoneNumber" #tel>
           </mat-form-field>
         </div>
         <div>

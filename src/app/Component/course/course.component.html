@@ -131,7 +131,7 @@
     IN COLLABORATION WITH
   </p>
   <!-- <span *ngFor="let i of courseListImg"> -->
-  <img src="{{ courseList.partLogo }}" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
+  <img   [src]="createImgPath(courseList.partLogo)" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
 
   <!-- </span> -->
 </div>
@@ -182,7 +182,7 @@
           </div>
           <div>
             <h1>
-              <img src="{{ courseList.crsLogo }}" style="
+              <img  [src]="createImgPath(courseList.crsLogo)" style="
                   width: 550px;
                   height: 300px;
                   float: right;
@@ -228,8 +228,34 @@
                   </h1>
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
-                <!-- <div class="vl1"></div > -->
-                <div *ngFor="let i of lectureList">
+                  
+                  <ul >
+
+                  <li style="margin-left: 50px;">
+                    <div id="vl2">
+
+                    <h1 style="font-weight: 500;margin-top: 20px;margin-left: 30px;">{{ lectureList.tilte }}</h1>
+
+                  <p style="font-size: 15px;width: 600px;margin-left: 30px;">{{ lectureList.lectureDescription }}</p>
+                </div>
+
+                  </li>
+                  <li style="margin-left: 50px;">
+                    <div id="vl2">
+                    
+                  <p style="font-size: 15px;width: 600px;margin-left: 30px;">{{ lectureList.lectureDescription }}</p>
+                </div>
+
+                  </li>
+                  </ul>
+                  <!-- {{lectureList.lectureDescription}} -->
+                  <div   *ngFor="let item of lectureAllListcrs">
+                    <h1 style="font-weight: 500;margin-top: 20px;">{{ item.tilte }}</h1>
+
+                  </div>
+                
+                <div *ngFor="let i of lectureAllListcrs">
+                  {{ i }}
                   <h1 style="font-weight: 500;margin-top: 20px;">{{ i.tilte }}</h1>
                   <div class="vl2"></div>
                   <p style="font-size: 15px;width: 600px;">{{ i.lectureDescription }}</p>

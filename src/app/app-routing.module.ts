@@ -36,8 +36,10 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
 import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+
 
 const routes: Routes = [
   // Routing
@@ -97,7 +99,9 @@ const routes: Routes = [
   },
 
   { path: 'lessonContent/:id',component: LessonContentComponent,
-    children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
+    children: [
+      // { path: 'lessonData/:id', component:LessonVideeoComponent }
+  ],
   },
 //Admin
    {path:"DashBoard" ,component:AdminDashBoardComponent,children:[
@@ -113,7 +117,8 @@ const routes: Routes = [
    ]},
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/Home', pathMatch: 'full' },
+  { path: '**', component:PageNotFoundComponent  },
+
 
 ];
 

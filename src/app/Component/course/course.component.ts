@@ -19,18 +19,20 @@ export class CourseComponent implements OnInit {
 isClick:boolean=false
 isClosed:boolean=false
 text="Show more";
-textHide="SEE DETAILS";
+textHide="Hide DETAILS";
 Isdetails:boolean=true
    courseList:ICourse
    courseListImg:ICourse[]
-   lectureList:Lectures[]
+   lectureList:Lectures
    lectureAllList:Lectures[]=[]
+   lectureAllListcrs:Lectures[]
    idUrl:any
    idUrlLecture:any
    InstractorAndMentor : IMonterOrInstractor[] = []
    Reviews:IReviews[] = []
    Error:string
    twoCoursesSuggest:ICourse[] = []
+   apiUrl="https://localhost:44326";
 
    constructor(private courseServices:CoursesService,private active:ActivatedRoute ,
     private instractorService:MentorOrInstractorService,
@@ -42,14 +44,20 @@ Isdetails:boolean=true
     this.getInstractor();
     this.getReviews()
 
-    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
+    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
+  
+    this.getLecturesesByCrs(this.idUrl)
+  
+  
+  })
   //  this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrlLecture=p.get('lid')})
 
     this.getCourse();
     this.getCourseById(this.idUrl);
     this.getLecturesByID(this.idUrl);
     this.getLectureses();
-    this.getTwoCourses(this.idUrl)
+    this.getTwoCourses(this.idUrl);
+    this.getLecturesesByCrs(this.idUrl)
     console.log("ss",this.idUrl)
   }
   
@@ -82,7 +90,7 @@ getCourseById(id:number){
 }
 getLecturesByID(id:number){
   console.log("ID")
-  this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
+  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
     this.lectureList=sucess,
     console.log("kkk",this.lectureList)})
 }
@@ -91,6 +99,12 @@ getLectureses(){
   console.log("enter2")
     this.lectureAllList=suces,
     console.log(this.lectureAllList)},err=>{console.log(err)})
+}
+getLecturesesByCrs(id:number){
+  this.lectureServices.getLecturesByCoursID(id).subscribe(suces=>{
+ console.log("enterall")
+   this.lectureAllListcrs=suces,
+   console.log("enterajl",this.lectureAllList)},err=>{console.log(err)})
 }
 
 getInstractor()
@@ -136,6 +150,10 @@ getTwoCourses(currentCategoryID:number){
       this.Error = Wrong
     }      
   )
+}
+public createImgPath = (serverPath: string) => {
+  console.log(`${this.apiUrl}/${serverPath}`)
+   return `${this.apiUrl}/${serverPath}`;
 }
 
 }
