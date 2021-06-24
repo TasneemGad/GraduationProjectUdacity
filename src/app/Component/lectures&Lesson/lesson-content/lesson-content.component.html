@@ -73,22 +73,23 @@
                     </mat-sidenav-container>
              
                  <div class="questionMcq" style="margin: 0 auto; width:70%">
-                    <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
-                        <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
+                    <div *ngFor="let question of QByLessonContent ;let e=index" class="questionMcq">
+                        <input type="hidden" [value]="question.id" #crsID name="crsID" id="crsID">
                         <div style="border-radius: 25px ;">
                             <mat-card class="questionCard">
                                 <mat-card-title style="padding: 15px 0px 10px 15px;">
                                     <div class="questionMcq" >
                                         <td>{{e}}-{{allQuestion?.id}} </td>
-                                        <td>{{i.title}}</td>
+                                        <td>{{question.title}}</td>
                                     </div>
                                 </mat-card-title>
                                     <hr>
                                     <div class="questionMcq" *ngFor="let item of QOptionsList" style="padding:15px 0px 5px 15px;">
-                                        <div *ngIf="item.qustionId==i.id">
+                                        <div *ngIf="item.qustionId==question.id">
                                             
-                                            <div *ngFor="let ans of StudentAnswerByLesson">
-                                                <div *ngIf="ans.questionId == i.id; then answerwdOptionQestion"></div> <!-- else notAnsweredOptionQuestion"></div>-->
+                                            <!-- <div *ngFor="let ans of StudentAnswerByLesson">
+                                                
+                                                <div *ngIf="ans.questionId == i.id; then answerwdOptionQestion"></div> 
                                             <ng-template #answerwdOptionQestion>
                                                 <mat-radio-group aria-label="Select an option">
                                                     <div *ngIf="item.opt1 == item.right else not1" >
@@ -121,12 +122,14 @@
 
                                                 </mat-radio-group>
                                             </ng-template>
-                                            </div>
+                                            </div> -->
+                                           
                                             <div *ngFor="let notAns of notAnsweredYetForOptional">
-                                                <div *ngIf="notAns.id==i.id">
+                                                hhhh {{notAnsweredYetForOptional}}
+                                                <div *ngIf="notAns.id==question.id">
                                             <!-- <ng-template #notAnsweredOptionQuestion> -->
                                                 <mat-radio-group aria-label="Select an option">
-                                                    <mat-radio-button color="primary"  value={{item.opt1}} #op1 (click)="check(op1.value)"
+                                                    <mat-radio-button color="primary"  [value]="item.opt1" #op1 (click)="check(item.opt1)"
                                                         class="questionMcq" >
                                                         {{item.opt1}}
                                                     </mat-radio-button><br>
@@ -146,11 +149,11 @@
                                             <!-- </ng-template> -->
                                             </div>
                                         </div>
+                                        </div>
                                     </div>
-                                </div>
                             </mat-card>
                         </div>
-                            <button type="submit" color="primary" mat-raised-button class="btnSave" (click)="postAnswer(i.id,i.lessonContentId)">Submit</button><br> <br><br><br>
+                            <button type="submit" color="primary" mat-raised-button class="btnSave" (click)="postAnswer(question.id,question.lessonContentId)">Submit</button><br> <br><br><br>
                     </div>
                 </div>  
 
@@ -163,9 +166,9 @@
                                     <mat-label>{{question.title}}</mat-label><br>
                                 </div><hr>
                                 <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
-                                        <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer==isAnswered; then answered  else notAnswered"></div>
+                                        <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer==isAnswered; then answered"></div>
                                         <ng-template #answered>
-                                            <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer == notAnswered; then trueAns else falseAns "></div>
+                                            <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer == notAnsweredYet; then trueAns else falseAns "></div>
                                                 <ng-template #trueAns>
                                                     <mat-radio-group aria-label="Select an option">
                                                         <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
@@ -217,32 +220,6 @@
             integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
             crossorigin="anonymous"></script>
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-body homeSearch">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    style=" padding: 30px 40px 0px 0px;">
-                    <span aria-hidden="false">&times;</span>
-                </button>
-                <div class="content">
-                    <h2 class="searchTitel">{{currentCourseToSearch}} </h2>
-                    <input type="text" class="inputSearch">
-                    <button type="button" class="btn btn-primary btnSearch">Search</button>
-                </div>
-                <hr>
-                <div class="result">
-                    <div class="content">
-                        <p>Your recent searches</p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> 
      
 <!-- Button trigger modal -->
         <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -273,7 +250,7 @@
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   -->
-   <!-- <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
      <div class="modal-dialog modal-fullscreen" >
        <div  class="modal-content">
          <div class="modal-body homeSearch" >
@@ -304,4 +281,4 @@
        </div>
      </div>
    </div>
-   </div> -->
+   </div>
