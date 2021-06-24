@@ -14,6 +14,7 @@ import {GovernmentComponent  } from './Component/government/government.component
 import{BecomeAnInstractorComponent } from'./Component/become-an-instractor/become-an-instractor.component';
 import {OverViewComponent  } from './Component/over-view/over-view.component';
 import {ApproachComponent  } from './Component/approach/approach.component';
+import {SolutionComponent  } from './Component/solution/solution.component';
 import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
 import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:'BecomeAnInstractor',component: BecomeAnInstractorComponent},
   {path:'OverView',component: OverViewComponent},
   {path:'Approach',component: ApproachComponent},
+  {path:'Solution',component: SolutionComponent},
   {path:'career-prep',component:CareerPrepComponent},
   {path:'success',component:StudentSucessComponent},
   {path:'start-mentoring',component:BecomeAMentorComponent},

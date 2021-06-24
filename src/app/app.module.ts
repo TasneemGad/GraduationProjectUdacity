@@ -25,6 +25,7 @@ import { ApproachComponent } from './Component/approach/approach.component';
 import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
+import { SolutionComponent } from './Component/solution/solution.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BecomeAMentorComponent } from './Component/become-amentor/become-amento
     OverViewComponent,
     ApproachComponent,
     StudentSucessComponent,
-    BecomeAMentorComponent
+    BecomeAMentorComponent,
+    SolutionComponent
   ],
   imports: [
     BrowserModule,
