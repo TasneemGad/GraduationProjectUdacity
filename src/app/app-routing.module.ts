@@ -26,6 +26,7 @@ import { LessonContentComponent } from './Component/lectures&Lesson/lesson-conte
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import {UploadComponent} from './reusableComponents/upload/upload.component';
+import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
 
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
@@ -34,6 +35,10 @@ import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-categor
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
+import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+
 
 const routes: Routes = [
   // Routing
@@ -52,7 +57,7 @@ const routes: Routes = [
   { path: 'Resources', component:ResourcesComponent, data: { footer: true, header: true }},
 
   { path: 'AboutAs', component:AboutASComponent, data: { footer: true, header: true }},
-
+  {path:'CorporateSocialResponsibility', component:CorporateSocialResponsibilityComponent, data: { footer: true, header: true }},
   { path: 'Upload', component:UploadComponent, data: { footer: true, header: true }},
 
   // Payment 
@@ -92,7 +97,15 @@ const routes: Routes = [
     ],
   },
 
+<<<<<<< HEAD
   { path: 'lessonContent/:id',component: LessonContentComponent},
+=======
+  { path: 'lessonContent/:id',component: LessonContentComponent,
+    children: [
+      // { path: 'lessonData/:id', component:LessonVideeoComponent }
+  ],
+  },
+>>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
 //Admin
    {path:"DashBoard" ,component:AdminDashBoardComponent,children:[
      {path:"Lectures",component:LecturesAdminComponent},
@@ -101,12 +114,14 @@ const routes: Routes = [
      {path:"Category" ,component:CategoryAdminComponent},
      {path:"Course" ,component:CourseAdminComponent},
      {path:"Lesson" ,component:LessonAdminComponent},
-
+     {path:"CourseVideos" ,component:CourseVideosComponent},
+     {path:"QuestionGroup" ,component:QuestionGroupAdminComponent},
 
    ]},
   //Nothing
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/Home', pathMatch: 'full' },
+  { path: '**', component:PageNotFoundComponent  },
+
 
 ];
 

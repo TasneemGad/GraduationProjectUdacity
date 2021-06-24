@@ -17,7 +17,7 @@ Error:string
 currentCategoryId = 1
 Courses:ICourse[] = []
 CoursesByID:ICourse[]=[]
-
+apiUrl="https://localhost:44326";
 customOptions: OwlOptions = {
   loop: false,
   mouseDrag: true,
@@ -96,6 +96,9 @@ customOptions: OwlOptions = {
     )    
     }
  
-
+    public createImgPath = (serverPath: string) => {
+      console.log(`${this.apiUrl}/${serverPath}`)
+   return `${this.apiUrl}/${serverPath}`;
+}
 
 }

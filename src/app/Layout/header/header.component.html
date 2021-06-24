@@ -1,74 +1,91 @@
 <mat-toolbar>
-    <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg" >
-    <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
-    <div *ngIf="isLoggedIn()&& role()==='Admin';then Admin else NotAdmin"></div>
-      <ng-template #Admin >
-      <button mat-button  class="menuData" style="margin-left: 210px;" routerLink="/DashBoard">Admin</button>
-     </ng-template>
-     <ng-template #NotAdmin >
-       <p style="margin-left: 210px;"></p>
-     </ng-template>
-
-    <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 10px;">Programs  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
-      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
-      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
-
-    <mat-menu #rootMenu="matMenu">
-      <span *ngFor="let category of Categoies" >
-         <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)" (click)="getCurrentCategory(category.catName)" >{{category.catName}}</button>
-      </span><hr>
-      <span><button mat-button class="catalog" routerLink="/course/all">FULL CATALOGE</button></span>
-    </mat-menu>
-    
-    <mat-menu #subMenu="matMenu">
-        <span *ngFor="let course of CoursesByID" >
-          <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
-            <button mat-menu-item class="menu" routerLink="{{'/Course/'+course.id}}">{{course.name}}</button>
-          <!-- </span> -->
-        </span>
-    </mat-menu>
+  <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg">
+  <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
 
 
-    <button mat-button  [matMenuTriggerFor]="menu" class="menuData">Careers  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
-      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
-      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
-      <mat-menu #menu="matMenu"  >
-        <button mat-menu-item class="menu" >CAREER PREP</button>
-        <button mat-menu-item class="menu" >STUDENT SUCCESS</button>
-        <button mat-menu-item class="menu" >BECOME A MENTOR</button>
-        <button mat-menu-item class="menu" >BECOME AN INSTRUCTOR</button>
-      </mat-menu>
+  <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 10px;">Programs <svg class=""
+      height="7" viewBox="0 0 12 7" width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round"
+        strok-width="2" transform="translate(-104 -45)"></path>
+    </svg></button>
 
-    <button mat-button [matMenuTriggerFor]="menuForEnterprise"  class="menuData">For Enterprise  <svg class="" height="7" viewBox="0 0 12 7"  width="12">
-      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round" 
-      strok-width="2" transform="translate(-104 -45)" ></path></svg></button>
-      <mat-menu #menuForEnterprise="matMenu">
-        <button mat-menu-item class="menu">OVERVIEW</button>
-        <button mat-menu-item class="menu">OUR APPROACH</button>
-        <button mat-menu-item class="menu">SOLUTION</button>
-        <button mat-menu-item class="menu" routerLink="Resources">RESOURCES</button>
-        <button mat-menu-item class="menu">CORPORATE SOCIAL <br> RESPONSIBILITY</button>
-        <button mat-menu-item class="menu" routerLink="AboutAs">ABOUT US</button>
-      </mat-menu>
+  <mat-menu #rootMenu="matMenu">
+    <span *ngFor="let category of Categoies">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu" class="menu" (mouseover)="getHoverCategoryID(category.id)"
+        (click)="getCurrentCategory(category.catName)">{{category.catName}}</button>
+    </span>
+    <hr>
+    <span><button mat-button class="catalog" routerLink="/course/all">FULL CATALOGE</button></span>
+  </mat-menu>
 
-    <button mat-button class="menuData">For Government</button>
-    
-    <p *ngIf="isLoggedIn();then Login else NotLogin" style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">|</p>
-    <ng-template #NotLogin >
-      <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign In</button>
-</ng-template>
-<ng-template #Login >
-  <button mat-button  routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Blog</button>
-</ng-template>
-    <div *ngIf="isLoggedIn(); then name else log"></div>
+  <mat-menu #subMenu="matMenu">
+    <span *ngFor="let course of CoursesByID">
+      <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
+      <button mat-menu-item class="menu" routerLink="{{'/Course/'+course.id}}">{{course.name}}</button>
+      <!-- </span> -->
+    </span>
+  </mat-menu>
 
-    <ng-template #log>
-      <button mat-raised-button  routerLink="SignUP" style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button> 
-    </ng-template>
 
-    <ng-template #name >
-      <button routerLink="/ClassRoom" mat-raised-button style="background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;"
-        >My ClassRoom</button>
-    </ng-template>
-    
-  </mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="menu" class="menuData">Careers <svg class="" height="7" viewBox="0 0 12 7"
+      width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round"
+        strok-width="2" transform="translate(-104 -45)"></path>
+    </svg></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item class="menu">CAREER PREP</button>
+    <button mat-menu-item class="menu">STUDENT SUCCESS</button>
+    <button mat-menu-item class="menu">BECOME A MENTOR</button>
+    <button mat-menu-item class="menu">BECOME AN INSTRUCTOR</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuForEnterprise" class="menuData">For Enterprise <svg class="" height="7"
+      viewBox="0 0 12 7" width="12">
+      <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round"
+        strok-width="2" transform="translate(-104 -45)"></path>
+    </svg></button>
+  <mat-menu #menuForEnterprise="matMenu">
+    <button mat-menu-item class="menu">OVERVIEW</button>
+    <button mat-menu-item class="menu">OUR APPROACH</button>
+    <button mat-menu-item class="menu">SOLUTION</button>
+    <button mat-menu-item class="menu" routerLink="Resources">RESOURCES</button>
+    <button mat-menu-item class="menu" routerLink="CorporateSocialResponsibility">CORPORATE SOCIAL <br>
+      RESPONSIBILITY</button>
+    <button mat-menu-item class="menu" routerLink="AboutAs">ABOUT US</button>
+  </mat-menu>
+
+  <button mat-button class="menuData">For Government</button>
+
+  <p *ngIf="isLoggedIn();then Login else NotLogin" style="padding-top: 8px; margin-left: 25px; color: rgb(98, 97, 97);">
+    |</p>
+  <ng-template #NotLogin>
+    <button mat-button routerLink="SignUP" style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Sign
+      In</button>
+  </ng-template>
+  <ng-template #Login>
+    <button mat-button routerLink="SignUP"
+      style="margin: 0px 10px 0px 10px; font-size: 15px; color: #525c65;">Blog</button>
+  </ng-template>
+
+  <div *ngIf="!isLoggedIn(); then  log"></div>
+  <ng-template #log>
+    <button mat-raised-button routerLink="SignUP"
+      style=" background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">GET START</button>
+  </ng-template>
+
+  
+  <div *ngIf="isLoggedIn()&& role()==='Student'; then name "></div>
+  <div *ngIf="isLoggedIn() && role()==='Admin';then Admin "></div>
+
+  
+  <ng-template #name>
+    <button routerLink="/ClassRoom" mat-raised-button
+      style="background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">My ClassRoom</button>
+  </ng-template>
+
+  <ng-template #Admin>
+    <button style="margin-left: 210px;" routerLink="/DashBoard" mat-raised-button
+      style="background-color: #017a9b; color: white; letter-spacing: 2px; height: 35px;">Admin DashBoard</button>
+  </ng-template>
+
+</mat-toolbar>

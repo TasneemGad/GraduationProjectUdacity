@@ -3,4 +3,6 @@ export interface CourseVideos{
      lessonId:number   
      courseId:number 
      videoURL:string
+     videoName:string
+
 }

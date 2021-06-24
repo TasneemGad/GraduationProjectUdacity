@@ -54,3 +54,48 @@ thead{
     font-size: 20px;
     text-align: center;
 }
+
+.btn-block{
+    background-color: rgb(207, 63, 63);
+    border: none;
+    
+}
+.btn-outline-dark{
+    background-color: rgb(119, 200, 126);
+    border: none;
+    border-radius:70%;
+}
+
+
+.btn-outline-dark2{
+    background-color:#6183a5;
+
+    border: none;
+}
+
+.btn-block2{
+    background-color: rgb(119, 200, 126);
+    border: none;
+    
+}
+.btnSubmit{
+    background-color: #41accc;
+    color: white;
+    padding: 4px 12px 4px 12px;
+    text-align: center;
+    margin:0 auto;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+body {
+    background-color: #eecda3;
+    background-color: -webkit-linear-gradient(to right, #eecda3, #6183a5);
+    background-color: linear-gradient(to right, #eecda3, #6183a5);
+  width: auto;
+  height: auto;
+  }
+.BtnG{
+
+    width:100%
+}

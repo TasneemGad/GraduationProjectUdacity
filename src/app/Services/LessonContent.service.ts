@@ -10,7 +10,7 @@ import { LessonContent} from '../SharedModels/Interface/ILessonContent';
 })
 export class LessonContentService {
     lessonContentUrl="https://localhost:44326/api/lessonContent"    
-    lessonContentUrlId="https://localhost:44326/api/lessonContent"  
+    lessonContentUrlId="https://localhost:44326/api/lessonContent/"  
     lessonContentByLesson="https://localhost:44326/api/lessonContent/LessonContentByLes/"
     
     constructor(private http: HttpClient) { }
@@ -23,14 +23,20 @@ export class LessonContentService {
         console.log("d")
         return this.http.get<LessonContent>(this.lessonContentUrl+"/" + id).pipe();
       }
-    GetLessonContentByLesson(id:number){
+    GetLessonContentByLesson(id:number):Observable<LessonContent[]>{
         return this.http.get<LessonContent[]>(this.lessonContentByLesson+id).pipe();
       }
     getLessonContentCount(crsid:number):Observable<any>{
         return this.http.get(this.lessonContentUrl+"/CrsLessonContentCount/"+crsid).pipe(catchError((err)=>{
           return throwError(err.massage || "Error")
         }))
-      }  
+      } 
+      
+      AddNewLessonContent(newLessonContent: LessonContent): Observable<LessonContent> {
+        return this.http.post<LessonContent>(this.lessonContentUrl,newLessonContent).pipe(catchError((err)=>{
+          return throwError(err.message || "Invaled Registration")
+        }))
+      }
     postLessonContent(lessonContent:LessonContent): Observable<LessonContent> {
     console.log("ser1")
     return this.http.post<LessonContent>(this.lessonContentUrl,lessonContent)

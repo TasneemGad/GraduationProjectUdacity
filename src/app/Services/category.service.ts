@@ -16,7 +16,27 @@ export class CategoryService {
   getCategories():Observable<ICategory[]> {
     return this._http.get<ICategory[]>(this.Url).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")
-  }))
-  
+  }))  
+  }
+
+  //add
+  insertCategory(Category:ICategory):Observable<ICategory[]> {
+    return this._http.post<ICategory[]>(this.Url,Category).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")
+  }))  
+  }
+
+  //update
+  updateCategory(catId:number,Category:ICategory):Observable<ICategory[]> {
+    return this._http.put<ICategory[]>(this.Url+"/"+catId,Category).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")
+  }))  
+  }
+
+  //delete
+  deleteCategory(catId:number):Observable<ICategory[]> {
+    return this._http.delete<ICategory[]>(this.Url+"/"+catId).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")
+  }))  
   }
 }

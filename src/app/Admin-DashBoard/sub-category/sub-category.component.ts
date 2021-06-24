@@ -13,58 +13,69 @@ import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
 })
 export class SubCategoryComponent implements OnInit {
 
-  isOpen:boolean=false
-  isUpdate:boolean=false
-  addSubCategoryForm:FormGroup
-  addSubCategory:ISubCategory
-  allSubCategory:ISubCategory[]
-  SubCategoryByid:ISubCategory
-  allCategory:ICategory[]
-  
-  constructor(private fb:FormBuilder , private SubCategoryServices:SubCategoryService, private catServices:CategoryService,
-    private router:Router ,private active :ActivatedRoute,
-    ) {}
+  isOpen: boolean = false
+  isUpdate: boolean = false
+  addSubCategoryForm: FormGroup
+  addSubCategory: ISubCategory
+  allSubCategory: ISubCategory[]
+  SubCategoryByid: ISubCategory
+  allCategory: ICategory[]
+
+  constructor(private fb: FormBuilder, private SubCategoryServices: SubCategoryService, private catServices: CategoryService,
+    private router: Router, private active: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
-    this.addSubCategory={subCategoryTitle:"",subCategoryDescribtion:"",categoryID:1}
+    this.addSubCategory = { subCategoryTitle: "", subCategoryDescribtion: "", categoryID: 1 }
 
-  this.addSubCategoryForm=this.fb.group({
-  id: [''],
-  subCategoryTitle:[''],
-  categoryID: [''],
-  subCategoryDescribtion: [''],
- })
-   this.getSubCategory();
+    this.addSubCategoryForm = this.fb.group({
+      id: [''],
+      subCategoryTitle: [''],
+      categoryID: [''],
+      subCategoryDescribtion: [''],
+    })
+    this.getSubCategory();
     this.getAllCategory();
   }
-  addNew(){
-    this.isOpen=!this.isOpen
+  addNew() {
+    this.isOpen = !this.isOpen
   }
- onsubmit(){
-  this.AddSubCategory();
-  this.SubCategoryServices.postSubCategory(this.addSubCategory).subscribe(sucess=>{
-  console.log("addsome",sucess,this.addSubCategoryForm)
-  this.router.navigateByUrl("/DashBoard/SubCategory")
-})
-  }
-  AddSubCategory(){
-    console.log("addcat")
-    // this.addSubCategory.id=this.addSubCategoryForm.value.id
-    this.addSubCategory.subCategoryTitle=this.addSubCategoryForm.value.subCategoryTitle
-    this.addSubCategory.subCategoryDescribtion=this.addSubCategoryForm.value.subCategoryDescribtion
-    this.addSubCategory.categoryID=this.addSubCategoryForm?.value.categoryID
-  console.log("addsomehh",this.addSubCategoryForm)
+  onsubmit() {
+
+    if (this.SubCategoryByid.id) {
+      this.AddSubCategory();
+      this.SubCategoryServices.UpdateSubCategory(this.SubCategoryByid.id, this.addSubCategory).subscribe(sucess => {
+        console.log("updateee", this.SubCategoryByid.id)
+      })
+    }
+    else {
+      this.AddSubCategory();
+      this.SubCategoryServices.postSubCategory(this.addSubCategory).subscribe(sucess => {
+        console.log("addsome", sucess, this.addSubCategoryForm)
+        this.router.navigateByUrl("/DashBoard/SubCategory")
+      })
+    }
 
   }
-  getSubCategory(){
-    console.log("add")
-   this.SubCategoryServices.getAllSubCategory().subscribe(sucess=>{
-      this.allSubCategory=sucess
-     console.log("lec",sucess)
-   })
+  AddSubCategory() {
+    console.log("addcat")
+    this.addSubCategory.id = this.addSubCategoryForm.value.id
+    this.addSubCategory.subCategoryTitle = this.addSubCategoryForm.value.subCategoryTitle
+    this.addSubCategory.subCategoryDescribtion = this.addSubCategoryForm.value.subCategoryDescribtion
+    this.addSubCategory.categoryID = this.addSubCategoryForm.value.categoryID
+    console.log("addsome", this.addSubCategory)
+
   }
-  getAllCategory(){
+  getSubCategory() {
     console.log("add")
+    this.SubCategoryServices.getAllSubCategory().subscribe(sucess => {
+      this.allSubCategory = sucess
+      console.log("lec", sucess)
+    })
+  }
+  getAllCategory() {
+    console.log("add")
+<<<<<<< HEAD
    this.catServices.getCategories().subscribe(sucess=>{
       this.allCategory=sucess
      console.log("lec",this.allCategory)
@@ -73,17 +84,36 @@ export class SubCategoryComponent implements OnInit {
   DeleteItem(id:any){
     this.SubCategoryServices.deleteSubCategory(id).subscribe(sucess=>{
       console.log("delete",sucess,id)
+=======
+    this.catServices.getCategories().subscribe(sucess => {
+      this.allCategory = sucess
+      console.log("lec", this.allCategory)
+>>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
     })
   }
- updateItem(){
-  //   this.AddSubCategory();
-  //   this.SubCategoryServices.UpdateSubCategory(this.addSubCategory.id).subscribe(sucess=>{
-  //     console.log("ee",sucess)
-  //   })
+  DeleteItem(id: any) {
+    if (confirm("Are you sure You Want To delete")) {
+      this.SubCategoryServices.getSubCategoryById(id).subscribe(sucess => {
+        this.SubCategoryByid = sucess, console.log("enter", id)
+
+        this.SubCategoryServices.deleteSubCategory(this.SubCategoryByid.id).subscribe(sucess => {
+          console.log("delete", sucess, id)
+        })
+      })
+      this.router.navigateByUrl("/DashBoard/SubCategory")
+    }
+
   }
+<<<<<<< HEAD
   updateElement(id:any){
     this.isUpdate=!this.isUpdate
     this.SubCategoryServices.getSubCategoryById(id).subscribe(sucess=>{this.SubCategoryByid=sucess,console.log("enter",id)
+=======
+  updateElement(id: number) {
+    this.isUpdate = !this.isUpdate
+    this.SubCategoryServices.getSubCategoryById(id).subscribe(sucess => {
+      this.SubCategoryByid = sucess, console.log("enter", id)
+>>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
     })
   }
 

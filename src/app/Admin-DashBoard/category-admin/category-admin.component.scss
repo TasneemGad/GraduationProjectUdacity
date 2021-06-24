@@ -1,7 +1,6 @@
 .home{
-    width: 60%;
-    margin: 0 auto;
-    padding: 10% 0% 10% 0%;
+    width: 80%;
+    margin: 0 auto;    
     text-align: center;
 }
 .titel{
@@ -14,6 +13,10 @@
 mat-label{
     font-size: 18px;
     float: left;
+}
+#btnitem{
+    margin: 60px;
+    color: rgb(1, 59, 59);   
 }
 input{
     width: 100%;

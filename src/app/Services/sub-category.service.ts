@@ -35,6 +35,7 @@ export class SubCategoryService {
   }
 
   UpdateSubCategory(id:number ,update:ISubCategory): Observable<ISubCategory> {
+    console.log("update")
     return this._http.put<ISubCategory>(this.SubUrlId+id,update ).pipe();
   }
 
