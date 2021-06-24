@@ -7,7 +7,7 @@ import { Question } from '../SharedModels/Interface/IQestions';
   providedIn: 'root'
 })
 export class QuestionsService {
-  QuestionsUrls="https://localhost:44326/api/QuestionGroup"
+  QuestionsUrls="https://localhost:44326/api/Question"
   constructor(private http:HttpClient) { }
   QByLessonContent="https://localhost:44326/api/Question/QuestionByLessonContent/"
 

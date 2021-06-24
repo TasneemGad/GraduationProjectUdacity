@@ -16,7 +16,7 @@ export class VideosService {
     
   }
   getAllCourseViedosById(id:number):Observable<CourseVideos>{
-    console.log("entered")
+    console.log("entered",id)
     return this.http.get<CourseVideos>(this.courseViedosUrl+"/"+id).pipe()
   }
 
