@@ -7,7 +7,7 @@
         </svg>
         <h1 class="title">{{currentLesson.title}}</h1>
         <hr>
-        <div style="display: flex; height: 30px;">
+        <div style="display: flex; height: auto; padding-top: 5%;">
             <div data-toggle="modal" data-target="#exampleModalCenter">
                 <h1 class="navContent" style="margin-top:-3px;height: auto;">Search</h1>
             </div>
@@ -60,117 +60,145 @@
     </div>  -->
     <div style="width: 100%;height: auto;">
         <mat-sidenav-container>
-             <div class="Ques"> 
-                <mat-sidenav-container style="height: 100%;">
-                   <div style="margin-left: 60px;margin-top: 20px;">
-                        <video controls width="90%">
-                            <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
-                        </video>
-                    </div> 
-                 <div class="questionMcq">
+            <div class="Ques"> 
+            <mat-sidenav-container style="height: 100%;">
+                <div style="margin: 0 auto;margin-top: 20px;">
+                    <video controls width="90%">
+                        <source type="video/mp4" src="{{CoursesVideos?.videoURL}}">
+                    </video>
+                </div> 
+
+                <div class="questionMcq" style="margin: 0 auto; width:70%">
                     <div *ngFor="let i of QByLessonContent ;let e=index" class="questionMcq">
                         <input type="hidden" [value]="i.id" #crsID name="crsID" id="crsID">
-                        <div class="container" style="border-radius: 25px ;padding: 30px;margin-left: 40px;">
-                            <mat-card style="height: auto;">
-                                <mat-card-title>
-                                    <div class="questionMcq">
-                                        <h1>{{e}}-{{allQuestion.id}}</h1>
+                        <div style="border-radius: 25px ;">
+                            <mat-card class="questionCard">
+                                <mat-card-title style="padding: 15px 0px 10px 15px;">
+                                    <div class="questionMcq" >
+                                        <td>{{e}}-{{allQuestion?.id}} </td>
                                         <td>{{i.title}}</td>
                                     </div>
-                                    <hr>
-                                    <div class="questionMcq" *ngFor="let item of QOptionsList">
-                                        <div *ngIf="item.qustionId==i.id">
-
-                                        <mat-radio-group aria-label="Select an option">
-                                            <mat-radio-button color="primary"  [value]="1" #h (click)="check(h.value,e)"
-                                                class="questionMcq" >
-                                                {{item.opt1}}
-                                            </mat-radio-button>
-                                            <mat-radio-button color="primary" value="2"
-                                            class="questionMcq" >
-                                            {{item.opt2}}
-                                        </mat-radio-button>
-                                        <mat-radio-button color="primary" value="3"
-                                        class="questionMcq" >
-                                        {{item.opt3}}
-                                    </mat-radio-button>
-                                    <mat-radio-button color="primary" value="4"
-                                    class="questionMcq" >
-                                    {{item.opt4}}
-                                </mat-radio-button>
-                                        </mat-radio-group>
-                            </div>
-
-                                    </div>
                                 </mat-card-title>
+                                    <hr>
+                                    <div class="questionMcq" *ngFor="let item of QOptionsList" style="padding:15px 0px 5px 15px;">
+                                        <div *ngIf="item.qustionId==i.id">
+                                            
+                                            <div *ngFor="let ans of StudentAnswerByLesson">
+                                                <div *ngIf="ans.questionId == i.id; then answerwdOptionQestion"></div> <!-- else notAnsweredOptionQuestion"></div>-->
+                                            <ng-template #answerwdOptionQestion>
+                                                <mat-radio-group aria-label="Select an option">
+                                                    <div *ngIf="item.opt1 == item.right else not1" >
+                                                    <mat-radio-button value={{item.opt1}} class="questionMcq" checked>{{item.opt1}}</mat-radio-button><br>
+                                                    </div>
+                                                    <ng-template #not1>
+                                                        <mat-radio-button value={{item.opt1}} class="questionMcq" >{{item.opt1}}</mat-radio-button><br>
+                                                    </ng-template>
+
+                                                    <div *ngIf="item.opt2 == item.right else not2" >
+                                                    <mat-radio-button value={{item.opt2}} class="questionMcq" checked>{{item.opt2}}</mat-radio-button><br>
+                                                    </div>
+                                                    <ng-template #not2>
+                                                        <mat-radio-button value={{item.opt2}} class="questionMcq" >{{item.opt2}}</mat-radio-button><br>
+                                                    </ng-template>
+
+                                                    <div *ngIf="item.opt3 == item.right else not3" >
+                                                    <mat-radio-button value={{item.opt3}} class="questionMcq" checked>{{item.opt3}}</mat-radio-button><br>
+                                                    </div>
+                                                    <ng-template #not3>
+                                                        <mat-radio-button value={{item.opt3}} class="questionMcq" >{{item.opt3}}</mat-radio-button><br>
+                                                    </ng-template>
+
+                                                    <div *ngIf="item.opt4 == item.right else not4" >
+                                                    <mat-radio-button value={{item.opt4}} class="questionMcq" checked>{{item.opt4}}</mat-radio-button><br>
+                                                    </div>
+                                                    <ng-template #not4>
+                                                        <mat-radio-button value={{item.opt4}} class="questionMcq" >{{item.opt4}}</mat-radio-button><br>
+                                                    </ng-template>
+
+                                                </mat-radio-group>
+                                            </ng-template>
+                                            </div>
+                                            <div *ngFor="let notAns of notAnsweredYetForOptional">
+                                                <div *ngIf="notAns.id==i.id">
+                                            <!-- <ng-template #notAnsweredOptionQuestion> -->
+                                                <mat-radio-group aria-label="Select an option">
+                                                    <mat-radio-button color="primary"  value={{item.opt1}} #op1 (click)="check(op1.value)"
+                                                        class="questionMcq" >
+                                                        {{item.opt1}}
+                                                    </mat-radio-button><br>
+                                                    <mat-radio-button color="primary" value={{item.opt2}} #op2 (click)="check(op2.value)"
+                                                        class="questionMcq" >
+                                                        {{item.opt2}}
+                                                    </mat-radio-button><br>
+                                                    <mat-radio-button color="primary" value={{item.opt3}} #op3 (click)="check(op3.value)"
+                                                        class="questionMcq" >
+                                                        {{item.opt3}}
+                                                    </mat-radio-button><br>
+                                                    <mat-radio-button color="primary" value={{item.opt4}} #op4 (click)="check(op4.value)"
+                                                        class="questionMcq" >
+                                                        {{item.opt4}}
+                                                    </mat-radio-button><br>
+                                                </mat-radio-group>
+                                            <!-- </ng-template> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </mat-card>
                         </div>
-                        <button mat-raised-button class="btnSave" (click)="postAnswer(i.id)">Submit</button>
-
+                            <button type="submit" color="primary" mat-raised-button class="btnSave" (click)="postAnswer(i.id,i.lessonContentId)">Submit</button><br> <br><br><br>
                     </div>
-             </div>  
+                </div>  
 
-
-                   <div class="questionPart"> 
-                        <div *ngFor="let question of QByLessonContent">
-                            <div>
-                                <mat-card class="questionCard ">
-                                    <div class="question">
-                                        <mat-label class="numberOfQuestion">Question {{question.id}}</mat-label><br>
-                                        <mat-label>{{question.title}}</mat-label><br>
-                                    </div>
-                                    <hr>
-                                    <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
-
-                                        <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer==isAnswered; then trueAns"></div>
-                                                        <ng-template #trueAns>
-                                                            1
-                                                            <mat-radio-group aria-label="Select an option">
-                                                                <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
-                                                                <hr>
-                                                                <mat-radio-button class="trueOrFalse" value="false">False</mat-radio-button>
-                                                            </mat-radio-group>
-                                                        </ng-template>
-                                                    <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer == notAnswered then falseAns"></div>
-                                                  t{{alreadyAnsert.studentanswer == notAnswered}}
-                                                    <ng-template #falseAns>
-                                                        <mat-radio-group aria-label="Select an option">
-                                                            <mat-radio-button class="trueOrFalse" #answerTrue value="true" >True</mat-radio-button>
-                                                            <hr>
-                                                            <mat-radio-button class="trueOrFalse" value="false" checked>False</mat-radio-button>
-                                                        </mat-radio-group>
-                                                    </ng-template>
-                                            
-                                            <ng-template #o></ng-template>
-                                        </div>
-                                    <!-- </div> -->
-
-                                    <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
-                                        <div *ngIf="alreadyAnsert.id == question.id">
-                                        </div>
-                                    </div>
-
-                                        <div *nIf="StudentAnswerByLesson.id.includes(question.id); else g"></div>
-                                        <ng-template #g>2
-                                            <mat-radio-group aria-label="Select an option">
-                                                <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerTrue.value)" #answerTrue value="true">True</mat-radio-button>
-                                                <hr>
-                                                <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerFalse.value)" #answerFalse value="false">False</mat-radio-button>
-                                            </mat-radio-group>
+                <div class="questionPart"> 
+                    <div *ngFor="let question of QByLessonContent">
+                        <div>
+                            <mat-card class="questionCard ">
+                                <div class="question">
+                                    <mat-label class="numberOfQuestion">Question {{question.id}}</mat-label><br>
+                                    <mat-label>{{question.title}}</mat-label><br>
+                                </div><hr>
+                                <div *ngFor="let alreadyAnsert of StudentAnswerByLesson">
+                                        <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer==isAnswered; then answered  else notAnswered"></div>
+                                        <ng-template #answered>
+                                            <div *ngIf="alreadyAnsert.questionId==question.id && alreadyAnsert.studentanswer == notAnswered; then trueAns else falseAns "></div>
+                                                <ng-template #trueAns>
+                                                    <mat-radio-group aria-label="Select an option">
+                                                        <mat-radio-button class="trueOrFalse" #answerTrue value="true" checked>True</mat-radio-button>
+                                                        <hr>
+                                                        <mat-radio-button class="trueOrFalse" value="false">False</mat-radio-button>
+                                                    </mat-radio-group>
+                                                </ng-template>
+                                                <ng-template #falseAns>
+                                                    <mat-radio-group aria-label="Select an option">
+                                                        <mat-radio-button class="trueOrFalse" #answerTrue value="true" >True</mat-radio-button>
+                                                        <hr>
+                                                        <mat-radio-button class="trueOrFalse" value="false" checked>False</mat-radio-button>
+                                                    </mat-radio-group>
+                                                </ng-template>
                                         </ng-template>
-
-                                </mat-card>
+                                </div>
+                                <!-- <div *ngFor="let n of questionTrueAndFalseNotAnswered">
+                                    <div *ngIf="n.id == question.id">
+                                        <mat-radio-group aria-label="Select an option">
+                                            <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerTrue.value)" #answerTrue value="true">True</mat-radio-button>
+                                            <hr>
+                                            <mat-radio-button class="trueOrFalse"  (click)="answerMayOfTrueAndFalse(answerFalse.value)" #answerFalse value="false">False</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
+                                </div> -->
+                            </mat-card>
                             </div>
-                            <button type="submit" class="btnSubmit" mat-raised-button
-                                color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
-                        </div>
-                    </div>    
-                 </mat-sidenav-container> 
-
-             </div>
-
+                        <button type="submit" class="btnSave" mat-raised-button
+                            color="primary" (click)="finalAnswerOfTrueAndFalse(question.id,question.lessonContentId)">SUBMIT</button><br> <br><br><br>
+                    </div>
+                </div>    
+            </mat-sidenav-container> 
+            </div>
         </mat-sidenav-container>
     </div>
+</mat-sidenav-container>
+
 
         <!-- Modal -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"

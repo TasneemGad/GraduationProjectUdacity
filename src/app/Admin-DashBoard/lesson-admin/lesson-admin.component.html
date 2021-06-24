@@ -25,16 +25,16 @@
             <td>{{lesson.type}}</td>
             <td>{{lesson.contentNumber}}</td>
             <td>{{lesson.duration}}</td>
-            <div *ngFor="let c of allCourse">
+            <td><div *ngFor="let c of allCourse">
                 <div *ngIf="c.id==lesson.crsId">
-                    <td>{{c.name}}</td> 
+                    {{c.name}}
                 </div>
-            </div>
-            <div *ngFor="let lecture of allLecture">
+            </div></td> 
+            <td><div *ngFor="let lecture of allLecture">
                 <div *ngIf="lecture.id==lesson.lectureId">
-                    <td>{{lecture.tilte}}</td> 
+                    {{lecture.tilte}} 
                 </div>
-            </div>
+            </div></td>
             <td><button class="btn btn-outline-dark" style="padding: 5px;" >Update</button></td>
             <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>    
           </tr>

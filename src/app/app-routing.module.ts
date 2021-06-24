@@ -23,7 +23,6 @@ import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curric
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
-import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import {UploadComponent} from './reusableComponents/upload/upload.component';
@@ -93,9 +92,7 @@ const routes: Routes = [
     ],
   },
 
-  { path: 'lessonContent/:id',component: LessonContentComponent,
-    children: [{ path: 'lessonData/:id', component: LessonDataComponent }],
-  },
+  { path: 'lessonContent/:id',component: LessonContentComponent},
 //Admin
    {path:"DashBoard" ,component:AdminDashBoardComponent,children:[
      {path:"Lectures",component:LecturesAdminComponent},

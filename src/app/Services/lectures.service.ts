@@ -26,7 +26,7 @@ export class LecturesService {
     }))
   }
     
-  getLecturesByID(id: number): Observable<Lectures> {
+  getLecturesByID(id: any): Observable<Lectures> {
     return this.http.get<Lectures>(this.lectureUrlID+ id ).pipe();
   }
 
