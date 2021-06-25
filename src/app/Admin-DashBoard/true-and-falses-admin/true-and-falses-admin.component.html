@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
     <div style="text-align: center;">
-        <button class="btn btn-outline-dark" (click)="ShowAddTrueAndFalseQuestion()" id="btnitem">Add TrueAndFalseQuestion </button>
-        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show TrueAndFalseQuestion </button>
+        <button class="btn btn-outline-dark" (click)="ShowAddTrueAndFalseQuestion()" id="btnitem">Add True and False Question </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show True and False Question </button>
     </div>
 <hr>
 
@@ -10,17 +10,12 @@
     <ng-template #add>
         <div class="home">
             <div style="text-align: left;">
-                <h1 class="titel">TrueAndFalseQuestion</h1>
-                <h4 class="description">{{AddOrUpdate}} TrueAndFalseQuestion</h4>
+                <h1 class="titel">True and False Question</h1>
+                <h4 class="description">{{AddOrUpdate}} </h4>
             </div>
             <hr>
             <form style="padding: 10px; margin-bottom: 10%">
-                <div>
-                    <mat-label>RightAnswer: </mat-label><br>
-                    <input type="text" id="RightAnswer" name="RightAnswer" #RightAnswer [value]="TrueAndFalseQuestion.right"
-                        [(ngModel)]="TrueAndFalseQuestion.right">
-                </div>
-                <br>
+            
                 <div>
  
                     <mat-label>Question: </mat-label><br>
@@ -28,6 +23,12 @@
                         <option *ngFor="let Que of QuestionList" value="{{Que.id}}">{{Que.title}}</option>
                     </select>
                 </div><br>
+                <div>
+                    <mat-label>Right Answer: </mat-label><br>
+                    <input type="text" id="RightAnswer" name="RightAnswer" #RightAnswer [value]="TrueAndFalseQuestion.right"
+                        [(ngModel)]="TrueAndFalseQuestion.right">
+                </div>
+                <br>
            <div *ngIf="TrueAndFalseQuestion.id!=check; then update else add"></div>
                 <ng-template #update>
                     <button mat-button type="submit" class="btnSubmit" (click)="UpdateTrueAndFalseQuestion(TrueAndFalseQuestion,TrueAndFalseQuestion.id)">{{AddOrUpdate}}</button>
@@ -40,12 +41,13 @@
         </div>
     </ng-template>
     <ng-template #table>
+        <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
+            <div class="col-md-12 centerText">
+                <h1 style="font-size: xx-large;text-align: center;">True and False Questions</h1>
+            </div>
+ </div>
             <div *ngFor="let Ques of QuestionList">
-                  <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
-                                <div class="col-md-12 centerText">
-                                    <h1 style="font-size: xx-large;text-align: center;">{{Ques.type}}</h1>
-                                </div>
-                     </div>
+            
              
                 <div *ngFor="let TF of AllTrueAndFalseQuestion , let i=index" class="card">
                     <div class="row" >

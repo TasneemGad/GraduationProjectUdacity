@@ -42,7 +42,7 @@ export class QuestionOptionesAdminComponent implements OnInit {
    opt4:'',
   qustionId:0}   
    if(this.Questionoption.id==this.check){
-      this.AddOrUpdate="Add Questionoption"
+      this.AddOrUpdate="Add  Multi-Choice Questions"
     }
   }
   ngOnInit(): void {
@@ -99,7 +99,7 @@ UpdateQuestionOptionForm(QuestionOptionObj:QOptions)
   
   this.Questionoption=QuestionOptionObj
   if(QuestionOptionObj.id!=this.check){
-    this.AddOrUpdate="update Questionoption"
+    this.AddOrUpdate="update Multi-Choice Questions"
   }
 
 }
