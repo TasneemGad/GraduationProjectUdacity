@@ -101,7 +101,6 @@ hr{
     position: absolute;
     padding-top:10%;
 }
-
 .homeSearch{
     padding: 0;
     margin: 0;
@@ -138,9 +137,8 @@ hr{
     height: 100%;
 }
 .questionMcq{
-    padding: 20px;
+    // padding: 5px 0px 5px 5px;
     font-size: 17px;
-    width: 70%;
     font-weight: 400;
 }
 .btnSave{
@@ -149,6 +147,7 @@ hr{
     height: 50px;
     border-radius: 10px;
     float: right;
+    margin: 20px; 
 }
 .Ques{
 width: 90%;
@@ -166,6 +165,8 @@ margin: 0 auto;
 }
 .questionCard{
     padding: 0;
+    width: 100%;
+    margin-top: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .numberOfQuestion{
@@ -178,9 +179,4 @@ margin: 0 auto;
 .question{
     padding: 3% 2% 3% 4%;
     font-size: 15px;
-}
-.btnSubmit{
-    margin: 20px; 
-    background-color: #017a9b;
-    float: right;
 }

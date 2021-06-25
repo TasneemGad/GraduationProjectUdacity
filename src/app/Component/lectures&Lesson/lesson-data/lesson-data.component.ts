@@ -17,7 +17,7 @@ import { QuestionGroup } from 'src/app/SharedModels/Interface/IQuestionGroup';
 @Component({
   selector: 'app-lesson-data',
   templateUrl: './lesson-data.component.html',
-  styleUrls: ['./lesson-data.component.scss']
+  // styleUrls: ['./lesson-data.component.scss']
 })
 export class LessonDataComponent implements OnInit {
 currentContentLesson:LessonContent={videoLinkId:1,title:"",description:"",header:"",type:"",questionGroupId:1,lectureId:1,lessonId:1}

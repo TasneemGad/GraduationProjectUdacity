@@ -32,7 +32,6 @@ import { LessonContentComponent } from './Component/lectures&Lesson/lesson-conte
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { ResourcesComponent } from './Component/resources/resources.component';
-import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
@@ -84,7 +83,6 @@ import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-a
     CoreCurriculumComponent,
     ProgramHomeComponent,
     ResourcesComponent,
-    LessonDataComponent,
     AboutASComponent,
     CatalogComponent,
     CoursesFilterPipe,

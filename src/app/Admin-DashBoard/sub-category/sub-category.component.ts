@@ -75,11 +75,19 @@ export class SubCategoryComponent implements OnInit {
   }
   getAllCategory() {
     console.log("add")
-    this.catServices.getCategories().subscribe(sucess => {
-      this.allCategory = sucess
-      console.log("lec", this.allCategory)
-    })
+   this.catServices.getCategories().subscribe(sucess=>{
+      this.allCategory=sucess
+     console.log("lec",this.allCategory)
+   })
   }
+  // DeleteItem(id:any){
+  //   this.SubCategoryServices.deleteSubCategory(id).subscribe(sucess=>{
+  //     console.log("delete",sucess,id)
+  //   this.catServices.getCategories().subscribe(sucess => {
+  //     this.allCategory = sucess
+  //     console.log("lec", this.allCategory)
+  //   })
+  // } 
   DeleteItem(id: any) {
     if (confirm("Are you sure You Want To delete")) {
       this.SubCategoryServices.getSubCategoryById(id).subscribe(sucess => {
