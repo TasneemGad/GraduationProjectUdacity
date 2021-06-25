@@ -1,127 +1,133 @@
 <div class="container-fluid">
 
     <div style="text-align: center;">
-        <button class="btn btn-outline-dark" (click)="ShowAddQuestionOption()" id="btnitem">Add QuestionOption </button>
-        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show QuestionOption </button>
+        <button class="btn btn-outline-dark" (click)="ShowAddQuestionOption()" id="btnitem">Add Multi-Choice Questions
+        </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Multi-Choice Questions </button>
     </div>
-<hr>
+    <hr>
 
     <div *ngIf="isOpen then add else table "></div>
     <ng-template #add>
         <div class="home">
             <div style="text-align: left;">
-                <h1 class="titel">QuestionOption</h1>
-                <h4 class="description">{{AddOrUpdate}} QuestionOption</h4>
+                <h1 class="titel">Multi-Choice Questions</h1>
+                <h4 class="description">{{AddOrUpdate}}</h4>
             </div>
             <hr>
             <form style="padding: 10px; margin-bottom: 10%">
                 <div>
-                    <mat-label>RightQOptions: </mat-label><br>
-                    <input type="text" id="RightQOptions" name="RightQOptions" #RightQOptions [value]="Questionoption.right"
-                        [(ngModel)]=" Questionoption.right">
-                </div><br>
+
+                    <mat-label>Question: </mat-label><br>
+                    <select [(ngModel)]="Questionoption.qustionId" #qustionId id="qustionId" name="qustionId">
+                        <option *ngFor="let Que of QuestionList" value="{{Que.id}}">{{Que.title}}</option>
+                    </select>
+                </div>
 
                 <div>
-                    <mat-label>QOption1:</mat-label><br>
+                    <mat-label>Option1:</mat-label><br>
                     <textarea id="QOption1" style name="QOption1" #QOption1
                         [(ngModel)]="Questionoption.opt1">{{Questionoption.opt1}}</textarea>
                 </div>
 
                 <div>
-                    <mat-label>QOption2:</mat-label><br>
+                    <mat-label>Option2:</mat-label><br>
                     <textarea id="QOption2" style name="QOption2" #QOption2
                         [(ngModel)]="Questionoption.opt2">{{Questionoption.opt2}}</textarea>
                 </div>
 
                 <div>
-                    <mat-label>QOption3:</mat-label><br>
+                    <mat-label>Option3:</mat-label><br>
                     <textarea id="QOption3" style name="QOption3" #QOption3
                         [(ngModel)]="Questionoption.opt3">{{Questionoption.opt3}}</textarea>
-                </div> 
-                 <div>
-                    <mat-label>QOption4:</mat-label><br>
+                </div>
+                <div>
+                    <mat-label>Option4:</mat-label><br>
                     <textarea id="QOption4" style name="QOption4" #QOption4
                         [(ngModel)]="Questionoption.opt4">{{Questionoption.opt4}}</textarea>
                 </div>
                 <div>
- 
-                    <mat-label>Question: </mat-label><br>
-                    <select [(ngModel)]="Questionoption.qustionId" #qustionId id="qustionId" name="qustionId">
-                        <option *ngFor="let Que of QuestionList" value="{{Que.id}}">{{Que.title}}</option>
-                    </select>
-                </div><br>
-           <div *ngIf="Questionoption.id!=check; then update else add"></div>
+                    <mat-label>Right Answer: </mat-label><br>
+                    <input type="text" id="RightQOptions" name="RightQOptions" #RightQOptions
+                        [value]="Questionoption.right" [(ngModel)]=" Questionoption.right">
+                </div>
+
+            <br>
+                <div *ngIf="Questionoption.id!=check; then update else add"></div>
                 <ng-template #update>
-                    <button mat-button type="submit" class="btnSubmit" (click)="UpdateQuestionOption(Questionoption,Questionoption.id)">{{AddOrUpdate}}</button>
+                    <button mat-button type="submit" class="btnSubmit" class="btn btn-primary" 
+                        (click)="UpdateQuestionOption(Questionoption,Questionoption.id)">{{AddOrUpdate}}</button>
                 </ng-template>
                 <ng-template #add>
-                    <button mat-button type="submit" class="btnSubmit" (click)="AddQuestionOption()">{{AddOrUpdate}}</button>
+                    <button mat-button type="submit" class="btnSubmit" 
+                    class="btn btn-primary" (click)="AddQuestionOption()">{{AddOrUpdate}}</button>
                 </ng-template>
 
             </form>
         </div>
     </ng-template>
     <ng-template #table>
-            <div *ngFor="let Ques of QuestionList">
-                  <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
-                                <div class="col-md-12 centerText">
-                                    <h1 style="font-size: xx-large;text-align: center;">{{Ques.type}}</h1>
-                                </div>
-                     </div>
-             
-                <div *ngFor="let QOption of AllQuestionOption , let i=index" class="card">
-                    <div class="row" >
-                        <div *ngIf="QOption.qustionId === Ques.id">
-                            
-                            <div class="col-md-1">&nbsp;</div>
-                            <div class="col-md-4">
-                                <mat-card class="dataOfObjective" style="border-top-color: #0094f7">
-                                   
-                                    <mat-label class="titleData" style="text-align: center;">{{Ques.title}}</mat-label>
-                                 
-                                    <br>
-                                    <table style="width: 60%;text-align: center;">
-                                        <tr>
-                                            <th>Option1</th>
-                                            <td>{{QOption.opt1}}</td>
-
-                                        </tr>
-                                        <tr>
-                                            <th>Option2</th>
-                                            <td>{{QOption.opt2}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Option3</th>
-                                            <td>{{QOption.opt3}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Option4</th>
-                                            <td>{{QOption.opt4}}</td>
-                                        </tr>
-                                    </table>
-                                  
-                                    <br>
-                                    <mat-label class="titleData" style="text-align: center;">
-                                       Right Answer:
-                                    </mat-label>
-                                    <br>
-                                    <mat-label
-                                        style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                                        {{QOption.right}}
-                                    </mat-label>
-                                    <br>
-                                    <br />
-                                    <button class="btn btn-outline-danger" style="margin: 10px;width: 250px;"
-                                        (click)="deleteQuestionOption(QOption.id)">Delete</button>
-                                    <button class="btn btn-outline-primary" style="margin: 10px;width: 250px;"
-                                        (click)="UpdateQuestionOptionForm(QOption)">Update</button>
-                                </mat-card>
-                            </div>
-                            <div class="col-md-1">&nbsp;</div>
-                        </div>
-                        </div>
-              
-                </div>
+        <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
+            <div class="col-md-12 centerText">
+                <h1 style="font-size: xx-large;text-align: center;">Multi-Choice Questions</h1>
             </div>
+        </div>
+        <div *ngFor="let Ques of QuestionList">
+
+
+            <div *ngFor="let QOption of AllQuestionOption , let i=index" class="card">
+                <div class="row">
+                    <div *ngIf="QOption.qustionId === Ques.id">
+
+                        <div class="col-md-1">&nbsp;</div>
+                        <div class="col-md-4">
+                            <mat-card class="dataOfObjective" style="border-top-color: #0094f7">
+
+                                <mat-label class="titleData" style="text-align: center;">{{Ques.title}}</mat-label>
+
+                                <br>
+                                <table style="width: 60%;text-align: center;">
+                                    <tr>
+                                        <th>Option1</th>
+                                        <td>{{QOption.opt1}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Option2</th>
+                                        <td>{{QOption.opt2}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Option3</th>
+                                        <td>{{QOption.opt3}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Option4</th>
+                                        <td>{{QOption.opt4}}</td>
+                                    </tr>
+                                </table>
+
+                                <br>
+                                <mat-label class="titleData" style="text-align: center;">
+                                    Right Answer:
+                                </mat-label>
+                                <br>
+                                <mat-label
+                                    style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                    {{QOption.right}}
+                                </mat-label>
+                                <br>
+                                <br />
+                                <button class="btn btn-outline-danger" style="margin: 10px;width: 250px;"
+                                    (click)="deleteQuestionOption(QOption.id)">Delete</button>
+                                <button class="btn btn-outline-primary" style="margin: 10px;width: 250px;"
+                                    (click)="UpdateQuestionOptionForm(QOption)">Update</button>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-1">&nbsp;</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </ng-template>
 </div>

@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid">
+<div class="container-fluid">
     <div style="text-align: center;">
         <button class="btn btn-outline-dark" (click)="ShowAddNewQuestion()" id="btnitem">Add Questions
         </button>
@@ -8,20 +8,90 @@
 
     <div>
         <mat-label>Course:</mat-label><br>
-        <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLessonsByCrsID(Course.id)"
+        <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLessonsContentByCrsID(Course.id)"
             [(ngModel)]="Course.id" [value]="Course.id" name="crsId">
-            <option value="-1" selected="selected">Choose Course</option>
+            <option value="0" selected="selected">Choose Course</option>
             <option *ngFor="let Course of AllCourses" [value]="Course.id">{{Course.name}}</option>
         </select>
     </div>
 
     <div>
-        <mat-label>Question Group:</mat-label><br>
-        <select class="custom-select-sm BtnG" id="questionGroupId" #questionGroupId (change)="getAllLEssonContentByLessonID(Course.Less)"
-            [(ngModel)]="Question.questionGroupId" [value]="Question.questionGroupId" name="questionGroupId">
-            <option value="-1" selected="selected">Choose Question Group</option>
-            <option *ngFor="let Coursee of AllCourses" [value]="Coursee.id">{{Coursee.name}}</option>
+        <mat-label>Lesson Content:</mat-label><br>
+        <select class="custom-select-sm BtnG" id="lessonContent" #lessonContent (change)="getAllQuestionGroupByCrsId(Course.id)"
+            [(ngModel)]="Question.lessonContentId" [value]="Question.lessonContentId" name="lessonContent">
+            <option value="0" selected="selected">Choose Lesson Content</option>
+            <option *ngFor="let lessonContentObj of AllLessonsContent" [value]="lessonContentObj.id">{{lessonContentObj.title}}</option>
         </select>
     </div>
 
-</div> -->
+    
+    <div>
+        <mat-label>Question Group:</mat-label><br>
+        <select class="custom-select-sm BtnG" id="txtQuesgroup" #txtQuesgroup (change)="getAllQuestions()"
+            [(ngModel)]="Question.questionGroupId" [value]="Question.questionGroupId" name="txtQuesgroup">
+            <option value="0" selected="selected">Choose Question Group</option>
+            <option *ngFor="let QuestionGroupObj of AllQuestionGroup" [value]="QuestionGroupObj.id">{{QuestionGroupObj.title}}</option>
+        </select>
+    </div>
+
+
+
+    <div *ngIf="isOpen then add else table"></div>
+    <ng-template #add>
+        <form style="margin-bottom: 10%;">
+
+            <div>
+                <mat-label>Question Title:</mat-label><br>
+                <input type="text" id="txtQuestionTitle" name="txtQuestionTitle" #txtQuestionTitle
+                    [value]="Question.title" [(ngModel)]="Question.title">
+            </div>
+
+            <div>
+                <mat-label>Question Type:</mat-label><br>
+                <select class="custom-select-sm BtnG" id="txtQuestiontype" #txtQuestiontype  
+                [(ngModel)]="Question.type" [value]="Question.type" name="txtQuestiontype">
+                <option value="0" selected="selected">Choose Question Type</option>
+                <option value="options" >Multi-Choice Question</option>
+                <option value="t,f">True And False</option>
+
+            </select>
+            </div>
+            <div>
+                <div *ngIf="Question.id==check then addbtn else updatebtn"></div>
+                <ng-template #addbtn>
+                    <button mat-button type="submit" class="btnSubmit" (click)="AddNewQuestion()" style="margin: 20px;padding: 10px;">ADD</button>
+                </ng-template>
+                <ng-template #updatebtn>
+                    <button mat-button type="submit" class="btnSubmit" (click)="UpdateQuestion(Question)" style="margin: 20px;padding: 10px;">Update</button>
+                </ng-template>
+            </div>
+        </form>
+
+    </ng-template>
+
+    <ng-template #table>
+        <table class="table table-hover" class="home"  
+        style="align-content: center;margin: 80px;  border-bottom: 2px solid #dee2e6;">
+        <thead>
+            <tr>
+                <th scope="col" class="all">#</th>
+                <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Question Title</th>
+                <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Question Type</th>
+                <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Update</th>
+                <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody  *ngFor="let QuestionObj of AllQuestion , let i=index">
+                <tr style="border-bottom: 2px solid #dee2e6;" >
+                    <th scope="row">
+                    <td>{{QuestionObj.title}}</td>  
+                    <td><button class="btn btn-outline-primary" (click)="updateBtn(QuestionObj)">Update</button></td>                                                
+                    <td><button class="btn btn-outline-danger" (click)="deleteQuestion(QuestionObj.id)">Delete</button></td>                                                
+
+
+            </tr>
+        </tbody>
+        </table>
+    </ng-template>
+</div>

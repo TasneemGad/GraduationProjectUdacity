@@ -34,7 +34,7 @@ export class TrueAndFalsesAdminComponent implements OnInit {
     right:'',
   qustionId:0}   
    if(this.TrueAndFalseQuestion.id==this.check){
-      this.AddOrUpdate="Add TrueAndFalseQuestion"
+      this.AddOrUpdate="Add True and False Question"
     }
   }
   ngOnInit(): void {
@@ -86,7 +86,7 @@ UpdateTrueAndFalseQuestionForm(TrueAndFalseQuestionObj:ITrueAndFalse)
   
   this.TrueAndFalseQuestion=TrueAndFalseQuestionObj
   if(TrueAndFalseQuestionObj.id!=this.check){
-    this.AddOrUpdate="update TrueAndFalseQuestion"
+    this.AddOrUpdate="update True and False Question"
   }
 
 }
