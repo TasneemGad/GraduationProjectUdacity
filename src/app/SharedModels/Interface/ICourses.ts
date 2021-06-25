@@ -3,6 +3,7 @@ export interface ICourse{
     // id:string
     name:String
     price:number
+    discount:number
     duration:number
     type:string
     description:string

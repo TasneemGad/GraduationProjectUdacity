@@ -24,12 +24,12 @@ import { filter, first, take } from 'rxjs/operators';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  Categoies:ICategory[] = []
-  Error:string
-  Courses:ICourse[] = [];
-  currentCategoryName :any;
-  currentCategoryID :number
-  currentCategory : ICategory
+  Categoies: ICategory[] = []
+  Error: string
+  Courses: ICourse[] = [];
+  currentCategoryName: any;
+  currentCategoryID: number
+  currentCategory: ICategory
   currentCourses: ICourse[] = []
   subCategory:ISubCategory[] =[]
   coursesBySubCategory:ICourse[] =[]
@@ -60,64 +60,64 @@ export class CategoryComponent implements OnInit {
       this.currentCategoryName = params.get('id')
       console.log("currentCat",this.currentCategoryName)
       this.makDefultOfSubCategory()
-//Question
-this.getDataOfCurrentCategory();
+      //Question
+      this.getDataOfCurrentCategory();
       this.getDataOfCurrentCourses();
       this.getSubCategory()
       this.getFreeCourses();
     })
+    
   }
+ 
 
-  getCatigoreis()
-  {
-    this.catService.getCategories().subscribe(
-      data=>
-      {
-        console.log("ts",data)
+  
+
+  getCatigoreis() {
+    (this.catService.getCategories().subscribe(
+      data => {
+        console.log("ts", data)
         this.Categoies = data;
       },
-      Wrong=>
-      {
+      Wrong => {
         this.Error = Wrong
-      }      
+      }
+    )
     )
   }
 
-  getCourses()
-  {      
+  getCourses() {
     this.courseServise.getCourses().subscribe(
-      data=>
-      {
-        console.log("course",data)
+      data => {
+        console.log("course", data)
         this.Courses = data;
       },
-      Wrong=>
-      {
+      Wrong => {
         this.Error = Wrong
-      }      
+      }
     )
   }
 
 //Question
-  getDataOfCurrentCategory(){
-   
-       
-        this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
-          { 
-            this.Categoies.forEach(i=>
-      {
-             if(i.catName === el.catName)
-            {
-               this.currentCategory = el;
-              this.currentCategoryID = el.id
-            
-            console.log("catttt"+el.id)
-         }
-          })})}
-       
+  getDataOfCurrentCategory() {
+
+
+    this.catService.getCategoryById(this.currentCategoryName).forEach(el => {
+      this.Categoies.forEach(i => {
+        if (i.catName === el.catName) {
+          this.currentCategory = el;
+          this.currentCategoryID = el.id
+
+          console.log("catttt" + el.id)
+        }
+      })
+    }
+
+    )
+  }
+
      
 
-  getDataOfCurrentCourses(){
+  getDataOfCurrentCourses() {
     this.currentCourses = []
 console.log("iiiiiiii"+this.currentCategoryID)
 this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
@@ -139,15 +139,13 @@ this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
   
   
 
-  goToCours(courseID:number){
-    this.router.navigate(["/Course",courseID]);
+  goToCours(courseID: number) {
+    this.router.navigate(["/Course", courseID]);
   }
 
-  getSubCategory()
-  {      
-    this.subCategoryService.getSubCategory().subscribe(
-      data=>
-      {
+  getSubCategory() {
+    this.subCategoryService.getAllSubCategory().subscribe(
+      data => {
         this.subCategory = data;
         console.log("subCat",this.subCategory)
         this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
@@ -166,45 +164,37 @@ this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
         }
       })
       },
-      Wrong=>
-      {
+      Wrong => {
         this.Error = Wrong
-      }      
+      }
     )
   }
 
-  makDefultOfSubCategory(){
+  makDefultOfSubCategory() {
     this.coursesBySubCategory = []
     this.courseServise.getCourses().subscribe(
-      data=>
-      {
-        for(let crs of data)
-        {
-          if(crs.subCategoryId == this.defultSubID)
-          {
+      data => {
+        for (let crs of data) {
+          if (crs.subCategoryId == this.defultSubID) {
             this.coursesBySubCategory.push(crs);
           }
-       }
-       console.log("Defcourse",this.coursesBySubCategory)
+        }
+        console.log("Defcourse", this.coursesBySubCategory)
       },
-      Wrong=>
-      {
+      Wrong => {
         this.Error = Wrong
-      }      
+      }
     )
   }
 
 
-  getCoursesBySubCategory(subCategoryID:number)
-  {      
-    console.log("s1",subCategoryID)
+  getCoursesBySubCategory(subCategoryID: number) {
+    console.log("s1", subCategoryID)
     this.coursesBySubCategory = []
-    for(let crs of this.Courses)
-    {
-      if(crs.subCategoryId == subCategoryID)
-      {
+    for (let crs of this.Courses) {
+      if (crs.subCategoryId == subCategoryID) {
         this.coursesBySubCategory.push(crs)
-        console.log("coursesBySubCategory",this.coursesBySubCategory)
+        console.log("coursesBySubCategory", this.coursesBySubCategory)
       }
     }
     for(let sub of this.subCategory )
@@ -238,11 +228,11 @@ this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
       Wrong=>
       {
         this.Error = Wrong
-      }      
+      }
     )
   }
 
-  getFreeCourses(){
+  getFreeCourses() {
     this.freeCourses = []
     this.catService.getCategoryById(this.currentCategoryName).forEach(el=>
       { 

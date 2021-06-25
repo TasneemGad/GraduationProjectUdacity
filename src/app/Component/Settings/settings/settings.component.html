@@ -1,0 +1,62 @@
+<!-- <app-class-room></app-class-room> -->
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <img mat-card-md-image routerLink="/Home" class="udacity imgUdacity" src="assets/udacity.svg"
+            style="width: 30px;height: 50px;cursor: pointer;">
+      
+         <div routerLink="/ClassRoom">
+           
+           <h1 id="one">
+            <mat-icon>home</mat-icon >
+            Home
+           </h1>
+        </div>
+
+        <div routerLink="/Home">
+        <h1 routerLink="/Home" id="two">
+            <mat-icon>support</mat-icon>Help
+        </h1>
+        </div>
+        <div routerLink="/Home">
+        <h1 routerLink="/course/all" id="three">
+            <mat-icon>explore</mat-icon>Catalog
+        </h1>
+        </div>
+        <div class="iconBtn" >
+        <div >
+        <h1  (click)="GoToSettingPersonalInformation()" id="four">
+            <mat-icon>settings</mat-icon>Setting
+        </h1>
+        </div>
+        <div routerLink="/Home"   >
+        <h1 routerLink="/Home" id="five">
+            <mat-icon>logout</mat-icon>Logout
+        </h1>
+        </div>
+    </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    <h1 id="nav">Settings</h1>
+   <div style="display: flex;">
+    <div class="tabs">      
+        <h1 style="font-size: 15px;padding-left: 110px;">ACCOUNT</h1>
+        <h2  class="info" #style (click)="GoToSettingPersonalInformation()">Personal Information</h2>
+        <h2  class="info"  (click)="GoToSettingPassword()">Password</h2>
+        <h2  class="info"  (click)="GoToSettingNotifications()">Notifications</h2>
+        <h2  class="info" (click)="GoToSettingLinkedAccount()">Linked Account</h2>
+        <h2  class="info" (click)="GoToSettingLanguagePreference()">Language Preference</h2>
+
+        <br><br>
+        <h1 style="font-size: 15px;padding-left: 110px;">ENROLLMENT</h1>
+        <h2  class="info" (click)="GoToSettingSubscriptions()">Subscriptions & Billing</h2>
+        <h2  class="info" (click)="GoToSettingCourses()">Courses</h2>
+    </div>
+
+    <div style="width: 50%;"  >
+        <router-outlet></router-outlet>
+    </div> 
+    </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>
+
+

@@ -44,8 +44,12 @@ header .overlay {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgb(121, 56, 56);
-  opacity: 0.85;
+  //  background-image: url("assets/NDOP_Hero.webp");
+   background-image: url("../../../assets/NDOP_Hero.webp");
+
+  // background-color: chocolate;
+  // background-image: image("assets/NDOP_Hero.webp");
+  opacity: 0.5;
   z-index: 1;
   margin-bottom: 30px;
 }
@@ -69,7 +73,7 @@ header .overlay {
   transform: translateX(-70%);
 }
 
-.btn :hover {
+.btn:hover{
   box-shadow: 6px 3px 10px rgb(169, 177, 184);
   width: auto;
   height: 90px;
@@ -97,11 +101,9 @@ header .overlay {
   border: 2px solid rgb(202, 202, 202);
 }
 #details{
-  // display: flex;
-  // align-items: stretch;
   display: block;
   width: auto;
-  height: 1200px;
+  height: 100%;
   background-color: rgb(238, 236, 238);
   border: 2px solid rgb(243, 242, 242);
 
@@ -109,13 +111,9 @@ header .overlay {
 }
 .vl1 {
   margin-top: 300px;
-  // margin-bottom: 200px;
   display: flex;
-  // justify-content: flex-start;
-  // justify-content: center;
-  // align-items: center;
   border-left: 3px solid rgb(223, 220, 220);
-  height: 150px;
+  height: 100%;
   position: relative;
   left: 50%;
   margin-right:150px;
@@ -123,12 +121,54 @@ header .overlay {
   margin-left: -90px;
   top: -300px;
 }
+
+ul li::before {
+  content: "•";
+  color: teal;
+  font-weight: bold;
+  display: inline-block; 
+  // width: 900px;
+  // margin-left: -1em;
+  // margin-top: -20px;
+
+}
+ul {
+  list-style: none;
+}
+li { 
+  // color: blue; /* Or a color you prefer */
+
+  // padding-left: 16px; 
+  // list-style: red;
+}
+
+// li::before {
+//   content: "•"; /* Insert content that looks like bullets */
+//   // padding-right: 8px;
+//   width: 600px;
+//   color: blue; /* Or a color you prefer */
+// }
+#vl2 {
+  // margin-top: 300px;
+  // display: flex;
+  // border-left: 3px solid rgb(36, 33, 33);
+  border-left: 1px solid teal;
+  // height: 500px;
+
+  // height: 150px;
+  // position: relative;
+  // left: 50%;
+  // margin-right:150px;
+  // padding-left: 150px;
+  // margin-left: -90px;
+  // top: -300px;
+}
 #all{
   padding-top: 50px;
   display: flex;
-  // align-items: stretch;
   align-items: center;
   // margin-left: -200px;
+  height: auto;
 
 }
 

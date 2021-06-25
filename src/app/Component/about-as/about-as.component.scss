@@ -1,0 +1,270 @@
+.about-us_header__16oKF{
+margin: 0 auto;
+margin-top: 4%;
+text-align: center;
+
+}
+.title{
+    font-size: 30px;
+}
+.TitleContent{
+    font-size:20px;
+    line-height:30px;
+}
+.Section{
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    margin-top:10%;
+
+}
+.about-us_missionImages__2HhnU{
+    height:auto;
+    float: left; 
+ padding: 0 20px 20px 0;
+}
+.about-us_missionImages__2HhnU,.example-card{
+    display:inline-block;
+    margin-right:70px;
+}
+.SecondSection{
+    float: right;
+    line-height: 30px;
+}
+.example-card{
+    float: right;
+    width:30%;
+    font-size: 16px;
+    font-family: Open Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 30px;
+    box-sizing: inherit;
+    background: linear-gradient(to bottom right,#a951ed,#ff5483);
+    border-radius: .375rem;
+    box-shadow: 0 1px 20px 0 rgba(46,61,73,.2);
+    padding: 3rem 3rem 4rem;
+    margin-left: 2rem;
+    margin-top: 3rem;
+}
+.about-us_sectionTitle__3gjzU{
+    font-size:25px;
+    font-weight: bold;
+}
+.mat-card-content{
+    color: #e9eef3;
+}
+
+.headerC{
+    color:#1d5174;
+    font-size:20px;
+   text-decoration: none
+}
+.student_nowAt__2maZA{
+    font-size: 16px;
+    font-family: Open Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 24px;
+    cursor: pointer;
+    box-sizing: inherit;
+    text-align: center;
+    position: relative;
+    color: #1d5174;
+    margin-bottom: 2rem;
+    margin-top:20%;
+}
+.student_jobCompany__GIsLe{
+    --reach-tabs: 1;
+    font-family: Open Sans,sans-serif;
+    cursor: pointer;
+    text-align: center;
+    --accent-color: #ffa234;
+    box-sizing: inherit;
+    margin-top: 0;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .8125rem;
+    line-height: 24px;
+    color: #1d5174;
+    margin-bottom: 0;
+}
+.student_jobTitle__1gysB{
+    --reach-tabs: 1;
+    font-family: Open Sans,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    text-align: center;
+    --accent-color: #ffa234;
+    box-sizing: inherit;
+    margin-top: 0;
+    font-weight: 400;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 28px;
+    color: #657482;
+}
+.SectionTwo{
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    margin-top:10%;
+    margin-bottom:5%;
+    
+}
+.SectionTwoRigth{
+display: flex;
+float: right;
+}
+.SectionTwoLeft{
+float: left;
+}
+#first
+{
+    display:inline-block;
+    background-color:white;
+    width: 220px;
+    height: 370px;
+    margin-left: 120px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+   border-top: #02ccba 2px solid;
+   margin-bottom: 30px;
+   border-radius: 10px;
+  
+}
+#second
+{
+    
+    background-color:white;
+    width: 220px;
+    height: 370px;
+    margin-left: 120px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+   border-top: #a951ed 2px solid;
+   margin-bottom: 30px;
+   border-radius: 10px;
+}
+
+.imgs
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   position: relative;
+   top: -50px;
+   left: 50%;
+   transform: translateX(-50%);
+
+   
+
+}
+#remain
+{
+    margin-top: -40px;
+    color: rgb(179, 177, 177);
+
+    
+}
+#now
+{
+      text-align: center ;
+      font-weight: 400;
+       margin-bottom: 20px;
+      font-size: 13px;
+       background-color: rgb(248, 244, 244); 
+       letter-spacing: 2px;
+       width: 320px;
+       height:120px;
+       color: rgb(110, 110, 110);
+    
+      
+}
+#rest
+{
+    // width: 500px;
+    // height: 700px ;
+   
+    display: inline-flex;
+}
+
+
+.specifyCategory
+{
+    position: absolute;
+    // top: 0;
+    width: 60px;
+    height: 2px;
+    background: #3c96e6;
+    // margin-left: 50px;
+    // color: #fff;
+    // line-height: 50px;
+    // text-align: center;
+    //  font-size: 20px; 
+}
+.specifyCategory:after
+{
+    content:"";
+    border-top: 10px solid #3c96e6;;  
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: relative;
+    top: 20px;
+    // left: -25px;
+}
+
+#one
+{
+    margin-left: 200px;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-us_textContentSection__3fI8i{
+    margin: 0 auto;
+    text-align: center;
+    width: 66%;
+    margin-bottom:8%;
+}
+
+.SectionThree{
+    margin-bottom:20%;
+    text-align: center;
+    margin: 0 auto;
+    display:flex;
+    padding-bottom:30px;
+}
+.SectionThree{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+}
+#SectionThreeFirst,#SectionThreeSecond{
+    background-color:white;
+    width: 300px;
+    height: 220px;
+    margin-left: 160px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+   border-top: #a951ed 2px solid;
+   margin-bottom: 30px;
+   border-radius: 10px;
+}
+
+.about-us_joinUs__2eILC{
+    background: linear-gradient(to bottom right,#a951ed,#ff5483);
+    background-image:url(//www.udacity.com/www-proxy/contentful/assets/2y9b3o528xhq/5eKhEHzItS6rhgQ8klUB6N/3eefdaf0e61afca26a7ba7b16c26e057/team-at-whiteboard-meeting-with-dark-overlay.jpg)
+;margin: 0 auto;
+}
+.about-us_joinUsContent__2VdTA{
+    text-align: center;
+
+    padding:100px
+    
+}

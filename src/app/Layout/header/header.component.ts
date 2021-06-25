@@ -1,6 +1,7 @@
 import { HttpHandler } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CategoryService } from 'src/app/Services/category.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { ICategory } from 'src/app/SharedModels/Interface/ICategory';
@@ -18,11 +19,14 @@ export class HeaderComponent implements OnInit {
   courseNameForCurrentCategory:any[]
   Error:string
   currentCategoryId:number
+ 
 
-  constructor(private catService:CategoryService,private courseServise:CoursesService,private router:Router) { }
+  constructor(private auth:AuthenticationService,private catService:CategoryService,private courseServise:CoursesService,private router:Router) { }
     ngOnInit(): void {
       this.getCatigoreis();
       this.getCourses();
+      this.isLoggedIn();
+      this.role();
     }
    
     getCatigoreis()
@@ -79,6 +83,12 @@ export class HeaderComponent implements OnInit {
 
             
     }
+    isLoggedIn(){
+      return this.auth.isLoggedIn();
+     }
+     role(){
+     return this.auth.getRole();
+     }
   }
 
      

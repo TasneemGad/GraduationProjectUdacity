@@ -1,0 +1,19 @@
+<mat-card>
+    <div class="titel">
+        <div>
+            <img src="../../../../assets/triangelCourses.JPG" alt="error" >
+        </div>
+        <div>
+            <p class="coursesTitel">Courses</p>
+        </div>
+    </div><br><br>
+
+    <div *ngFor="let course of CourseList">
+        <input type="hidden" [value]="course.id" #crsID name="crsID" id="crsID">
+        <mat-card class="courses">
+            <mat-label style="font-size: x-large;">{{course.name}}</mat-label><br>
+                <mat-label > {{course.description}}</mat-label><br>
+                <mat-label class="remove" (click)="removeEnrollCrs(course.id)"> REMOVE COURSE</mat-label>
+        </mat-card><br><br>
+    </div>
+</mat-card>

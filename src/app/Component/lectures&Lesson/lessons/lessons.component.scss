@@ -1,0 +1,48 @@
+#nav{
+    background-color: white;
+    box-shadow:2px 4px 15px rgb(185, 184, 184);
+    width: auto;
+    height: auto;
+    padding: 4%;
+    margin-left: -20px;
+    font-size: xx-large;
+    font-weight: 100;
+}
+.Lessons{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    padding: 0;
+}
+.contentLesson{
+    padding: 40px;  
+    width: 55%;
+    font-size: 17px;
+}
+.btnLesson{
+    padding: 0px 8px 0px 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.hrLesson{
+    border-color: rgb(255, 255, 255);
+}
+.durationLesson{
+    float: right;
+    font-size: 13px;
+}
+.imgLesson{
+    position: absolute;
+    right: 0px;
+    text-align: right;
+    height: 100%;
+}
+.img{
+    width: 45%;
+    height: 100%;
+}
+.nextLecture{
+    padding: 3%;
+}

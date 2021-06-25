@@ -1,0 +1,143 @@
+mat-sidenav-container{
+    height: 100%;
+ }
+.sideNav{
+    background-color:#001d25;
+    width: 4.5%;
+    color: white;
+    height: 100%;
+    position: fixed;
+    padding: 13px;
+}
+mat-icon{
+margin-top: 20px;
+}
+#one ,#two ,#three ,#four ,#five{
+    line-height: 15px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+.iconBtn{
+    position: absolute;
+    bottom: 0;
+}
+mat-sidenav , mat-sidenav-content{
+    padding: 16px;
+}
+.lectNav{
+    background-color:#001d25;
+    width:19%;
+    color: white;
+    height:100%;
+    padding: 0px;
+}
+.title{
+    background-image: linear-gradient(to bottom right,#017a9b,#018377);
+    height: auto;
+    text-align: center;
+    padding: 20% 10% 20% 10%;
+}
+.all{
+    display: flex;
+    font-size: 15px;
+    height: auto;
+    padding: 25px 0px 15px 10px;
+    cursor: pointer;   
+    background-color: #023341;
+}
+.first{
+    font-size: 15px;
+    cursor: pointer;
+    height: auto;
+    // overflow: auto;
+}
+.navContent{
+    font-size: 15px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin: 10px;
+    height: 30px;
+    cursor: pointer;
+}
+.hideIcon{
+    margin-top: 13px;
+    // position: relative;
+    right: 10%;    
+    cursor: pointer;
+}
+.CompletIcon{
+    margin-top: -13px;
+    // position: absolute;
+    right: 10%;
+    cursor: pointer;
+}
+.lecturesNumber{
+    font-size: 15px;
+    margin-right: 8px;
+
+}
+.iconComplet{
+    font-size: 10px;
+}
+hr{
+    height: 1fr;
+    border-color: black;
+    padding: 0;
+    margin: 0;
+}
+#nav{
+    background-color: white;
+    box-shadow:2px 4px 15px rgb(185, 184, 184);
+    width: auto;
+    height: auto;
+    padding: 7%;
+    margin-left: -20px;
+    margin-top: -20px;
+    font-size: xx-large;
+    font-weight: 100;
+}
+.hrLesson{
+    border-color: rgb(255, 255, 255);
+}
+.goNext{
+    width: 40px;
+    height: 40px;
+    float:right;
+    color: #017a9b;
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+}
+
+.homeSearch{
+    padding: 0;
+    margin: 0;
+}
+.content{
+    width: 70%;
+    margin: 0 auto;
+    padding: 4% 0% 4% 0%;
+}
+.searchTitel{
+    font-size: 25px;
+    font-weight: 300;
+}
+.inputSearch{
+    width: 90%;
+    height: 45px;
+    border: 1px solid ;
+    border-color: rgb(202, 200, 200);
+}
+.btnSearch{
+    background-color: #017a9b;;
+    height: 45px;
+    border-radius: 8px;
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.result{
+    background-color: rgb(244, 248, 248);
+    height: 100%;
+}

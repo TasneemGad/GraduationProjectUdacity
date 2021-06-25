@@ -1,20 +1,16 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<section>
+<section  style="height: 100%;">
   <header>
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay muted loop>
-      <!-- <source src="assets/Intro to Self-Driving Cars Nanodegree Program - Trailer 60 seconds.mp4" type="video/mp4"  controls muted id="myVideo"> -->
+      <source src="//videos.ctfassets.net/2y9b3o528xhq/t6jmhTyGfENJhZWiPvdND/866cc0c06859a4c2ae73cb0c3c698a83/Azure_MLEND_nd00333_heroLoop.mp4"  controls muted id="myVideo">
     </video>
     <div class="container h-100">
       <div class="d-flex h-100 text-center align-items-center">
         <div class="w-100 text-white">
           <p>NANODEGREE PROGRAM</p>
 
-          <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px">
-            Intro to Self-Driving Cars
+          <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px;width:90%;padding-left: 70px;line-height: 50px;">
+           {{courseList.name}}
           </h1>
           <p style="width: 700px;font-size: 15px;margin-left: 180px;">
           {{courseList.description}}
@@ -34,7 +30,7 @@
             ">
             Download Syllabus
           </button>
-          <button routerLink="/Course" mat-raised-button style="
+          <button mat-raised-button style="
               background-color: #03607a;
               color: white;
               width: 300px;
@@ -44,7 +40,7 @@
               text-decoration: none;
             ">
             Enroll Now
-        </button>
+          </button>
           <h1 style="margin-top: 90px; padding: 30px" id="myBtn" onclick="myFunction()">
             <mat-icon>play_circle_outline</mat-icon>
           </h1>
@@ -94,6 +90,7 @@
           letter-spacing: 2px;
           opacity: 0.65;
           font-weight: 600;
+          margin-top: -10px;
         ">
         PREREQUISITES
       </h1>
@@ -138,7 +135,7 @@
     IN COLLABORATION WITH
   </p>
   <!-- <span *ngFor="let i of courseListImg"> -->
-  <img src="{{ courseList.partLogo }}" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
+  <img   [src]="createImgPath(courseList.partLogo)" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
 
   <!-- </span> -->
 </div>
@@ -152,7 +149,7 @@
       ">
       What You Will Learn
     </h1>
-    <button mat-raised-button style="
+    <button mat-raised-button  style="
         background-color: #657482;
         display:inline-block;
         overflow: auto;
@@ -174,7 +171,7 @@
       align-items: center;
     ">
     <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
-      <mat-card style="width: 1200px; height: 1050px; align-items: center">
+      <mat-card style=" align-items: center">
         <mat-card-header style="display: flex">
           <div style="float: left">
             <mat-card-title style="
@@ -192,7 +189,7 @@
           </div>
           <div>
             <h1>
-              <img src="{{ courseList.crsLogo }}" style="
+              <img  [src]="createImgPath(courseList.crsLogo)" style="
                   width: 550px;
                   height: 300px;
                   float: right;
@@ -239,7 +236,7 @@
                   <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
                 </div>
                 <!-- <div class="vl1"></div > -->
-                <div *ngFor="let lecture of lectureList">
+                <div *ngFor="let lecture of lectureAllListcrs">
                   <span>fffffffffffffffffffff{{lecture}}</span>
                   <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
                   <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
@@ -615,7 +612,6 @@
 </section>
 
 
-
 <section style="text-align: center; padding: 40px 40px 40px 0px">
   <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
   <div class="stories">
@@ -630,8 +626,6 @@
       </div>
   </div>
 </section> 
-
-
 
 
 <section class="reviews">

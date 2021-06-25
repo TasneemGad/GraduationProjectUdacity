@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 
@@ -12,8 +13,11 @@ import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
 })
 export class SignUpComponent implements OnInit {
   private _registerService: any;
+  userNaa: { User: string; pass: string; };
+  isLoggedIn: any;
+  Role: string;
   constructor( private fb: FormBuilder, private signUpService:RegistrationService, private router:Router,private _router: Router,
-) { }
+    private auth:AuthenticationService,) { }
   RegisterForm:FormGroup
   user: ILogin;
   loading = false;
@@ -25,8 +29,8 @@ export class SignUpComponent implements OnInit {
 
     this.RegisterForm = this.fb.group({
       UserName: ['', [Validators.required, Validators.maxLength(15)]],
-      Email:['', [Validators.required, Validators.maxLength(15)]],
-      PasswordHash: ['', [Validators.required, Validators.minLength(6)]],  
+      Email:['', [Validators.required, Validators.email]],
+      PasswordHash: ['', [Validators.required, Validators.minLength(10),Validators.pattern('[A-z]')]],  
     })
   }
   get formFields() { return this.RegisterForm.controls; }
@@ -39,7 +43,33 @@ export class SignUpComponent implements OnInit {
   signUpUser(user: ILogin) {
     this.signUpService.SignUp(user).subscribe( data => {
       console.log("success")
-      this.router.navigate(['/ClassRoom']);
+      this.auth.login(this.formFields.UserName.value, this.formFields.PasswordHash.value)
+      .pipe(first())
+      .subscribe(
+          AData => {
+             
+             this.isLoggedIn= this.auth.isLoggedIn();
+              console.log("llllllllllllllllllllllllllllll");
+              this.Role=this.auth.getRole();        
+          console.log("Roleeeeeeeeeeeeeeee",this.Role);
+
+              if(this.Role==='Student')
+              {
+               this.StudentPage();
+              }
+              else
+              {
+                this.AdminPage();
+              }
+
+
+          },
+          error => {
+              this.loading = false;
+              this.error = error.message;
+             
+          });
+    //  this.router.navigate(['/ClassRoom']);
       this.isSuccessful = true;
       this.isSignUpFailed = false;
       },err=>{
@@ -49,30 +79,66 @@ export class SignUpComponent implements OnInit {
       
       })
         this.loading = true;
+       
      
   }
-
-
-  getErrorMessage() {
-    if (this.RegisterForm.get('Email')?.hasError('required')) {
-
-      return 'You must enter a value';
-    }
-
-    return this.RegisterForm.get('Email')?.hasError('Email') ? 'Not a valid Email' : '';
+  AdminPage() {
+    window.location.href='/AboutAs';
   }
+  StudentPage() {
+    window.location.href='/ClassRoom';
 
-  getErrorMessage2() {
-    if (this.RegisterForm.get('ConfirmPassword')?.hasError('required')) {
-
-      return 'You must enter a value';
-    }
-
-    return this.RegisterForm.get('ConfirmPassword')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
   }
 
   
 
+  getErrorMessage() {
+    if (this.RegisterForm.get('Email')?.hasError('required')) {
+
+      return 'Must be specified';
+    }
+  else{
+    return this.RegisterForm.get('Email')?.hasError('email') ? 'Not a valid Email' : '';
+  }
+  }
+
+  getErrorMessage2() {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password must have at least 8 unique characters  ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  getErrorMessage3() {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password must be 10 characters or more  ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  getErrorMessage4() {
+    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
+     {
+      return 'Password cannot be your name or email address ';
+    }
+   else{
+    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
+   }
+  }
+  
+  getErrorMessageName() {
+    if (this.RegisterForm.get('UserName')?.hasError('required')) {
+
+      return 'Must be specified';
+    }
+
+    return this.RegisterForm.get('UserName')?.hasError('UserName') ? 'Not a valid UserName' : '';
+  }
+  
   get UserName() {
     return this.RegisterForm.get('UserName');
   }

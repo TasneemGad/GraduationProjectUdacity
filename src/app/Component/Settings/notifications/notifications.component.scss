@@ -1,0 +1,77 @@
+#parent{
+    width: 700px;
+    margin-top: 60px;
+   
+    
+}
+.card{
+    width: 600px;
+    height: 200px;
+    background-color:rgb(237, 246, 250);
+    margin-left: 50px;
+    margin-top: 60px;
+    box-shadow: 2px 3px 8px rgb(214, 214, 214);
+    // display: flex;
+    
+}
+#part{
+    display: flex;
+    background-color: white;
+    width: 630px;
+    height: 80px;
+    margin-left: -15px;
+    margin-top: -5px;
+    box-shadow: 1px 0px 2px rgb(214, 214, 214);
+    
+
+
+}
+mat-card-header{
+    margin-left: 30px;
+    // justify-self: end;
+    margin-top: -80px;
+    margin-left: 90px;
+}
+div{
+
+    display: flex;
+    justify-content: center;
+    
+}
+#title{
+    line-height: 60px;
+    font-size: 20px;
+    margin-left: 50px;
+
+
+
+}
+#sub{
+    width: 500px;
+    margin-bottom: 45px;
+    margin-left: 50px;
+
+}
+#msg{
+
+    line-height: 70px;
+    font-size: 20px;
+}
+#msg2{
+
+    line-height: 30px;
+    font-size: 15px;
+    width: 500px;
+}
+#msg1{
+
+    line-height: 30px;
+    font-size: 15px;
+    width: 500px;
+}
+#msg4{
+
+    line-height: 30px;
+    font-size: 15px;
+    width: 500px;
+}

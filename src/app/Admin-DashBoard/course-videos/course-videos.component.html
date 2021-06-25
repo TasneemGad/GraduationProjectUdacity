@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div style="text-align: center;">
+        <button class="btn btn-outline-dark" (click)="ShowAddNewCrsVideo()" id="btnitem">Add Videos to lesson Courses
+        </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Categories </button>
+    </div>
+    <hr>
+    <div class="home">
+        <div style="text-align: left;" *ngIf="isOpen">
+            <h1 class="titel">Category</h1>
+            <h4 class="description">{{AddOrUpdate}} Category</h4><br><br>
+        </div>
+
+        <div>
+            <mat-label>Course:</mat-label><br>
+            <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLessonsByCrsID(CrsVideo.courseId)"
+                [(ngModel)]="CrsVideo.courseId" [value]="CrsVideo.courseId" name="crsId">
+                <option value="-1" selected="selected">Choose Course</option>
+                <option *ngFor="let Course of AllCourses" [value]="Course.id">{{Course.name}}</option>
+            </select>
+        </div>
+
+        <div>
+            <mat-label>Lessons:</mat-label><br>
+            <select class="custom-select-sm BtnG" id="lessonId" #lessonId (change)="getCrsVideosList()"
+                [(ngModel)]="CrsVideo.lessonId" [value]="CrsVideo.lessonId" name="lessonId">
+                <option value="-1" selected="selected">Choose Lesson</option>
+                <option *ngFor="let Lesson of AllLessons" [value]="Lesson.id">{{Lesson.title}}</option>
+            </select>
+        </div>
+
+        <div *ngIf="isOpen then add else table"></div>
+        <ng-template #add>
+            <form style="margin-bottom: 10%;">
+
+                <div>
+                    <mat-label>Video Name:</mat-label><br>
+                    <input type="text" id="txtCrsVideoName" name="txtCrsVideoName" #txtCrsVideoName
+                        [value]="CrsVideo.videoName" [(ngModel)]="CrsVideo.videoName">
+                </div>
+                <div>
+                    <div class="form-group my-3">
+                        <app-upload (onUploadFinished)="uploadCCrsVideoFinished($event)"></app-upload>
+                    </div>
+                </div>
+
+                <div>
+                    <button mat-button type="submit" class="btnSubmit" (click)="AddNewCourseVideo()">ADD</button>
+                </div>
+            </form>
+
+        </ng-template>
+
+        <ng-template #table>
+            <table class="table table-hover" class="home"  *ngIf="AllCrsVideos"
+                style="align-content: center;margin-top: 80px;  border-bottom: 2px solid #dee2e6;">
+                <thead>
+                    <tr>
+                        <th scope="col" class="all">#</th>
+                        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Name</th>
+                        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Video</th>
+                        <th scope="col" style="font-size: 20px; font-weight: 400;padding: 10px;">Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor="let CrsVideoObj of AllCrsVideos , let i=index" >
+                    <tr style="border-bottom: 2px solid #dee2e6;" >
+                        <th scope="row">
+                        <td>{{CrsVideoObj.videoName}}</td>                                             
+                        <td>
+                            <video width="320" height="240" style="margin: 10px;padding: 10px;" controls #CrsVideoUpload
+                                id="CrsVideoUpload" name="CrsVideoUpload">
+                                <source [src]="createVideoPath(CrsVideoObj.videoURL)" type="video/mp4">
+                                <source [src]="createVideoPath(CrsVideoObj.videoURL)" type="video/mp3">
+                                Your browser does not support the video tag.
+                            </video>
+                            {{CrsVideoObj.id}}
+                        </td>
+                                              
+                        <td><button class="btn btn-outline-danger" (click)="deleteCrsVideo(CrsVideoObj.id)">Delete</button></td>                                                
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+    </div>
+</div>

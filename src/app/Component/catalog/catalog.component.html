@@ -1,0 +1,58 @@
+
+
+<div class="home">
+
+    <h1 class="titel">Program Catalog</h1><br>
+    <div class="inputSearchDiv">
+        <input type="text" placeholder="Search" class="inputSearch" id="inputSearch" [(ngModel)]="searchItem" (focus)="onFocusEvent($event)" >
+    </div><br><br><br>
+
+<div style="display: flex; margin-top: 10px; margin: 0 auto;">
+    <div style="width: 20%;">
+        <div *ngFor="let category of categories">            
+            <mat-label class="categoryName" (click)="showCoursesByCategory(category.id)" >{{category.catName}}</mat-label><br>
+            <div *ngFor="let course of coursesByCategory">                
+                <mat-label class="coursesName" *ngIf="course.categoryId == category.id"  (click)="showCourse(course.id)">{{course.name}}</mat-label>
+            </div><br>
+        </div>
+    </div>
+    <div style="width: 60%; margin-left: 8%;">
+        <div *ngFor="let course of courses | courseFilter:searchItem">
+            <mat-card class="courseCard">
+                <div style="display: flex;">
+                    <div class="cardPartLeft">
+                        <img src="crsLogo" alt="error" width="145px" height="150px" ><br><br>
+                        <button mat-raised-button class="btnDetails">Program Details</button><br><br>
+                        <button mat-raised-button class="btnDownload">Download Syllabus</button>
+                    </div>
+                    <div class="cardPartRight">
+                        <div class="dataCard">
+                            <div *ngFor="let category of categories" class="cateryNameCard">
+                                <div *ngIf="course.categoryId == category.id">
+                                    <mat-label >SCHOOL OF {{category.catName}}</mat-label>
+                                </div>
+                            </div><br>
+                            <div>
+                                <mat-label class="courseNameCard">{{course.name}}</mat-label><br><br>
+                                <mat-label>{{course.description}}</mat-label>
+                            </div>
+                        </div>
+                        <div class="courseDurationCard dataCard" style="padding: 10px;">
+                            <div>
+                                <mat-icon style="font-size: 20px; margin-right: 5px;"> watch_later </mat-icon>
+                            </div>
+                            <div>
+                                <mat-label>{{course.duration}} Months</mat-label>
+                            </div>
+                        </div>
+                        <div class="dataCard">
+                            <mat-label class="cateryNameCard">PREREQUISITES</mat-label><br><br>
+                            <mat-label>{{course.preRequest}}</mat-label>
+                        </div>
+                    </div>
+                </div>
+            </mat-card><br><br>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,186 @@
+mat-sidenav-container{
+    height: 100%;
+    bottom: 0;
+}
+.nav{
+    background-color: #042e38;;
+    box-shadow:2px 4px 15px rgb(185, 184, 184);
+    width: auto;
+    height: auto;
+    padding: 2%;
+    margin-left: -20px;
+    font-weight: 500;
+    display: flex;
+    letter-spacing: 1px;
+    color: white;
+}
+.iconMenu{
+    color: dodgerblue; 
+    margin-left: 10px;
+    cursor: pointer;
+}
+.contentName{
+    margin: 0 auto;
+    font-size: 18;
+}
+.feedback{
+    position: absolute;
+     right: 10%;
+    font-size: 12;
+}
+mat-sidenav-container{
+    height: 100%;
+ }
+mat-sidenav , mat-sidenav-content{
+    padding: 16px;
+}
+.lectNav{
+    background-color:#001d25;
+    width:19%;
+    color: white;
+    height:100%;
+    padding: 0px;
+}
+hr{
+    padding: 0;
+    margin: 0;
+}
+.title{
+    background-color: #023341;;
+    height: auto;
+    text-align: center;
+    margin: 0;
+    padding:10% 10% 10% 10%;
+}
+.navContent{
+    font-size: 15px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    margin: 10px;
+    height: 30px;
+    cursor: pointer;
+}
+.hideIcon{
+    margin-top: 13px;
+    // position: relative;
+    right: 10%;    
+    cursor: pointer;
+}
+.all{
+    display: flex;
+    font-size: 15px;
+    height: auto;
+    padding: 25px 0px 15px 10px;
+    cursor: pointer;   
+    background-color: #023341;
+}
+.lecturesNumber{
+    font-size: 15px;
+    margin-right: 8px;
+
+}
+.first{
+    font-size: 15px;
+    cursor: pointer;
+    height: auto;
+    // overflow: auto;
+}
+.CompletIcon{
+    margin-top: -13px;
+    // position: absolute;
+    right: 10%;
+    cursor: pointer;
+}
+.iconComplet{
+    font-size: 10px;
+}
+.goBack{
+    width: 60px;
+    height: 60px;
+    color: #017a9b;
+    position: absolute;
+    padding-top:10%;
+}
+
+.homeSearch{
+    padding: 0;
+    margin: 0;
+}
+.content{
+    width: 70%;
+    margin: 0 auto;
+    padding: 4% 0% 4% 0%;
+}
+.searchTitel{
+    font-size: 25px;
+    font-weight: 300;
+}
+.correct{
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+.inputSearch{
+    width: 90%;
+    height: 45px;
+    border: 1px solid ;
+    border-color: rgb(202, 200, 200);
+}
+.btnSearch{
+    background-color: #017a9b;;
+    height: 45px;
+    border-radius: 8px;
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.result{
+    background-color: rgb(244, 248, 248);
+    height: 100%;
+}
+.questionMcq{
+    padding: 20px;
+    font-size: 17px;
+    width: 70%;
+    font-weight: 400;
+}
+.btnSave{
+    background-color: #017a9b;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 50px;
+    border-radius: 10px;
+    float: right;
+}
+.Ques{
+width: 90%;
+margin: 0 auto;
+}
+.btnContinue{
+    background-color: #017a9b;;
+    height: 45px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.questionPart{
+    width: 70%;
+    margin: 0 auto;
+}
+.questionCard{
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.numberOfQuestion{
+    color: #017a9b;
+    padding-bottom: 5px;
+}
+.trueOrFalse{
+    padding: 2% 1% 1% 4%;
+}
+.question{
+    padding: 3% 2% 3% 4%;
+    font-size: 15px;
+}
+.btnSubmit{
+    margin: 20px; 
+    background-color: #017a9b;
+    float: right;
+}

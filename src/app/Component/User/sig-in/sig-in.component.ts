@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { ILogin } from 'src/app/SharedModels/Interface/ILogin';
+import { AuthGuard } from 'src/app/Helper/auth.guard';
+
 
 @Component({
   selector: 'app-sig-in',
@@ -21,7 +23,8 @@ export class SigINComponent implements OnInit {
   isLoggedIn=false
   isLoginFailed: boolean;
   errorMessage: any;
-  constructor(private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
+  Role: string;
+  constructor(private gruad:AuthGuard,private fb: FormBuilder,private signInService:RegistrationService, private authenticationService: AuthenticationService,private route: ActivatedRoute,
     private router: Router,) { }
     ngOnInit(): void {
        if (!this.authenticationService.isLoggedIn()) { 
@@ -56,18 +59,28 @@ export class SigINComponent implements OnInit {
           .pipe(first())
           .subscribe(
               AData => {
-                  this.router.navigate(['/ClassRoom']);
+                 // this.router.navigate(['/ClassRoom']);
                  this.isLoginFailed = false;
                  this.isLoggedIn= this.authenticationService.isLoggedIn();
-              },
+                 this.Role=this.authenticationService.getRole();
+                 console.log("Roleeeeeeeeeeeeeeee",this.authenticationService.getRole());
+                 if(this.Role==='Student')
+                 {
+                  this.StudentPage();
+                 }
+                 else
+                 {
+                   this.AdminPage();
+                 }
+                },
               error => {
                   this.loading = false;
                   this.errorMessage = error.message;
                   this.isLoginFailed = true;
               });
 
-           console.log(this.authenticationService.getRole());
-           console.log(this.authenticationService.getUserId());
+           
+           
 
   }
 
@@ -86,7 +99,13 @@ export class SigINComponent implements OnInit {
     return this.LoginForm.get('Password')?.hasError('ConfirmPassword') ? 'Not a valid value' : '';
   }
 
-  
+  AdminPage() {
+    window.location.href='/Home';
+  }
+  StudentPage() {
+    window.location.href='/ClassRoom';
+
+  }
   get UserName() {
     return this.LoginForm.get('UserName');
   }
