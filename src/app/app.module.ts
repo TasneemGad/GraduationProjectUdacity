@@ -106,7 +106,7 @@ import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/questio
 
     CourseVideosComponent,
     QuestionGroupAdminComponent,
-    QuestionAdminComponent
+    QuestionAdminComponent,
 
   ],
   imports: [
