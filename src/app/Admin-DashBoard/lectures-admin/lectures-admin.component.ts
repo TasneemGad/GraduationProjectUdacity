@@ -8,6 +8,7 @@ import { ICourse } from 'src/app/SharedModels/Interface/ICourses';
 import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
 import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
 
+
 @Component({
   selector: 'app-lectures-admin',
   templateUrl: './lectures-admin.component.html',
@@ -15,81 +16,107 @@ import { ISubCategory } from 'src/app/SharedModels/Interface/ISubCategory';
 })
 export class LecturesAdminComponent implements OnInit {
   isOpen:boolean=false
-  addLecturesForm:FormGroup
-  addLectures:Lectures
-  allLecture:Lectures[]
-  allCourses:ICourse[]
-  LectureByid:Lectures
+ 
+
+  check:number=0;
+  AddOrUpdate:string=""
+ 
+  alllec:Lectures[]=[]
+  course:ICourse[]=[]
+ 
+  response:any
+  crsId:number=0
+  stringResponse:string=""
+  apiUrl="https://localhost:44326";
+  lec:Lectures={tilte: "", courseId :0,lessoneNumber:0, lectureDescription:"",id:0}
+
   constructor(private fb:FormBuilder , private lectureServices:LecturesService ,
     private CoursesService :CoursesService, private router :Router
     ) {}
+    ShowList(){
+      this.isOpen=false
+      
+    }
+    ShowAddNewlec(){
+      this.isOpen=true
+      this.lec={tilte : "", courseId :0,lessoneNumber:0, lectureDescription:"",id:0}
+      if(this.lec.id!=this.check){
+        this.AddOrUpdate="Add"
+      }
+    }
+    ngOnInit(): void {
+      this.getLec();
+      this.getcrs();
+    
+      
+    }
+    getLec(){
+      this.lectureServices.getAllLectures().subscribe(data=>
+        {
+          console.log("dataSub",data)
+          this.alllec = data
+        })
+    }
+    getcrs(){
+      this.CoursesService.getCourses().subscribe(data=>
+        {
+          console.log("dataSub",data)
+          this.course = data
+        })
+    }
+    updateSubbtnClick(lecc:Lectures){
+      console.log(lecc,"leccccccccccccccccccccc")
+      this.isOpen=true;
+      this.lec=lecc;
+      this.crsId=this.lec.courseId;
+  
+      
+      if(lecc.id!=this.check){
+        this.AddOrUpdate="Update"
+      }
+      console.log(lecc,"leeeec")
+    }
+    AddNewSub(){
+      console.log(this.lec)
+     
+      this
+      this.lectureServices.postLectures(this.lec).subscribe(
+        addesCrs=>{
+          console.log("Done")
+          // this.AddCrs=true
+          this.isOpen=false
+          this.getLec();
+        }
+      )
+    }
+    UpdateSubData(){
+      console.log("00000000000000000000000000",this.lec)
+      this.lectureServices.UpdateLectures(this.lec.id,this.lec).subscribe(
+        sucess=>{
+          console.log(sucess,"sucess")
+          this.isOpen=false
+         this.getLec();
+          // this.UpdateCrs=true
+        }
+      )
+      console.log(this.lec)
+     
+    }
+  
+  
+    deleteSub(SubId:number){
+     
+      this.lectureServices.deleteLectures(SubId).subscribe(
+        data=>{
+          console.log("Deleted")
+           this.getLec();
+  
+          //this.deleted=true
+        }
+      )
+    }
 
-  ngOnInit(): void {
-    this.addLectures={lectureDescription:"",tilte:"",lessoneNumber:1,courseId:1,id:1}
-this.addLecturesForm=this.fb.group({
-  id: [''],
-  tilte:[''],
-  courseId: [''],
-  lessoneNumber: [''],
-  lectureDescription: ['']
-})
-    this.getAllLectures();
-    this.getAllSubCat()
-  }
-  addNew(){
-    this.isOpen=!this.isOpen
-  }
- onsubmit(){
-  this.AddLectures();
-  this.lectureServices.postLectures(this.addLectures).subscribe(sucess=>{
-  console.log("lect",sucess)
-  this.router.navigateByUrl("/Home")
-})
-  }
-  AddLectures(){
-    console.log("add")
-    // this.addLectures.id=this.addLecturesForm.value.id
-    this.addLectures.tilte=this.addLecturesForm.value.tilte
-    this.addLectures.lessoneNumber=this.addLecturesForm.value.lessoneNumber
-    this.addLectures.lectureDescription=this.addLecturesForm.value.lectureDescription
-    this.addLectures.courseId=this.addLecturesForm.value.courseId
-  }
-  getAllLectures(){
-    console.log("add")
-   this.lectureServices.getAllLectures().subscribe(sucess=>{
-      this.allLecture=sucess
-     console.log("lec",sucess)
-   })
-  }
-  getAllSubCat(){
-    console.log("add")
-   this.CoursesService.getCourses().subscribe(sucess=>{
-      this.allCourses=sucess
-     console.log("lec",this.allCourses)
-   })
-  }
-  DeleteItem(id:number){
-    if(confirm("Are you sure You Want To delete"))
-    {
-    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
-      this.LectureByid=sucess 
-      console.log("enter",id)
-      this.lectureServices.deleteLectures(this.LectureByid.id).subscribe(sucess=>{
-        console.log("enter",sucess)
-      })
-  })
-}
-   
-  }
-  updateItem(id:number , update:Lectures){
-    this.lectureServices.UpdateLectures(id ,update).subscribe(sucess=>{
-      console.log("ee",sucess)
-    })
-  }
-  updateElement(id:any){
-    this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
-      this.LectureByid=sucess 
-      console.log("enter",id)
-  })
-}
+
+  
+    
 }
