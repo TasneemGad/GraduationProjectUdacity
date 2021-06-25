@@ -40,7 +40,7 @@ export class CourseAdminComponent implements OnInit {
   ShowAddNewCrs(){
     this.isOpen=true
     this.PartImg=""
-    this.crsImg=""
+    this.crsImg="" 
     this.Course={name:"",description:"",partLogo:"",preRequest:"",price:0,lectureNumber:0,crsLogo:"",discount:0,duration:0,type:"",subCategoryId:0,categoryId:0,id:0};
   }
   ngOnInit(): void {
