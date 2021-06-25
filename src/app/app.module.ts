@@ -53,6 +53,8 @@ import { PageNotFoundComponent } from './Component/page-not-found/page-not-found
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
 import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
+import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
 
 
 @NgModule({
@@ -106,7 +108,9 @@ import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-ad
     LessonAdminComponent,
 
     CourseVideosComponent,
-    QuestionGroupAdminComponent
+    QuestionGroupAdminComponent,
+    QuestionOptionesAdminComponent,
+    TrueAndFalsesAdminComponent
 
   ],
   imports: [

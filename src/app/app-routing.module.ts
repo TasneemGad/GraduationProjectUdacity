@@ -39,6 +39,8 @@ import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admi
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
 import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
+import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
 
 
 const routes: Routes = [
@@ -113,6 +115,8 @@ const routes: Routes = [
      {path:"Lesson" ,component:LessonAdminComponent},
      {path:"CourseVideos" ,component:CourseVideosComponent},
      {path:"QuestionGroup" ,component:QuestionGroupAdminComponent},
+     { path:"TrueAndFalses" ,component:TrueAndFalsesAdminComponent},
+     {path:"QuestionOptiones" ,component:QuestionOptionesAdminComponent}
 
    ]},
   //Nothing

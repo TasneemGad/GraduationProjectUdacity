@@ -20,4 +20,27 @@ export class TrueAndFalseService {
   }))
 
   }
+
+  AddNewTrueAndFalseQuestions(TrueAndFalse:ITrueAndFalse): Observable<ITrueAndFalse> {
+    return this._http.post<ITrueAndFalse>(this.Url,TrueAndFalse).pipe(catchError((err)=>{
+      return throwError(err.message || "Invaled Registration")
+    }))
+  }
+   DeleteTrueAndFalseQuestions(id:number):Observable<any>{
+    let url = `${this.Url}/${id}`;
+    return this._http.delete<any>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  
+  }
+    PutTrueAndFalseQuestions(id:number, TrueAndFalseToUpdate:ITrueAndFalse):Observable<ITrueAndFalse>{
+      let url = `${this.Url}/${id}`;
+      return this._http.put<ITrueAndFalse>(url, TrueAndFalseToUpdate)
+              .pipe(catchError((err)=>{
+                return throwError(err.message ||"Internal Server error contact site adminstarator");
+                  }
+                ));
+  
+    }
 }
