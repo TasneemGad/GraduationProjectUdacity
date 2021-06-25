@@ -23,7 +23,7 @@ textHide="Hide DETAILS";
 Isdetails:boolean=true
    courseList:ICourse
    courseListImg:ICourse[]
-   lectureList:Lectures
+   lectureList:Lectures[]
    lectureAllList:Lectures[]=[]
    lectureAllListcrs:Lectures[]
    idUrl:any
@@ -54,7 +54,7 @@ Isdetails:boolean=true
 
     this.getCourse();
     this.getCourseById(this.idUrl);
-    this.getLecturesByID(this.idUrl);
+    // this.getLecturesByID(this.idUrl);
     this.getLectureses();
     this.getTwoCourses(this.idUrl);
     this.getLecturesesByCrs(this.idUrl)
@@ -88,12 +88,12 @@ Isdetails:boolean=true
 getCourseById(id:number){
   this.courseServices.getCoursesByID(id).subscribe(sucess=>{console.log(this.courseList=sucess)})
 }
-getLecturesByID(id:number){
-  console.log("ID")
-  this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
-    this.lectureList=sucess,
-    console.log("kkk",this.lectureList)})
-}
+// getLecturesByID(id:number){
+//   console.log("ID")
+//   this.lectureServices.getLecturesByID(id).subscribe(sucess=>{
+//     this.lectureList=sucess,
+//     console.log("kkk",this.lectureList)})
+// }
 getLectureses(){
    this.lectureServices.getAllLectures().subscribe(suces=>{
   console.log("enter2")

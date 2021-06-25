@@ -13,5 +13,4 @@ export interface ICourse{
     subCategoryId:number
     partLogo:string
     crsLogo:string
-    discount:number
 }

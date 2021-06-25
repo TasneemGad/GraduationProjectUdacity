@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
       )
     }
 
-    getCurrentCategory(currentCategory:number){
+    getCurrentCategory(currentCategory:any){
            
                this.router.navigate(["/school-of",currentCategory]);
 

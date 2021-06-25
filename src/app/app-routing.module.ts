@@ -39,17 +39,6 @@ import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admi
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path:'Home', component: HomePageComponent},
-  {path:'SignUP', component: SigINComponent},
-  {path:'SignIn', component: SigINComponent},
-  {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:id',component:CategoryComponent},
-  {path:'Course/:id', component:CourseComponent},
-  {path:'Lecture/:lid', component:CourseComponent},
-  {path:'orderDetails/:id', component: OrderDetailsComponent},
-  {path:'payment',component:PaymentComponent},
-  // {path:'Nav', component:NavComponent},
-  {path:'',redirectTo:'/Home',pathMatch:'full'},
   // Routing
   {
     path: 'Home',
