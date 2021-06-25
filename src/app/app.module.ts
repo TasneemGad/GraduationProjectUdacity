@@ -50,9 +50,17 @@ import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admi
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
 
+import { GovernmentComponent } from './Component/government/government.component';
+import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
+import { OverViewComponent } from './Component/over-view/over-view.component';
+import { ApproachComponent } from './Component/approach/approach.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
+import { SolutionComponent } from './Component/solution/solution.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +110,14 @@ import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-vi
     PageNotFoundComponent,
     LecturesAdminComponent,
     LessonAdminComponent,
-    CourseVideosComponent
+    CourseVideosComponent,
+    GovernmentComponent,
+    BecomeAnInstractorComponent,
+    OverViewComponent,
+    ApproachComponent,
+    StudentSucessComponent,
+    BecomeAMentorComponent,
+    SolutionComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +130,7 @@ import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-vi
     MatIconModule,
     FormsModule,
     NgbModule
-    // NgbModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

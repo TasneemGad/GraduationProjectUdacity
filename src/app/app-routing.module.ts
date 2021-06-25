@@ -6,9 +6,32 @@ import { CourseComponent } from './Component/course/course.component';
 import { HomePageComponent } from './Component/HomePage/home-page/home-page.component';
 import { SigINComponent } from './Component/User/sig-in/sig-in.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
-import { ClassRoomComponent } from './Component/class-room/class-room.component';
 import { OrderDetailsComponent } from './Component/order-details/order-details.component';
 import { PaymentComponent } from './Component/payment/payment.component';
+import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
+import { ResourcesComponent } from './Component/resources/resources.component';
+import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
+import { AboutASComponent } from './Component/about-as/about-as.component';
+import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
+import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
+import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
+import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
+import {GovernmentComponent  } from './Component/government/government.component';
+import{BecomeAnInstractorComponent } from'./Component/become-an-instractor/become-an-instractor.component';
+import {OverViewComponent  } from './Component/over-view/over-view.component';
+import {ApproachComponent  } from './Component/approach/approach.component';
+import {SolutionComponent  } from './Component/solution/solution.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
+import { ClassRoomComponent } from './Component/class-room/class-room.component';
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
+import { CatalogComponent } from './Component/catalog/catalog.component';
+import {UploadComponent} from './reusableComponents/upload/upload.component';
 import { SettingsComponent } from './Component/Settings/settings/settings.component';
 import { PersonalInformationComponent } from './Component/Settings/personal-information/personal-information.component';
 import { NewPasswordComponent } from './Component/Settings/new-password/new-password.component';
@@ -20,23 +43,7 @@ import { CoursesComponent } from './Component/Settings/courses/courses.component
 import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures.component';
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
-import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
-import { ResourcesComponent } from './Component/resources/resources.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
-import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
-import { AboutASComponent } from './Component/about-as/about-as.component';
-import { CatalogComponent } from './Component/catalog/catalog.component';
-import {UploadComponent} from './reusableComponents/upload/upload.component';
-import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
-
-import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
-import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
-import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
-import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
-import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
-import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
-import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
-import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   // Routing
@@ -117,6 +124,27 @@ const routes: Routes = [
   { path: '**', component:PageNotFoundComponent  },
 
 
+
+  {path:'Home', component: HomePageComponent},
+  {path:'SignUP', component: SigINComponent},
+  {path:'SignIn', component: SigINComponent},
+  {path:'ClassRoom',component: ClassRoomComponent},
+  {path:'school-of/:id',component:CategoryComponent},
+  {path:'Course/:id', component:CourseComponent},
+  {path:'Lecture/:lid', component:CourseComponent},
+  {path:'orderDetails/:id', component: OrderDetailsComponent},
+  {path:'payment',component:PaymentComponent},
+  {path:'Government',component: GovernmentComponent},
+  {path:'BecomeAnInstractor',component: BecomeAnInstractorComponent},
+  {path:'OverView',component: OverViewComponent},
+  {path:'Approach',component: ApproachComponent},
+  {path:'Solution',component: SolutionComponent},
+  {path:'career-prep',component:CareerPrepComponent},
+  {path:'success',component:StudentSucessComponent},
+  {path:'start-mentoring',component:BecomeAMentorComponent},
+
+
+  {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
 
 @NgModule({

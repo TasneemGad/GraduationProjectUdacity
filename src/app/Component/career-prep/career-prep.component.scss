@@ -1,24 +1,24 @@
-
-
-.contentful-hero_contentfulHero__2P3Zu {
-    box-shadow: 5px 5px 25px 0 rgb(46 61 73 / 40%);
-}
-
 .contentImg {
     background-size: cover;
     background-repeat: no-repeat;    
     width: 100%;
     padding: 20px 0;
-    height: 100%;     
+    height: 80%;     
     z-index: 1001;
 }
+.button--white {
+    width: 13.75rem;
+    padding: 20px;
+    color: #017a9b;
+    background-color: #fff;
+    border: .125rem solid transparent;
+}
+
 *, :after, :before {
     -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
-div {
-    display: block;
-}
+
 body, p {
     color: #525c65;
     line-height: 24px;
@@ -29,20 +29,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-:root {
-    --reach-tabs: 1;
-}
-*, :after, :before {
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-*, :after, :before {
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
+
 .center {
-    line-height: 200px;        
+    padding: 200px 0; 
     text-align: center;
+    color: white;
   }
   .centerTop {
     line-height: 50px;        
@@ -53,3 +44,86 @@ body {
     display: inline-block;
     vertical-align: middle;
   }
+
+  .imgSecondPart
+{   
+    background-size: cover;        
+    width: 80%;
+    height: 70%;
+    padding: 20px;
+
+}  
+
+.thirdSection {
+    width: 100%;
+    height: 350px;    
+    background-color: rgba(235, 232, 248, 0.42);
+     
+  }
+  .ImagesLogos {
+    height: 60px;
+    margin: .75rem;
+}
+
+  .logoUl {
+    list-style: none;
+    margin: 30px;    
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+
+  }
+  .first
+  {
+      background-color:white;
+      width: 200px;
+      height: 300px;      
+      text-align: center;      
+      border-top: #02ccba 2px solid;     
+      border-radius: 10px; 
+      margin-top: 60px;      
+  }
+
+  .ligtBlueBackground{
+    // background-color: rgba(135, 206, 250, 0.658);
+    width: 100%;
+    height: 700px;
+    background-image: -webkit-linear-gradient(top,rgb(196,228,253),rgb(255,255,255));        
+
+  }
+
+
+  .scroll {
+    margin: 4px, 4px;
+    padding: 4px;    
+    width: 100%;  
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey; 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: lightskyblue; 
+    border-radius: 5px;
+  }
+  

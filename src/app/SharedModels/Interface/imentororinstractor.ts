@@ -1,9 +1,10 @@
 export interface IMentorOrInstractor {
 
     id:number,
-    FullName:string,
-    Specialzation:string,
+    fullName:string,
+    specialzation:string,
     CountryID:number,
     MemberType:string,
-    ShowOrNot:number
+    ShowOrNot:number,
+    story:string
 }

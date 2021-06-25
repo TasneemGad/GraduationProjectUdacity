@@ -1,0 +1,142 @@
+.img{
+    background-image:url(//www.udacity.com/www-proxy/contentful/assets/2y9b3o528xhq/5i05DfMAuf8zwnl69XhnC4/4245a63f30cc3933b34ffab76b2b7d34/Differentiation-Hero-Banner.jpg);
+     background-size: cover;
+     padding:80px 80px 80px 80px;
+     line-height:30px;
+     text-align: center;
+     color:white;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+     margin:10px
+ 
+ }
+ .cent{
+     padding-left: 450px;
+    
+ }
+ a {
+    color: rgb(77, 77, 77);
+    text-decoration: underline
+  }
+.btn{
+background-color: #017a9b;
+width:20% ;
+font-size: 15px;
+}
+
+.txtimg{
+    font-size: 40px;
+
+}
+.section2Content{
+    font-size:20px;
+    color:rgb(93, 88, 88);
+    margin: 0px 250px 0px 250px ;
+    line-height:30px;
+}
+.section2Content2{
+    font-size:26px;
+    color:rgb(93, 88, 88);
+    margin: 0px 260px 0px 260px;
+    line-height:35px;
+}
+.section2Content3{
+    font-size:15px;
+    color:rgb(93, 88, 88);
+    margin: 0px 260px 0px 260px;
+    line-height:30px;
+    
+}
+
+.example-card2{
+width: 70%;
+margin:0 auto;
+box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    color: rgb(15, 15, 15);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .mat-card-actions{
+      text-align: center;
+  }
+  .wrap2{
+
+    margin-top: 80px;
+    display: flex;
+   padding-left: 50px;
+
+    
+}
+.rigth{
+
+ font-size:18px;
+ display:inline-block;
+ width:76%;
+ margin-right:20px;
+}
+.articlename2{
+   
+     margin-top:30px;
+    line-height:30px;
+    display:inline-block;
+    width:60%;
+    margin-right:70px;
+}
+.wrap {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    
+}
+.half,
+.articlename {
+    display:inline-block;
+    width:50%;
+    margin-right:70px;
+
+}
+.half {
+    height:auto;
+    float: left; 
+ padding: 0 20px 20px 0;
+}
+.articlename {
+    
+    text-align: center;
+    float: right;
+    margin-top:30px;
+    line-height:30px;
+   
+}
+.articlenameContent{
+    font-size: 20px;
+} 
+.txt{
+    font-size: 40px;
+}
+.txt2{
+    width:45%;
+    margin:0 auto;
+}
+.section{
+    text-align: center;
+    line-height:35px;
+    padding: 90px 0px 90px 0px;
+}

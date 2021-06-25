@@ -1,0 +1,45 @@
+.contentImg {
+    background-size: cover;
+    background-repeat: no-repeat;    
+    width: 100%;
+    padding: 20px 0;
+    height: 100%;     
+    z-index: 1001;
+    color: white;
+}
+.button--white {
+    width: 13.75rem;
+    padding: 10px;
+    background-color: #017a9b;
+    color: #fff;
+    border: .125rem solid transparent;
+}
+.first
+{
+    background-color:white;
+    width: 380px;
+    height: 300px;         
+    text-align: center;      
+    border-top: #02ccba 2px solid;     
+    border-radius: 10px; 
+    margin-top: 60px;      
+}
+
+.center {
+    padding: 200px 0; 
+    text-align: center;
+    color: white;
+  }
+  .centerTop {
+    line-height: 50px;        
+    text-align: center;
+  }
+  .center h6  {
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+span{
+    color: black;
+}
