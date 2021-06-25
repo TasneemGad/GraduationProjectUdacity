@@ -39,7 +39,7 @@ export class LecturesService {
   }
 
   UpdateLectures(id:number ,update:Lectures): Observable<Lectures> {
-    return this.http.put<Lectures>(this.lectureUrl+id,update ).pipe();
+    return this.http.put<Lectures>(this.lectureUrl+"/"+id,update ).pipe();
   }
 
   deleteLectures(id:number): Observable<Lectures> {

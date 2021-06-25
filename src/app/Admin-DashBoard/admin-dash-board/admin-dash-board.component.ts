@@ -41,6 +41,23 @@ export class AdminDashBoardComponent implements OnInit {
     goToCourseVideos(){
       this.router.navigate(['CourseVideos'],{relativeTo:this.active})
     }
+
+    goToQuestionGroup(){
+      this.router.navigate(['QuestionGroup'],{relativeTo:this.active})
+    }
+    goToQuestion(){
+      this.router.navigate(['Question'],{relativeTo:this.active})
+    }
+
+
+    goToQuestionOption(){
+      this.router.navigate(['QuestionOptiones'],{relativeTo:this.active})
+
+    }
+    goToTrueAndFalse(){
+      this.router.navigate(['TrueAndFalses'],{relativeTo:this.active})
+
+    }
     Logout(){
       this.Authservices.logout();   
       }

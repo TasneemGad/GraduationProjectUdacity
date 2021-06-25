@@ -28,10 +28,6 @@ import {SolutionComponent  } from './Component/solution/solution.component';
 import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
 import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
 import { ClassRoomComponent } from './Component/class-room/class-room.component';
-import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
-import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
-import { CatalogComponent } from './Component/catalog/catalog.component';
-import {UploadComponent} from './reusableComponents/upload/upload.component';
 import { SettingsComponent } from './Component/Settings/settings/settings.component';
 import { PersonalInformationComponent } from './Component/Settings/personal-information/personal-information.component';
 import { NewPasswordComponent } from './Component/Settings/new-password/new-password.component';
@@ -44,6 +40,21 @@ import { LecturesComponent } from './Component/lectures&Lesson/lectures/lectures
 import { LessonsComponent } from './Component/lectures&Lesson/lessons/lessons.component';
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { LessonContentComponent } from './Component/lectures&Lesson/lesson-content/lesson-content.component';
+import { CatalogComponent } from './Component/catalog/catalog.component';
+import {UploadComponent} from './reusableComponents/upload/upload.component';
+import {CorporateSocialResponsibilityComponent} from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
+
+
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+
+import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/question-admin.component';
+import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
+import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
+
+
+
 
 const routes: Routes = [
   // Routing
@@ -117,6 +128,11 @@ const routes: Routes = [
      {path:"Lesson" ,component:LessonAdminComponent},
 
 
+     {path:"CourseVideos" ,component:CourseVideosComponent},
+     {path:"QuestionGroup" ,component:QuestionGroupAdminComponent},
+     {path:"Question" ,component:QuestionAdminComponent},
+     { path:"TrueAndFalses" ,component:TrueAndFalsesAdminComponent},
+     {path:"QuestionOptiones" ,component:QuestionOptionesAdminComponent}
 
    ]},
   //Nothing

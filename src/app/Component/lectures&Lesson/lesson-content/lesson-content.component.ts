@@ -21,7 +21,10 @@ import { StudentAnswer } from 'src/app/SharedModels/Interface/StudentAnswer';
 import { AccountService } from 'src/app/Services/account.service';
 import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
 import { QuestionOptionsService } from 'src/app/Services/question-options.service';
+import { identity } from 'rxjs';
 import { LessonDataComponent } from '../lesson-data/lesson-data.component';
+import { StudentAnswerQuestionView } from 'src/app/SharedModels/Interface/StudentAnswerQuestionView';
+import { TrueAndFalseService } from 'src/app/Services/true-and-false.service';
 
 
 @Component({
@@ -29,304 +32,430 @@ import { LessonDataComponent } from '../lesson-data/lesson-data.component';
   templateUrl: './lesson-content.component.html',
   styleUrls: ['./lesson-content.component.scss']
 })
-export class LessonContentComponent implements OnInit ,AfterViewInit{
-  Isdetails:boolean=true
-  text="expand_less"
-  idUrl:any
+export class LessonContentComponent implements OnInit, AfterViewInit {
+  Isdetails: boolean = true
+  text = "expand_less"
+  idUrl: any
   IsOpened = true
-  checkExist:boolean=false;
-  SearchFlagLesson=false;
-  currentCourseToSearch:any =""
-  watchObj:IwatchContent={id:0,whatchedOrNot:0,crsID:0,stID:"",lessonContentID:0}
-  currentLesson:Lesson ={title:" ",contentNumber:4,type:"h",lectureId:3,duration:125,details:"asd",crsId:0}
-  allContentCurrentLesson:LessonContent[];
-  CurrentLesson:LessonContent
-  allLessonContent:LessonContent={id:1,lectureId:1,videoLinkId:1,description:"",questionGroupId:1,lessonId:1,title:"",type:"",header:""}
-  progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
-  QByLessonContent:Question[]
-  allQuestion:Question
-  StudentAnswerByLesson:StudentAnswer[]
-  StudentAnswer:StudentAnswer
-  QOptionsList:QOptions[]
-  CoursesVideos:CourseVideos
-  correctAn:any
-  currentStudent:string
-apiUrl="https://localhost:44326";
-  x:boolean
-  isAnswered:string="true"
-  notAnswered : any="false"
-  trueAndFalseQuestion:Question[]
-  dragAndDropQuestion:Question[]
-  optionalQuestion:Question[]
-  mayBeAnswer:any
-  lastAnswerOfTrueAndFalse:string
-  AnswerOfTrueAndFalse:StudentAnswer
-   id:any
-  progressId:number=0;
-  LessonSearchList:Lesson[]=[]
+  checkExist: boolean = false;
+  SearchFlagLesson = false;
+  currentCourseToSearch: any = ""
+  watchObj: IwatchContent = { id: 0, whatchedOrNot: 0, crsID: 0, stID: "", lessonContentID: 0 }
+  currentLesson: Lesson = { title: " ", contentNumber: 4, type: "h", lectureId: 3, duration: 125, details: "asd", crsId: 0 }
+  allContentCurrentLesson: LessonContent[] = [];
+  CurrentLesson: LessonContent
+  // progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
+  CoursesVideos: CourseVideos
+  idLessonContent: number
+  id: any
+  LessonSearchList: Lesson[] = []
 
-@Input() CourseId:any
+  //Question:  
+  QuestionsList: StudentAnswerQuestionView[] = []
+  Question: StudentAnswerQuestionView = { id: 0, flag: false, opt1: "", opt2: "", opt3: "", opt4: "", right: "", title: "", type: "", lessonContentId: 0, questionGroupId: 0 }
+  QOptionsList: QOptions[] = []
+  QOptionsList2: QOptions[] = []
 
-ngOnChanges():void{
-  console.log("isChange?", this.CourseId)
-  // this.currentCourseToSearch = this.courseSearch
-  // console.log("search?", this.currentCourseToSearch)
-}
-@ViewChild(LessonDataComponent) c:LessonDataComponent
+  QByLessonContent: Question[] = []
+  allQuestion: Question
+  StudentAnswerByLesson: StudentAnswer[] = []
+  StudentAnswer: StudentAnswer
+  questionAnswered: StudentAnswer[] = []
+  allLessonContent: LessonContent = { id: 1, lectureId: 1, videoLinkId: 1, description: "", questionGroupId: 1, lessonId: 1, title: "", type: "", header: "" }
+  progressObj: IProgress = { id: 0, courseId: 0, numOfLesson: 0, numOfLessonFinshed: 0, studentId: "" }
+  correctAn: any
+  currentStudent: string
+  apiUrl = "https://localhost:44326";
+  x: boolean
+  isAnswered: string = "true"
+  notAnsweredYet: any = "false"
+  trueAndFalseQuestion: Question[] = []
+  dragAndDropQuestion: Question[] = []
+  optionalQuestion: Question[] = []
+  mayBeAnswerTrueAndFalseQuestion: any
+  lastAnswerOfTrueAndFalse: string
+  AnswerOfTrueAndFalse: StudentAnswer
+  questionTrueAndFalseNotAnswered: Question[] = []
+  flag: any = false
+  mayBeAnswerOptionQuestion: string
+  AnswerOfOptions: StudentAnswer
+  lastAnswerOptionQuestion: string
+  isAnswerwdOPtion: boolean = false
+  notAnsweredYetForOptional: Question[] = []
 
+  option: string = "options"
+  TrueAndFalseCheck: string = "t,f"
+  iteration:number = 0
+  rightAnswer:boolean 
+  IsCorrect:string
 
-  constructor(private active:ActivatedRoute,private router:Router, private lessonService:LessonService,
-    private location:Location,private lectureServices:LecturesService,private courseServices:CoursesService,
-    private lessonContentService:LessonContentService,private progress:ProgressService,private watch:WatchService,
-    private token:AuthenticationService,private videoServices:VideosService,private QuestionsServices:QuestionsService,
-  private  StudentASService:StudentAnswerService,private accountService:AccountService   ,
-  private OptionServices:QuestionOptionsService
+  @ViewChild(LessonDataComponent) c: LessonDataComponent
+
+  @Input() CourseId: any
+  ngOnChanges(): void {
+    //console.log("isChange?", this.CourseId)
+    // this.currentCourseToSearch = this.courseSearch
+    // //console.log("search?", this.currentCourseToSearch)
+  }
+
+  constructor(private active: ActivatedRoute, private router: Router, private lessonService: LessonService,
+    private location: Location, private lectureServices: LecturesService, private courseServices: CoursesService,
+    private lessonContentService: LessonContentService, private progress: ProgressService, private watch: WatchService,
+    private token: AuthenticationService, private videoServices: VideosService, private QuestionsServices: QuestionsService,
+    private StudentASService: StudentAnswerService, private accountService: AccountService, private trueAndFalseService:TrueAndFalseService,
+    private OptionServices: QuestionOptionsService
   ) { }
   ngAfterViewInit(): void {
-    
-    console.log("hhhh",)
+
+    //console.log("hhhh",)
     throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
-    // this.QOptionsList={opt1:"",opt2:"",opt3:"",opt4:"",right:"",qustionId:1,id:1}
-  const us=this.allLessonContent.lessonId
-    this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')
-    console.log("iiiiiiiiiid",this.idUrl)
-    this.getLessonById(this.idUrl)
-    this.getCurrentCourse(this.idUrl);
-    this.getLessonContentById(this.idUrl);
-  })
-  // this.getLessonContentById(us);
-
-  }
-  getCurrentCourse(id:number):any{
-    console.log("enterLesson1",id)
-    this.lessonService.GetLessonById(id).subscribe(sucess=>
-      { console.log("enterLesson",sucess?.lectureId)
-        this.lectureServices.getLecturesByID(sucess?.lectureId).subscribe(sucess=>
-      { console.log("enterLesson",sucess?.courseId)
-          this.courseServices.getCoursesByID(sucess.courseId).subscribe(
-            data => {
-
-              this.currentCourseToSearch = data              
-              console.log("sc",this.currentCourseToSearch)              
-              return data.id
-            })
-        })
-      })    
-  }
-  getLessonById(id:any){
-    this.lessonService.GetLessonById(id).subscribe(sucess=>{this.currentLesson=sucess,console.log("currentLesson",this.currentLesson)})
-  }
-  getLessonContentById(id:number){
-    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess=>{
-      this.allContentCurrentLesson=sucess,console.log("contentForLesson",this.allContentCurrentLesson)
-      this.getLessonOneById(id)
-      // this.getVideosById(id);
-    //  console.log("currentvideohhhhhhhhh",id,this.allContentCurrentLesson ,this.getVideosById(id))
-
-      this.getQuestionsByLessonContent(id)
-      this.getAllQuestions(id);
-      this.getOptions(id)
+      const us = this.allLessonContent.lessonId
+      this.active.paramMap.subscribe((p: ParamMap) => {
+      this.idUrl = p.get('id')
+      this.getLessonById(this.idUrl)
+      this.getCurrentCourse(this.idUrl);
+      this.getLessonContentById(this.idUrl);
     })
   }
-  getLessonOneById(id:number){
-    this.lessonContentService.GetLessonContentById(id).subscribe(sucess=>{
-      this.CurrentLesson=sucess,console.log("content-------",this.CurrentLesson)
-      // this.getVideosById(id)
 
-    })
-  }
-  goToLessonData(id:any){
+  //Content
+  goToLessonData(id: any) {
+    // this.getQuestionsByLessonContent(id)
+
+    this.getQuestion(id)
+
+    // console.log("AID",identity)
     this.getLessonOneById(id);
     this.getVideosById(id);
-    console.log("currentvideo",id,)
-    this.getQuestionsByLessonContent(id)
+    // console.log("currentvideo",id,)
     this.getAllQuestions(id);
-    this.getOptions(id)
-    if(sessionStorage.getItem("CourseID")!=null)
-    {
-      this.CourseId=sessionStorage.getItem("CourseID")
-      this.getProgress(this.CourseId,id)
+    if (sessionStorage.getItem("CourseID") != null) {
+      this.CourseId = sessionStorage.getItem("CourseID")
+      this.getProgress(this.CourseId, id)
     }
     // this.router.navigate(['lessonData/',id],{relativeTo:this.active})
     this.getStudentAnswer(id)
+    this.idLessonContent = id
   }
-  getVideosById(id:number){
-    this.videoServices.getAllCourseViedosById(id).subscribe(sucess=>{
-       this.CoursesVideos=sucess,console.log("currentvvff",this.CoursesVideos,this.CoursesVideos.videoURL ,id)
-    
+
+
+  //SidNav
+  getCurrentCourse(id: number): any {
+    this.lessonService.GetLessonById(id).subscribe(sucess => { 
+      this.lectureServices.getLecturesByID(sucess?.lectureId).subscribe(sucess => { 
+        this.courseServices.getCoursesByID(sucess.courseId).subscribe(
+          data => {
+
+            this.currentCourseToSearch = data
+            return data.id
+          })
+      })
     })
   }
-  hideList(){
-    this.Isdetails = !this.Isdetails
-    this.text=this.Isdetails?"expand_more":"expand_less" 
-     
+  getLessonById(id: any) {
+    this.lessonService.GetLessonById(id).subscribe(sucess => {
+    this.currentLesson = sucess
+    })
   }
-  goBack(){
+  getLessonContentById(id: number) {
+    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess => {
+      this.allContentCurrentLesson = sucess,
+      this.getLessonOneById(id)
+      this.getAllQuestions(id);
+    })
+  }
+  getLessonOneById(id: number) {
+    this.lessonContentService.GetLessonContentById(id).subscribe(sucess => {
+    this.CurrentLesson = sucess
+    })
+  }
+  hideList() {
+    this.Isdetails = !this.Isdetails
+    this.text = this.Isdetails ? "expand_more" : "expand_less"
+
+  }
+  goBack() {
     this.location.back();
   }
-  controlSidenav(){
+  controlSidenav() {
     this.IsOpened = !this.IsOpened
   }
+
+  //video
+  getVideosById(id: number) {
+    this.videoServices.getAllCourseViedosById(this.CurrentLesson.videoLinkId).subscribe(sucess => {
+      this.CoursesVideos = sucess
+    })
+  }
   public createImgPath = (serverPath: string) => {
-    console.log(`${this.apiUrl}/${serverPath}`)
-     return `${this.apiUrl}/${serverPath}`;
-}
-  insertWatch(lessonContentID:number,crsId:number){
-    this.watchObj.whatchedOrNot=1;
-    this.watchObj.stID=this.token.getUserId();
-    this.watchObj.crsID=crsId
-    this.watchObj.lessonContentID=lessonContentID
-    console.log("this.watchObj",this.watchObj)
+    // console.log(`${this.apiUrl}/${serverPath}`)
+    return `${this.apiUrl}/${serverPath}`;
+  }
+
+  //progress
+  insertWatch(lessonContentID: number, crsId: number) {
+    this.watchObj.whatchedOrNot = 1;
+    this.watchObj.stID = this.token.getUserId();
+    this.watchObj.crsID = crsId
+    this.watchObj.lessonContentID = lessonContentID
+    // console.log("this.watchObj",this.watchObj)
     this.watch.insertWatch(this.watchObj).subscribe(
-      data=>{
-          console.log("Add")
+      data => {
+        // console.log("Add")
       }
     )
 
   }
-  getProgress(crsId:any,lessonContentID:number){    
+  getProgress(crsId: any, lessonContentID: number) {
     this.progress.getLessonContentProgress(crsId).subscribe(
-      data=>{      
-        console.log(data);  
-        this.watch.getWatch(crsId,lessonContentID).subscribe(
-          watchObj=>{
-            this.checkExist=watchObj
-            console.log("watchObj---Here",watchObj)
-            console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
-            if(this.checkExist==false){
+      data => {
+        // console.log(data);  
+        this.watch.getWatch(crsId, lessonContentID).subscribe(
+          watchObj => {
+            this.checkExist = watchObj
+            // console.log("watchObj---Here",watchObj)
+            // console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
+            if (this.checkExist == false) {
               data.numOfLessonFinshed++;
-              this.insertWatch(lessonContentID,crsId)            
-              this.progress.UpdateLessonContentProgress(data,data.id).subscribe(
-                progressUpdateObj=>{
-                  console.log("updated")
+              this.insertWatch(lessonContentID, crsId)
+              this.progress.UpdateLessonContentProgress(data, data?.id).subscribe(
+                progressUpdateObj => {
+                  // console.log("updated")
                 }
               )
-            }            
+            }
           }
         )
-        console.log("lessonID",this.idUrl)
-     
-    })
-  }
-  getQuestionsByLessonContent(id:number){
-    this.getOptions(id)
-    console.log("first")
-    this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess=>{
-      this.QByLessonContent=sucess,
-      console.log("currentQGL",this.QByLessonContent)
-      for(let question of sucess) {
-        if(question.type == "t,f"){
-          this.trueAndFalseQuestion?.push(question)
-          console.log("t,f",question.title)
-        } 
-        else if(question.type == "options") {
-          this.optionalQuestion?.push(question)
-          console.log("options",question)
-        } 
-        else if(question.type == "Drag and Drop"){
-          this.dragAndDropQuestion?.push(question)
-          console.log("dragAndDrop",question)
-        }
-      }
+        // console.log("lessonID",this.idUrl)
+
       })
   }
 
- getStudentAnswerByLessonContent(id:number){
-  console.log("first")
-  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess=>{
-    // this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
-})
-}
 
-getAllQuestions(id:number){
-  console.log("first")
-  this.QuestionsServices.getQuestionsById(id).subscribe(sucess=>{
-    this.allQuestion=sucess,console.log("currentQGL",this.allQuestion)
-})
-}
+  //Questions  
+  getQuestionsByLessonContent(id: number) {
+    console.log("IDDDDDDDDDDDDDD", id)
+    this.trueAndFalseQuestion = []
+    this.optionalQuestion = []
 
-getStudentAnswer(id:any){
-this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
-  data=>
-  {    
-  console.log("enter1") 
-  // data.id=id
-  console.log("id",id,data)
-
-  this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(
-    sucess=>
-    {console.log("cc",id,this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)})  
-  })
-  
-}
-postAnswer(user:number){
-  
-  this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
-    data=>
-    {    
-    console.log("enter1") 
-    this.id=data.id;
-   
-  
-    this.StudentASService.PostStudentAnswer(this.id).subscribe(
-      sucess=>
-      {
-        console.log("cc",this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
-      })  
+    this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess => {
+      this.QByLessonContent = sucess;
     })
+    // this.getNotAnsweredOFTrueAndFalse();
 
   }
-getOptions(id:number){
-      this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(
-        sucess=>
-        {
-          this.QOptionsList=sucess
-          console.log("ccoop",this.QOptionsList,this.QOptionsList)
-        })
+  getStudentAnswerByLessonContent(id: number) {
+    // console.log("first")
+    this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(sucess => {
+      // this.StudentAnswer=sucess,console.log("currentQGL",this.StudentAnswer)
+    })
+  }
+  getAllQuestions(id: number) {
+    // console.log("first")
+    this.QuestionsServices.getQuestionsById(id).subscribe(sucess => {
+      this.allQuestion = sucess
+      // console.log("currentQGL",this.allQuestion)
+    })
+  }
+  getStudentAnswer(id: any) {
+    this.accountService.getStudentInformation(this.token.getUserId()).subscribe(
+      data => {
+        // console.log("enter1") 
+        // data.id=id
+        // console.log("id",id,data)
+
+        this.StudentASService.getStudentAnswerByLessonContent(id).subscribe(
+          sucess => {
+            // console.log("cc",id,this.StudentAnswerByLesson=sucess,this.StudentAnswerByLesson)
+          })
+      })
+
+  }
+  getQuestion(lessonContentId: number) {
+    this.QuestionsList = []
+
+    console.log("lessonContentId", lessonContentId)
+    this.QuestionsServices.getQuestionsByLessonContent(lessonContentId).subscribe(sucess => {
+    this.QByLessonContent = sucess;
+
+    //Create List Of Question By Lesson Content
+    for (let question of sucess) {
+      console.log("sucess", sucess)
+      this.Question = { id: 0, flag: false, opt1: "", opt2: "", opt3: "", opt4: "", right: "", title: "", type: "", lessonContentId: 0, questionGroupId: 0 }
+      this.iteration++
+      console.log("Question", this.QByLessonContent)
+      this.Question.id = question.id
+      this.Question.title = question.title
+      this.Question.type = question.type
+      this.Question.lessonContentId = question.lessonContentId
+      this.Question.questionGroupId = question.questionGroupId
+      console.log("question.id", question.id)
+     this.QuestionsList.push(this.Question)
 
     }
-    check(value:string,index:number){
-      // this.QOptionsList=value
-    }
-//   searchLesson(crsId:number,SearchLessonItem:string){  
-//     this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
-//       lessonsdata=>{
-//         this.SearchFlagLesson=true;
-//         this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
-//       }
-//     )
-//     console.log("oooooooooooooooo",crsId,SearchLessonItem)
-//     console.log("oooooooooooooooo",this.LessonSearchList)
-// }
-// searchLesson(crsId:number,SearchLessonItem:string){  
-//   this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
-//     lessonsdata=>{
-//       this.SearchFlagLesson=true;
-//       this.LessonSearchList=lessonsdata.filter(Lesson =>Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem) )
-//     }
-//   )
-//   console.log("oooooooooooooooo",crsId,SearchLessonItem)
-//   console.log("oooooooooooooooo",this.LessonSearchList)
 
-// }
-answerMayOfTrueAndFalse(answer:any){
-  console.log("ans",answer)
-  this.mayBeAnswer = answer
-}
-finalAnswerOfTrueAndFalse(id:number,idContent:any){
-  this.lastAnswerOfTrueAndFalse = this.mayBeAnswer
-  console.log("lastAns",this.lastAnswerOfTrueAndFalse)
-  // this.accountService.getStudentInformation(this.token.getUserId()).subscribe(data=>{
-  //   this.currentStudent = data.id
-  // })
-  this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
-  console.log("testannnnnnnnnnnnnnn",this.AnswerOfTrueAndFalse)
-  this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
-    console.log("testand",data)
+    //Add Options Depend on Question Type
+    for (const QuestionObj of this.QuestionsList) {
+      this.OptionServices.getQuestionsOptionByQuestionId(QuestionObj.id).subscribe(
+      sucess=>
+      {  console.log("innnnnnnnnnnn",QuestionObj.id,sucess)
+        if(QuestionObj.type=="options"){
+          QuestionObj.opt1=sucess.opt1
+          QuestionObj.opt2=sucess.opt2
+          QuestionObj.opt3=sucess.opt3
+          QuestionObj.opt4=sucess.opt4
+          console.log("innnnnnnnnnnnk",sucess)
+        }
+        else if(QuestionObj.type="t,f"){
+          QuestionObj.opt1="true"
+          QuestionObj.opt2="false"
+        }
+      }) 
+      //Add Rigth Answer
+       this.StudentASService.getStudentAnswerByLessonContent(lessonContentId).subscribe(
+      stdAnswers=>{
+             console.log("stdAnswers",stdAnswers)
+             for (const stdAnswersObj of stdAnswers) {
+               if(stdAnswersObj.questionId==QuestionObj.id){
+                QuestionObj.right=stdAnswersObj.studentanswer
+                QuestionObj.flag=true;
+               }
+             }
+      }
+    )
+    }    
+    console.log(this.QuestionsList,"TTTTTTTTTT")
   })
 }
+
+  //Options Question  
+  // getOptions(id:any){
+  //   this.QOptionsList = []
+  //   this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(
+  //     sucess=>
+  //     {    
+  //       for(let option of sucess)
+  //       {
+  //         this.QOptionsList.push(option)
+  //         // console.log("ccoop",this.QOptionsList,this.QOptionsList)
+  //       }
+  //     })
+  //     // this.checkIAnsweredOFOptionQuestion()
+  // }
+  check(value: string) {
+    this.mayBeAnswerOptionQuestion = value
+  }
+  answerMayOfTrueAndFalse(answer: any) {
+    this.mayBeAnswerTrueAndFalseQuestion = answer
+  }
+  postAnswer(idQuestion:number,idContent:number){
+    this.lastAnswerOptionQuestion = this.mayBeAnswerOptionQuestion
+    this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
+    console.log("dgggd",this.lastAnswerOfTrueAndFalse )
+    this.OptionServices.getQuestionsOptionByQuestionId(idQuestion).subscribe(data=>{
+      if(data.right == this.lastAnswerOptionQuestion && idQuestion == data.qustionId)
+      {
+        console.log("fffffffff",data.right,this.lastAnswerOptionQuestion)
+        this.AnswerOfOptions = {questionId: idQuestion,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.mayBeAnswerOptionQuestion}
+        this.StudentASService.PostStudentAnswer(this.AnswerOfOptions).subscribe(data=>{
+        })
+        this.rightAnswer =true
+        this.IsCorrect = "Correct"
+      }
+      else
+      {
+        // alert("IN COURRECT ANSWER!!")
+        this.rightAnswer = false
+        this.IsCorrect = "Wrong"
+      }
+        })
+    this.trueAndFalseService.getReviews().subscribe(data=>{
+      for(let ans of data)
+      {
+        if(ans.qustionId == idQuestion)
+        {
+          if( ans.right == this.lastAnswerOfTrueAndFalse)
+          {
+            this.AnswerOfTrueAndFalse = {questionId: idQuestion,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
+            this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
+            })
+            this.rightAnswer =true
+            this.IsCorrect = "Correct"
+          }
+          else
+          {
+            // alert("IN COURRECT ANSWER!!")
+            this.rightAnswer =false
+            this.IsCorrect = "Wrong"
+          }  
+        }              
+        }
+      })
+    }
+
+
+  // checkIAnsweredOFOptionQuestion() {
+  //   this.notAnsweredYetForOptional = []
+  //   for (let question of this.QByLessonContent) {
+  //     this.isAnswerwdOPtion = false
+  //     for (let ans of this.StudentAnswerByLesson) {
+  //       if (question.id != ans.questionId && !this.notAnsweredYetForOptional.includes(question)) {
+  //         this.notAnsweredYetForOptional.push(question)
+  //       }
+  //     }
+  //   }
+  // }
+
+
+  //True and False Question  
+
+  // finalAnswerOfTrueAndFalse(id: number, idContent: any) {
+  //   this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
+  //   this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
+  //       if(data.right == this.lastAnswerOptionQuestion)
+  //       {
+  //         this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
+  //         this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
+  //         })
+  //       }
+  //       else
+  //       {
+  //         alert("IN COURRECT ANSWER!!")
+  //       }
+  //   })
+  // }
+  // getNotAnsweredOFTrueAndFalse() {
+  //   this.questionTrueAndFalseNotAnswered = []
+  //   for (let ques of this.QByLessonContent) {
+  //     for (let ans of this.questionAnswered) {
+  //       if (ans.questionId == ques.id) {
+  //         this.flag = true
+  //         continue
+  //       }
+  //       else {
+  //         this.flag = false
+  //       }
+  //     }
+  //     if (!this.flag) {
+  //       this.questionTrueAndFalseNotAnswered.push(ques)
+  //     }
+  //   }
+  //   // console.log("fllaag",this.questionTrueAndFalseNotAnswered)
+  // }
+
+  //Search
+  searchLesson(crsId: number, SearchLessonItem: string) {
+    this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
+      lessonsdata => {
+        this.SearchFlagLesson = true;
+        this.LessonSearchList = lessonsdata.filter(Lesson => Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem))
+      }
+    )
+    // console.log("oooooooooooooooo",crsId,SearchLessonItem)
+    // console.log("oooooooooooooooo",this.LessonSearchList)
+  }
 
 }

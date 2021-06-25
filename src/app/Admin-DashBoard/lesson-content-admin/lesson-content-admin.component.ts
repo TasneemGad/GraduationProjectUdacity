@@ -26,8 +26,8 @@ export class LessonContentAdminComponent implements OnInit {
   isUpdate:boolean=false
   addLessonContent: LessonContent
   allLessonContent: LessonContent[]
-  allLectures:Lectures[]
-  allCourese:ICourse[]
+  allLectures:Lectures[]=[]
+  allCourese:ICourse[]=[]
   allQuestionGroup:QuestionGroup[]
   allLecture:Lectures[]=[]
   allCourse:ICourse[]=[]
@@ -95,6 +95,7 @@ export class LessonContentAdminComponent implements OnInit {
    getAllLecture(){
     this.LecturesServices.getAllLectures().subscribe(data=>{
         this.allLecture = data
+        console.log(this.allLecture,"allLecture")
       })
   }
   getAllLesson(){

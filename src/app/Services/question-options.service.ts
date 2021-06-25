@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { QOptions } from '../SharedModels/Interface/QuestionOtions';
 
 @Injectable({
@@ -18,14 +19,33 @@ export class QuestionOptionsService {
     return this.http.get<QOptions>(this.QuestionsOptionUrls+"/"+id).pipe()
    }
 
-   getQuestionsOptionByQuestionId(QID:number):Observable<QOptions[]>{
+   getQuestionsOptionByQuestionId(QID:number):Observable<QOptions>{
     console.log("ccqid")
 
-    return this.http.get<QOptions[]>(this.QuestionsOptionUrls+"/GetQuestionOptByQuestionID/"+QID).pipe()
+    return this.http.get<QOptions>(this.QuestionsOptionUrls+"/GetQuestionOptByQuestionID/"+QID).pipe()
    }
 
-   PostQuestionsOption(options:QOptions):Observable<QOptions>{
-    return this.http.post<QOptions>(this.QuestionsOptionUrls,options).pipe()
-   }
+   AddNewQuestionsOption(options:QOptions): Observable<QOptions> {
+    return this.http.post<QOptions>(this.QuestionsOptionUrls,options).pipe(catchError((err)=>{
+      return throwError(err.message || "Invaled Registration")
+    }))
+  }
+   DeleteQuestionsOption(id:number):Observable<any>{
+    let url = `${this.QuestionsOptionUrls}/${id}`;
+    return this.http.delete<any>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));
+  
+  }
+    PutQuestionsOption(id:number, QOptionsToUpdate:QOptions):Observable<QOptions>{
+      let url = `${this.QuestionsOptionUrls}/${id}`;
+      return this.http.put<QOptions>(url, QOptionsToUpdate)
+              .pipe(catchError((err)=>{
+                return throwError(err.message ||"Internal Server error contact site adminstarator");
+                  }
+                ));
+  
+    }
    
 }

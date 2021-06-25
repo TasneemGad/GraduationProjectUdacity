@@ -34,8 +34,6 @@ import { LessonContentComponent } from './Component/lectures&Lesson/lesson-conte
 import { CoreCurriculumComponent } from './Component/lectures&Lesson/core-curriculum/core-curriculum.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { ResourcesComponent } from './Component/resources/resources.component';
-import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
@@ -49,9 +47,14 @@ import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-ad
 import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
 import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
 import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
+
 import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/question-admin.component';
+import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
+import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
 
 import { GovernmentComponent } from './Component/government/government.component';
 import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
@@ -90,7 +93,6 @@ import { SolutionComponent } from './Component/solution/solution.component';
     CoreCurriculumComponent,
     ProgramHomeComponent,
     ResourcesComponent,
-    LessonDataComponent,
     AboutASComponent,
     CatalogComponent,
     CoursesFilterPipe,
