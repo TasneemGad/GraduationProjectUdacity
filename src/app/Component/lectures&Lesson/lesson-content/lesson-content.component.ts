@@ -24,6 +24,7 @@ import { QuestionOptionsService } from 'src/app/Services/question-options.servic
 import { identity } from 'rxjs';
 import { LessonDataComponent } from '../lesson-data/lesson-data.component';
 import { StudentAnswerQuestionView } from 'src/app/SharedModels/Interface/StudentAnswerQuestionView';
+import { TrueAndFalseService } from 'src/app/Services/true-and-false.service';
 
 
 @Component({
@@ -84,7 +85,9 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
 
   option: string = "options"
   TrueAndFalseCheck: string = "t,f"
-  iteration: number = 0
+  iteration:number = 0
+  rightAnswer:boolean 
+  IsCorrect:string
 
   @ViewChild(LessonDataComponent) c: LessonDataComponent
 
@@ -99,7 +102,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     private location: Location, private lectureServices: LecturesService, private courseServices: CoursesService,
     private lessonContentService: LessonContentService, private progress: ProgressService, private watch: WatchService,
     private token: AuthenticationService, private videoServices: VideosService, private QuestionsServices: QuestionsService,
-    private StudentASService: StudentAnswerService, private accountService: AccountService,
+    private StudentASService: StudentAnswerService, private accountService: AccountService, private trueAndFalseService:TrueAndFalseService,
     private OptionServices: QuestionOptionsService
   ) { }
   ngAfterViewInit(): void {
@@ -235,36 +238,13 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   //Questions  
   getQuestionsByLessonContent(id: number) {
     console.log("IDDDDDDDDDDDDDD", id)
-    // this.getOptions(id)
-    // console.log("first")
     this.trueAndFalseQuestion = []
     this.optionalQuestion = []
 
     this.QuestionsServices.getQuestionsByLessonContent(id).subscribe(sucess => {
       this.QByLessonContent = sucess;
-      // console.log(this.QByLessonContent,"QByLessonContentQByLessonContent")
-      // for(let Q of sucess)
-      // {
-      //   // console.log("QQQQ",Q.id)
-      //   this.getOptions(Q.id)
-      // };
-      // console.log("currentQGL",this.QByLessonContent)
-      for (let question of sucess) {
-        if (question.type == "t,f") {
-          this.trueAndFalseQuestion.push(question)
-          //  console.log("t,f",question)
-        }
-        else if (question.type == "options") {
-          this.optionalQuestion.push(question)
-          //  console.log("options",question)
-        }
-        else if (question.type == "Drag and Drop") {
-          this.dragAndDropQuestion.push(question)
-          // console.log("dragAndDrop",question)
-        }
-      }
     })
-    this.getNotAnsweredOFTrueAndFalse();
+    // this.getNotAnsweredOFTrueAndFalse();
 
   }
   getStudentAnswerByLessonContent(id: number) {
@@ -327,7 +307,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
           QuestionObj.opt2=sucess.opt2
           QuestionObj.opt3=sucess.opt3
           QuestionObj.opt4=sucess.opt4
-          console.log("innnnnnnnnnnnk",QuestionObj)
+          console.log("innnnnnnnnnnnk",sucess)
         }
         else if(QuestionObj.type="t,f"){
           QuestionObj.opt1="true"
@@ -366,100 +346,105 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   //     // this.checkIAnsweredOFOptionQuestion()
   // }
   check(value: string) {
-    // this.QOptionsList=value
     this.mayBeAnswerOptionQuestion = value
   }
-  // postAnswer(idQuestion:number,idContent:number){
-  //   this.lastAnswerOptionQuestion = this.mayBeAnswerOptionQuestion
-  //   this.OptionServices.getQuestionsOptionByQuestionId(idQuestion).subscribe(data=>{
-  //   for(let i of data)
-  //   {
-  //     if(i.right == this.lastAnswerOptionQuestion)
-  //     {
-  //       this.AnswerOfOptions = {questionId: idQuestion,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.mayBeAnswerOptionQuestion}
-  //       // console.log("testannAnswerOfOptions",this.AnswerOfOptions)
-  //       this.StudentASService.PostStudentAnswer(this.AnswerOfOptions).subscribe(data=>{
-  //       // console.log("testand",data)
-  //       })
-  //     }
-  //     else
-  //     {
-  //       alert("IN COURRECT ANSWER!!")
+  answerMayOfTrueAndFalse(answer: any) {
+    this.mayBeAnswerTrueAndFalseQuestion = answer
+  }
+  postAnswer(idQuestion:number,idContent:number){
+    this.lastAnswerOptionQuestion = this.mayBeAnswerOptionQuestion
+    this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
+    console.log("dgggd",this.lastAnswerOfTrueAndFalse )
+    this.OptionServices.getQuestionsOptionByQuestionId(idQuestion).subscribe(data=>{
+      if(data.right == this.lastAnswerOptionQuestion && idQuestion == data.qustionId)
+      {
+        console.log("fffffffff",data.right,this.lastAnswerOptionQuestion)
+        this.AnswerOfOptions = {questionId: idQuestion,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.mayBeAnswerOptionQuestion}
+        this.StudentASService.PostStudentAnswer(this.AnswerOfOptions).subscribe(data=>{
+        })
+        this.rightAnswer =true
+        this.IsCorrect = "Correct"
+      }
+      else
+      {
+        // alert("IN COURRECT ANSWER!!")
+        this.rightAnswer = false
+        this.IsCorrect = "Wrong"
+      }
+        })
+    this.trueAndFalseService.getReviews().subscribe(data=>{
+      for(let ans of data)
+      {
+        if(ans.qustionId == idQuestion)
+        {
+          if( ans.right == this.lastAnswerOfTrueAndFalse)
+          {
+            this.AnswerOfTrueAndFalse = {questionId: idQuestion,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
+            this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
+            })
+            this.rightAnswer =true
+            this.IsCorrect = "Correct"
+          }
+          else
+          {
+            // alert("IN COURRECT ANSWER!!")
+            this.rightAnswer =false
+            this.IsCorrect = "Wrong"
+          }  
+        }              
+        }
+      })
+    }
+
+
+  // checkIAnsweredOFOptionQuestion() {
+  //   this.notAnsweredYetForOptional = []
+  //   for (let question of this.QByLessonContent) {
+  //     this.isAnswerwdOPtion = false
+  //     for (let ans of this.StudentAnswerByLesson) {
+  //       if (question.id != ans.questionId && !this.notAnsweredYetForOptional.includes(question)) {
+  //         this.notAnsweredYetForOptional.push(question)
+  //       }
   //     }
   //   }
-  // })
   // }
-  checkIAnsweredOFOptionQuestion() {
-    this.notAnsweredYetForOptional = []
-    for (let question of this.QByLessonContent) {
-      this.isAnswerwdOPtion = false
-      localStorage.setItem("ISANSWER", `${this.isAnswerwdOPtion}`)
-      // console.log("JJJJJJJJJJJJJJJJJJJJ")
-      for (let ans of this.StudentAnswerByLesson) {
-        if (question.id != ans.questionId && !this.notAnsweredYetForOptional.includes(question)) {
-          this.notAnsweredYetForOptional.push(question)
-          // console.log("notAnsweredOPtionf",this.notAnsweredYetForOptional)
-          // this.isAnswerwdOPtion =true
-          // console.log("hjkl")
-          // localStorage.setItem("ISANSWER",`${this.isAnswerwdOPtion}`)
-          // continue
-        }
-      }
-      // console.log("notAnsweredOPtion",localStorage.getItem("ISANSWER")) 
-      // var d = localStorage.getItem("ISANSWER")
-      // console.log("dddddddddddd",d)
-      // if(d != null )
-      // {
-      //   if(d == "false")
-      //   {
-      //     console.log("int")
-      //     this.notAnsweredYetForOptional.push(question)
-      //     console.log("notAnsweredOPtionf",this.notAnsweredYetForOptional)
-      //   }
-      // }
-
-    }
-  }
 
 
   //True and False Question  
-  answerMayOfTrueAndFalse(answer: any) {
-    console.log("ans", answer)
-    this.mayBeAnswerTrueAndFalseQuestion = answer
-  }
-  finalAnswerOfTrueAndFalse(id: number, idContent: any) {
-    this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
-    this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
-        if(data.right == this.lastAnswerOptionQuestion)
-        {
-          this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
-          this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
-          })
-        }
-        else
-        {
-          alert("IN COURRECT ANSWER!!")
-        }
-    })
-  }
-  getNotAnsweredOFTrueAndFalse() {
-    this.questionTrueAndFalseNotAnswered = []
-    for (let ques of this.QByLessonContent) {
-      for (let ans of this.questionAnswered) {
-        if (ans.questionId == ques.id) {
-          this.flag = true
-          continue
-        }
-        else {
-          this.flag = false
-        }
-      }
-      if (!this.flag) {
-        this.questionTrueAndFalseNotAnswered.push(ques)
-      }
-    }
-    // console.log("fllaag",this.questionTrueAndFalseNotAnswered)
-  }
+
+  // finalAnswerOfTrueAndFalse(id: number, idContent: any) {
+  //   this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
+  //   this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
+  //       if(data.right == this.lastAnswerOptionQuestion)
+  //       {
+  //         this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
+  //         this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
+  //         })
+  //       }
+  //       else
+  //       {
+  //         alert("IN COURRECT ANSWER!!")
+  //       }
+  //   })
+  // }
+  // getNotAnsweredOFTrueAndFalse() {
+  //   this.questionTrueAndFalseNotAnswered = []
+  //   for (let ques of this.QByLessonContent) {
+  //     for (let ans of this.questionAnswered) {
+  //       if (ans.questionId == ques.id) {
+  //         this.flag = true
+  //         continue
+  //       }
+  //       else {
+  //         this.flag = false
+  //       }
+  //     }
+  //     if (!this.flag) {
+  //       this.questionTrueAndFalseNotAnswered.push(ques)
+  //     }
+  //   }
+  //   // console.log("fllaag",this.questionTrueAndFalseNotAnswered)
+  // }
 
   //Search
   searchLesson(crsId: number, SearchLessonItem: string) {

@@ -4,6 +4,6 @@ export interface QOptions {
     opt1: string
     opt2: string
     opt3: string
-   opt4?: string
+    opt4: string
     qustionId: number
 }
