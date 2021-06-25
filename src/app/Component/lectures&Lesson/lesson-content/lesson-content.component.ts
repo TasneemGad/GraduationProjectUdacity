@@ -109,54 +109,16 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // this.QOptionsList={opt1:"",opt2:"",opt3:"",opt4:"",right:"",qustionId:1,id:1}
-    // this.getNotAnsweredOFTrueAndFalse()
-    const us = this.allLessonContent.lessonId
-    this.active.paramMap.subscribe((p: ParamMap) => {
+      const us = this.allLessonContent.lessonId
+      this.active.paramMap.subscribe((p: ParamMap) => {
       this.idUrl = p.get('id')
-      //console.log("iiiiiiiiiid",this.idUrl)
       this.getLessonById(this.idUrl)
       this.getCurrentCourse(this.idUrl);
       this.getLessonContentById(this.idUrl);
     })
-    // this.getLessonContentById(us);
+  }
 
-  }
-  getCurrentCourse(id: number): any {
-    //console.log("enterLesson1",id)
-    this.lessonService.GetLessonById(id).subscribe(sucess => { //console.log("enterLesson",sucess?.lectureId)
-      this.lectureServices.getLecturesByID(sucess?.lectureId).subscribe(sucess => { //console.log("enterLesson",sucess?.courseId)
-        this.courseServices.getCoursesByID(sucess.courseId).subscribe(
-          data => {
-
-            this.currentCourseToSearch = data
-            //console.log("sc",this.currentCourseToSearch)              
-            return data.id
-          })
-      })
-    })
-  }
-  getLessonById(id: any) {
-    this.lessonService.GetLessonById(id).subscribe(sucess => {
-      this.currentLesson = sucess
-      //console.log("currentLesson",this.currentLesson)
-    })
-  }
-  getLessonContentById(id: number) {
-    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess => {
-      this.allContentCurrentLesson = sucess,
-        //console.log("contentForLesson",this.allContentCurrentLesson)
-        this.getLessonOneById(id)
-      // this.getQuestionsByLessonContent(id)
-      this.getAllQuestions(id);
-    })
-  }
-  getLessonOneById(id: number) {
-    this.lessonContentService.GetLessonContentById(id).subscribe(sucess => {
-      this.CurrentLesson = sucess
-      //,console.log("content-------",this.CurrentLesson)
-    })
-  }
+  //Content
   goToLessonData(id: any) {
     // this.getQuestionsByLessonContent(id)
 
@@ -175,11 +137,36 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     this.getStudentAnswer(id)
     this.idLessonContent = id
   }
-  getVideosById(id: number) {
-    // console.log("VID",id)
-    this.videoServices.getAllCourseViedosById(this.CurrentLesson.videoLinkId).subscribe(sucess => {
-      this.CoursesVideos = sucess
-      // console.log("currentvvff",this.CoursesVideos,this.CoursesVideos.videoURL ,id)
+
+
+  //SidNav
+  getCurrentCourse(id: number): any {
+    this.lessonService.GetLessonById(id).subscribe(sucess => { 
+      this.lectureServices.getLecturesByID(sucess?.lectureId).subscribe(sucess => { 
+        this.courseServices.getCoursesByID(sucess.courseId).subscribe(
+          data => {
+
+            this.currentCourseToSearch = data
+            return data.id
+          })
+      })
+    })
+  }
+  getLessonById(id: any) {
+    this.lessonService.GetLessonById(id).subscribe(sucess => {
+    this.currentLesson = sucess
+    })
+  }
+  getLessonContentById(id: number) {
+    this.lessonContentService.GetLessonContentByLesson(id).subscribe(sucess => {
+      this.allContentCurrentLesson = sucess,
+      this.getLessonOneById(id)
+      this.getAllQuestions(id);
+    })
+  }
+  getLessonOneById(id: number) {
+    this.lessonContentService.GetLessonContentById(id).subscribe(sucess => {
+    this.CurrentLesson = sucess
     })
   }
   hideList() {
@@ -193,10 +180,19 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   controlSidenav() {
     this.IsOpened = !this.IsOpened
   }
+
+  //video
+  getVideosById(id: number) {
+    this.videoServices.getAllCourseViedosById(this.CurrentLesson.videoLinkId).subscribe(sucess => {
+      this.CoursesVideos = sucess
+    })
+  }
   public createImgPath = (serverPath: string) => {
     // console.log(`${this.apiUrl}/${serverPath}`)
     return `${this.apiUrl}/${serverPath}`;
   }
+
+  //progress
   insertWatch(lessonContentID: number, crsId: number) {
     this.watchObj.whatchedOrNot = 1;
     this.watchObj.stID = this.token.getUserId();
@@ -298,7 +294,62 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
       })
 
   }
+  getQuestion(lessonContentId: number) {
+    this.QuestionsList = []
 
+    console.log("lessonContentId", lessonContentId)
+    this.QuestionsServices.getQuestionsByLessonContent(lessonContentId).subscribe(sucess => {
+    this.QByLessonContent = sucess;
+
+    //Create List Of Question By Lesson Content
+    for (let question of sucess) {
+      console.log("sucess", sucess)
+      this.Question = { id: 0, flag: false, opt1: "", opt2: "", opt3: "", opt4: "", right: "", title: "", type: "", lessonContentId: 0, questionGroupId: 0 }
+      this.iteration++
+      console.log("Question", this.QByLessonContent)
+      this.Question.id = question.id
+      this.Question.title = question.title
+      this.Question.type = question.type
+      this.Question.lessonContentId = question.lessonContentId
+      this.Question.questionGroupId = question.questionGroupId
+      console.log("question.id", question.id)
+     this.QuestionsList.push(this.Question)
+
+    }
+
+    //Add Options Depend on Question Type
+    for (const QuestionObj of this.QuestionsList) {
+      this.OptionServices.getQuestionsOptionByQuestionId(QuestionObj.id).subscribe(
+      sucess=>
+      {  console.log("innnnnnnnnnnn",QuestionObj.id,sucess)
+        if(QuestionObj.type=="options"){
+          QuestionObj.opt1=sucess.opt1
+          QuestionObj.opt2=sucess.opt2
+          QuestionObj.opt3=sucess.opt3
+          QuestionObj.opt4=sucess.opt4
+          console.log("innnnnnnnnnnnk",QuestionObj)
+        }
+        else if(QuestionObj.type="t,f"){
+          QuestionObj.opt1="true"
+          QuestionObj.opt2="false"
+        }
+      }) 
+      //Add Rigth Answer
+       this.StudentASService.getStudentAnswerByLessonContent(lessonContentId).subscribe(
+      stdAnswers=>{
+             console.log("stdAnswers",stdAnswers)
+             for (const stdAnswersObj of stdAnswers) {
+               if(stdAnswersObj.questionId==QuestionObj.id){
+                QuestionObj.right=stdAnswersObj.studentanswer
+                QuestionObj.flag=true;
+               }
+             }
+      }
+    )
+    }    
+    console.log(this.QuestionsList,"TTTTTTTTTT")
+  })
+}
 
   //Options Question  
   // getOptions(id:any){
@@ -378,25 +429,18 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   }
   finalAnswerOfTrueAndFalse(id: number, idContent: any) {
     this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
-    // console.log("lastAns",this.lastAnswerOfTrueAndFalse)
-
-    // this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
-    //   for(let i of data)
-    //   {
-    //     if(i.right == this.lastAnswerOptionQuestion)
-    //     {
-    //       this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
-    //       // console.log("testann",this.AnswerOfTrueAndFalse)
-    //       this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
-    //       // console.log("testand",data)
-    //       })
-    //     }
-    //     else
-    //     {
-    //       alert("IN COURRECT ANSWER!!")
-    //     }
-    //   }
-    // })
+    this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
+        if(data.right == this.lastAnswerOptionQuestion)
+        {
+          this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
+          this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
+          })
+        }
+        else
+        {
+          alert("IN COURRECT ANSWER!!")
+        }
+    })
   }
   getNotAnsweredOFTrueAndFalse() {
     this.questionTrueAndFalseNotAnswered = []
@@ -417,6 +461,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     // console.log("fllaag",this.questionTrueAndFalseNotAnswered)
   }
 
+  //Search
   searchLesson(crsId: number, SearchLessonItem: string) {
     this.lessonService.GetAllLessonByCrsID(crsId).subscribe(
       lessonsdata => {
@@ -428,60 +473,4 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     // console.log("oooooooooooooooo",this.LessonSearchList)
   }
 
-
-  getQuestion(lessonContentId: number) {
-    this.QuestionsList = []
-
-    console.log("lessonContentId", lessonContentId)
-    this.QuestionsServices.getQuestionsByLessonContent(lessonContentId).subscribe(sucess => {
-      this.QByLessonContent = sucess;
-      //Create List Of Question By Lesson Content
-      for (let question of sucess) {
-        console.log("sucess", sucess)
-        this.Question = { id: 0, flag: false, opt1: "", opt2: "", opt3: "", opt4: "", right: "", title: "", type: "", lessonContentId: 0, questionGroupId: 0 }
-        this.iteration++
-        console.log("Question", this.QByLessonContent)
-        this.Question.id = question.id
-        this.Question.title = question.title
-        this.Question.type = question.type
-        this.Question.lessonContentId = question.lessonContentId
-        this.Question.questionGroupId = question.questionGroupId
-        console.log("question.id", question.id)
-       this.QuestionsList.push(this.Question)
-
-      }
-      //Add Options Depend on Question Type
-
-      for (const QuestionObj of this.QuestionsList) {
-        this.OptionServices.getQuestionsOptionByQuestionId(QuestionObj.id).subscribe(
-        sucess=>
-        {  
-          if(QuestionObj.type=="options"){
-            QuestionObj.opt1=sucess.opt1
-            QuestionObj.opt2=sucess.opt2
-            QuestionObj.opt3=sucess.opt3
-            QuestionObj.opt4=sucess.opt4
-          }
-          else if(QuestionObj.type="t,f"){
-            QuestionObj.opt1="true"
-            QuestionObj.opt2="false"
-          }
-        }) 
-        //Add Rigth Answer
-         this.StudentASService.getStudentAnswerByLessonContent(lessonContentId).subscribe(
-        stdAnswers=>{
-               console.log("stdAnswers",stdAnswers)
-               for (const stdAnswersObj of stdAnswers) {
-                 if(stdAnswersObj.questionId==QuestionObj.id){
-                  QuestionObj.right=stdAnswersObj.studentanswer
-                  QuestionObj.flag=true;
-                 }
-               }
-        }
-      )
-      }
-    
-      console.log(this.QuestionsList,"TTTTTTTTTT")
-    })
-  }
 }
