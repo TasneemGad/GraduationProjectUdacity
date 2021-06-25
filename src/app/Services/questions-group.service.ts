@@ -36,4 +36,15 @@ export class QuestionsGroupService {
     return this.http.get<QuestionGroup[]>(this.QuestionsGroupUrls+"/QuestionGroupsByIds/"+crsId+"/"+lectId+"/"+lessonId).pipe(catchError((err)=>{
       return throwError(err.massage || "Error")}))
   }
+
+  getQuestionGroroupByLessonId(lessonId:number):Observable<QuestionGroup[]>{
+    return this.http.get<QuestionGroup[]>(this.QuestionsGroupUrls+"/QuestionGroupsBylessonIds/"+lessonId).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")}))
+  }
+
+  getQuestionGroroupByCrsID(CrsId:number):Observable<QuestionGroup[]>{
+    return this.http.get<QuestionGroup[]>(this.QuestionsGroupUrls+"/QuestionGroupByCrsID/"+CrsId).pipe(catchError((err)=>{
+      return throwError(err.massage || "Error")}))
+  }
+  //
 }

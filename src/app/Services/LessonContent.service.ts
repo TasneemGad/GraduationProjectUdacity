@@ -19,6 +19,14 @@ export class LessonContentService {
         return this.http.get<LessonContent[]>(this.lessonContentUrl).pipe(catchError((err)=>{
           return throwError(err.massage || "Error")}))
       }
+
+//LessonContentByCrsID
+
+    GetAllLessonContentByCrsID(crsId:number): Observable<LessonContent[]> {
+      return this.http.get<LessonContent[]>(this.lessonContentUrl+"/LessonContentByCrsID/"+crsId).pipe(catchError((err)=>{
+        return throwError(err.massage || "Error")}))
+    }
+
     GetLessonContentById(id:number): Observable<LessonContent>{
         console.log("d")
         return this.http.get<LessonContent>(this.lessonContentUrl+"/" + id).pipe();
