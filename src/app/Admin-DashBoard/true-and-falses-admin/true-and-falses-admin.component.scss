@@ -1,87 +1,3 @@
-thead{
-    padding-left: 140px;
-    background-color: rgb(1, 59, 59);
-    align-content: center;
-    margin-left: 99px;
-    color: white;
-   
-}
-#all{
-    font-size: 15px; font-family: 100;
-    
-}
-#btn{
-    margin: 60px;
-    color: rgb(1, 59, 59);
-    
-}
-.formAdd{
-    width: 900px;
-    margin-left: 90px;
-    margin-top: 40px;
-}
-.form-row{
-    margin-left: 50px;
-    margin-right: 70px;
-    margin-top: 60px;
-}
-#btn:hover{
-    color: white;
-}
-#btnAdd{
-    margin-top: 30px;
-    background-color:  #107a9b;
-    text-align: center;
-    margin: 90px;
-    margin-bottom: 40px;
-    margin-left: 90px;
-    float: right;
-    border-radius: 2px;
-}
-.col{
-    margin-top: 30px;
-}
-#btn:hover{
-    color: white;
-}
-
-.titel{
-    color: #107a9b;
-    font-size: 35px;
-    text-align: center;
-}
-.description{
-    font-size: 20px;
-    text-align: center;
-}
-
-.btn-block{
-    background-color: rgb(207, 63, 63);
-    border: none;
-    
-}
-
-.btnSubmit{
-    background-color: #41accc;
-    color: white;
-    padding: 4px 12px 4px 12px;
-    text-align: center;
-    margin:0 auto;
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-body {
-    background-color: #eecda3;
-    background-color: -webkit-linear-gradient(to right, #eecda3, #6183a5);
-    background-color: linear-gradient(to right, #eecda3, #6183a5);
-  width: auto;
-  height: auto;
-  }
-.BtnG{
-
-    width:100%
-}
 .home{
     width: 100%;
     margin: 0 auto;    
@@ -89,12 +5,12 @@ body {
 
 }
 .card{
+  
     width:50%;
     display: inline;
     float:left;
     background-color:rgb(255, 251, 251);
     border: none;
-  
 }
 .titel{
     color: #107a9b;

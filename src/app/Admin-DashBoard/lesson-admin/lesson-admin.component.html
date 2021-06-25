@@ -1,49 +1,10 @@
-<body>
-<button class="btn btn-outline-dark rounded-pill py-2  " (click)="addNewLesson()" id="btn" >Add New Lesson </button>
+<div class="container-fluid">
 
-<<<<<<< HEAD
-    <table class="table table-hover" style="align-content: center; border-bottom: 2px solid #dee2e6;">
-        <thead >
-          <tr >
-            <!-- <th scope="col"class="all" >#</th> -->
-            <th scope="col" class="titelTabel">Name</th>
-            <th scope="col" class="titelTabel">Description</th>
-            <th scope="col" class="titelTabel">Type</th>   
-            <th scope="col" class="titelTabel">Content Number</th>
-            <th scope="col" class="titelTabel">Duration</th>
-            <th scope="col" class="titelTabel">Course</th>    
-            <th scope="col" class="titelTabel">Lecture</th>    
-            <th scope="col" class="titelTabel">Update</th>
-            <th scope="col" class="titelTabel">Delete</th>    
-          </tr>
-        </thead>
-        <tbody *ngFor="let lesson of allLesson , let i=index" >
-          <tr >
-            <!-- <th scope="row"  > -->
-            <td>{{lesson.title}}</td>
-            <td>{{lesson.details}}</td>
-            <td>{{lesson.type}}</td>
-            <td>{{lesson.contentNumber}}</td>
-            <td>{{lesson.duration}}</td>
-            <td><div *ngFor="let c of allCourse">
-                <div *ngIf="c.id==lesson.crsId">
-                    {{c.name}}
-                </div>
-            </div></td> 
-            <td><div *ngFor="let lecture of allLecture">
-                <div *ngIf="lecture.id==lesson.lectureId">
-                    {{lecture.tilte}} 
-                </div>
-            </div></td>
-            <td><button class="btn btn-outline-dark" style="padding: 5px;" >Update</button></td>
-            <td><button class="btn btn-outline-dark" style="padding: 5px;">Delete</button></td>    
-          </tr>
-        </tbody>
-      </table>
-=======
-<button class="btn btn-outline-dark2 rounded-pill py-2" (click)="addNew()" id="btn" >Show All Lessones </button>
->>>>>>> 4414a31c6452569d82901c8dd277b22f9ff43aee
-
+    <div style="text-align: center;">
+        <button class="btn btn-outline-dark" (click)="addNewLesson()" id="btn" >Add New Lesson </button>
+        <button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Show All Lessones  </button>
+    </div>
+<hr>
 
 <div *ngIf="isOpen then add else table "></div>
 
@@ -140,63 +101,83 @@
     </div>
     </ng-template>
 
-<ng-template #table>
 
 
-<div class="pb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+    <ng-template #table>
+        <div  *ngFor="let lecture of allLecture">
+              <div class="row" style="background-color:rgb(159, 215, 241);width: 100%; height: 70px;font-weight: bolder;">
+                            <div class="col-md-12 centerText">
+                                <h1 style="font-size: xx-large;text-align: center;">{{lecture.tilte}}</h1>
+                            </div>
+                 </div>
+         
+            <div *ngFor="let lesson of allLesson , let i=index" class="card">
+                <div class="row" >
+                    <div *ngIf="lecture.id==lesson.lectureId">
+                        
+                        <div class="col-md-1">&nbsp;</div>
+                        <div class="col-md-4">
+                            <mat-card class="dataOfObjective" style="border-top-color: #0094f7">
+                               
+                                <mat-label class="titleData" style="text-align: center;">{{lecture.tilte}}</mat-label>
+                             
+                                <br>
+                                <table style="width: 60%;text-align: center;">
+                                    <tr>
+                                        <th> Title:</th>
+                                        <td>
+                                         {{lesson.title}}</td>
 
-          <!-- Shopping cart table -->
-          <div class="table-responsive" >
-            <table class="table table-hover" style="align-content: center; border-top: 2px solid #6183a5;border-bottom: 2px solid #6183a5;">
-              <thead>
-                <tr >
-                    <th scope="col" class="titelTabel">Name</th>
-                    <th scope="col" class="titelTabel">Description</th>
-                    <th scope="col" class="titelTabel">Type</th>   
-                    <th scope="col" class="titelTabel">Content Number</th>
-                    <th scope="col" class="titelTabel">Duration</th>
-                    <th scope="col" class="titelTabel">Course</th>    
-                    <th scope="col" class="titelTabel">Lecture</th>    
-                    <th scope="col" class="titelTabel">Update</th>
-                    <th scope="col" class="titelTabel">Delete</th>    
-                  </tr>
-              </thead>
-              <tbody *ngFor="let lesson of allLesson , let i=index" >
-                <tr >
-                  <!-- <th scope="row"  > -->
-                  <td>{{lesson.title}}</td>
-                  <td>{{lesson.details}}</td>
-                  <td>{{lesson.type}}</td>
-                  <td>{{lesson.contentNumber}}</td>
-                  <td>{{lesson.duration}}</td>
-                  <div *ngFor="let c of allCourse">
-                      <div *ngIf="c.id==lesson.crsId">
-                          <td>{{c.name}}</td> 
-                      </div>
-                  </div>
-                  <td>
-                  <div *ngFor="let lecture of allLecture">
-                      <div *ngIf="lecture.id==lesson.lectureId">
-                          {{lecture.tilte}}
-                      </div>
-                  </div>
-              </td>
-       
-                  <td><button class="btn btn-outline-dark"   class="btn btn-dark rounded-pill py-2 btn-block2" (click)="openUpdateLessonModal(lesson)" style="padding: 5px;" >update</button></td>
-        
-       
-                  <td><button class="btn btn-outline-dark"  class="btn btn-dark rounded-pill py-2 btn-block" (click)="openDeleteLessonModal(lesson.id)"  style="padding: 5px;">Delete</button></td>    
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- End -->
+                                    </tr> <tr>
+                                        <th>Details:</th>
+                                        <td>
+                                            {{lesson.details}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Type:</th>
+                                        <td>
+                                            {{lesson.type}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ContentNumber:</th>
+                                        <td>
+                                            {{lesson.contentNumber}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Duration:</th>
+                                        <td>
+                                     
+                                        {{lesson.duration}}
+                                        </td>
+                                    </tr>
+                                </table>
+                              
+                                <br>
+                                <mat-label class="titleData" style="text-align: center;">
+                                  Course Name:
+                                </mat-label>
+                                <mat-label
+                                    style="text-align: center;line-height: 22px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                    <div *ngFor="let c of allCourse">
+                                        <div *ngIf="c.id==lesson.crsId">
+                                            <td>{{c.name}}</td> 
+                                        </div>
+                                    </div>
+                                                                </mat-label>
+                                <br>
+                                <br />
+                                <button class="btn btn-outline-danger" style="margin: 10px;width: 250px;"
+                                (click)="openDeleteLessonModal(lesson.id)">Delete</button>
+                                <button class="btn btn-outline-primary" style="margin: 10px;width: 250px;"
+                                (click)="openUpdateLessonModal(lesson)">Update</button>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-1">&nbsp;</div>
+                    </div>
+                    </div>
+          
+            </div>
         </div>
-      </div>
-      </div>
-      </div>
-      </ng-template>
-</body>
+</ng-template>
+</div>
