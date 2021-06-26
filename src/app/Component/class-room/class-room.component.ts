@@ -75,8 +75,6 @@ gratuatedCourses:ICourse[]=[]
       })
       }
 routToSetting(){
-// this.router.navigate(['../../Personal_Information'],{relativeTo:this.activeRouter}) //.navigate(['Setting/Personal_Information'])
-// this.router.navigate(['Setting/Personal_Information'],{relativeTo:this.activeRouter})
 this.router.navigate(['Setting'])
 }
 Logout(){
@@ -94,7 +92,6 @@ getlastActiveCourse(){
       console.log("lastCourse",this.lastCourseId, this.lastCourse,this.flag)
     })
 }
-
 StdProgress(crsID:number){
   this.lessonContent.getLessonContentCount(crsID).subscribe(
     data=>{

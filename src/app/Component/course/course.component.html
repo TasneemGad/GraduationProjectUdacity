@@ -31,6 +31,22 @@
             ">
             Download Syllabus
           </button>
+          <div *ngIf="ExisterollmentFlag then ContinueLearnTop else enrollbtnsTop"></div>
+         
+          <ng-template #ContinueLearnTop>
+            <button mat-raised-button routerLink="/ClassRoom" style="
+                background-color: #03607a;
+                color: white;
+                width: 300px;
+                padding: 5px;
+                letter-spacing: 3px;
+                font-weight: 500;
+                text-decoration: none;
+              ">
+              Continue Learning
+            </button>
+            </ng-template>
+          <ng-template #enrollbtnsTop>
           <button mat-raised-button style="
               background-color: #03607a;
               color: white;
@@ -42,6 +58,7 @@
             ">
             Enroll Now
           </button>
+          </ng-template>
           <h1 style="margin-top: 90px; padding: 30px" id="myBtn" onclick="myFunction()">
             <mat-icon>play_circle_outline</mat-icon>
           </h1>
@@ -170,8 +187,8 @@
       align-items: center;
     ">
  
- <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
-  <mat-card style=" align-items: center">
+ <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168); ">
+  <mat-card style=" align-items: center; ">
     <mat-card-header style="display: flex">
       <div style="float: left">
         <mat-card-title style="
@@ -780,7 +797,13 @@
         <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
+          <div *ngIf="ExisterollmentFlag then ContinueLearnUp else enrollbtnsUp"></div>
+        <ng-template #ContinueLearnUp>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom" >Continue Learning</button>
+        </ng-template>
+        <ng-template #enrollbtnsUp>
           <button mat-raised-button style="margin-left: 50px; margin-top: 5px;background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;" routerLink="/">Enroll Now</button>
+        </ng-template>
         </mat-card-actions>
         <mat-card-subtitle style="font-size: 15px;font-weight: 200;width: 330px;margin-left: 15px;">Start learning today! Get maximum flexibility to learn at your own pace.</mat-card-subtitle>
       </mat-card>
