@@ -55,6 +55,9 @@ export class CategoryComponent implements OnInit {
       this.getDataOfCurrentCourses();
       this.getSubCategory()
       this.getFreeCourses();
+      this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+        this.currentCategoryID=cat.id;
+      })
     })
     
   }
@@ -98,20 +101,31 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  getDataOfCurrentCourses() {
-    this.currentCourses = []
-    for (let i of this.Courses) {
-      if (i.categoryId === this.currentCategoryID) {
+
+  getDataOfCurrentCourses(){
+    this.currentCourses=[];
+this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
+  this.catService.getCategoryById(cat.id).subscribe(data=>
+  { 
+    for(let i of this.Courses)
+    {
+      if(i.categoryId === data.id)
+      {
         this.currentCourses.push(i);
-      }
+      
     }
   }
+  })
+})}
 
   goToCours(courseID: number) {
     this.router.navigate(["/Course", courseID]);
   }
 
   getSubCategory() {
+
+
     this.subCategoryService.getAllSubCategory().subscribe(
       data => {
         this.subCategory = data;
@@ -148,58 +162,9 @@ export class CategoryComponent implements OnInit {
         this.Error = Wrong
       }
     )
-
-    // this.coursesBySubCategory = []
-    // for(let crs of this.Courses)
-    // {
-    //   // if(  crs.categoryId == this.currentCategoryID)
-    //   if(crs.subCategoryId == this.defultSubID) 
-    //   {
-    //     this.coursesBySubCategory.push(crs) 
-    //     console.log("defult",this.coursesBySubCategory)
-    //   }
-    // }
   }
 
 
-  // getCoursesBySubCategory(subCategoryID: number) {
-  //   console.log("s1", subCategoryID)
-  //   this.coursesBySubCategory = []
-  //   for (let crs of this.Courses) {
-  //     if (crs.subCategoryId == subCategoryID) {
-  //       this.coursesBySubCategory.push(crs)
-  //       console.log("coursesBySubCategory", this.coursesBySubCategory)
-  //     }
-  //   }
-  //   for (let sub of this.subCategory) {
-  //     if (sub.id == subCategoryID) {
-  //       this.currentSubCategory = sub;
-  //       this.currentSubName = this.currentSubCategory.subCategoryTitle
-  //       this.currentSubDescription = this.currentSubCategory.subCategoryDescribtion
-  //       console.log("s2", sub)
-  //     }
-  //   }
-  //   this.getStories()
-  // }
-
-  // getStories() {
-  //   this.StudentStoriesService.getStudentStory().subscribe(
-  //     data => {
-  //       console.log("coursehbbhjb", data)
-  //       for (let std of data) {
-  //         this.stories = data
-  //         // if(std.specialzation == this.currentSubName)
-  //         // {
-  //         // this.studentStories = std;
-  //         // console.log("story", this.studentStories)
-  //         // }
-  //       }
-  //     },
-  //     Wrong => {
-  //       this.Error = Wrong
-  //     }
-  //   )
-  // }
   getCoursesBySubCategory(subCategoryID:number)
   {      
     console.log("s1",subCategoryID)
@@ -230,11 +195,15 @@ export class CategoryComponent implements OnInit {
 
   getStories()
   {      
-    this.StudentStoriesService.getTopStudentStories(this.currentCategoryName).pipe().subscribe(
+    this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
+    this.StudentStoriesService.getTopStudentStories(cat.id).subscribe(
       data=>
-      {       
-        this.stories=data;
-        console.log("story", this.stories)
+      {
+       
+             console.log("story", this.stories)
+             this.stories=data;
+           
         }
       
       ,
@@ -242,15 +211,17 @@ export class CategoryComponent implements OnInit {
       {
         this.Error = Wrong
       }      
-    )
+    )})
   }
   getFreeCourses() {
     this.freeCourses = []
+    this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
     for (let crs of this.Courses) {
-      if (crs.price === 0 && crs.categoryId === this.currentCategoryID) {
+      if (crs.price === 0 && crs.categoryId === cat.id) {
         this.freeCourses.push(crs)
       }
     }
     console.log("free", this.freeCourses)
-  }
+  })}
 }
