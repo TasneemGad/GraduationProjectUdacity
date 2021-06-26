@@ -43,8 +43,8 @@ border-radius: 70px;
   height: 50px;
   background-color: #017a9b;
   color: white;
-  position: absolute;
-  right:   50px;
+ 
+  margin-left: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 .name{
@@ -57,7 +57,7 @@ border-radius: 70px;
   border-color: rgb(204, 203, 203);
 }
 .Allcard{
-  width: 500px;
+  width: 900px;
   height: auto;
   box-shadow: 2px 2px 8px rgb(231, 231, 231);
   margin-top: 40px;

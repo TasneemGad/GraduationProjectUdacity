@@ -16,6 +16,7 @@ export class CatalogComponent implements OnInit {
   courses:ICourse[]
   coursesByCategory:ICourse[]
   searchItem: string; 
+  apiUrl = "https://localhost:44326";
 
 
 
@@ -60,7 +61,10 @@ export class CatalogComponent implements OnInit {
     )
                   
   }
-
+  public createImgPath = (serverPath: string) => {
+    // console.log(`${this.apiUrl}/${serverPath}`)
+    return `${this.apiUrl}/${serverPath}`;
+  }
   goToCrsDetails(crsId:number){
     location.href="Course/"+crsId
   }
