@@ -11,46 +11,71 @@
     <ng-template #add>
         <div class="home">
             <div style="text-align: left;">
-                <h1 class="titel">Multi-Choice Questions</h1>
+                <h1 class="titel" >Multi-Choice Questions</h1>
                 <h4 class="description">{{AddOrUpdate}}</h4>
             </div>
             <hr>
             <form style="padding: 10px; margin-bottom: 10%">
                 <div>
-
                     <mat-label>Question: </mat-label><br>
-                    <select [(ngModel)]="Questionoption.qustionId" #qustionId id="qustionId" name="qustionId">
+                    <select [(ngModel)]="Questionoption.qustionId" #qustionId="ngModel"  id="qustionId" name="qustionId" required>
                         <option *ngFor="let Que of QuestionList" value="{{Que.id}}">{{Que.title}}</option>
                     </select>
                 </div>
 
                 <div>
                     <mat-label>Option1:</mat-label><br>
-                    <textarea id="QOption1" style name="QOption1" #QOption1
+                    <textarea id="QOption1" style name="QOption1" #QOption1="ngModel" required
                         [(ngModel)]="Questionoption.opt1">{{Questionoption.opt1}}</textarea>
+                        <div  *ngIf="QOption1?.invalid  && QOption1?.touched">
+                            <strong  style="font-size: 15px;">
+                              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="QOption1?.errors?.required">Question Option1 Required</p> 
+                            </strong>   
+                          </div> 
                 </div>
 
                 <div>
                     <mat-label>Option2:</mat-label><br>
-                    <textarea id="QOption2" style name="QOption2" #QOption2
+                    <textarea id="QOption2" style name="QOption2" #QOption2="ngModel" required
                         [(ngModel)]="Questionoption.opt2">{{Questionoption.opt2}}</textarea>
+                        <div  *ngIf="QOption2?.invalid  && QOption2?.touched">
+                            <strong  style="font-size: 15px;">
+                              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="QOption2?.errors?.required">Question Option2 Required</p> 
+                            </strong>   
+                          </div> 
                 </div>
 
                 <div>
                     <mat-label>Option3:</mat-label><br>
-                    <textarea id="QOption3" style name="QOption3" #QOption3
+                    <textarea id="QOption3" style name="QOption3" #QOption3="ngModel" required
                         [(ngModel)]="Questionoption.opt3">{{Questionoption.opt3}}</textarea>
+                        <div  *ngIf="QOption3?.invalid  && QOption3?.touched">
+                            <strong  style="font-size: 15px;">
+                              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="QOption3?.errors?.required">Question Option3 Required</p> 
+                            </strong>   
+                          </div>   
                 </div>
                 <div>
                     <mat-label>Option4:</mat-label><br>
-                    <textarea id="QOption4" style name="QOption4" #QOption4
+                    <textarea id="QOption4" style name="QOption4" #QOption4="ngModel" required
                         [(ngModel)]="Questionoption.opt4">{{Questionoption.opt4}}</textarea>
+                        <div  *ngIf="QOption4?.invalid  && QOption4?.touched">
+                            <strong  style="font-size: 15px;">
+                              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="QOption4?.errors?.required">Question Option4 Required</p> 
+                            </strong>   
+                          </div>   
                 </div>
                 <div>
                     <mat-label>Right Answer: </mat-label><br>
-                    <input type="text" id="RightQOptions" name="RightQOptions" #RightQOptions
+                    <input type="text" id="RightQOptions" name="RightQOptions" #RightQOptions="ngModel" required 
                         [value]="Questionoption.right" [(ngModel)]=" Questionoption.right">
+                        <div  *ngIf="RightQOptions?.invalid  && RightQOptions?.touched">
+                            <strong  style="font-size: 15px;">
+                              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="RightQOptions?.errors?.required">Right Answer Required</p> 
+                            </strong>   
+                          </div>   
                 </div>
+                 
 
             <br>
                 <div *ngIf="Questionoption.id!=check; then update else add"></div>

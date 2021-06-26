@@ -212,15 +212,8 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     this.watchObj.stID = this.token.getUserId();
     this.watchObj.crsID = crsId
     this.watchObj.lessonContentID = lessonContentID
-<<<<<<< HEAD
-    console.log("this.watchObj",this.watchObj)
     this.watch.insertWatch(this.watchObj).subscribe(
       data => {
-        console.log("Add")
-=======
-    this.watch.insertWatch(this.watchObj).subscribe(
-      data => {
->>>>>>> b29cb7576a9bf39d1570e5374c4e74fb80b72193
       }
     )
 
@@ -232,11 +225,6 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
         this.watch.getWatch(crsId, lessonContentID).subscribe(
           watchObj => {
             this.checkExist = watchObj
-<<<<<<< HEAD
-            // console.log("watchObj---Here",watchObj)
-            console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
-=======
->>>>>>> b29cb7576a9bf39d1570e5374c4e74fb80b72193
             if (this.checkExist == false) {
               data.numOfLessonFinshed++;
               this.insertWatch(lessonContentID, crsId)

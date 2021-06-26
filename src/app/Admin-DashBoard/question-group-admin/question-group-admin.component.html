@@ -16,7 +16,7 @@
     <div>
         <mat-label>Course:</mat-label><br>
         <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLecturesByCrsID(QuestionGroup.courseId)"
-            [(ngModel)]="QuestionGroup.courseId" [value]="QuestionGroup.courseId" name="crsId">
+            [(ngModel)]="QuestionGroup.courseId" [value]="QuestionGroup.courseId" name="crsId" required>
             <option value="-1" selected="selected">Choose Course</option>
             <option *ngFor="let Course of AllCourses" [value]="Course.id">{{Course.name}}</option>
         </select>
@@ -26,7 +26,7 @@
     <div>
         <mat-label>Lecture:</mat-label><br>
         <select class="custom-select-sm BtnG" id="lectId" #lectId (change)="getAllLessonsByLectID(QuestionGroup.lectureId)"
-            [(ngModel)]="QuestionGroup.lectureId" [value]="QuestionGroup.lectureId" name="lectId">
+            [(ngModel)]="QuestionGroup.lectureId" [value]="QuestionGroup.lectureId" name="lectId" required>
             <option value="0" selected="selected">Choose Lecture</option>
             <option *ngFor="let Lecture of AllLectures" [value]="Lecture.id">{{Lecture.tilte}}</option>
         </select>
@@ -35,7 +35,7 @@
     <div>
         <mat-label>Lessons:</mat-label><br>
         <select class="custom-select-sm BtnG" id="lessonId" #lessonId (change)="getListOfQuestionGroupByCrsandLectandLessonIds()"
-            [(ngModel)]="QuestionGroup.lessonId" [value]="QuestionGroup.lessonId" name="lessonId">
+            [(ngModel)]="QuestionGroup.lessonId" [value]="QuestionGroup.lessonId" name="lessonId" required>
             <option value="0" selected="selected">Choose Lesson</option>
             <option *ngFor="let Lesson of AllLessons" [value]="Lesson.id">{{Lesson.title}}</option>
         </select>

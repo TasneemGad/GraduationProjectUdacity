@@ -102,7 +102,7 @@ Isdetails:boolean=true
     this.lectureServices.getLecturesByCoursID(id).subscribe(suces=>{
    console.log("enterall22222")
      this.lectListcrs=suces,
-     console.log("enterajl",this.lectureAllList)},err=>{console.log(err)})
+     console.log("enterajl",this.lectListcrs)},err=>{console.log(err)})
   }
   getLectureses(){
     this.lectureServices.getAllLectures().subscribe(suces=>{
