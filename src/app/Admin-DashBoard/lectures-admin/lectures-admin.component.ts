@@ -91,6 +91,8 @@ export class LecturesAdminComponent implements OnInit {
     }
     UpdateSubData(){
       console.log("00000000000000000000000000",this.lec)
+      if(this.lec.id==undefined)
+      return;
       this.lectureServices.UpdateLectures(this.lec.id,this.lec).subscribe(
         sucess=>{
           console.log(sucess,"sucess")

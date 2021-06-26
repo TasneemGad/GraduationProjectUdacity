@@ -17,23 +17,35 @@
           <form style="padding: 10px; margin-bottom: 10%">
               <div>
                   <mat-label>Name: </mat-label><br>
-                  <input type="text" id="txtSubName" name="txtSubName" #txtSubName [value]="Subcat.subCategoryTitle"
-                      [(ngModel)]="Subcat.subCategoryTitle">
+                  <input type="text" id="txtSubName" name="txtSubName" #txtSubName="ngModel" [value]="Subcat.subCategoryTitle"
+                      [(ngModel)]="Subcat.subCategoryTitle"  class="form-control" required        
+                      [class.is-invalid]="txtSubName.invalid && txtSubName.touched" >
+                      <small class="text-danger" [class.d-none]="txtSubName.untouched ||txtSubName.valid"> Title Is Required</small>                      
               </div><br>
 
               <div>
                   <mat-label>Description:</mat-label><br>
-                  <textarea id="txtSubDescription" style name="txtSubDescription" #txtSubdescription
-                      [(ngModel)]="Subcat.subCategoryDescribtion">{{Subcat.subCategoryDescribtion}}</textarea>
+                  <textarea id="txtSubDescription" style name="txtSubDescription" #txtSubdescription="ngModel"
+                      [(ngModel)]="Subcat.subCategoryDescribtion"
+                      class="form-control" required        
+                      [class.is-invalid]="txtSubdescription.invalid && txtSubdescription.touched" >
+                      {{Subcat.subCategoryDescribtion}}</textarea>
+                      <small class="text-danger" [class.d-none]="txtSubdescription.untouched ||txtSubdescription.valid">Description Is Required</small>                      
               </div>
 
               
 
               <div>
                   <mat-label>Category: </mat-label><br>
-                  <select [(ngModel)]="Subcat.categoryID" #categoryID id="categoryID" name="categoryID">
+                  <select [(ngModel)]="Subcat.categoryID" #categoryID="ngModel" id="categoryID" name="categoryID"
+                  class="form-control" required        
+                      [class.is-invalid]="categoryID.invalid && categoryID.touched" 
+                  > 
+                      <option value="0">Choose Category</option>
                       <option *ngFor="let cat of allCategory" [value]="cat.id">{{cat.catName}}</option>
                   </select>
+                  <small class="text-danger" [class.d-none]="categoryID.untouched ||categoryID.valid">Category Is Required</small>                      
+
               </div><br>
               <div *ngIf="Subcat.id!=check; then update else add"></div>
               <ng-template #update>
