@@ -102,7 +102,7 @@ GetLectureByID(LecId:number,index:any){
       this.clickedLecture=sucess,
     console.log("L",this.clickedLecture.tilte)
   })
-  // this.getLessonByLectureID(LecId,index:any);
+
   console.log("Iddddddddddd",LecId)  
     this.goToSpasificLecture(LecId)
     this.getNextLectures(LecId)
@@ -194,6 +194,7 @@ goto(id:any,text:any){
     )  
   }
   Logout(){
+    localStorage.removeItem("lastCourseId")
     this.Authservices.logout();   
     }
 }

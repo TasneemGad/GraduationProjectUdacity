@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class SettingsComponent implements OnInit {
   public Url : any
   flag = false
 
-  constructor(private activatedRouter:ActivatedRoute, private router:Router){
+  constructor(private activatedRouter:ActivatedRoute, private router:Router, private Authservices:AuthenticationService){
   }
   
    ngOnInit(){
@@ -65,5 +66,8 @@ export class SettingsComponent implements OnInit {
   {
     this.router.navigate(['Courses'],{relativeTo:this.activatedRouter})
   }
-
+  Logout(){
+    localStorage.removeItem("lastCourseId")
+    this.Authservices.logout();   
+    }
 }
