@@ -177,7 +177,7 @@
             <h1>  Lesson Content videoLinkId</h1>
             
             <div class="input-group ">
-            <select  class="custom-select-sm BtnG" #videoLink [(ngModel)]="lessonContent.videoLinkId" [value]="lessonContent.videoLinkId" id="videoLinkId" name="videoLinkId">
+            <select  class="custom-select-sm BtnG" #videoLink [(ngModel)]="lessonContent.videoLinkId" [value]="lessonContent.videoLinkId" id="videoLinkId" name="videoLinkId" required>
               <option selected>Choose videoLink</option>
                <option *ngFor="let CrsV of allCourseViedos" value="{{CrsV.id}}">{{CrsV.videoName}}</option>
             </select>
@@ -186,7 +186,7 @@
         <div class="col">
           <h1>Choose Course</h1>
           <div class="input-group ">
-            <select class="custom-select-sm BtnG" id="crsId" #crsId  [(ngModel)]="lessonContent.crsID" [value]="lessonContent.crsID" name="crsId">
+            <select class="custom-select-sm BtnG" id="crsId" #crsId  [(ngModel)]="lessonContent.crsID" [value]="lessonContent.crsID" name="crsId" required>
             <option selected>Choose Course</option>
               <option  *ngFor="let Course of allCourse" value="{{Course.id}}">{{Course.name}}</option>
             </select>
@@ -195,7 +195,7 @@
         <div class="col">
             <h1>Choose Lecture</h1>
             <div class="input-group ">
-              <select class="custom-select-sm BtnG" id="lectureId" #lectureId  [(ngModel)]="lessonContent.lectureId" [value]="lessonContent.lectureId" name="lectureId" >
+              <select class="custom-select-sm BtnG" id="lectureId" #lectureId  [(ngModel)]="lessonContent.lectureId" [value]="lessonContent.lectureId" name="lectureId"  required>
               <option selected>Choose Lecture</option>
                 <option  *ngFor="let lecture of allLecture" value="{{lecture.id}}">{{lecture.tilte}}</option>
               </select>
@@ -205,7 +205,7 @@
           <div class="col">
             <h1>Choose QuestionGroup</h1>
             <div class="input-group ">
-              <select class="custom-select-sm BtnG" id="questionGroupId" #questionGroupId  [(ngModel)]="lessonContent.questionGroupId" [value]="lessonContent.questionGroupId" name="questionGroupId" >
+              <select class="custom-select-sm BtnG" id="questionGroupId" #questionGroupId  [(ngModel)]="lessonContent.questionGroupId" [value]="lessonContent.questionGroupId" name="questionGroupId"  required >
               <option selected>Choose QuestionGroup</option>
                 <option  *ngFor="let i of allQuestionGroup" value="{{i.id}}">{{i.title}}</option>
               </select>
@@ -214,7 +214,7 @@
           <div class="col">
             <h1>Choose Lesson</h1>
             <div class="input-group ">
-              <select class="custom-select-sm BtnG"  id="lessonId" #lessonId  [(ngModel)]="lessonContent.lessonId" [value]="lessonContent.lessonId" name="lessonId">
+              <select class="custom-select-sm BtnG"  id="lessonId" #lessonId  [(ngModel)]="lessonContent.lessonId" [value]="lessonContent.lessonId" name="lessonId" required>
               <option selected>Choose Lesson</option>
                 <option  *ngFor="let i of allLesson" value="{{i.id}}">{{i.title}}</option>
               </select>

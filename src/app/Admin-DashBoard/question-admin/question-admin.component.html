@@ -9,7 +9,7 @@
     <div>
         <mat-label>Course:</mat-label><br>
         <select class="custom-select-sm BtnG" id="crsId" #crsId (change)="getAllLessonsContentByCrsID(Course.id)"
-            [(ngModel)]="Course.id" [value]="Course.id" name="crsId">
+            [(ngModel)]="Course.id" [value]="Course.id" name="crsId" required>
             <option value="0" selected="selected">Choose Course</option>
             <option *ngFor="let Course of AllCourses" [value]="Course.id">{{Course.name}}</option>
         </select>
@@ -18,7 +18,7 @@
     <div>
         <mat-label>Lesson Content:</mat-label><br>
         <select class="custom-select-sm BtnG" id="lessonContent" #lessonContent (change)="getAllQuestionGroupByCrsId(Course.id)"
-            [(ngModel)]="Question.lessonContentId" [value]="Question.lessonContentId" name="lessonContent">
+            [(ngModel)]="Question.lessonContentId" [value]="Question.lessonContentId" name="lessonContent" required>
             <option value="0" selected="selected">Choose Lesson Content</option>
             <option *ngFor="let lessonContentObj of AllLessonsContent" [value]="lessonContentObj.id">{{lessonContentObj.title}}</option>
         </select>
@@ -28,10 +28,11 @@
     <div>
         <mat-label>Question Group:</mat-label><br>
         <select class="custom-select-sm BtnG" id="txtQuesgroup" #txtQuesgroup (change)="getAllQuestions()"
-            [(ngModel)]="Question.questionGroupId" [value]="Question.questionGroupId" name="txtQuesgroup">
+            [(ngModel)]="Question.questionGroupId" [value]="Question.questionGroupId" name="txtQuesgroup" required>
             <option value="0" selected="selected">Choose Question Group</option>
             <option *ngFor="let QuestionGroupObj of AllQuestionGroup" [value]="QuestionGroupObj.id">{{QuestionGroupObj.title}}</option>
         </select>
+        
     </div>
 
 
@@ -54,7 +55,7 @@
             <div>
                 <mat-label>Question Type:</mat-label><br>
                 <select class="custom-select-sm BtnG" id="txtQuestiontype" #txtQuestiontype  
-                [(ngModel)]="Question.type" [value]="Question.type" name="txtQuestiontype">
+                [(ngModel)]="Question.type" [value]="Question.type" name="txtQuestiontype" required>
                 <option value="0" selected="selected">Choose Question Type</option>
                 <option value="options" >Multi-Choice Question</option>
                 <option value="t,f">True And False</option>
