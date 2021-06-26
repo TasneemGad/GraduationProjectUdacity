@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { EnrollService } from 'src/app/Services/EnrollCourse.service';
@@ -45,7 +45,8 @@ Isdetails:boolean=true
     private twoCoursesServies:TwoCoursesSuggestService,
      private lectureServices:LecturesService,
      private enrollCrsservice:EnrollService,
-     private token:AuthenticationService
+     private token:AuthenticationService,
+     private router:Router
      ) { }  
   
    ngOnInit(): void {
@@ -158,16 +159,29 @@ Isdetails:boolean=true
     return `${this.apiUrl}/${serverPath}`;
   }
   saveCourseId(){
-    localStorage.setItem("IDCOURSEENROLL",this.idUrl)
+    if(this.token.getUserId() != null)
+    {
+      localStorage.setItem("IDCOURSEENROLL",this.idUrl)
+      this.router.navigate(["/orderDetails",this.idUrl])
+    }
+    else{
+      this.router.navigate(["SignUP"])
+    }
   }
   InsertFreeEnroll(){
-    localStorage.setItem("IDCOURSEENROLL",this.idUrl)
-    this.enrollCrsservice.EnrollInCourse(this.idUrl).subscribe(
-      data=>{
-        console.log("Inserted")
-        location.href="/ClassRoom"
-      }
-    )
+    if(this.token.getUserId() != null)
+    {
+      localStorage.setItem("IDCOURSEENROLL",this.idUrl)
+      this.enrollCrsservice.EnrollInCourse(this.idUrl).subscribe(
+        data=>{
+          console.log("Inserted")
+          location.href="/ClassRoom"
+        }
+      )
+    }
+    else{
+      this.router.navigate(["SignUP"])
+    }
   }
 
 
@@ -181,4 +195,5 @@ Isdetails:boolean=true
           }
       )
   }
+  
 }
