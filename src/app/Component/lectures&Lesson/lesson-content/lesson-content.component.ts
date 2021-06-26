@@ -125,6 +125,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
       this.getCurrentCourse(this.idUrl);
       this.getLessonContentById(this.idUrl);
        this.goToLessonData(this.idContent)
+       this.getVideosById(this.idContent);
     })
   }
 

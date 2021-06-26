@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class EnrollService {
   coursesList: ICourse[]=[];      
-  newenroll:IEnrollCourse;
+  newenroll:IEnrollCourse={id:0,studentId:"",endEnrollDate:"",enrollDate:"",courseId:0 }
   enrolled:IEnrollCourse[]=[];
   trueenroll:IEnrollCourse[]=[]
   stdId:string|null=""
@@ -52,14 +52,15 @@ export class EnrollService {
  }
   EnrollInCourse(courseid:number): Observable<any>
   {
+   console.log(this.tokenUser.getUserId())
    this.newenroll.studentId= this.tokenUser.getUserId();
    this.newenroll.courseId=courseid;
-   this.newenroll.enrollDate;
+   this.newenroll.enrollDate = new Date().toLocaleDateString()
    this.newenroll.endEnrollDate;
    console.log("--------------------")   
    console.log(this.newenroll)
 
-    return this.http.post('http://localhost:44326/api/EnrollCourse' ,this.newenroll,httpOptions);
+    return this.http.post('https://localhost:44326/api/EnrollCourse' ,this.newenroll);
   }
 
   getAllStdEnrolledCourses(): Observable<IEnrollCourse[]>{
