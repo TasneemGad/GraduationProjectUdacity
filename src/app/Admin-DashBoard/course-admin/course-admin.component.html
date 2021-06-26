@@ -58,7 +58,7 @@
 
                 <div>
                     <mat-label>Price:</mat-label><br>
-                    <input type="number" #txtCrsPrice="ngModel" required id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsPrice="ngModel" id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
                         [(ngModel)]="Course.price">
                         <div  *ngIf="txtCrsPrice?.invalid  && txtCrsPrice?.touched">
                             <strong  style="font-size: 15px;">
@@ -69,7 +69,7 @@
 
                 <div>
                     <mat-label>Discount:</mat-label><br>
-                    <input type="number" #txtCrsDiscount="ngModel" id="txtCrsDiscount" name="txtCrsDiscount" required
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsDiscount="ngModel" id="txtCrsDiscount" name="txtCrsDiscount"
                         [(ngModel)]="Course.discount" [value]="Course.discount">
                         <div  *ngIf="txtCrsDiscount?.invalid  && txtCrsDiscount?.touched">
                             <strong  style="font-size: 15px;">
@@ -80,7 +80,7 @@
 
                 <div>
                     <mat-label>Duration: </mat-label><br>
-                    <input type="number" #txtCrsDuration="ngModel" id="txtCrsDuration" name="txtCrsDuration" required
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsDuration="ngModel" id="txtCrsDuration" name="txtCrsDuration"
                         [(ngModel)]="Course.duration" [value]="Course.duration">
                         <div  *ngIf="txtCrsDuration?.invalid  && txtCrsDuration?.touched">
                             <strong  style="font-size: 15px;">
@@ -102,7 +102,7 @@
 
                 <div>
                     <mat-label>Lecture Number: </mat-label><br>
-                    <input type="number" min="1" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber" required
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber"
                         [value]="Course.lectureNumber" [(ngModel)]="Course.lectureNumber">
                         <div  *ngIf="txtCrsLectureNumber?.invalid  && txtCrsLectureNumber?.touched">
                             <strong  style="font-size: 15px;">

@@ -38,7 +38,7 @@
                     </div>
               <div>
                 <mat-label>Number Of Lessen:</mat-label><br>
-                <input type="number" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber"
+                <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber"
                 [value]="lec.lessoneNumber" [(ngModel)]="lec.lessoneNumber" required>
                 <div  *ngIf="txtCrsLectureNumber?.invalid  && txtCrsLectureNumber?.touched">
                   <strong  style="font-size: 15px;">
