@@ -14,7 +14,12 @@
     <form style="margin-bottom: 10%;">
         <div>
             <mat-label>Name:</mat-label><br>
-            <input type="text" id="txtNameCategory" name="txtNameCategory" #txtNameCategory [value]="Category.catName" [(ngModel)]="Category.catName">
+            <input type="text" id="txtNameCategory" name="txtNameCategory"  #txtNameCategory="ngModel" [value]="Category.catName" [(ngModel)]="Category.catName" required>
+            <div  *ngIf="txtNameCategory?.invalid  && txtNameCategory?.touched">
+              <strong  style="font-size: 15px;">
+                <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtNameCategory?.errors?.required">Category Name Required</p> 
+              </strong>   
+            </div>     
         </div><br>
 
         <div>
@@ -27,7 +32,7 @@
                     <div *ngIf="Category.id!=check; then updatelogoImg else addlogoImg"></div>
                     <ng-template #updatelogoImg>
                         <div class="form-group my-3">
-                            <app-upload (onUploadFinished)="uploadUpdateCatLogoFinished($event,Category.id,Category)">
+                            <app-upload (onUploadFinished)="uploadUpdateCatLogoFinished($event,Category.id,Category)" required>
                             </app-upload>
                         </div>
                     </ng-template>
@@ -41,8 +46,12 @@
 
         <div>
             <mat-label>Description:</mat-label><br>
-            <input type="text" id="txtDescriptionCategory" name="txtDescriptionCategory" #txtDescriptionCategory [value]="Category.catDescription" [(ngModel)]="Category.catDescription">
-
+            <input type="text" id="txtDescriptionCategory" name="txtDescriptionCategory" #txtDescriptionCategory="ngModel" [value]="Category.catDescription" [(ngModel)]="Category.catDescription" required>
+            <div  *ngIf="txtDescriptionCategory?.invalid  && txtDescriptionCategory?.touched">
+              <strong  style="font-size: 15px;">
+                <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtDescriptionCategory?.errors?.required">Category Description Required</p> 
+              </strong>   
+            </div> 
         </div><br>
         <div *ngIf="Category.id!=check; then update else add"></div>
         <ng-template #update>

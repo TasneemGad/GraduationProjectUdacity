@@ -31,6 +31,7 @@ export class CategoryAdminComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllCategory()
+    
   }
   updateCatbtnClick(Cat:ICategory){
     this.isOpen=true;
@@ -79,6 +80,7 @@ export class CategoryAdminComponent implements OnInit {
     )
   }
   AddNewCategory(){
+    if(this.Category.catImage != ""){
     this.categoryService.insertCategory(this.Category).subscribe(
       sucess=>{
         console.log(sucess,"sucess")
@@ -88,6 +90,7 @@ export class CategoryAdminComponent implements OnInit {
         this.getAllCategory();
       }
     )
+    }
   }
   deleteCatbtnClick(catId:number){
     console.log(catId)
