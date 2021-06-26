@@ -22,7 +22,6 @@ import { AccountService } from 'src/app/Services/account.service';
 import { QOptions } from 'src/app/SharedModels/Interface/QuestionOtions';
 import { QuestionOptionsService } from 'src/app/Services/question-options.service';
 import { identity } from 'rxjs';
-import { LessonDataComponent } from '../lesson-data/lesson-data.component';
 import { StudentAnswerQuestionView } from 'src/app/SharedModels/Interface/StudentAnswerQuestionView';
 import { TrueAndFalseService } from 'src/app/Services/true-and-false.service';
 
@@ -93,7 +92,6 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   idBtn:string=""
   idContent:any
 
-  @ViewChild(LessonDataComponent) c: LessonDataComponent
 
   @Input() CourseId: any
   ngOnChanges(): void {
