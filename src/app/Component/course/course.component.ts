@@ -49,6 +49,7 @@ Isdetails:boolean=true
      ) { }  
   
    ngOnInit(): void {
+     this.lectListcrs=[]
     this.getInstractor();
     this.getReviews()
 
@@ -99,9 +100,9 @@ Isdetails:boolean=true
     })
   }
   getLecturesesByCrs(id:number){
-    this.lectureServices.getLecturesByCoursID(id).subscribe(suces=>{
+    this.lectureServices.getLecturesByCoursID(id).subscribe(sucess=>{
    console.log("enterall22222")
-     this.lectListcrs=suces,
+     this.lectListcrs=sucess,
      console.log("enterajl",this.lectListcrs)},err=>{console.log(err)})
   }
   getLectureses(){

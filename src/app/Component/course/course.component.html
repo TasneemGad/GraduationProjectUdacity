@@ -20,6 +20,7 @@
           <p style="width: 70%;font-size: 15px;margin: 0 auto;">
           {{courseList.description}}
           </p><br>
+          
           <button routerLink="/" mat-raised-button style="
               color: #03607a;
               margin-right: 15px;
@@ -253,19 +254,13 @@
               </h1>
               <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
             </div>
-            <!-- <div class="vl1"></div > -->
-              <span>iii{{lectListcrs[0].lectureDescription|json}}</span>
-<span *ngFor="let item of lectListcrs">
-  <span>fffffffffffffffffffff{{item.tilte|json}}</span>
-
-</span>
+            <div class="vl1"></div >
             <div *ngFor="let item of lectListcrs" >
-              <span>fffffffffffffffffffff{{item.tilte|json}}</span>
-              <h1 style="font-weight: 500;margin-top: 20px;">{{ item.tilte }}</h1>
+              <h1 style="font-weight: 500;margin-top: 20px;">{{item.tilte}}</h1>
               <p style="font-size: 15px;width: 600px;">{{ item.lectureDescription }}</p>
             </div>
           </mat-card-subtitle>
-          <mat-card class="boxCouse1">
+          <!-- <mat-card class="boxCouse1">
             <svg width="50" height="36" viewBox="0 0 50 36">
                 <g fill="none" fill-rule="evenodd" stroke="#7D97AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M42 5h2.99063C45.54809 5 46 5.438615 46 5.998746v19.002508C46 25.552846 45.556738 26 45.003217 26H4.996782C4.446275 26 4 25.561385 4 25.001254V5.998746C4 5.447154 4.443353 5 5.00937 5H8">
@@ -278,7 +273,7 @@
                 <mat-label>NEED TO PREPARE?</mat-label><br>
                 <mat-label> We recommend the Intro {{twoCoursesSuggest[0].name}}</mat-label>
             </div>
-          </mat-card>
+          </mat-card> -->
         </ng-template>
       </mat-card-content>
     </div>
