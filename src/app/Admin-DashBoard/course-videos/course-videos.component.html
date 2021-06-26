@@ -2,13 +2,13 @@
     <div style="text-align: center;">
         <button class="btn btn-outline-dark" (click)="ShowAddNewCrsVideo()" id="btnitem">Add Videos to lesson Courses
         </button>
-        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Categories </button>
+        <button class="btn btn-outline-dark" (click)="ShowList()" id="btnitem">Show Course Video </button>
     </div>
     <hr>
     <div class="home">
         <div style="text-align: left;" *ngIf="isOpen">
-            <h1 class="titel">Category</h1>
-            <h4 class="description">{{AddOrUpdate}} Category</h4><br><br>
+            <h1 class="titel">Course Video</h1>
+            <h4 class="description">{{AddOrUpdate}} Course Video</h4><br><br>
         </div>
 
         <div>
@@ -35,8 +35,13 @@
 
                 <div>
                     <mat-label>Video Name:</mat-label><br>
-                    <input type="text" id="txtCrsVideoName" name="txtCrsVideoName" #txtCrsVideoName
+                    <input type="text" id="txtCrsVideoName" name="txtCrsVideoName" #txtCrsVideoName="ngModel" required
                         [value]="CrsVideo.videoName" [(ngModel)]="CrsVideo.videoName">
+                    <div  *ngIf="txtCrsVideoName?.invalid  && txtCrsVideoName?.touched">
+                        <strong  style="font-size: 15px;">
+                        <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsVideoName?.errors?.required">Video Name Required</p> 
+                        </strong>   
+                    </div> 
                 </div>
                 <div>
                     <div class="form-group my-3">
