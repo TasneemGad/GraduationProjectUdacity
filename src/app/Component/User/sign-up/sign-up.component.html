@@ -25,7 +25,7 @@
        <mat-form-field class="example-full-width">
            <mat-label>Enter your Name</mat-label>
            <div>
-               <input matInput placeholder="Your Name" formControlName="UserName" required [class.is-invalid]="passwordHash?.invalid  && passwordHash?.touched"> 
+               <input matInput placeholder="Your Name" formControlName="UserName" required > 
            </div>  
            <mat-error *ngIf="UserName?.invalid  && UserName?.touched"><div class="alert alert-danger" >
             {{getErrorMessageName()}}</div></mat-error>
@@ -35,7 +35,7 @@
 
        <mat-form-field class="example-full-width">
            <mat-label>Enter your email</mat-label>
-           <input  matInput placeholder="Enter your email" formControlName="Email" required [class.is-invalid]="passwordHash?.invalid  && passwordHash?.touched"> 
+           <input  matInput placeholder="Enter your email" formControlName="Email" required > 
            <mat-error *ngIf="Email?.invalid  && Email?.touched" ><div class="alert alert-danger" >
                {{getErrorMessage()}}</div></mat-error>
        </mat-form-field>
@@ -43,25 +43,25 @@
    <div class="example-container" >
        <mat-form-field class="example-full-width" style="padding: 2px;">
            <mat-label>Enter your password</mat-label>
-           <input  matInput [type]="hide ? 'password' : 'text'" formControlName="passwordHash" [class.is-invalid]="passwordHash?.invalid  && passwordHash?.touched">      
+           <input  matInput [type]="hide ? 'password' : 'text'" formControlName="PasswordHash" >      
            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                [attr.aria-pressed]="hide">
                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
            </button>
            
        </mat-form-field>
-       <div  *ngIf="passwordHash?.invalid  && passwordHash?.touched">
+       <div  *ngIf="PasswordHash?.invalid  && PasswordHash?.touched">
         <strong style="color: black;font-size: 15px;"><ul><li style="position: absolute;left:  20px;">
-       <p style="color: black;font-size: 15px;padding: 0;" *ngIf="passwordHash?.errors?.required">Password Required</p> 
+       <p style="color: black;font-size: 15px;padding: 0;" *ngIf="PasswordHash?.errors?.required">Password Required</p> 
        
         </li></ul></strong>
 <br>
         <strong style="color: black;font-size: 15px;"><ul><li style="position: absolute;left:  20px;">
-    <p style="color: black;font-size: 15px;" *ngIf="passwordHash?.errors?.minlength">Password must be 6 characters or more</p>
+    <p style="color: black;font-size: 15px;" *ngIf="PasswordHash?.errors?.minlength">Password must be 6 characters or more</p>
         </li></ul></strong>
 <br>
         <strong style="color: black;font-size: 15px;"><ul><li style="position: absolute;left:  20px;">
-         <span style="color: black;font-size: 15px;" *ngIf="passwordHash?.errors?.pattern"> Password must have at least 8 unique characters</span> 
+         <span style="color: black;font-size: 15px;" *ngIf="PasswordHash?.errors?.pattern"> Password must have at least 8 unique characters</span> 
 
         </li></ul></strong>
 

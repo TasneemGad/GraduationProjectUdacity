@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
     this.RegisterForm = this.fb.group({
       UserName: ['', [Validators.required, Validators.maxLength(30)]],
       Email:['', [Validators.required, Validators.email]],
-      passwordHash: ['', [Validators.required, Validators.minLength(6),Validators.pattern("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&\\\\*\\\\(\\\\)\\\\-_=\\\\+\\\\{\\\\}\\\\[\\\\]|\\\\\\\\:/]).{6,}")]],  
+      PasswordHash: ['', [Validators.required, Validators.minLength(6),Validators.pattern("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&\\\\*\\\\(\\\\)\\\\-_=\\\\+\\\\{\\\\}\\\\[\\\\]|\\\\\\\\:/]).{6,}")]],  
     })
   }
   get formFields() { return this.RegisterForm.controls; }
@@ -118,7 +118,7 @@ export class SignUpComponent implements OnInit {
   get Email() {
     return this.RegisterForm.get('Email');
   }
-  get passwordHash() {
-    return this.RegisterForm.get('passwordHash');
+  get PasswordHash() {
+    return this.RegisterForm.get('PasswordHash');
   }
 }
