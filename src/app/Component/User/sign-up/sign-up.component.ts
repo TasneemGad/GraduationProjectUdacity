@@ -28,9 +28,9 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
 
     this.RegisterForm = this.fb.group({
-      UserName: ['', [Validators.required, Validators.maxLength(15)]],
+      UserName: ['', [Validators.required, Validators.maxLength(30)]],
       Email:['', [Validators.required, Validators.email]],
-      PasswordHash: ['', [Validators.required, Validators.minLength(10),Validators.pattern('[A-z]')]],  
+      passwordHash: ['', [Validators.required, Validators.minLength(6),Validators.pattern("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&\\\\*\\\\(\\\\)\\\\-_=\\\\+\\\\{\\\\}\\\\[\\\\]|\\\\\\\\:/]).{6,}")]],  
     })
   }
   get formFields() { return this.RegisterForm.controls; }
@@ -102,33 +102,6 @@ export class SignUpComponent implements OnInit {
   }
   }
 
-  getErrorMessage2() {
-    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
-     {
-      return 'Password must have at least 8 unique characters  ';
-    }
-   else{
-    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
-   }
-  }
-  getErrorMessage3() {
-    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
-     {
-      return 'Password must be 10 characters or more  ';
-    }
-   else{
-    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
-   }
-  }
-  getErrorMessage4() {
-    if (this.RegisterForm.get('PasswordHash')?.hasError('required'))
-     {
-      return 'Password cannot be your name or email address ';
-    }
-   else{
-    return this.RegisterForm.get('PasswordHash')?.hasError('minLength') ? 'Password must be 10 characters or more' : '';
-   }
-  }
   
   getErrorMessageName() {
     if (this.RegisterForm.get('UserName')?.hasError('required')) {
@@ -145,7 +118,7 @@ export class SignUpComponent implements OnInit {
   get Email() {
     return this.RegisterForm.get('Email');
   }
-  get PasswordHash() {
-    return this.RegisterForm.get('PasswordHash');
+  get passwordHash() {
+    return this.RegisterForm.get('passwordHash');
   }
 }
