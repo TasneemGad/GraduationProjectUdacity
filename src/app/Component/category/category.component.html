@@ -1,10 +1,10 @@
 <div class="introCategory">
-    <div style="float: left;">
+    <div class="catDetails">
         <div *ngFor = "let category of Categoies" >
             <div *ngIf="currentCategoryName == category.catName">
                 <p  style=" color: rgb(19, 119, 158); padding-top: 70px; margin-left: 90px;">THE  SCHOOL  OF</p>
                 <div style="display: flex; ">
-                        <img src="assets/categoryFlag.jpg" style="margin: -30px 50px 0px 0px;"  width="60px" height="60px" alt="error" class="dataCat" >
+                    <img src="assets/categoryFlag.jpg" style="margin: -30px 50px 0px 0px;"  width="60px" height="60px" alt="error" class="dataCat" >
                     <div style="margin-left: -20px;" >
                         <mat-label style="font-size: xx-large;" >{{category.catName}}</mat-label> <br><br><br>
                         <mat-label>{{category.catDescription}}</mat-label>
@@ -13,10 +13,10 @@
             </div>
         </div>
     </div>
-    <div style="float: right; width: 53%; margin-right: -345px;">
+    <div style="position: absolute; right: 0px; width: 50%; ">
         <div *ngFor = "let category of Categoies" >
             <div *ngIf="currentCategoryName == category.catName">
-                    <img src="{{category.catImage}}"  width="630px" height="450px"> 
+                <img src="{{category.catImage}}"  width="100%" height="450px"> 
             </div>
         </div>
     </div>
@@ -43,26 +43,26 @@
 
 <!-- ---------------------------------------- -->
 <section>
-    <mat-label style="font-size: xx-large; font-weight: 100px; opacity: .8; margin-left:90px;">Your path to the right job</mat-label>
+    <mat-label style="font-size: xx-large; font-weight: 100px; opacity: .8; margin-left: 7%;">Your path to the right job</mat-label>
     <section style="padding: 90px; display: flex;" >
-        <section>
-            <div *ngFor="let sub of subCategory" style="margin: 20px;">
+        <section style="width: 25%;">
+            <div *ngFor="let sub of subCategory" style="margin: 3%;">
                 <div *ngIf="sub.categoryID == currentCategoryID">
                     <mat-label style=" color: gray; font-weight: bold; font-size: large; " (click)="getCoursesBySubCategory(sub.id)">{{sub.subCategoryTitle}}</mat-label>
                 </div>  
             </div>
-            <button mat-raised-button color="primary" style="background-color: #017a9b; width: 250px; height: 45px; letter-spacing: 1px;">GET START</button>
+            <button mat-raised-button color="primary" style="background-color: #017a9b; width: 90%; height: 45px; letter-spacing: 1px;">GET START</button>
         </section>
-        <section style="padding-top: 50px; margin-left: 50px;">
-            <mat-label style=" font-size: xx-large; font-weight: 100px;">{{currentSubName}}</mat-label>
-            <mat-label style=" font-size: xx-large; font-weight: 100px;">{{currentSubDescription}}</mat-label>
+        <section style="padding-top: 50px; margin-left: 5%; width: 50%;">
+            <mat-label style=" font-size: xx-large; font-weight: 100px;">{{currentSubName}}</mat-label><br><br>
+            <mat-label style=" font-size: x-large; font-weight: 100px; width: 100%;">{{currentSubDescription}}</mat-label>
             <br><br>
             <mat-label style="letter-spacing: 1px;">RECOMMENDED PROGRAMS</mat-label><br><br>
             <div *ngFor="let c of coursesBySubCategory,index as i;">
                 <mat-card class="spasificCourse">
                     <mat-label style="color: #2a77aa;">STEP {{i+1}}</mat-label> <br><br>
                     <mat-label style="font-size: x-large; padding-left: 10px; color: #2a77aa;">{{c.name}}</mat-label><br><br>
-                    <p style="width: 400px;"> <span>CONCEPTS COVERED:</span> {{c.preRequest}}</p>
+                    <p style="width: 90%;"> <span>CONCEPTS COVERED:</span> {{c.preRequest}}</p>
                 </mat-card>
             </div>
         </section>
@@ -72,7 +72,7 @@
             <div >
                 <div *ngFor="let std of stories">
                     <div *ngIf="std.specialzation === currentSubName">
-                        <p >{{std.story}}</p><br><br> 
+                        <p >ddd{{std.story}}</p><br><br> 
                         <mat-label> Graduate of the {{std.specialzation}}</mat-label>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 </section>
 <!-- --------------------------------------------------- -->
 
-<section style=" background-color: #eff8ff; padding: 70px 0px 70px 0px;">
+<section style=" background-color: #eff8ff; width: 100%;">
     <h1 style="text-align: center; font-size: xx-large; opacity: .8;">All Our Programs Include</h1>
     <div class="programParts">
         <div class="parts">

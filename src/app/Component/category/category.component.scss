@@ -1,16 +1,16 @@
 .introCategory{
-    background-image: url(https://www.udacity.com/assets/iridium/images/shared/school-of/hero_bg.png);
-    width: 48%;
+    width: 100%;
     height: 450px;
-    padding-left: 70px;
-    // text-align: center;
-    // display: flex;
-    // padding: 100px ;
+}
+.catDetails{
+    float: left; 
+    width: 50%;
+    background-image: url(https://www.udacity.com/assets/iridium/images/shared/school-of/hero_bg.png);
+    height: 100%;
+    padding-left: 3%;
 }
 .dataCat{
     display: flex;
-    // margin: 100px;
-    // margin-left: 20px;
 }
 .data{
     margin: 20px 0px 0px -230px;
@@ -80,8 +80,8 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .spasificCourse{
-    width: 400px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     border-left: 20px solid;
     border-left-color: #2a77aa;
@@ -89,8 +89,8 @@
     padding-top: 20px;
 }
 .story{
-    // width: 10px;
-    margin-left: 90px;
+    margin-left: 5%;
+    width: 20%;
 }
 .line{
     height: 4px;

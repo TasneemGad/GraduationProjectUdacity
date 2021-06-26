@@ -3,11 +3,13 @@
   <h1 routerLink="/Home" class="udacity">U D A C I T Y</h1>
 
 <div style="position: absolute; right: 5%;">
-  <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" style="margin-left: 10px;">Programs <svg class=""
+  <button mat-button [matMenuTriggerFor]="rootMenu" class="menuData" >Programs 
+    <svg class=""
       height="7" viewBox="0 0 12 7" width="12">
       <path d="m105 46 5 5 5-5" fill="none" stroke="#96a0aa" stroke-linecap="round" stroke-linejion="round"
         strok-width="2" transform="translate(-104 -45)"></path>
-    </svg></button>
+    </svg>
+  </button>
 
   <mat-menu #rootMenu="matMenu">
     <span *ngFor="let category of Categoies">
@@ -20,9 +22,7 @@
 
   <mat-menu #subMenu="matMenu">
     <span *ngFor="let course of CoursesByID">
-      <!-- <span *ngIf="course.categoryId === currentCategoryId;">  -->
       <button mat-menu-item class="menu" routerLink="{{'/Course/'+course.id}}">{{course.name}}</button>
-      <!-- </span> -->
     </span>
   </mat-menu>
 
