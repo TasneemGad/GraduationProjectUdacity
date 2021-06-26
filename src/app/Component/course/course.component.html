@@ -189,7 +189,7 @@
     ">
  
  <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168);  width: 80%; margin: 0 auto;">
-  <mat-card style=" align-items: center; min-height: 400px;">
+  <mat-card style=" align-items: center;">
     <mat-card-header style="display: flex">
       <div style="float: left">
         <mat-card-title style="
@@ -252,10 +252,10 @@
               <h1 style="font-size: 18px; font-weight: 500; width: 250px">
                 {{ courseList.preRequest }}
               </h1>
-              <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
+              <a style="font-size: 15px; text-decoration: underline ;">See prerequisites in detail</a>
             </div>
-            <div class="vl1"></div >
-            <div *ngFor="let item of lectListcrs" >
+            <!-- <div class="vl1"></div > -->
+            <div *ngFor="let item of lectListcrs"  >
               <h1 style="font-weight: 500;margin-top: 20px;">{{item.tilte}}</h1>
               <p style="font-size: 15px;width: 600px;">{{ item.lectureDescription }}</p>
             </div>
