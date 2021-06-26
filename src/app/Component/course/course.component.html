@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <section  style="height: 100%;">
   <header>
     <div class="overlay"></div>
@@ -23,10 +28,6 @@
               font-size: 15px;
               letter-spacing: 2px;
               font-weight: bold;
-              display:inline-block;
-              overflow: auto;
-              white-space: nowrap;  
-              
             ">
             Download Syllabus
           </button>
@@ -115,6 +116,7 @@
   </div>
   <!-- <div class="vl1"></div> -->
 </section>
+
 <script>
   var video = document.getElementById("myVideo");
   var btn = document.getElementById("myBtn");
@@ -149,7 +151,7 @@
       ">
       What You Will Learn
     </h1>
-    <button mat-raised-button  style="
+    <button mat-raised-button style="
         background-color: #657482;
         display:inline-block;
         overflow: auto;
@@ -170,98 +172,100 @@
       justify-content: center;
       align-items: center;
     ">
-    <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
-      <mat-card style=" align-items: center">
-        <mat-card-header style="display: flex">
-          <div style="float: left">
-            <mat-card-title style="
-                font-size: 30px;
-                font-weight: 300;
-                font-style: normal;
-                line-height: 30px;
-                width: 600px;
-              ">
-              {{ courseList.name }}
-            </mat-card-title>
-            <mat-card-subtitle style="margin-top: 40px; font-size: 17px; font-weight: 500;width: 500px;">
-              {{ courseList.description }}
-            </mat-card-subtitle>
-          </div>
-          <div>
-            <h1>
-              <img  [src]="createImgPath(courseList.crsLogo)" style="
-                  width: 550px;
-                  height: 300px;
-                  float: right;
-                 margin-top: -15px;
-                " />
-            </h1>
-
-          </div>
-          <br />
-
-          <div style="margin-top: 50px">
-            <hr style="border: solid rgb(236, 236, 236); opacity: 0.5" />
-          </div>
-        </mat-card-header>
-        <mat-card-subtitle>
-          <h1 style="
-              font-size: 15px;
-              margin-left: 30px;
-              color: #03607a;
-              cursor: pointer;
-
-            " (click)="detailsHide()">
-            {{ textHide }}
-          </h1>
+ 
+ <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
+  <mat-card style=" align-items: center">
+    <mat-card-header style="display: flex">
+      <div style="float: left">
+        <mat-card-title style="
+            font-size: 30px;
+            font-weight: 300;
+            font-style: normal;
+            line-height: 30px;
+            width: 600px;
+          ">
+          {{ courseList.name }}
+        </mat-card-title>
+        <mat-card-subtitle style="margin-top: 40px; font-size: 17px; font-weight: 500;width: 500px;">
+          {{ courseList.description }}
         </mat-card-subtitle>
-        <div >
-        <div *ngIf="Isdetails; then hide"></div>
+      </div>
+      <div>
+        <h1>
+          <img  [src]="createImgPath(courseList.crsLogo)" style="
+              width: 550px;
+              height: 300px;
+              float: right;
+             margin-top: -15px;
+            " />
+        </h1>
 
-          <mat-card-content>
-            <ng-template #hide>
-              <mat-card-subtitle style="margin-left: 30px;" >
-                <div>
-                  <h1 style="
-                      font-size: 15px;
-                      letter-spacing: 2px;
-                      font-weight: 400;
-                      color: #657482;
-                    ">
-                    PREREQUISITES KNOWLEDGE
-                  </h1>
-                  <h1 style="font-size: 18px; font-weight: 500; width: 250px">
-                    {{ courseList.preRequest }}
-                  </h1>
-                  <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
-                </div>
-                <!-- <div class="vl1"></div > -->
-                <div *ngFor="let lecture of lectureAllListcrs">
-                  <span>fffffffffffffffffffff{{lecture}}</span>
-                  <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
-                  <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
-                </div>
-              </mat-card-subtitle>
-              <mat-card class="boxCouse1">
-                <svg width="50" height="36" viewBox="0 0 50 36">
-                    <g fill="none" fill-rule="evenodd" stroke="#7D97AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M42 5h2.99063C45.54809 5 46 5.438615 46 5.998746v19.002508C46 25.552846 45.556738 26 45.003217 26H4.996782C4.446275 26 4 25.561385 4 25.001254V5.998746C4 5.447154 4.443353 5 5.00937 5H8">
-                        </path>
-                        <path d="M21 22H8V2h9.009246C21.42242 2 25 5.580076 25 9.991652V26m0 0c0-2.20914-1.79086-4-4-4m8 0h13V2h-9.009247C28.577583 2 25 5.580076 25 9.991652V26m0 0c0-2.20914 1.79086-4 4-4"></path>
-                        <path d="M46 8h2.001043C48.552753 8 49 8.439458 49 9.002462v19.995076C49 29.551183 48.55547 30 47.997452 30H2.002548C1.448856 30 1 29.560542 1 28.997538V9.002462C1 8.448817 1.44266 8 1.998957 8H4m21 22v-4"></path>
-                    </g>
-                </svg>
-                <div style="opacity: .8;">
-                    <mat-label>NEED TO PREPARE?</mat-label><br>
-                    <mat-label> We recommend the Intro {{twoCoursesSuggest[0].name}}</mat-label>
-                </div>
-              </mat-card>
-            </ng-template>
-          </mat-card-content>
-        </div>
+      </div>
+      <br />
 
-      </mat-card>
+      <div style="margin-top: 50px">
+        <hr style="border: solid rgb(236, 236, 236); opacity: 0.5" />
+      </div>
+    </mat-card-header>
+    <mat-card-subtitle>
+      <h1 style="
+          font-size: 15px;
+          margin-left: 30px;
+          color: #03607a;
+          cursor: pointer;
+
+        " (click)="detailsHide()">
+        {{ textHide }}
+      </h1>
+    </mat-card-subtitle>
+    <div >
+    <div *ngIf="Isdetails; then hide"></div>
+
+      <mat-card-content>
+        <ng-template #hide>
+          <mat-card-subtitle style="margin-left: 30px;" >
+            <div>
+              <h1 style="
+                  font-size: 15px;
+                  letter-spacing: 2px;
+                  font-weight: 400;
+                  color: #657482;
+                ">
+                PREREQUISITES KNOWLEDGE
+              </h1>
+              <h1 style="font-size: 18px; font-weight: 500; width: 250px">
+                {{ courseList.preRequest }}
+              </h1>
+              <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
+            </div>
+            <!-- <div class="vl1"></div > -->
+            <div *ngFor="let lecture of lectureAllListcrs">
+              <span>fffffffffffffffffffff{{lecture}}</span>
+              <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
+              <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
+            </div>
+          </mat-card-subtitle>
+          <mat-card class="boxCouse1">
+            <svg width="50" height="36" viewBox="0 0 50 36">
+                <g fill="none" fill-rule="evenodd" stroke="#7D97AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M42 5h2.99063C45.54809 5 46 5.438615 46 5.998746v19.002508C46 25.552846 45.556738 26 45.003217 26H4.996782C4.446275 26 4 25.561385 4 25.001254V5.998746C4 5.447154 4.443353 5 5.00937 5H8">
+                    </path>
+                    <path d="M21 22H8V2h9.009246C21.42242 2 25 5.580076 25 9.991652V26m0 0c0-2.20914-1.79086-4-4-4m8 0h13V2h-9.009247C28.577583 2 25 5.580076 25 9.991652V26m0 0c0-2.20914 1.79086-4 4-4"></path>
+                    <path d="M46 8h2.001043C48.552753 8 49 8.439458 49 9.002462v19.995076C49 29.551183 48.55547 30 47.997452 30H2.002548C1.448856 30 1 29.560542 1 28.997538V9.002462C1 8.448817 1.44266 8 1.998957 8H4m21 22v-4"></path>
+                </g>
+            </svg>
+            <div style="opacity: .8;">
+                <mat-label>NEED TO PREPARE?</mat-label><br>
+                <mat-label> We recommend the Intro {{twoCoursesSuggest[0].name}}</mat-label>
+            </div>
+          </mat-card>
+        </ng-template>
+      </mat-card-content>
     </div>
+
+  </mat-card>
+</div>
+
   </div>
 </section>
 
@@ -271,7 +275,7 @@
       <div class="parts">
           <img src="../../assets/ProgramsInclude1.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
           <span class="icons">
-              <img src="../../assets/programIcon1.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+              <img src="../../assets/programIcon1.JPG" alt="error" width="30px" height="30px" style="padding: 15px 0px 0px 15px" >
           </span>
           <div>
               <h3 class="title">Real-world projects from industry experts</h3>
@@ -283,7 +287,7 @@
       <div class="parts">
           <img src="../../assets/ProgramsInclude2.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px;">
           <span class="icons">
-              <img src="../../assets/programIcon2.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+              <img src="../../assets/programIcon2.JPG" alt="error" width="30px" height="30px" style="padding: 15px 0px 0px 15px" >
           </span>
           <div>
               <h3 class="title">Technical mentor support</h3>
@@ -297,7 +301,7 @@
       <div class="parts">
           <img src="../../assets/ProgramsInclude3.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
           <span class="icons">
-              <img src="../../assets/programIcon3.JPG" alt="error" width="25px" height="25px" style="padding: 13px 0px 0px 13px" >
+              <img src="../../assets/programIcon3.JPG" alt="error" width="30px" height="30px" style="padding: 13px 0px 0px 13px" >
           </span>
           <div>
               <h3 class="title">Career services</h3>
@@ -309,7 +313,7 @@
       <div class="parts">
           <img src="../../assets/ProgramsInclude4.jpg" alt="error" width="200px" height="210px" style="padding-right: 25px; border-radius: 5px;">
           <span class="icons">
-              <img src="../../assets/programIcon4.JPG" alt="error" width="25px" height="25px" style="padding: 15px 0px 0px 15px" >
+              <img src="../../assets/programIcon4.JPG" alt="error" width="30px" height="30px" style="padding: 15px 0px 0px 15px" >
           </span>
           <div>
               <h3 class="title">Flexible learning program</h3>
@@ -612,6 +616,7 @@
 </section>
 
 
+
 <section style="text-align: center; padding: 40px 40px 40px 0px">
   <mat-label style="font-size: xx-large; opacity: .7;">Learn with the best</mat-label><br><br>
   <div class="stories">
@@ -628,20 +633,15 @@
 </section> 
 
 
-<section class="reviews">
+
+
+<section class="reviews" style="height: auto;">
   <mat-label class="reviewsTitel">Top Student Reviews</mat-label><br>
-  <div class="reviewsPart">
+  <div class="reviewsPart" style="height: auto;">
       <div *ngFor="let review of Reviews" > 
-          <mat-card class="eachReview dataOfObjective"  >
-              <mat-label class="reviewName">{{review.fullName}} 
-                <br>
-                <span>
-                  <mat-icon style="fill: currentColor;color: orange;padding: 10px;"   >star {{review.rate}}</mat-icon>
-                  <p> </p>
-                  <!-- <star-rating-comp ></star-rating-comp> -->
-                  <!-- <img src="/assets/Filled_star.png"> -->
-                </span> 
-             </mat-label><br><br>
+          <mat-card class="eachReview dataOfObjective" style="height: auto;" >
+              <mat-label class="reviewName">{{review.fullName}}                
+             </mat-label>
               <mat-card-content>{{review.stdReviews}}</mat-card-content>
           </mat-card>
       </div>
@@ -652,9 +652,9 @@
   <mat-label class="suggestCoursesTitel">Related Nanodegree Programs</mat-label>
   <div class="suggestCoursesPart">
       <div *ngFor="let course of twoCoursesSuggest">
-          <mat-card class="suggestCourse">
-              <mat-label style="font-weight: 100; font-size: xx-large;">{{course.name}}</mat-label><br><br>
-              <mat-label style="line-height: 22px; ">{{course.description}}</mat-label>
+          <mat-card class="suggestCourse" style="height: auto;padding: 10px;margin: 10px;">
+              <mat-label style="font-weight: 100; padding: 10px;font-size: xx-large;">{{course.name}}</mat-label><br><br>
+              <mat-label style="line-height: 22px;padding: 10px; ">{{course.description}}</mat-label>
           </mat-card>
       </div>
   </div>
@@ -754,13 +754,19 @@
         <mat-card-subtitle style="font-size: 15px;color: black;line-height: 20px;">EGP 1380 per month</mat-card-subtitle>
         <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 50px;margin-left: 15px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
-        <mat-card-actions>
+        <mat-card-actions>                  
+        <div *ngIf="ExisterollmentFlag then ContinueLearn else enrollbtns"></div>
+        <ng-template #ContinueLearn>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom" >Continue Learning</button>
+        </ng-template>
+        <ng-template #enrollbtns>
           <span *ngIf="courseList.price==0">
-          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom">Enroll Now</button>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;"  (click)="InsertFreeEnroll()">Enroll Now</button>
         </span>
         <span *ngIf="courseList.price!=0">
-        <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails/{{courseList.id}}">Enroll Now</button>
+        <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails/{{courseList.id}}" (click)="saveCourseId()">Enroll Now</button>
        </span>
+      </ng-template>
       </mat-card-actions>
         <mat-card-subtitle style="font-size: 15px;font-weight: 200;width: 330px;margin-left: 15px;">Start learning today! Switch to the monthly price afterwards if more time is needed.</mat-card-subtitle>
       </mat-card>

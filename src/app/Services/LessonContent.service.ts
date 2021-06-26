@@ -20,6 +20,12 @@ export class LessonContentService {
           return throwError(err.massage || "Error")}))
       }
 
+
+//FirstLessonContent      
+FirstLessonContent(lessonId:number): Observable<LessonContent> {
+  return this.http.get<LessonContent>(this.lessonContentUrl+"/FirstLessonContent/"+lessonId).pipe(catchError((err)=>{
+    return throwError(err.massage || "Error")}))
+}
 //LessonContentByCrsID
 
     GetAllLessonContentByCrsID(crsId:number): Observable<LessonContent[]> {

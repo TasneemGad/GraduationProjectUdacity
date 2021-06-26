@@ -7,6 +7,7 @@ import { PaymentService } from 'src/app/Services/Payment.service';
 import { ICountry } from 'src/app/SharedModels/Interface/ICountry';
 import { IPayment } from 'src/app/SharedModels/Interface/IPayment';
 import { CountryService } from 'src/app/Services/Country.service';
+import { EnrollService } from 'src/app/Services/EnrollCourse.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class PaymentComponent implements OnInit {
   get formFields() { return this.paymentForm.controls; }
   constructor( private _formBuilder: FormBuilder, 
     private _paymentService: PaymentService,
-    private _router: Router,private auth:AuthenticationService,public count:CountryService) {
+    private _router: Router,private auth:AuthenticationService,public count:CountryService,
+    private enrollService:EnrollService) {
    
    }
    ngOnInit(): void {
@@ -53,7 +55,14 @@ export class PaymentComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          alert("Payment Add")
+          if(localStorage.getItem("IDCOURSEENROLL") != null)
+          {
+            const idCourse = Number(localStorage.getItem("IDCOURSEENROLL"))
+            this.enrollService.EnrollInCourse(idCourse).subscribe(sucss=>{
+              console.log("EENNTTEERR")
+            window.location.href="/ClassRoom"
+          })
+        }
         },
         error => {
           this.errMsg = error;

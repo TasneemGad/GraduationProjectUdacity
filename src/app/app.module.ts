@@ -70,6 +70,9 @@ import { ClassRoomComponent } from './Component/class-room/class-room.component'
 
 @NgModule({
   declarations: [
+    QuestionGroupAdminComponent,
+    QuestionOptionesAdminComponent,
+    QuestionAdminComponent,
     AppComponent,
     HeaderComponent,
     SignUpComponent,
@@ -125,6 +128,8 @@ import { ClassRoomComponent } from './Component/class-room/class-room.component'
     StudentSucessComponent,
     BecomeAMentorComponent,
     SolutionComponent,
+    TrueAndFalsesAdminComponent,
+
     CourseVideosComponent,
     
   ],
