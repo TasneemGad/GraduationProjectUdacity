@@ -88,6 +88,10 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   iteration:number = 0
   rightAnswer:boolean 
   IsCorrect:string
+  flagBtnShow:boolean=true
+  imgSrc:string=""
+  idBtn:string=""
+  idContent:any
 
   @ViewChild(LessonDataComponent) c: LessonDataComponent
 
@@ -115,15 +119,19 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
       const us = this.allLessonContent.lessonId
       this.active.paramMap.subscribe((p: ParamMap) => {
       this.idUrl = p.get('id')
+       this.idContent = p.get('idContent')
+
       this.getLessonById(this.idUrl)
       this.getCurrentCourse(this.idUrl);
       this.getLessonContentById(this.idUrl);
+       this.goToLessonData(this.idContent)
     })
   }
 
   //Content
   goToLessonData(id: any) {
     // this.getQuestionsByLessonContent(id)
+    this.router.navigate(['lessonContent/',this.idUrl,id])
 
     this.getQuestion(id)
 
@@ -136,9 +144,9 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
       this.CourseId = sessionStorage.getItem("CourseID")
       this.getProgress(this.CourseId, id)
     }
-    // this.router.navigate(['lessonData/',id],{relativeTo:this.active})
     this.getStudentAnswer(id)
     this.idLessonContent = id
+    // goToLessonData
   }
 
 
@@ -352,6 +360,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     this.mayBeAnswerTrueAndFalseQuestion = answer
   }
   postAnswer(idQuestion:number,idContent:number){
+
     this.lastAnswerOptionQuestion = this.mayBeAnswerOptionQuestion
     this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
     console.log("dgggd",this.lastAnswerOfTrueAndFalse )
@@ -363,13 +372,17 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
         this.StudentASService.PostStudentAnswer(this.AnswerOfOptions).subscribe(data=>{
         })
         this.rightAnswer =true
-        this.IsCorrect = "Correct"
+        this.IsCorrect = "Correct"  
+        this.imgSrc="assets/correct-illustration-f1348.svg"                  
+
       }
       else
       {
         // alert("IN COURRECT ANSWER!!")
         this.rightAnswer = false
         this.IsCorrect = "Wrong"
+        this.imgSrc="assets/wrong-illustration-ed0a3.svg"  
+
       }
         })
     this.trueAndFalseService.getReviews().subscribe(data=>{
@@ -383,68 +396,39 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
             this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
             })
             this.rightAnswer =true
-            this.IsCorrect = "Correct"
+            this.imgSrc="assets/correct-illustration-f1348.svg"  
+            console.log("HERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRe")
+            this.IsCorrect = "Correct";
+            // this.router.navigate(['lessonContent/',this.idUrl,idContent])
+
+            // this.router.navigate(['lessonContent/',idContent])
+            // window.location.href='lessonContent/'+idContent
+            //  window.location.reload();
+            // this.idBtn=ans.qustionId+"qustionId"
+            // (document.getElementById('qustionId'+ans.qustionId ) as HTMLInputElement).disabled = false;
+
+
           }
           else
           {
-            // alert("IN COURRECT ANSWER!!")
+             //alert("IN COURRECT ANSWER!!")
             this.rightAnswer =false
             this.IsCorrect = "Wrong"
+            this.imgSrc="assets/wrong-illustration-ed0a3.svg"  
+
           }  
         }              
         }
-      })
+      })      
     }
 
 
-  // checkIAnsweredOFOptionQuestion() {
-  //   this.notAnsweredYetForOptional = []
-  //   for (let question of this.QByLessonContent) {
-  //     this.isAnswerwdOPtion = false
-  //     for (let ans of this.StudentAnswerByLesson) {
-  //       if (question.id != ans.questionId && !this.notAnsweredYetForOptional.includes(question)) {
-  //         this.notAnsweredYetForOptional.push(question)
-  //       }
-  //     }
-  //   }
-  // }
-
-
-  //True and False Question  
-
-  // finalAnswerOfTrueAndFalse(id: number, idContent: any) {
-  //   this.lastAnswerOfTrueAndFalse = this.mayBeAnswerTrueAndFalseQuestion
-  //   this.OptionServices.getQuestionsOptionByQuestionId(id).subscribe(data=>{
-  //       if(data.right == this.lastAnswerOptionQuestion)
-  //       {
-  //         this.AnswerOfTrueAndFalse = {questionId: id,lessonContentId: idContent ,studentId: this.token.getUserId(),studentanswer:this.lastAnswerOfTrueAndFalse}
-  //         this.StudentASService.PostStudentAnswer(this.AnswerOfTrueAndFalse).subscribe(data=>{
-  //         })
-  //       }
-  //       else
-  //       {
-  //         alert("IN COURRECT ANSWER!!")
-  //       }
-  //   })
-  // }
-  // getNotAnsweredOFTrueAndFalse() {
-  //   this.questionTrueAndFalseNotAnswered = []
-  //   for (let ques of this.QByLessonContent) {
-  //     for (let ans of this.questionAnswered) {
-  //       if (ans.questionId == ques.id) {
-  //         this.flag = true
-  //         continue
-  //       }
-  //       else {
-  //         this.flag = false
-  //       }
-  //     }
-  //     if (!this.flag) {
-  //       this.questionTrueAndFalseNotAnswered.push(ques)
-  //     }
-  //   }
-  //   // console.log("fllaag",this.questionTrueAndFalseNotAnswered)
-  // }
+    RefreshContent(){
+      if(this.rightAnswer == true)
+      {
+        window.location.reload()
+      }
+    }
 
   //Search
   searchLesson(crsId: number, SearchLessonItem: string) {
@@ -454,8 +438,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
         this.LessonSearchList = lessonsdata.filter(Lesson => Lesson.title.toLocaleLowerCase().includes(SearchLessonItem) || Lesson.details.toLocaleLowerCase().includes(SearchLessonItem))
       }
     )
-    // console.log("oooooooooooooooo",crsId,SearchLessonItem)
-    // console.log("oooooooooooooooo",this.LessonSearchList)
+    
   }
 
 }

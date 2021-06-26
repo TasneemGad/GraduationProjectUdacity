@@ -113,9 +113,9 @@ const routes: Routes = [
     ],
   },
 
-  { path: 'lessonContent/:id',component: LessonContentComponent,
+  { path: 'lessonContent/:id/:idContent',component: LessonContentComponent,
     children: [
-      // { path: 'lessonData/:id', component:LessonVideeoComponent }
+      // { path: ', component:LessonContentComponent }
   ],
   },
 //Admin

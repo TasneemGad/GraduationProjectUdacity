@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { LessonService } from 'src/app/Services/lesson.service';
+import { LessonContentService } from 'src/app/Services/LessonContent.service';
 import { Lectures } from 'src/app/SharedModels/Interface/ILectures';
 import { Lesson } from 'src/app/SharedModels/Interface/ILesson';
 import { LecturesComponent } from '../lectures/lectures.component';
@@ -21,7 +22,7 @@ export class LessonsComponent implements OnInit , AfterViewInit{
   nameOfNextLecture:string
 
   constructor(private lessonService:LessonService,private router:Router,private active:ActivatedRoute,
-  private lectureServices:LecturesService,public dialog: MatDialog) { }
+  private lectureServices:LecturesService,public dialog: MatDialog,private lessonContentService:LessonContentService) { }
  
 
     
@@ -70,7 +71,13 @@ GetLectureByID(LecId:number){
 // }
 goToLessonContent(id:any){
   console.log("content",id)
-  this.router.navigate(["lessonContent/",id])
+  this.lessonContentService.FirstLessonContent(id).subscribe(
+    lessonContentId=>{
+        this.router.navigate(["lessonContent/",id,lessonContentId])
+
+    }
+
+  )
 }
 
 }

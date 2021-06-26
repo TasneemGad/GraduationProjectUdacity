@@ -67,6 +67,9 @@ import { SolutionComponent } from './Component/solution/solution.component';
 
 @NgModule({
   declarations: [
+    QuestionGroupAdminComponent,
+    QuestionOptionesAdminComponent,
+    QuestionAdminComponent,
     AppComponent,
     HeaderComponent,
     SignUpComponent,
@@ -119,7 +122,9 @@ import { SolutionComponent } from './Component/solution/solution.component';
     ApproachComponent,
     StudentSucessComponent,
     BecomeAMentorComponent,
-    SolutionComponent
+    SolutionComponent,
+    TrueAndFalsesAdminComponent
+
   ],
   imports: [
     BrowserModule,
