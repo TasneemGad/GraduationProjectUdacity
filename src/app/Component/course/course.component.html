@@ -256,9 +256,23 @@
             </div>
             <!-- <div class="vl1"></div > -->
             <div *ngFor="let item of lectListcrs"  >
-              <h1 style="font-weight: 500;margin-top: 20px;">{{item.tilte}}</h1>
-              <p style="font-size: 15px;width: 600px;">{{ item.lectureDescription }}</p>
+              <ul >
+                <li style="margin-left: 50px;">
+
+                <div id="vl2">
+
+              <h1 style="font-weight: 500;margin-top: 20px; margin-left: 20px;">{{item.tilte}}</h1>
+
+             
+
+              <p style="font-size: 15px;width: 600px; margin-left: 20px;">{{ item.lectureDescription }}</p>
             </div>
+
+</li>
+
+</ul>
+</div>
+
           </mat-card-subtitle>
           <!-- <mat-card class="boxCouse1">
             <svg width="50" height="36" viewBox="0 0 50 36">
