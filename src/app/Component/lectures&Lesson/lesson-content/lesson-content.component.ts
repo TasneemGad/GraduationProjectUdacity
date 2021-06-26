@@ -103,7 +103,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     private lessonContentService: LessonContentService, private progress: ProgressService, private watch: WatchService,
     private token: AuthenticationService, private videoServices: VideosService, private QuestionsServices: QuestionsService,
     private StudentASService: StudentAnswerService, private accountService: AccountService, private trueAndFalseService:TrueAndFalseService,
-    private OptionServices: QuestionOptionsService
+    private OptionServices: QuestionOptionsService, 
   ) { }
   ngAfterViewInit(): void {
 
@@ -179,9 +179,16 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   }
   goBack() {
     this.location.back();
+    // this.location.path
   }
   controlSidenav() {
     this.IsOpened = !this.IsOpened
+  }
+  go(id:any){
+//  console.log("tttt",this.location.go('LessonContent/',this.idUrl))
+ 
+
+
   }
 
   //video
