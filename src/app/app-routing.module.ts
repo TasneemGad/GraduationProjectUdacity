@@ -136,30 +136,18 @@ const routes: Routes = [
 
    ]},
   //Nothing
+  
+  {path:'Government',component: GovernmentComponent,data: { footer: true, header: true }},
+  {path:'BecomeAnInstractor',component: BecomeAnInstractorComponent,data: { footer: true, header: true }},
+  {path:'OverView',component: OverViewComponent,data: { footer: true, header: true }},
+  {path:'Approach',component: ApproachComponent,data: { footer: true, header: true }},
+  {path:'Solution',component: SolutionComponent,data: { footer: true, header: true }},
+  {path:'career-prep',component:CareerPrepComponent,data: { footer: true, header: true }},
+  {path:'success',component:StudentSucessComponent,data: { footer: true, header: true }},
+  {path:'start-mentoring',component:BecomeAMentorComponent,data: { footer: true, header: true }},
+
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', component:PageNotFoundComponent  },
-
-
-
-  {path:'Home', component: HomePageComponent},
-  {path:'SignUP', component: SigINComponent},
-  {path:'SignIn', component: SigINComponent},
-  {path:'ClassRoom',component: ClassRoomComponent},
-  {path:'school-of/:id',component:CategoryComponent},
-  {path:'Course/:id', component:CourseComponent},
-  {path:'Lecture/:lid', component:CourseComponent},
-  {path:'orderDetails/:id', component: OrderDetailsComponent},
-  {path:'payment',component:PaymentComponent},
-  {path:'Government',component: GovernmentComponent},
-  {path:'BecomeAnInstractor',component: BecomeAnInstractorComponent},
-  {path:'OverView',component: OverViewComponent},
-  {path:'Approach',component: ApproachComponent},
-  {path:'Solution',component: SolutionComponent},
-  {path:'career-prep',component:CareerPrepComponent},
-  {path:'success',component:StudentSucessComponent},
-  {path:'start-mentoring',component:BecomeAMentorComponent},
-
-
   {path:'',redirectTo:'/Home',pathMatch:'full'}
 ];
 

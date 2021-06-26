@@ -22,7 +22,7 @@
                 <div style="display: flex;">
                     <div class="cardPartLeft">
                         <img src="crsLogo" alt="error" width="145px" height="150px" ><br><br>
-                        <button mat-raised-button class="btnDetails">Program Details</button><br><br>
+                        <button mat-raised-button class="btnDetails" (click)="goToCrsDetails(course.id)">Program Details</button><br><br>
                         <button mat-raised-button class="btnDownload">Download Syllabus</button>
                     </div>
                     <div class="cardPartRight">

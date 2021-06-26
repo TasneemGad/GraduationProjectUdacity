@@ -18,6 +18,7 @@ export class CatalogComponent implements OnInit {
   searchItem: string; 
 
 
+
   constructor(private categoryService:CategoryService, private courseService: CoursesService) { }
 
   ngOnInit(): void {
@@ -58,6 +59,10 @@ export class CatalogComponent implements OnInit {
       }
     )
                   
+  }
+
+  goToCrsDetails(crsId:number){
+    location.href="Course/"+crsId
   }
   showCourse(crsId:number){
     
