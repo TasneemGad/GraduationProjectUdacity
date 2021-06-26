@@ -44,7 +44,7 @@
             <div style="display: flex; margin: 0 auto;">
                 <div>
                     <div  class="label"><mat-label>Expiry</mat-label><br></div>
-                    <input  class="input" style="width:710px;" formControlName="ExperationDate" type="date"   name="ExperationDate" [class.is-invalid]="formFields.ExperationDate?.invalid && formFields.cardOwnerName?.touched">
+                    <input  class="input" style="width:610px;" formControlName="ExperationDate" type="date"   name="ExperationDate" [class.is-invalid]="formFields.ExperationDate?.invalid && formFields.cardOwnerName?.touched">
                    
                     <div *ngIf="formFields.ExperationDate?.invalid && formFields.ExperationDate?.touched">
                 <small class="text-danger" *ngIf="formFields.ExperationDate?.errors.required">Experation Date  is required</small>
@@ -57,7 +57,7 @@
                     
                 </div><br>
                 <div >
-                    <div  class="label" style="margin-left: 20px;"><mat-label>CVC</mat-label><br></div>
+                    <div  class="label" ><mat-label>CVC</mat-label><br></div>
                     <input type="text" class="input"  formControlName="cvc" name="cvc"[class.is-invalid]="formFields.cvc?.invalid && formFields.cvc?.touched">
                     <div *ngIf="formFields.cvc?.invalid && formFields.cvc?.touched">
                         <small class="text-danger d-block" *ngIf="formFields.cvc?.errors.required">CVC is required</small> 

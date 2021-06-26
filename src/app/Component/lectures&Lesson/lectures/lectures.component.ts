@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CoursesService } from 'src/app/Services/courses.service';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { LessonService } from 'src/app/Services/lesson.service';
@@ -28,7 +29,7 @@ export class LecturesComponent implements OnInit {
   SearchFlag=false;
   // NextLecture: any;
   constructor(  private lectureServices:LecturesService,private active:ActivatedRoute,
-    private courseServices:CoursesService,private router:Router, 
+    private courseServices:CoursesService,private router:Router, private Authservices:AuthenticationService,
     private lessonService:LessonService) { }
   idUrl:any
   color="white"
@@ -192,5 +193,7 @@ goto(id:any,text:any){
       }
     )  
   }
- 
+  Logout(){
+    this.Authservices.logout();   
+    }
 }

@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
   <div style="text-align: center;">
-      <button class="btn btn-outline-dark" (click)="addNewLessonContent()" id="btn" >Add New LessonContent </button>
-      <button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Show All LessonContent </button>
+      <button class="btn btn-outline-dark" (click)="addNewLessonContent()" id="btn" > Add New Lesson Content </button>
+      <button class="btn btn-outline-dark" (click)="addNew()" id="btn" >Show All Lesson Content </button>
   </div>
 <hr>
 <div *ngIf="isOpen then add else table"></div>
@@ -136,24 +136,24 @@
       <div class="mb-3">
         <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
         <div class="col">
-        <h1>  Add Lesson Content Title</h1>
+        <h1>    Lesson Content Title</h1>
           <input type="text" class="form-control" placeholder="tilte"  [value]="lessonContent.title" [(ngModel)]="lessonContent.title" id="title" #title name="title">
         </div>
         <div class="col">
-          <h1>  Add Lesson Content Description</h1>
+          <h1>    Lesson Content Description</h1>
           <input type="text" class="form-control" placeholder="Lesson Content  Description" [value]="lessonContent.description" [(ngModel)]="lessonContent.description" id="description" #description name="description">
         </div>
         <div class="col">
-            <h1>  Add Lesson Content Header</h1>
+            <h1>    Lesson Content Header</h1>
             <input type="text" class="form-control" placeholder="Lesson Content  Header" [value]="lessonContent.header" [(ngModel)]="lessonContent.header" id="header" #header name="header">
           </div>
           <div class="col">
-            <h1>  Add Lesson Content Type</h1>
+            <h1>    Lesson Content Type</h1>
             <input type="text" class="form-control" placeholder="Lesson Content Type" [value]="lessonContent.type" [(ngModel)]="lessonContent.type" id="type" #type name="type">
           </div>
           
           <div class="col">
-            <h1>Add Lesson Content videoLinkId</h1>
+            <h1>  Lesson Content videoLinkId</h1>
             
             <div class="input-group ">
             <select  class="custom-select-sm BtnG" #videoLink [(ngModel)]="lessonContent.videoLinkId" [value]="lessonContent.videoLinkId" id="videoLinkId" name="videoLinkId">

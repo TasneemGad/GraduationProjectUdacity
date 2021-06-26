@@ -4,7 +4,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <section  style="height: 100%;">
-  <header>
+  <header style="width: 80%; margin: 0 auto;">
     <div class="overlay"></div>
     <video playsinline="playsinline" autoplay muted loop>
       <source src="//videos.ctfassets.net/2y9b3o528xhq/t6jmhTyGfENJhZWiPvdND/866cc0c06859a4c2ae73cb0c3c698a83/Azure_MLEND_nd00333_heroLoop.mp4"  controls muted id="myVideo">
@@ -17,9 +17,9 @@
           <h1 style="font-weight: 200; font-size: 40px; letter-spacing: 2px;width:90%;padding-left: 70px;line-height: 50px;">
            {{courseList.name}}
           </h1>
-          <p style="width: 700px;font-size: 15px;margin-left: 180px;">
+          <p style="width: 70%;font-size: 15px;margin: 0 auto;">
           {{courseList.description}}
-          </p>
+          </p><br>
           <button routerLink="/" mat-raised-button style="
               color: #03607a;
               margin-right: 15px;
@@ -31,6 +31,22 @@
             ">
             Download Syllabus
           </button>
+          <div *ngIf="ExisterollmentFlag then ContinueLearnTop else enrollbtnsTop"></div>
+         
+          <ng-template #ContinueLearnTop>
+            <button mat-raised-button routerLink="/ClassRoom" style="
+                background-color: #03607a;
+                color: white;
+                width: 300px;
+                padding: 5px;
+                letter-spacing: 3px;
+                font-weight: 500;
+                text-decoration: none;
+              ">
+              Continue Learning
+            </button>
+            </ng-template>
+          <ng-template #enrollbtnsTop>
           <button mat-raised-button style="
               background-color: #03607a;
               color: white;
@@ -42,6 +58,7 @@
             ">
             Enroll Now
           </button>
+          </ng-template>
           <h1 style="margin-top: 90px; padding: 30px" id="myBtn" onclick="myFunction()">
             <mat-icon>play_circle_outline</mat-icon>
           </h1>
@@ -131,15 +148,12 @@
     }
   }
 </script>
-
+<br>
 <div id="logo">
   <p style="letter-spacing: 2px; font-size: 15px; opacity: 0.65">
     IN COLLABORATION WITH
   </p>
-  <!-- <span *ngFor="let i of courseListImg"> -->
   <img   [src]="createImgPath(courseList.partLogo)" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
-
-  <!-- </span> -->
 </div>
 
 <section id="details">
@@ -173,8 +187,8 @@
       align-items: center;
     ">
  
- <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168)">
-  <mat-card style=" align-items: center">
+ <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168); ">
+  <mat-card style=" align-items: center; ">
     <mat-card-header style="display: flex">
       <div style="float: left">
         <mat-card-title style="
@@ -785,7 +799,13 @@
         <mat-card-title style="font-size: 22px;font-weight: 600;color: brown;line-height: 70px;margin-left: 20px;">{{courseList.discount}}% OFF COUPON APPLIED</mat-card-title>
         </mat-card-header>
         <mat-card-actions>
+          <div *ngIf="ExisterollmentFlag then ContinueLearnUp else enrollbtnsUp"></div>
+        <ng-template #ContinueLearnUp>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom" >Continue Learning</button>
+        </ng-template>
+        <ng-template #enrollbtnsUp>
           <button mat-raised-button style="margin-left: 50px; margin-top: 5px;background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;" routerLink="/">Enroll Now</button>
+        </ng-template>
         </mat-card-actions>
         <mat-card-subtitle style="font-size: 15px;font-weight: 200;width: 330px;margin-left: 15px;">Start learning today! Get maximum flexibility to learn at your own pace.</mat-card-subtitle>
       </mat-card>

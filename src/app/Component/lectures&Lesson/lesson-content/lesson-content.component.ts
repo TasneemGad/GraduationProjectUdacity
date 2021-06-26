@@ -131,23 +131,18 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
 
   //Content
   goToLessonData(id: any) {
-    // this.getQuestionsByLessonContent(id)
     this.router.navigate(['lessonContent/',this.idUrl,id])
-
     this.getQuestion(id)
-
-    // console.log("AID",identity)
     this.getLessonOneById(id);
     this.getVideosById(id);
-    // console.log("currentvideo",id,)
     this.getAllQuestions(id);
     if (sessionStorage.getItem("CourseID") != null) {
+      console.log("EEEEE",sessionStorage.getItem("CourseID"))
       this.CourseId = sessionStorage.getItem("CourseID")
       this.getProgress(this.CourseId, id)
     }
     this.getStudentAnswer(id)
     this.idLessonContent = id
-    // goToLessonData
   }
 
 
@@ -217,10 +212,15 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     this.watchObj.stID = this.token.getUserId();
     this.watchObj.crsID = crsId
     this.watchObj.lessonContentID = lessonContentID
+<<<<<<< HEAD
     console.log("this.watchObj",this.watchObj)
     this.watch.insertWatch(this.watchObj).subscribe(
       data => {
         console.log("Add")
+=======
+    this.watch.insertWatch(this.watchObj).subscribe(
+      data => {
+>>>>>>> b29cb7576a9bf39d1570e5374c4e74fb80b72193
       }
     )
 
@@ -228,25 +228,25 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   getProgress(crsId: any, lessonContentID: number) {
     this.progress.getLessonContentProgress(crsId).subscribe(
       data => {
-        // console.log(data);  
+    console.log("this.watchObj",data)
         this.watch.getWatch(crsId, lessonContentID).subscribe(
           watchObj => {
             this.checkExist = watchObj
+<<<<<<< HEAD
             // console.log("watchObj---Here",watchObj)
             console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
+=======
+>>>>>>> b29cb7576a9bf39d1570e5374c4e74fb80b72193
             if (this.checkExist == false) {
               data.numOfLessonFinshed++;
               this.insertWatch(lessonContentID, crsId)
               this.progress.UpdateLessonContentProgress(data, data?.id).subscribe(
                 progressUpdateObj => {
-                  // console.log("updated")
                 }
               )
             }
           }
         )
-        // console.log("lessonID",this.idUrl)
-
       })
   }
 

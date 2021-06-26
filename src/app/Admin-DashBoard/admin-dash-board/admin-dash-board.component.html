@@ -6,48 +6,52 @@
             style="margin-top: -42px;margin-left: 39px;margin-bottom: 40px;cursor: pointer;">
             U D A C I T Y</h1>
 
-        <h1 class="icon" (click)="GoToCategory()" id="one">
+        <h3 class="icon" (click)="GoToCategory()" id="one">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Category
-        </h1>
-        <h1 class="icon" (click)="goToSub()" id="three">
+        </h3>
+        <h3 class="icon" (click)="goToSub()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Sub Category
-        </h1>
-        <h1 class="icon" (click)="GoToCourse()" id="two">
+        </h3>
+        <h3 class="icon" (click)="GoToCourse()" id="two">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Course
-        </h1>
-        <h1 class="icon" (click)="goTo()" id="two">
+        </h3>
+        <h3 class="icon" (click)="goTo()" id="two">
             <mat-icon style="fill: currentColor;color: cornsilk;"> add_box</mat-icon> Lectures
-        </h1>
-        <h1 class="icon" (click)="GoToLesson()" id="three">
+        </h3>
+        <h3 class="icon" (click)="GoToLesson()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Lesson
-        </h1>
-        <h1 class="icon" (click)=" goToContent()" id="three">
+        </h3>
+        <h3 class="icon" (click)=" goToContent()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Lesson Content
-        </h1>
-        <h1 class="icon" (click)=" goToCourseVideos()" id="three">
+        </h3>
+        <h3 class="icon" (click)=" goToCourseVideos()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Course Videos
-        </h1>
-        <h1 class="icon" (click)="goToQuestionGroup()" id="three">
+        </h3>
+        <h3 class="icon" (click)="goToQuestionGroup()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Question Group
-        </h1>
-        <h1 class="icon" (click)="goToQuestion()" id="three">
+        </h3>
+        <h3 class="icon" (click)="goToQuestion()" id="three">
             <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> Question
-        </h1>
+        </h3>
 
-            <h1 class="icon"  (click)="goToQuestionOption()" id="three">
+            <h3 class="icon"  (click)="goToQuestionOption()" id="three">
                 <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon>Multi-Choice Questions
-            </h1>
-            <h1  class="icon"  (click)="goToTrueAndFalse()" id="three">
+            </h3>
+            <h3  class="icon"  (click)="goToTrueAndFalse()" id="three">
                 <mat-icon style="fill: currentColor;color: cornsilk;margin-top: -80px;"> add_box</mat-icon> True And
                 False
-            </h1>
+            </h3>
 
 
             <div class="tabsBottom">
-                <h1 (click)="Logout()" style="font-size: 15px;">
-                    <mat-icon>logout</mat-icon>Logout
-
-                </h1>
+                <div style="display: flex;">
+                    <div>
+                        <mat-icon>logout</mat-icon>
+                      </div>
+                      <div>
+                          <h1 (click)="Logout()" style="font-size: 15px;margin-left: 7px;">Logout</h1>
+                      </div>
+                </div>
             </div>
 
     </mat-sidenav>

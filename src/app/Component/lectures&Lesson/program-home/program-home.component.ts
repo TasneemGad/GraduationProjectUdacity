@@ -32,7 +32,11 @@ export class ProgramHomeComponent implements OnInit {
     this.progress.getLessonContentProgress(crsId).subscribe(
       data=>{
         console.log("Data Here",data);
+<<<<<<< HEAD
         this.progressPercent=((data?.numOfLessonFinshed/data.numOfLesson)*100)
+=======
+        this.progressPercent=(Math.round((data.numOfLessonFinshed/data.numOfLesson)*100))
+>>>>>>> b29cb7576a9bf39d1570e5374c4e74fb80b72193
     })
   }
 
