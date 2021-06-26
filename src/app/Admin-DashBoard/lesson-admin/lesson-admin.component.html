@@ -21,66 +21,96 @@
             <div>
                 <mat-label>Name:</mat-label>
                 <br>
-                <input matInput type="text" [(ngModel)]="Lesson.title" id="title" #title name="title" [value]="Lesson.title" >
+                <input matInput minlength="5" maxlength="15" type="text" [(ngModel)]="Lesson.title" id="title" #title="ngModel" name="title" [value]="Lesson.title" required>
+                <div  *ngIf="title?.invalid  && title?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="title?.errors?.required">Lesson Name Required</p> 
+                    </strong>   
+                  </div>  
+                  <div  *ngIf="title?.invalid  && title?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="title?.errors?.required">minlength 5 character</p> 
+                    </strong>   
+                  </div>   
             </div>
-            <mat-error *ngIf="title.oninvalid  && title.ontouchend">
-                <div class="alert alert-danger" >
-                Name Must Be required and Max Length 10 Letter</div>
-            </mat-error>
+           
             <br>
     
             <div>
                 <mat-label>Description:</mat-label><br>
-                <input matInput type="text" id="details" name="details" [(ngModel)]="Lesson.details" #details [value]="Lesson.details">
+                <input matInput minlength="10" maxlength="100" type="text" id="details" name="details"required [(ngModel)]="Lesson.details" #details="ngModel" [value]="Lesson.details">
+                <div  *ngIf="details?.invalid  && details?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="details?.errors?.required">Lesson details Required</p> 
+                    </strong>   
+                  </div>   
+                  <div  *ngIf="details?.invalid  && details?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="details?.errors?.required">minlength 5 character</p> 
+                    </strong>   
+                  </div>   
             </div>
-            <mat-error *ngIf=" details.oninvalid  &&  details.ontouchend">
-                <div class="alert alert-danger" >
-                    Description Must Be required and Max Length 15 Letter</div>
-            </mat-error>
+ 
             <br>
     
             <div>
                 <mat-label>Type: </mat-label><br>
-                <input matInput type="text" id="type" name="type" #type [(ngModel)]="Lesson.type" [value]="Lesson.type">
+                <input matInput minlength="5" maxlength="20" type="text" id="type" name="type" #type="ngModel" [(ngModel)]="Lesson.type" [value]="Lesson.type" required>
+                <div  *ngIf="type?.invalid  && type?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="type?.errors?.required">Lesson type Required</p> 
+                    </strong>   
+                  </div> 
             </div>
-            <mat-error *ngIf="type.oninvalid  && type.ontouchend">
-                <div class="alert alert-danger" >
-                    type Must Be required and Number</div>
-            </mat-error><br>
+           <br>
     
             <div>
                 <mat-label>Lessone Number: </mat-label><br>
-                <input  matInput type="text" id="contentNumber"  name="contentNumber" #contentNumber [(ngModel)]="Lesson.contentNumber" [value]="Lesson.contentNumber" >
+                <input  matInput type="number" id="contentNumber"  name="contentNumber" #contentNumber="ngModel"  required [(ngModel)]="Lesson.contentNumber" [value]="Lesson.contentNumber" >
+                <div  *ngIf="contentNumber?.invalid  && contentNumber?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="contentNumber?.errors?.required">Lesson contentNumber Required</p> 
+                    </strong>   
+                  </div> 
             </div>
-            <mat-error *ngIf="contentNumber.oninvalid  && contentNumber.ontouchend">
-                <div class="alert alert-danger" >
-                    LessoneNumber Must Be required and Number</div>
-            </mat-error>
+           
             <br>
     
             <div>
                 <mat-label>Duration: </mat-label><br>
-                <input matInput type="text" id="duration" name="duration"  #duration [(ngModel)]="Lesson.duration" [value]="Lesson.duration">
+                <input matInput type="number" id="duration" name="duration"  #duration="ngModel" [(ngModel)]="Lesson.duration" [value]="Lesson.duration" required>
+               
+                <div  *ngIf="duration?.invalid  && duration?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="duration?.errors?.required">Lesson duration Required</p> 
+                    </strong>   
+                  </div> 
             </div>
-            <mat-error *ngIf="duration.oninvalid  && duration.ontouchend">
-                <div class="alert alert-danger" >
-                    Duration Must Be required and Number</div>
-            </mat-error>
-            
+         
             <br>
     
             <div>
                 <mat-label>Lecture: </mat-label><br>
-                <select  #lectureId id="lectureId" name="lectureId" [(ngModel)]="Lesson.lectureId" [value]="Lesson.lectureId" >
+                <select required #lectureId="ngModel" id="lectureId" name="lectureId" [(ngModel)]="Lesson.lectureId" [value]="Lesson.lectureId" >
                         <option *ngFor="let lecture of allLecture" value="{{lecture.id}}">{{lecture.tilte}}</option>
                 </select>
+                <div  *ngIf="lectureId?.invalid  && lectureId?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="lectureId?.errors?.required">lecture Name Required</p> 
+                    </strong>   
+                  </div> 
             </div><br>
 
             <div>
                 <mat-label>Course: </mat-label><br>
-                <select  #crsId [(ngModel)]="Lesson.crsId" [value]="Lesson.crsId" id="crsId" name="crsId">
+                <select required #crsId="ngModel" [(ngModel)]="Lesson.crsId" [value]="Lesson.crsId" id="crsId" name="crsId">
                         <option *ngFor="let Course of allCourse" value="{{Course.id}}">{{Course.name}}</option>
                 </select>
+                <div  *ngIf="crsId?.invalid  && crsId?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="crsId?.errors?.required">Course Name Required</p> 
+                    </strong>   
+                  </div> 
             </div><br>
     
 

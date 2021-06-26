@@ -17,29 +17,48 @@
           <form style="padding: 10px; margin-bottom: 10%">
               <div>
                   <mat-label>Name: </mat-label><br>
-                  <input type="text" id="txtSubName" name="txtSubName" #txtSubName [value]="lec.tilte"
-                      [(ngModel)]="lec.tilte">
+                  <input minlength="5" maxlength="15" type="text" id="txtSubName" name="txtSubName" #txtSubName="ngModel" [value]="lec.tilte"
+                      [(ngModel)]="lec.tilte" required>
+                      <div  *ngIf="txtSubName?.invalid  && txtSubName?.touched">
+                        <strong  style="font-size: 15px;">
+                          <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtSubName?.errors?.required">Lecture Name Required</p> 
+                        </strong>   
+                      </div>     
               </div><br>
 
               <div>
                   <mat-label>Description:</mat-label><br>
-                  <textarea id="txtSubDescription" style name="txtSubDescription" #txtSubdescription
-                      [(ngModel)]="lec.lectureDescription">{{lec.lectureDescription}}</textarea>
-              </div>
+                  <textarea minlength="5" maxlength="100" id="lectureDescription" style name="lectureDescription" #lectureDescription="ngModel"
+                      [(ngModel)]="lec.lectureDescription" required>{{lec.lectureDescription}}</textarea>
+                      <div  *ngIf="lectureDescription?.invalid  && lectureDescription?.touched">
+                        <strong  style="font-size: 15px;">
+                          <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="lectureDescription?.errors?.required">Lecture Description Required</p> 
+                        </strong>   
+                      </div>   
+                    </div>
               <div>
                 <mat-label>Number Of Lessen:</mat-label><br>
-                <input type="number" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
-                [value]="lec.lessoneNumber" [(ngModel)]="lec.lessoneNumber">
-            
+                <input type="number" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber"
+                [value]="lec.lessoneNumber" [(ngModel)]="lec.lessoneNumber" required>
+                <div  *ngIf="txtCrsLectureNumber?.invalid  && txtCrsLectureNumber?.touched">
+                  <strong  style="font-size: 15px;">
+                    <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsLectureNumber?.errors?.required">Lecture Number Required</p> 
+                  </strong>   
+                </div>   
                 
             </div>
               
 
               <div>
                   <mat-label>Course: </mat-label><br>
-                  <select [(ngModel)]="lec.courseId" #categoryID id="categoryID" name="categoryID">
+                  <select [(ngModel)]="lec.courseId" #categoryID="ngModel" id="categoryID" name="categoryID" required>
                       <option *ngFor="let crs of course" [value]="crs.id">{{crs.name}}</option>
                   </select>
+                  <div  *ngIf="categoryID?.invalid  && categoryID?.touched">
+                    <strong  style="font-size: 15px;">
+                      <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="categoryID?.errors?.required">Course Name Required</p> 
+                    </strong>   
+                  </div> 
               </div><br>
               <div *ngIf="lec.id!=check; then update else add"></div>
               <ng-template #update>
