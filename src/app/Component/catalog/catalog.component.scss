@@ -39,10 +39,15 @@
     font-weight: 450;
     font-size: 18px;
     color: gray;
+    cursor: pointer;
+
 }
 .coursesName{
     font-size: 15px;
     color: gray;
+    cursor: pointer;
+    line-height: 40px;
+
 }
 .btnDetails{
     text-transform: uppercase;
@@ -78,6 +83,7 @@
 .cateryNameCard{
     color: #758a9f;
     font-size: 12px;
+    cursor: pointer;
     font-weight: 600;
 }
 .courseNameCard{

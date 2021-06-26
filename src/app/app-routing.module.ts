@@ -10,7 +10,6 @@ import { OrderDetailsComponent } from './Component/order-details/order-details.c
 import { PaymentComponent } from './Component/payment/payment.component';
 import { ProgramHomeComponent } from './Component/lectures&Lesson/program-home/program-home.component';
 import { ResourcesComponent } from './Component/resources/resources.component';
-import { LessonDataComponent } from './Component/lectures&Lesson/lesson-data/lesson-data.component';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
 import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
