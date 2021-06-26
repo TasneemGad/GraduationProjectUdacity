@@ -44,7 +44,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   currentLesson: Lesson = { title: " ", contentNumber: 4, type: "h", lectureId: 3, duration: 125, details: "asd", crsId: 0 }
   allContentCurrentLesson: LessonContent[] = [];
   CurrentLesson: LessonContent
-  // progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
+  progressObj:IProgress={id:0,courseId:0,numOfLesson:0,numOfLessonFinshed:0,studentId:""}
   CoursesVideos: CourseVideos
   idLessonContent: number
   id: any
@@ -62,7 +62,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
   StudentAnswer: StudentAnswer
   questionAnswered: StudentAnswer[] = []
   allLessonContent: LessonContent = { id: 1, lectureId: 1, videoLinkId: 1, description: "", questionGroupId: 1, lessonId: 1, title: "", type: "", header: "" }
-  progressObj: IProgress = { id: 0, courseId: 0, numOfLesson: 0, numOfLessonFinshed: 0, studentId: "" }
+  // progressObj: IProgress = { id: 0, courseId: 0, numOfLesson: 0, numOfLessonFinshed: 0, studentId: "" }
   correctAn: any
   currentStudent: string
   apiUrl = "https://localhost:44326";
@@ -217,10 +217,10 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
     this.watchObj.stID = this.token.getUserId();
     this.watchObj.crsID = crsId
     this.watchObj.lessonContentID = lessonContentID
-    // console.log("this.watchObj",this.watchObj)
+    console.log("this.watchObj",this.watchObj)
     this.watch.insertWatch(this.watchObj).subscribe(
       data => {
-        // console.log("Add")
+        console.log("Add")
       }
     )
 
@@ -233,7 +233,7 @@ export class LessonContentComponent implements OnInit, AfterViewInit {
           watchObj => {
             this.checkExist = watchObj
             // console.log("watchObj---Here",watchObj)
-            // console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
+            console.log("Checkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",this.checkExist)
             if (this.checkExist == false) {
               data.numOfLessonFinshed++;
               this.insertWatch(lessonContentID, crsId)
