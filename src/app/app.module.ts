@@ -19,12 +19,40 @@ import { OrderDetailsComponent } from './Component/order-details/order-details.c
 import { PaymentComponent } from './Component/payment/payment.component';
 import { CareerPrepComponent } from './Component/career-prep/career-prep.component';
 import {MatIconModule} from '@angular/material/icon';
-import { ClassRoomComponent } from './Component/class-room/class-room.component';
-import { PersonalInformationComponent } from './Component/Settings/personal-information/personal-information.component';
 import { NewPasswordComponent } from './Component/Settings/new-password/new-password.component';
 import { NotificationsComponent } from './Component/Settings/notifications/notifications.component';
 import { SettingsComponent } from './Component/Settings/settings/settings.component';
 import { LinkedAccountComponent } from './Component/Settings/linked-account/linked-account.component';
+
+import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
+import { UploadComponent } from './reusableComponents/upload/upload.component';
+import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
+import { CorporateSocialResponsibilityComponent } from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
+import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
+import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
+import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
+
+
+import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
+
+import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
+import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/question-admin.component';
+import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
+import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
+
+import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
+
+import { GovernmentComponent } from './Component/government/government.component';
+import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
+import { OverViewComponent } from './Component/over-view/over-view.component';
+import { ApproachComponent } from './Component/approach/approach.component';
+import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
+import { SolutionComponent } from './Component/solution/solution.component';
+import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
+import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
+import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
 import { LanguagePreferenceComponent } from './Component/Settings/language-preference/language-preference.component';
 import { SubscriptionsBillingComponent } from './Component/Settings/subscriptions-billing/subscriptions-billing.component';
 import { CoursesComponent } from './Component/Settings/courses/courses.component';
@@ -37,33 +65,8 @@ import { ResourcesComponent } from './Component/resources/resources.component';
 import { AboutASComponent } from './Component/about-as/about-as.component';
 import { CatalogComponent } from './Component/catalog/catalog.component';
 import { FormsModule } from '@angular/forms';
-import { CoursesFilterPipe } from './SharedModels/Interface/course-Filter';
-import { UploadComponent } from './reusableComponents/upload/upload.component';
-import { AdminDashBoardComponent } from './Admin-DashBoard/admin-dash-board/admin-dash-board.component';
-import { SubCategoryComponent } from './Admin-DashBoard/sub-category/sub-category.component';
-import { CorporateSocialResponsibilityComponent } from './Component/corporate-social-responsibility/corporate-social-responsibility.component';
-import { LecturesAdminComponent } from './Admin-DashBoard/lectures-admin/lectures-admin.component';
-import { LessonContentAdminComponent } from './Admin-DashBoard/lesson-content-admin/lesson-content-admin.component';
-import { CourseAdminComponent } from './Admin-DashBoard/course-admin/course-admin.component';
-import { LessonAdminComponent } from './Admin-DashBoard/lesson-admin/lesson-admin.component';
-import { CategoryAdminComponent } from './Admin-DashBoard/category-admin/category-admin.component';
-
-import { PageNotFoundComponent } from './Component/page-not-found/page-not-found.component';
-
-import { CourseVideosComponent } from './Admin-DashBoard/course-videos/course-videos.component';
-import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-admin/question-group-admin.component';
-import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/question-admin.component';
-import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
-import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
-
-import { GovernmentComponent } from './Component/government/government.component';
-import { BecomeAnInstractorComponent } from './Component/become-an-instractor/become-an-instractor.component';
-import { OverViewComponent } from './Component/over-view/over-view.component';
-import { ApproachComponent } from './Component/approach/approach.component';
-import { StudentSucessComponent } from './Component/student-sucess/student-sucess.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BecomeAMentorComponent } from './Component/become-amentor/become-amentor.component';
-import { SolutionComponent } from './Component/solution/solution.component';
+import { PersonalInformationComponent } from './Component/Settings/personal-information/personal-information.component';
+import { ClassRoomComponent } from './Component/class-room/class-room.component';
 
 @NgModule({
   declarations: [
@@ -89,18 +92,21 @@ import { SolutionComponent } from './Component/solution/solution.component';
     LinkedAccountComponent,
     LanguagePreferenceComponent,
     SubscriptionsBillingComponent,
+    QuestionGroupAdminComponent,
+    QuestionOptionesAdminComponent,
     CoursesComponent,
     LecturesComponent,
     LessonsComponent,
     LessonContentComponent,
     CoreCurriculumComponent,
+    QuestionAdminComponent,
     ProgramHomeComponent,
     ResourcesComponent,
     AboutASComponent,
     CatalogComponent,
     CoursesFilterPipe,
     UploadComponent,
-    
+    TrueAndFalsesAdminComponent,
     CatalogComponent,    
     CoursesFilterPipe,
     AdminDashBoardComponent,
@@ -115,7 +121,6 @@ import { SolutionComponent } from './Component/solution/solution.component';
     PageNotFoundComponent,
     LecturesAdminComponent,
     LessonAdminComponent,
-    CourseVideosComponent,
     GovernmentComponent,
     BecomeAnInstractorComponent,
     OverViewComponent,
@@ -123,8 +128,10 @@ import { SolutionComponent } from './Component/solution/solution.component';
     StudentSucessComponent,
     BecomeAMentorComponent,
     SolutionComponent,
-    TrueAndFalsesAdminComponent
+    TrueAndFalsesAdminComponent,
 
+    CourseVideosComponent,
+    
   ],
   imports: [
     BrowserModule,
