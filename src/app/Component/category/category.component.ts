@@ -36,6 +36,7 @@ export class CategoryComponent implements OnInit {
   studentStories: IStudentStory
   defultSubID: number
   freeCourses: ICourse[] = []
+  apiUrl = "https://localhost:44326";
 
   constructor(private catService: CategoryService,
     private courseServise: CoursesService,
@@ -64,7 +65,10 @@ export class CategoryComponent implements OnInit {
  
 
   
-
+  public createImgPath = (serverPath: string) => {
+    // console.log(`${this.apiUrl}/${serverPath}`)
+    return `${this.apiUrl}/${serverPath}`;
+  }
   getCatigoreis() {
     (this.catService.getCategories().subscribe(
       data => {

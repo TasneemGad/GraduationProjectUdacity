@@ -16,7 +16,7 @@
     <div style="position: absolute; right: 0px; width: 50%; ">
         <div *ngFor = "let category of Categoies" >
             <div *ngIf="currentCategoryName == category.catName">
-                <img src="{{category.catImage}}"  width="100%" height="450px"> 
+                <img [src]="createImgPath(category.catImage)"  width="100%" height="450px"> 
             </div>
         </div>
     </div>
