@@ -67,17 +67,18 @@
             </div>
         </section>
         <section class="story">
-            <mat-label>ALUMNI SUCCESS</mat-label><br><br>
-            <img src="assets/1.PNG" alt="error" width="110px" height="150px" ><br><br>          
-            <div >
-                <div *ngFor="let std of stories">
-                    <div *ngIf="std.specialzation === currentSubName">
-                        <p >ddd{{std.story}}</p><br><br> 
-                        <mat-label> Graduate of the {{std.specialzation}}</mat-label>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div *ngFor="let std of stories">
+         
+                  <div *ngIf="std.specialzation === currentSubName">
+          <img src="../../assets/1.PNG" alt="error" width="110px" height="150px" ><br><br>
+          <mat-label>ALUMNI SUCCESS</mat-label><br><br>
+                      <p >{{std.story}}</p>
+                      <br><br> 
+                      <mat-label> Graduate of the {{std.specialzation}}</mat-label>
+                      <br><br><br><br> </div>
+              </div>
+      
+      </section>
     </section>
 </section>
 <!-- --------------------------------------------------- -->
