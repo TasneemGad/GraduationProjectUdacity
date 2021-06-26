@@ -77,7 +77,7 @@ const routes: Routes = [
   { path: 'Upload', component:UploadComponent, data: { footer: true, header: true }},
 
   // Payment 
-  { path: 'orderDetails', component: OrderDetailsComponent },
+  { path: 'orderDetails/:id', component: OrderDetailsComponent },
   { path: 'payment', component: PaymentComponent },
 
   //ClassRoom

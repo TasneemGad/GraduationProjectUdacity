@@ -630,19 +630,22 @@
 
 <section class="reviews">
   <mat-label class="reviewsTitel">Top Student Reviews</mat-label><br>
+  {{Reviews |json}}
   <div class="reviewsPart">
-      <div *ngFor="let review of Reviews" > 
+      <div *ngFor="let reviewObj of Reviews" > 
+        
+        {{reviewObj|json}}
           <mat-card class="eachReview dataOfObjective"  >
-              <mat-label class="reviewName">{{review.fullName}} 
+              <mat-label class="reviewName">{{reviewObj.fullName}} 
                 <br>
                 <span>
-                  <mat-icon style="fill: currentColor;color: orange;padding: 10px;"   >star {{review.rate}}</mat-icon>
-                  <p> </p>
+                  <!-- <mat-icon style="fill: currentColor;color: orange;padding: 10px;"   >star {{review.rate}}</mat-icon> -->
+                  <!-- <p> </p> -->
                   <!-- <star-rating-comp ></star-rating-comp> -->
                   <!-- <img src="/assets/Filled_star.png"> -->
                 </span> 
              </mat-label><br><br>
-              <mat-card-content>{{review.stdReviews}}</mat-card-content>
+              <mat-card-content>{{reviewObj.stdReviews}}</mat-card-content>
           </mat-card>
       </div>
   </div>
@@ -756,7 +759,7 @@
         </mat-card-header>
         <mat-card-actions>
           <span *ngIf="courseList.price==0">
-          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/ClassRoom">Enroll Now</button>
+          <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="ClassRoom">Enroll Now</button>
         </span>
         <span *ngIf="courseList.price!=0">
         <button mat-raised-button style="margin-left: 50px; background-color: #03607a;color: white;width: 250px;height: 50px;letter-spacing: 3px;text-transform: uppercase;margin-top: 20px;" routerLink="/orderDetails/{{courseList.id}}">Enroll Now</button>
