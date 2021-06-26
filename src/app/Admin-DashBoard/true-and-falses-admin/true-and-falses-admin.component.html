@@ -17,16 +17,37 @@
             <form style="padding: 10px; margin-bottom: 10%">
             
                 <div>
- 
+                    <!-- <div id="crsCategoryDiv">
+                        <label >Course Category</label>
+                        <select class="form-control"   #CourseSpecializationID="ngModel" [(ngModel)]="form.CourseSpecializationID" id="CourseSpecializationID" name="CourseSpecializationID" required
+                        [class.is-invalid]="CourseSpecializationID.invalid && CourseSpecializationID.touched" >
+                  
+                            <option> choose specialization</option>
+                            <option *ngFor="let item of specService.specializations" [value]="item.id">
+                                {{item.specializationID}}
+                            </option>
+                        </select>
+                        <small class="text-danger" [class.d-none]="CourseSpecializationID.untouched ||CourseSpecializationID.valid">
+                            Course Category Is Required</small>
+                            <br>
+                        <a style="margin: 10px;" href="/add-spec">Create New</a>
+                    </div> -->
                     <mat-label>Question: </mat-label><br>
-                    <select [(ngModel)]="TrueAndFalseQuestion.qustionId" #qustionId id="qustionId" name="qustionId">
+                    <select [(ngModel)]="TrueAndFalseQuestion.qustionId" #qustionId="ngModel" id="qustionId" name="qustionId" 
+                    required="required"  [class.is-invalid]="qustionId.invalid && qustionId.touched" >
+                        <option value="0">Choose Question</option>
                         <option *ngFor="let Que of QuestionList" value="{{Que.id}}">{{Que.title}}</option>
                     </select>
+                  <small class="text-danger" [class.d-none]="qustionId.untouched ||qustionId.valid">
+                           Question Is Required</small>
+                            <br>  
                 </div><br>
                 <div>
                     <mat-label>Right Answer: </mat-label><br>
-                    <input type="text" id="RightAnswer" name="RightAnswer" #RightAnswer [value]="TrueAndFalseQuestion.right"
-                        [(ngModel)]="TrueAndFalseQuestion.right">
+                    <input type="text" id="RightAnswer" name="RightAnswer" #RightAnswer="ngModel" [value]="TrueAndFalseQuestion.right"
+                        [(ngModel)]="TrueAndFalseQuestion.right" class="form-control" required        
+                        [class.is-invalid]="RightAnswer.invalid && RightAnswer.touched" >
+                        <small class="text-danger" [class.d-none]="RightAnswer.untouched ||RightAnswer.valid">Right Answer Is Required</small>
                 </div>
                 <br>
            <div *ngIf="TrueAndFalseQuestion.id!=check; then update else add"></div>

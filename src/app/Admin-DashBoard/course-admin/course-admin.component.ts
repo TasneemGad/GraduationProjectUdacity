@@ -119,6 +119,8 @@ export class CourseAdminComponent implements OnInit {
 
 
   AddNewCourse(){
+    if(this.Course.crsLogo != "" && this.Course.partLogo != "")
+    {
     console.log(this.Course)
     this.courseService.insertCourses(this.Course).subscribe(
       addesCrs=>{
@@ -128,6 +130,7 @@ export class CourseAdminComponent implements OnInit {
         this.getAllCourses();
       }
     )
+    }
   }
   UpdateCrsData(){
     this.courseService.updateCourses(this.Course.id,this.Course).subscribe(

@@ -17,14 +17,24 @@
             <form style="padding: 10px; margin-bottom: 10%">
                 <div>
                     <mat-label>Name: </mat-label><br>
-                    <input type="text" id="txtCrsName" name="txtCrsName" #txtCrsName [value]="Course.name"
+                    <input type="text" id="txtCrsName" name="txtCrsName" #txtCrsName="ngModel" required [value]="Course.name"
                         [(ngModel)]="Course.name">
+                    <div  *ngIf="txtCrsName?.invalid  && txtCrsName?.touched">
+                        <strong  style="font-size: 15px;">
+                        <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsName?.errors?.required">Name Required</p> 
+                        </strong>   
+                    </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Description:</mat-label><br>
-                    <textarea id="txtCrsDescription" style name="txtCrsDescription" #txtCrsdescription
+                    <textarea id="txtCrsDescription" style name="txtCrsDescription" #txtCrsdescription="ngModel" required
                         [(ngModel)]="Course.description">{{Course.description}}</textarea>
+                    <div  *ngIf="txtCrsdescription?.invalid  && txtCrsdescription?.touched">
+                        <strong  style="font-size: 15px;">
+                        <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsdescription?.errors?.required">Course Description Required</p> 
+                        </strong>   
+                    </div> 
                 </div>
 
                 <div>
@@ -48,50 +58,80 @@
 
                 <div>
                     <mat-label>Price:</mat-label><br>
-                    <input type="number" #txtCrsPrice id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
+                    <input type="number" #txtCrsPrice="ngModel" required id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
                         [(ngModel)]="Course.price">
+                        <div  *ngIf="txtCrsPrice?.invalid  && txtCrsPrice?.touched">
+                            <strong  style="font-size: 15px;">
+                            <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsPrice?.errors?.required">Price Required</p> 
+                            </strong>   
+                        </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Discount:</mat-label><br>
-                    <input type="number" #txtCrsDiscount id="txtCrsDiscount" name="txtCrsDiscount"
+                    <input type="number" #txtCrsDiscount="ngModel" id="txtCrsDiscount" name="txtCrsDiscount" required
                         [(ngModel)]="Course.discount" [value]="Course.discount">
+                        <div  *ngIf="txtCrsDiscount?.invalid  && txtCrsDiscount?.touched">
+                            <strong  style="font-size: 15px;">
+                            <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsDiscount?.errors?.required">Discount Required</p> 
+                            </strong>   
+                        </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Duration: </mat-label><br>
-                    <input type="number" #txtCrsDuration id="txtCrsDuration" name="txtCrsDuration"
+                    <input type="number" #txtCrsDuration="ngModel" id="txtCrsDuration" name="txtCrsDuration" required
                         [(ngModel)]="Course.duration" [value]="Course.duration">
+                        <div  *ngIf="txtCrsDuration?.invalid  && txtCrsDuration?.touched">
+                            <strong  style="font-size: 15px;">
+                            <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsDuration?.errors?.required">Duration Required</p> 
+                            </strong>   
+                        </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Type: </mat-label><br>
-                    <input type="text" #txtCrsType id="txtCrsType" name="txtCrsType" [(ngModel)]="Course.type"
+                    <input type="text" #txtCrsType="ngModel" id="txtCrsType" name="txtCrsType" [(ngModel)]="Course.type" required
                         [value]="Course.type">
+                        <div  *ngIf="txtCrsType?.invalid  && txtCrsType?.touched">
+                            <strong  style="font-size: 15px;">
+                            <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsType?.errors?.required">Type Required</p> 
+                            </strong>   
+                        </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Lecture Number: </mat-label><br>
-                    <input type="number" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
+                    <input type="number" min="1" #txtCrsLectureNumber="ngModel" id="txtCrsLectureNumber" name="txtCrsLectureNumber" required
                         [value]="Course.lectureNumber" [(ngModel)]="Course.lectureNumber">
+                        <div  *ngIf="txtCrsLectureNumber?.invalid  && txtCrsLectureNumber?.touched">
+                            <strong  style="font-size: 15px;">
+                            <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsLectureNumber?.errors?.required">Lecture Number Required</p> 
+                            </strong>   
+                        </div> 
                 </div><br>
 
                 <div>
                     <mat-label>Category: </mat-label><br>
-                    <select [(ngModel)]="Course.categoryId" #categoryId id="categoryId" name="categoryId">
+                    <select [(ngModel)]="Course.categoryId" #categoryId="ngModel" id="categoryId" name="categoryId" required>
                         <option *ngFor="let cat of allCategory" [value]="cat.id">{{cat.catName}}</option>
                     </select>
                 </div><br>
 
                 <div>
                     <mat-label>PreRequest: </mat-label><br>
-                    <textarea id="txtCrsPreRequest" style name="txtCrsPreRequest" #txtCrsPreRequest
+                    <textarea id="txtCrsPreRequest" style name="txtCrsPreRequest" #txtCrsPreRequest="ngModel" required
                         [(ngModel)]="Course.preRequest">{{Course.preRequest}}</textarea>
+                    <div  *ngIf="txtCrsPreRequest?.invalid  && txtCrsPreRequest?.touched">
+                        <strong  style="font-size: 15px;">
+                        <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtCrsPreRequest?.errors?.required">PreRequestn Required</p> 
+                        </strong>   
+                    </div> 
                 </div><br>
 
                 <div>
                     <mat-label>SubCategory:</mat-label><br>
-                    <select [(ngModel)]="Course.subCategoryId" #subCategoryId id="subCategoryId" name="subCategoryId">
+                    <select [(ngModel)]="Course.subCategoryId" #subCategoryId="ngModel" id="subCategoryId" name="subCategoryId" required>
                         <option *ngFor="let subCategory of allSubcategory" [value]="subCategory.id">
                             {{subCategory.subCategoryTitle}}</option>
                     </select>
