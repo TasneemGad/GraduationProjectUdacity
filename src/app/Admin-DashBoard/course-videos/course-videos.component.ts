@@ -67,16 +67,17 @@ export class CourseVideosComponent implements OnInit {
 }
 
 AddNewCourseVideo(){
+  if(this.CrsVideo.videoURL)
+  {
   console.log(this.CrsVideo)
   this.crsVideoService.insertCourseViedo(this.CrsVideo).subscribe(
     data=>{
       console.log("Done")
       this.getCrsVideosList();
     this.isOpen=false
-
-
     }
   )
+  }
 }
 
 getCrsVideosList(){

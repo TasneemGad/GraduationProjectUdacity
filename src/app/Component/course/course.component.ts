@@ -21,8 +21,8 @@ export class CourseComponent implements OnInit {
 isClick:boolean=false
 isClosed:boolean=false
 text="Show more";
-textHide="SEE DETAILS";
-Isdetails:boolean=false
+textHide="HIDE DETAILS";
+Isdetails:boolean=true
    courseList:ICourse
    courseListImg:ICourse[]
   //  lectureList:Lectures
@@ -33,7 +33,7 @@ Isdetails:boolean=false
    Reviews:IReviews[] = []
    Error:string
    twoCoursesSuggest:ICourse[] = []
-   lectureAllListcrs:Lectures[]=[]
+   lectListcrs:Lectures[]
    apiUrl:string="https://localhost:44326";
    ExisterollmentFlag:boolean=false
 
@@ -61,6 +61,7 @@ Isdetails:boolean=false
     this.getLecturesByID(this.idUrl);
     this.getLectureses();
     this.getTwoCourses(this.idUrl)
+    this.getLecturesesByCrs(this.idUrl)
   }
   
 
@@ -82,7 +83,7 @@ Isdetails:boolean=false
   }
   detailsHide(){
     this.Isdetails = !this.Isdetails
-    this.textHide=this.Isdetails?"HIDE DETAILS" :"SEE DETAILS"
+    this.textHide=this.Isdetails?"SEE DETAILS":"HIDE DETAILS" 
   }
   getCourse(){
     this.courseServices.getCourses().subscribe(sucess=>{console.log(this.courseListImg=sucess , console.log("cou",this.courseListImg))})
@@ -99,9 +100,9 @@ Isdetails:boolean=false
   }
   getLecturesesByCrs(id:number){
     this.lectureServices.getLecturesByCoursID(id).subscribe(suces=>{
-   console.log("enterall")
-     this.lectureAllListcrs=suces,
-     console.log("enterajl",this.lectureAllList)},err=>{console.log(err)})
+   console.log("enterall22222")
+     this.lectListcrs=suces,
+     console.log("enterajl",this.lectListcrs)},err=>{console.log(err)})
   }
   getLectureses(){
     this.lectureServices.getAllLectures().subscribe(suces=>{

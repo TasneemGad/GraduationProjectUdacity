@@ -156,7 +156,7 @@
   <img   [src]="createImgPath(courseList.partLogo)" style="margin-top: 50px; margin-left: -200px; width: 150px; height: 100px" />
 </div>
 
-<section id="details">
+<section id="details" >
   <div style="display: flex; margin-bottom: 30px; margin-top: 30px">
     <h1 style="
         font-size: 35px;
@@ -187,8 +187,8 @@
       align-items: center;
     ">
  
- <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168); ">
-  <mat-card style=" align-items: center; ">
+ <div style="box-shadow: 2px 2px 8px rgb(168, 168, 168);  width: 80%; margin: 0 auto;">
+  <mat-card style=" align-items: center; min-height: 400px;">
     <mat-card-header style="display: flex">
       <div style="float: left">
         <mat-card-title style="
@@ -207,10 +207,11 @@
       <div>
         <h1>
           <img  [src]="createImgPath(courseList.crsLogo)" style="
-              width: 550px;
-              height: 300px;
-              float: right;
-             margin-top: -15px;
+              width: 35%;
+              height: 200px;
+              position: absolute;
+              right: 0;
+              margin-top: -15px;
             " />
         </h1>
 
@@ -253,10 +254,15 @@
               <a style="font-size: 15px; text-decoration: underline ;margin-bottom: 20px;">See prerequisites in detail</a>
             </div>
             <!-- <div class="vl1"></div > -->
-            <div *ngFor="let lecture of lectureAllListcrs">
-              <span>fffffffffffffffffffff{{lecture}}</span>
-              <h1 style="font-weight: 500;margin-top: 20px;">{{ lecture.tilte }}</h1>
-              <p style="font-size: 15px;width: 600px;">{{ lecture.lectureDescription }}</p>
+              <span>iii{{lectListcrs[0].lectureDescription|json}}</span>
+<span *ngFor="let item of lectListcrs">
+  <span>fffffffffffffffffffff{{item.tilte|json}}</span>
+
+</span>
+            <div *ngFor="let item of lectListcrs" >
+              <span>fffffffffffffffffffff{{item.tilte|json}}</span>
+              <h1 style="font-weight: 500;margin-top: 20px;">{{ item.tilte }}</h1>
+              <p style="font-size: 15px;width: 600px;">{{ item.lectureDescription }}</p>
             </div>
           </mat-card-subtitle>
           <mat-card class="boxCouse1">
