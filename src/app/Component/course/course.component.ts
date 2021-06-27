@@ -85,7 +85,7 @@ Isdetails:boolean=true
   }
   detailsHide(){
     this.Isdetails = !this.Isdetails
-    this.textHide=this.Isdetails?"SEE DETAILS":"HIDE DETAILS" 
+    this.textHide=this.Isdetails?"HIDE DETAILS":"SEE DETAILS" 
   }
   getCourse(){
     this.courseServices.getCourses().subscribe(sucess=>{console.log(this.courseListImg=sucess , console.log("cou",this.courseListImg))})
