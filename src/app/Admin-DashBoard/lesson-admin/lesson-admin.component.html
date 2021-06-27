@@ -66,7 +66,7 @@
     
             <div>
                 <mat-label>Lessone Number: </mat-label><br>
-                <input  matInput type="number" id="contentNumber"  name="contentNumber" #contentNumber="ngModel"  required [(ngModel)]="Lesson.contentNumber" [value]="Lesson.contentNumber" >
+                <input min="0" oninput="validity.valid||(value='');" matInput type="number" id="contentNumber"  name="contentNumber" #contentNumber="ngModel"  required [(ngModel)]="Lesson.contentNumber" [value]="Lesson.contentNumber" >
                 <div  *ngIf="contentNumber?.invalid  && contentNumber?.touched">
                     <strong  style="font-size: 15px;">
                       <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="contentNumber?.errors?.required">Lesson contentNumber Required</p> 
@@ -78,7 +78,7 @@
     
             <div>
                 <mat-label>Duration: </mat-label><br>
-                <input matInput type="number" id="duration" name="duration"  #duration="ngModel" [(ngModel)]="Lesson.duration" [value]="Lesson.duration" required>
+                <input min="0" oninput="validity.valid||(value='');" allow-negative="false" matInput type="number" id="duration" name="duration"  #duration="ngModel" [(ngModel)]="Lesson.duration" [value]="Lesson.duration" required>
                
                 <div  *ngIf="duration?.invalid  && duration?.touched">
                     <strong  style="font-size: 15px;">

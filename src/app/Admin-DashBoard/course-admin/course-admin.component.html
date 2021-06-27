@@ -48,19 +48,19 @@
 
                 <div>
                     <mat-label>Price:</mat-label><br>
-                    <input type="number" #txtCrsPrice id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsPrice id="txtCrsPrice" name="txtCrsPrice" [value]="Course.price"
                         [(ngModel)]="Course.price">
                 </div><br>
 
                 <div>
                     <mat-label>Discount:</mat-label><br>
-                    <input type="number" #txtCrsDiscount id="txtCrsDiscount" name="txtCrsDiscount"
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsDiscount id="txtCrsDiscount" name="txtCrsDiscount"
                         [(ngModel)]="Course.discount" [value]="Course.discount">
                 </div><br>
 
                 <div>
                     <mat-label>Duration: </mat-label><br>
-                    <input type="number" #txtCrsDuration id="txtCrsDuration" name="txtCrsDuration"
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsDuration id="txtCrsDuration" name="txtCrsDuration"
                         [(ngModel)]="Course.duration" [value]="Course.duration">
                 </div><br>
 
@@ -72,7 +72,7 @@
 
                 <div>
                     <mat-label>Lecture Number: </mat-label><br>
-                    <input type="number" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
+                    <input type="number" min="0" oninput="validity.valid||(value='');" #txtCrsLectureNumber id="txtCrsLectureNumber" name="txtCrsLectureNumber"
                         [value]="Course.lectureNumber" [(ngModel)]="Course.lectureNumber">
                 </div><br>
 
