@@ -52,6 +52,7 @@ import { QuestionGroupAdminComponent } from './Admin-DashBoard/question-group-ad
 import { QuestionAdminComponent } from './Admin-DashBoard/question-admin/question-admin.component';
 import { QuestionOptionesAdminComponent } from './Admin-DashBoard/question-optiones-admin/question-optiones-admin.component';
 import { TrueAndFalsesAdminComponent } from './Admin-DashBoard/true-and-falses-admin/true-and-falses-admin.component';
+import { AuthGuard } from './Helper/auth.guard';
 
 
 
@@ -81,7 +82,7 @@ const routes: Routes = [
   { path: 'payment', component: PaymentComponent },
 
   //ClassRoom
-  { path: 'ClassRoom', component: ClassRoomComponent },
+  { path: 'ClassRoom', component: ClassRoomComponent,canActivate:[AuthGuard] },
   { path:'course/all', component:CatalogComponent, data: { footer: true, header: true }},
 
   // Setting
@@ -99,7 +100,7 @@ const routes: Routes = [
         component: SubscriptionsBillingComponent,
       },
       { path: 'Courses', component: CoursesComponent },
-    ],
+    ],canActivate:[AuthGuard]
   },
 
   //Lectures
@@ -110,7 +111,7 @@ const routes: Routes = [
       { path: 'coreCurriculum/:id', component: CoreCurriculumComponent },
       { path: 'ProgramHome/:id', component: ProgramHomeComponent },
       { path: 'Lesson/:id', component: LessonsComponent },
-    ],
+    ],canActivate:[AuthGuard]
   },
 
   { path: 'lessonContent/:id/:idContent',component: LessonContentComponent,
@@ -134,7 +135,7 @@ const routes: Routes = [
      { path:"TrueAndFalses" ,component:TrueAndFalsesAdminComponent},
      {path:"QuestionOptiones" ,component:QuestionOptionesAdminComponent}
 
-   ]},
+   ],canActivate:[AuthGuard]},
   //Nothing
   
   {path:'Government',component: GovernmentComponent,data: { footer: true, header: true }},
