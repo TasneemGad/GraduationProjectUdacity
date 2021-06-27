@@ -42,8 +42,13 @@
 
             <div>
                 <mat-label>Question Title:</mat-label><br>
-                <input type="text" id="txtQuestionTitle" name="txtQuestionTitle" #txtQuestionTitle
-                    [value]="Question.title" [(ngModel)]="Question.title">
+                <input type="text" id="txtQuestionTitle" name="txtQuestionTitle" 
+                    [value]="Question.title" [(ngModel)]="Question.title" #txtQuestionTitle="ngModel"   required>
+                    <div  *ngIf="txtQuestionTitle?.invalid  && txtQuestionTitle?.touched">
+                        <strong  style="font-size: 15px;">
+                          <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="txtQuestionTitle?.errors?.required">Question Title Required</p> 
+                        </strong>   
+                      </div> 
             </div>
 
             <div>

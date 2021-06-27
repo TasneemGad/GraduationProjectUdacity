@@ -137,19 +137,40 @@
         <!-- <input type="text" class="form-control" placeholder="id" hidden formControlName="id"> -->
         <div class="col">
         <h1>    Lesson Content Title</h1>
-          <input type="text" class="form-control" placeholder="tilte"  [value]="lessonContent.title" [(ngModel)]="lessonContent.title" id="title" #title name="title">
+          <input type="text" class="form-control" placeholder="tilte"  [value]="lessonContent.title" [(ngModel)]="lessonContent.title"  #title="ngModel" id="title"  required>
+          <div  *ngIf="title?.invalid  && title?.touched">
+            <strong  style="font-size: 15px;">
+              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="title?.errors?.required">Title Required</p> 
+            </strong>   
+          </div> 
         </div>
         <div class="col">
           <h1>    Lesson Content Description</h1>
-          <input type="text" class="form-control" placeholder="Lesson Content  Description" [value]="lessonContent.description" [(ngModel)]="lessonContent.description" id="description" #description name="description">
+          <input type="text" class="form-control" placeholder="Lesson Content  Description" [value]="lessonContent.description" [(ngModel)]="lessonContent.description"  #description="ngModel" id="description"  required>
+          <div  *ngIf="description?.invalid  && description?.touched">
+            <strong  style="font-size: 15px;">
+              <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="description?.errors?.required">Lesson Content  Description Required</p> 
+            </strong>   
+          </div>
         </div>
         <div class="col">
             <h1>    Lesson Content Header</h1>
-            <input type="text" class="form-control" placeholder="Lesson Content  Header" [value]="lessonContent.header" [(ngModel)]="lessonContent.header" id="header" #header name="header">
+           
+            <input type="text" class="form-control" placeholder="Lesson Content  Header" [value]="lessonContent.header" [(ngModel)]="lessonContent.header" id="header"  #header="ngModel"  required>
+            <div  *ngIf="header?.invalid  && header?.touched">
+              <strong  style="font-size: 15px;">
+                <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="header?.errors?.required">Lesson Content  Header Required</p> 
+              </strong>   
+            </div>
           </div>
           <div class="col">
             <h1>    Lesson Content Type</h1>
-            <input type="text" class="form-control" placeholder="Lesson Content Type" [value]="lessonContent.type" [(ngModel)]="lessonContent.type" id="type" #type name="type">
+            <input type="text" class="form-control" placeholder="Lesson Content Type" [value]="lessonContent.type" [(ngModel)]="lessonContent.type" id="type"  #type="ngModel"  required>
+            <div  *ngIf="type?.invalid  && type?.touched">
+              <strong  style="font-size: 15px;">
+                <p class="alert alert-danger"  style="font-size: 15px;padding: 0;" *ngIf="type?.errors?.required">Lesson Content Type Required</p> 
+              </strong>   
+            </div>
           </div>
           
           <div class="col">
