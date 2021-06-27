@@ -43,42 +43,43 @@ gratuatedCourses:ICourse[]=[]
  }
   }
 
-  AllStdCourses(){
-    this.Enrollservices.getAllStdEnrolledCourses().subscribe(
-      data => {
-        console.log(data)
-        for (let enrollCrs of data) {
-            console.log(enrollCrs.courseId)
-          this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
-            crsData => {              
-              this.CourseList.push(crsData);
-              this.progress.getLessonContentProgress(crsData.id).subscribe(
-                dataProgress=>{
-                  if(dataProgress.numOfLesson==dataProgress.numOfLessonFinshed)
-                  {
-                  this.GraduatedCoursesList.push(crsData)
-                  this.isQratuate=true
-                  }
+AllStdCourses(){
+  this.Enrollservices.getAllStdEnrolledCourses().subscribe(
+    data => {
+      console.log(data)
+      for (let enrollCrs of data) {
+          console.log(enrollCrs.courseId)
+        this.courseServices.getCoursesByID(enrollCrs.courseId).subscribe(
+          crsData => {              
+            this.CourseList.push(crsData);
+            this.progress.getLessonContentProgress(crsData.id).subscribe(
+              dataProgress=>{
+                if(dataProgress.numOfLesson==dataProgress.numOfLessonFinshed)
+                {
+                this.GraduatedCoursesList.push(crsData)
+                this.isQratuate=true
+                }
 
-                }
-              )
-                if(crsData.price==0){
-                  this.isFree = true
-                  this.freeCoures.push(crsData);
-                }
-                else if(crsData.price>0){
-                  this.isPaid = true
-                  this.paidCourses.push(crsData);
-                }
-                })
-            }
-      })
-      }
+              }
+            )
+              if(crsData.price==0){
+                this.isFree = true
+                this.freeCoures.push(crsData);
+              }
+              else if(crsData.price>0){
+                this.isPaid = true
+                this.paidCourses.push(crsData);
+              }
+              })
+          }
+    })
+    }
 routToSetting(){
 this.router.navigate(['Setting'])
 }
 Logout(){
-this.Authservices.logout();   
+  localStorage.removeItem("lastCourseId")
+  this.Authservices.logout();   
 }
 lastActiveCourse(lastCourseId:any){
   localStorage.setItem("lastCourseId",lastCourseId)

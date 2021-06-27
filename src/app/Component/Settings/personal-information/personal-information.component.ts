@@ -49,8 +49,6 @@ export class PersonalInformationComponent implements OnInit {
         }
       )
   }
-
-
   UpdateUserInfo(userName:string,email:string,tel:string){  
   this.accountService.getStudentInformation(this.tokenUser.getUserId()).subscribe(
     data=>{    
@@ -62,6 +60,7 @@ export class PersonalInformationComponent implements OnInit {
       testObj=>{
         console.log("test",testObj)
         this.alertFlag=true;
+        window.location.reload();
       }
     )
 
@@ -71,12 +70,12 @@ export class PersonalInformationComponent implements OnInit {
     console.log("User Name Updated",userName,email,tel)
 
   }
-getNames(){
-  console.log("Model")
-  this.userInfo.id=this.UserForm.value.id
-    this.userInfo.userName=this.UserForm.value.userName
-}
-  
+  getNames(){
+    console.log("Model")
+    this.userInfo.id=this.UserForm.value.id
+      this.userInfo.userName=this.UserForm.value.userName
+  }
+
   // upload image
    public uploadFinished = (event:any) => { 
      this.response = event;
@@ -93,7 +92,6 @@ getNames(){
     )
      console.log(this.response)
    }
-
    public createImgPath = (serverPath: string) => {
         console.log(`${this.apiUrl}/${serverPath}`)
      return `${this.apiUrl}/${serverPath}`;

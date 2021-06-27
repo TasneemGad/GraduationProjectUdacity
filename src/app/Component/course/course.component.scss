@@ -103,11 +103,10 @@ header .overlay {
 #details{
   display: block;
   width: auto;
-  height: 1000px;
+  height: auto;
   background-color: rgb(238, 236, 238);
   border: 2px solid rgb(243, 242, 242);
-
-
+  padding-bottom: 5%;
 }
 .vl1 {
   margin-top: 300px;
