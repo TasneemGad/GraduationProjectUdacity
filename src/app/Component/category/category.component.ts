@@ -162,58 +162,9 @@ this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
         this.Error = Wrong
       }
     )
-
-    // this.coursesBySubCategory = []
-    // for(let crs of this.Courses)
-    // {
-    //   // if(  crs.categoryId == this.currentCategoryID)
-    //   if(crs.subCategoryId == this.defultSubID) 
-    //   {
-    //     this.coursesBySubCategory.push(crs) 
-    //     console.log("defult",this.coursesBySubCategory)
-    //   }
-    // }
   }
 
 
-  // getCoursesBySubCategory(subCategoryID: number) {
-  //   console.log("s1", subCategoryID)
-  //   this.coursesBySubCategory = []
-  //   for (let crs of this.Courses) {
-  //     if (crs.subCategoryId == subCategoryID) {
-  //       this.coursesBySubCategory.push(crs)
-  //       console.log("coursesBySubCategory", this.coursesBySubCategory)
-  //     }
-  //   }
-  //   for (let sub of this.subCategory) {
-  //     if (sub.id == subCategoryID) {
-  //       this.currentSubCategory = sub;
-  //       this.currentSubName = this.currentSubCategory.subCategoryTitle
-  //       this.currentSubDescription = this.currentSubCategory.subCategoryDescribtion
-  //       console.log("s2", sub)
-  //     }
-  //   }
-  //   this.getStories()
-  // }
-
-  // getStories() {
-  //   this.StudentStoriesService.getStudentStory().subscribe(
-  //     data => {
-  //       console.log("coursehbbhjb", data)
-  //       for (let std of data) {
-  //         this.stories = data
-  //         // if(std.specialzation == this.currentSubName)
-  //         // {
-  //         // this.studentStories = std;
-  //         // console.log("story", this.studentStories)
-  //         // }
-  //       }
-  //     },
-  //     Wrong => {
-  //       this.Error = Wrong
-  //     }
-  //   )
-  // }
   getCoursesBySubCategory(subCategoryID:number)
   {      
     console.log("s1",subCategoryID)
