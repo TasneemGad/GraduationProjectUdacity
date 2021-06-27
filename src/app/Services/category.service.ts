@@ -48,5 +48,11 @@ export class CategoryService {
     }));
   }
 
+  getCategoryByName(name:string):Observable<ICategory>{
+    let url = `https://localhost:44326/school-of/${name}`;
+    return this._http.get<ICategory>(url).pipe(catchError((err)=>
+    {
+      return throwError(err.message ||"Internal Server error contact site adminstarator");
+    }));}
  
 }

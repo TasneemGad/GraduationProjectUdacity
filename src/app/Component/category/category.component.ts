@@ -55,6 +55,9 @@ export class CategoryComponent implements OnInit {
       this.getDataOfCurrentCourses();
       this.getSubCategory()
       this.getFreeCourses();
+      this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+        this.currentCategoryID=cat.id;
+      })
     })
     
   }
@@ -98,20 +101,31 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  getDataOfCurrentCourses() {
-    this.currentCourses = []
-    for (let i of this.Courses) {
-      if (i.categoryId === this.currentCategoryID) {
+
+  getDataOfCurrentCourses(){
+    this.currentCourses=[];
+this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
+  this.catService.getCategoryById(cat.id).subscribe(data=>
+  { 
+    for(let i of this.Courses)
+    {
+      if(i.categoryId === data.id)
+      {
         this.currentCourses.push(i);
-      }
+      
     }
   }
+  })
+})}
 
   goToCours(courseID: number) {
     this.router.navigate(["/Course", courseID]);
   }
 
   getSubCategory() {
+
+
     this.subCategoryService.getAllSubCategory().subscribe(
       data => {
         this.subCategory = data;
@@ -182,32 +196,36 @@ export class CategoryComponent implements OnInit {
     this.getStories()
   }
 
-  getStories() {
-    this.StudentStoriesService.getStudentStory().subscribe(
-      data => {
-        console.log("coursehbbhjb", data)
-        for (let std of data) {
-          this.stories = data
-          // if(std.specialzation == this.currentSubName)
-          // {
-          // this.studentStories = std;
-          // console.log("story", this.studentStories)
-          // }
+  getStories()
+  {      
+    this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
+    this.StudentStoriesService.getTopStudentStories(cat.id).subscribe(
+      data=>
+      {
+       
+             console.log("story", this.stories)
+             this.stories=data;
+           
         }
-      },
-      Wrong => {
+      
+      ,
+      Wrong=>
+      {
         this.Error = Wrong
-      }
-    )
+      }      
+    )})
   }
 
   getFreeCourses() {
     this.freeCourses = []
+    this.catService.getCategoryByName(this.currentCategoryName).subscribe(cat=>{
+
     for (let crs of this.Courses) {
-      if (crs.price === 0 && crs.categoryId === this.currentCategoryID) {
+      if (crs.price === 0 && crs.categoryId === cat.id) {
         this.freeCourses.push(crs)
       }
     }
     console.log("free", this.freeCourses)
-  }
+  })}
 }
