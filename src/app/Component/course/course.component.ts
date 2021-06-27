@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CoursesService } from 'src/app/Services/courses.service';
+import { EnrollService } from 'src/app/Services/EnrollCourse.service';
 import { LecturesService } from 'src/app/Services/lectures.service';
 import { MentorOrInstractorService } from 'src/app/Services/mentor-or-instractor.service';
 import { StudentReviewsService } from 'src/app/Services/student-reviews.service';
@@ -33,6 +35,7 @@ Isdetails:boolean=false
    twoCoursesSuggest:ICourse[] = []
    lectureAllListcrs:Lectures[]=[]
    apiUrl:string="https://localhost:44326";
+   ExisterollmentFlag:boolean=false
 
 
 
@@ -40,7 +43,10 @@ Isdetails:boolean=false
     private instractorService:MentorOrInstractorService,
     private reviewsService:StudentReviewsService,
     private twoCoursesServies:TwoCoursesSuggestService,
-     private lectureServices:LecturesService) { }  
+     private lectureServices:LecturesService,
+     private enrollCrsservice:EnrollService,
+     private token:AuthenticationService
+     ) { }  
   
    ngOnInit(): void {
     this.getInstractor();
@@ -48,6 +54,7 @@ Isdetails:boolean=false
 
     this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrl=p.get('id')})
   //  this.active.paramMap.subscribe((p:ParamMap)=>{this.idUrlLecture=p.get('lid')})
+    this.CheckIfIEnrollered()
 
     this.getCourse();
     this.getCourseById(this.idUrl);
@@ -151,5 +158,25 @@ Isdetails:boolean=false
   saveCourseId(){
     localStorage.setItem("IDCOURSEENROLL",this.idUrl)
   }
+  InsertFreeEnroll(){
+    localStorage.setItem("IDCOURSEENROLL",this.idUrl)
+    this.enrollCrsservice.EnrollInCourse(this.idUrl).subscribe(
+      data=>{
+        console.log("Inserted")
+        location.href="/ClassRoom"
+      }
+    )
+  }
 
+
+  CheckIfIEnrollered()
+  {
+    this.enrollCrsservice.getStdEnrollcrs(this.idUrl).subscribe(
+          data=>{
+                  console.log("Exist",this.token.getUserId(),data)  
+                  if(data!=null)                
+                  this.ExisterollmentFlag=true;
+          }
+      )
+  }
 }

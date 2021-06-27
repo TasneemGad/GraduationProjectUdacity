@@ -57,6 +57,7 @@ gratuatedCourses:ICourse[]=[]
                   if(dataProgress.numOfLesson==dataProgress.numOfLessonFinshed)
                   {
                   this.GraduatedCoursesList.push(crsData)
+                  this.isQratuate=true
                   }
 
                 }
